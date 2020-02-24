@@ -543,7 +543,7 @@ a {
 }
 #header .header-subtitle {
   text-align: center;
-  color: #0fc;
+  color: #fff;
   font-weight: bolder;
   font-size: 16px;
   line-height: 25px;
@@ -554,7 +554,7 @@ a {
   -webkit-box-orient: vertical;
 }
 #header .header-subtitle:hover {
-  color: #f09;
+  color: #ffa500;
 }
 #header .header-menu {
   font-weight: 300;
@@ -802,7 +802,7 @@ a {
   font-size: 1.8em;
 }
 .archives-wrap .archive-year-wrap a {
-  color: #008000;
+  color: #ffd700;
   font-weight: bold;
   padding-left: 48px;
 }
@@ -1174,10 +1174,10 @@ a {
   z-index: 1;
 }
 .article-meta time {
-  color: #0ff;
+  color: #b0e2ff;
 }
 .article-meta time:before {
-  color: #0ff;
+  color: #b0e2ff;
   content: "\f073";
   font: 17px FontAwesome;
   margin-right: 10px;
