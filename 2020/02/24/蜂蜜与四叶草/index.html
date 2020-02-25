@@ -261,7 +261,7 @@
 <script src="https://billts.site/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: '',
+  id: window.decodeURIComponent(window.location.pathname),
   owner: 'nlby',
   repo: 'nlbyvh.github.io',
   oauth: {
