@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android Studio 项目结构 | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android Studio 目录结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio 项目结构">
+<meta property="og:url" content="http://yoursite.com/2020/02/25/Android-Studio-structure/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="Android Studio 目录结构">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://q5uc9wpxq.bkt.clouddn.com/as_structure.png">
+<meta property="article:published_time" content="2020-02-25T10:41:59.000Z">
+<meta property="article:modified_time" content="2020-02-25T10:51:48.269Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://q5uc9wpxq.bkt.clouddn.com/as_structure.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 10px;">入门</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">番剧记录</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Android-Studio-structure" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/25/Android-Studio-structure/" class="article-date">
+  	<time datetime="2020-02-25T10:41:59.000Z" itemprop="datePublished">2020-02-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Studio 项目结构
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/02/25/Android-Studio-structure/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Android Studio 项目结构">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Android-Studio-目录结构"><a href="#Android-Studio-目录结构" class="headerlink" title="Android Studio 目录结构"></a>Android Studio 目录结构</h3><a id="more"></a>
+<p><strong>说明</strong><br></p>
+<ol>
+<li>据初步了解，as和idea新建项目时最大的区别就是：idea会创建两个模块，一个与项目名称相同，一个为app模块；而as只会创建一个app模块，更符合项目仅为工作空间的含义。  </li>
+<li>为更具普适性，接下来对项目目录结构的说明是在一个项目下建好两个模块app和app_o的基础上进行的。  </li>
+<li><strong>需要特别注意的是，在as开发时呈现的项目机构、目录并不符合磁盘上的存储形式，即在as中同属一个目录的文件实际在磁盘上也许并不在同一目录，或者有的目录不存在，因此下面将会分as中和磁盘两种情况进行说明</strong>  </li>
+<li>可能是as版本问题，在网上搜索到的as目录结果均与现使用版本存在差异，因此下面也给出了这些情况的链接。  </li>
+<li>实际上，网上搜到的as目录结构应该和磁盘情况是一致的，但与本人不一致。</li>
+</ol>
+<hr>
+<h3 id="本机as项目结构"><a href="#本机as项目结构" class="headerlink" title="本机as项目结构"></a>本机as项目结构</h3><p><img src="http://q5uc9wpxq.bkt.clouddn.com/as_structure.png" width=1000 height=800><br>  </p>
+<h3 id="磁盘项目结构"><a href="#磁盘项目结构" class="headerlink" title="磁盘项目结构"></a>磁盘项目结构<br></h3><p><a href="https://blog.csdn.net/qq_39312230/article/details/80314236" target="_blank" rel="noopener">https://blog.csdn.net/qq_39312230/article/details/80314236</a> <br><br>该博客中介绍的结构和本地磁盘中结构基本一致，可参考：<br><br><strong>一、项目目录</strong><br><br>1、.gradle和.idea<br><br>这两个目录下放置的都是Android Studio自动生成的一些文件，我们无须关心，也不要去手动编辑。<br><br>2、app<br><br>项目中的代码、资源等内容几乎都是放置在这个目录下的，我们后面的开发工作也基本都是在这个目录下进行的，待会儿还会对这个目录单独展开进行讲解。<br><br>3、build<br><br>这个目录你也不需要过多关心，它主要包含了一些在编译时自动生成的文件。<br><br>4、gradle<br><br>这个目录下包含了gradle wrapper的配置文件，使用gradle wrapper的方式不需要提前将gradle下载好，而是会自动根据本地的缓存情况决定是否需要联网下载gradle。Android Studio默认没有启动gradle wrapper的方式，如果需要打开，可以点击Android Studio导航栏 –&gt; File –&gt; Settings –&gt; Build，Execution，Deployment –&gt; Gradle，进行配置更改。<br><br>5、.gitignore<br><br>这个文件是用来将指定的目录或文件排除在版本控制之外的。<br><br>6、build.gradle<br><br>这是项目全局的gradle构建脚本，通常这个文件的内容是不需要修改的。下面回详细分析gradle构建脚本中的具体内容。<br><br>7、gradle.properties<br><br>这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。<br><br>8、gradlew和gradlew.bat<br><br>这两个文件是用来在命令行界面中执行gradle命令的，其中gradlew是在Linux或Mac系统中使用的，gradlew.bat是在Windows系统中使用的。<br><br>9、xxx.iml<br><br>iml文件是所有IntelliJ IDEA项目都会自动生成的一个文件（Android Studio是基于IntelliJ IDEA开发的），用于标识这是一个IntelliJ IDEA项目，我们不需要修改这个文件中的任何内容。<br><br>10、local.properties<br><br>这个文件用于指定本机中的Android SDK路径，通常内容都是自动生成的，我们并不需要修改。除非你本机中的Android SDK位置发生了变化，那么就将这个文件中的路径改成新的位置即可。<br><br>11、settings.gradle<br><br>这个文件用于指定项目中所有引入的模块。<br><br><strong>二、app模块目录</strong><br><br>1、build<br><br>这个目录和外层的build目录类似，主要也是包含了一些在编译时自动生成的文件，不过它里面的内容会更多更杂，我们不需要过多关系。<br><br>2、libs<br><br>如果你的项目中使用到了第三方jar包，就需要把这些jar包都放在libs目录下，放在这个目录下的jar包都会被自动添加到构建路径里去。<br><br>3、src/AndroidTest<br><br>此处是用来编写Android Test测试用例的，可以对项目进行一些自动化测试。<br><br>4、src/main/java<br><br>毫无疑问，java目录是放置我们所有java代码的地方，展开该目录，你将看到我们刚才创建的HelloWorldActivity文件就在里面。<br><br>5、src/main/res<br><br>这个目录下的内容就有点多了。简单点说，就是你在项目中使用到的所有图片，布局，字符串等资源都要存放在这个目录下。当然这个目录下还有很多子目录，图片放在drawable目录下，布局放在layout目录下，字符串放在values目录下，所以你不用担心会把整个res目录弄得乱糟糟的。<br><br>6、main/AndroidManifest.xml<br><br>这是你整个Android项目的配置文件，你在程序中定义的所以四大组件都需要在这个文件里注册，另外还可以在这个文件中给应用程序添加权限声明。<br><br>7、test<br><br>此处是用来编写Unit Test测试用例的，是对项目进行自动化测试的另一种方式。<br><br>8、.gitignore<br><br>这个文件用于将app模块内的指定的目录或文件排除在版本控制之外，作用和外层的.gitignore文件类似。<br><br>9、app.iml<br><br>IntelliJ IDEA项目自动生成的文件，我们不需要关心或修改这个文件中的内容。<br><br>10、build.gradle<br><br>这是app模块的gradle构建脚本，这个文件中会指定很多项目构建相关的配置。<br><br>11、proguard-rules.pro<br><br>这个文件用于指定项目代码的混淆规则，当代码开发完成后打成安装包文件，如果不希望代码被别人破解，通常会将代码混淆，从而让破解者难以阅读。<br><br><strong>三、项目中的资源</strong><br><br>以drawable开头的文件夹都是用来放图片的；<br>以mipmap开头的文件夹都是用来放应用图标的；<br>以values开头的文件夹都是用来放字符串、样式、颜色等配置的；<br>layout文件夹是用来放布局文件的。  </p>
+<h3 id="其他参考链接"><a href="#其他参考链接" class="headerlink" title="其他参考链接"></a>其他参考链接</h3><p><a href="https://blog.csdn.net/admans/article/details/80921534" target="_blank" rel="noopener">https://blog.csdn.net/admans/article/details/80921534</a><br><a href="https://www.cnblogs.com/ahochen/p/10676600.html" target="_blank" rel="noopener">https://www.cnblogs.com/ahochen/p/10676600.html</a><br><a href="https://www.jianshu.com/p/481b46cd5562" target="_blank" rel="noopener">https://www.jianshu.com/p/481b46cd5562</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/24/%E8%9C%82%E8%9C%9C%E4%B8%8E%E5%9B%9B%E5%8F%B6%E8%8D%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">蜂蜜与四叶草</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Android-Studio-structure" data-title="Android Studio 项目结构" data-url="http://yoursite.com/2020/02/25/Android-Studio-structure/"  data-images="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" data-content="Android Studio 项目结构">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false});</script></body>
+</html>
