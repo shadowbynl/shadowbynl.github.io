@@ -150,10 +150,10 @@ h3 {
   display: block;
 }
 h1 {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 h2 {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 h3 {
   font-size: 1.1em;
@@ -162,6 +162,12 @@ h4,
 h5,
 h6 {
   font-size: 1em;
+}
+p {
+  font-family: KaiTi;
+}
+li {
+  font-family: KaiTi;
 }
 a {
   text-decoration: none;
