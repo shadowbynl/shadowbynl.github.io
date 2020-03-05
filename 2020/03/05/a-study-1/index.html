@@ -9,18 +9,24 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Intent">
+  <meta name="description" content="一、概述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android基本概念（一）">
 <meta property="og:url" content="http://yoursite.com/2020/03/05/a-study-1/index.html">
 <meta property="og:site_name" content="Memory">
-<meta property="og:description" content="Intent">
+<meta property="og:description" content="一、概述">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-05T06:07:28.000Z">
-<meta property="article:modified_time" content="2020-03-05T08:09:07.083Z">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/vCVTqk7WjBYILHe.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/XpLYIvB46lw3FCj.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/pCN52JcIPdBFjxG.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/d9ayY3W2SpexFED.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/iGuRcVaTxXqnH8N.png">
+<meta property="article:published_time" content="2020-03-05T08:21:35.000Z">
+<meta property="article:modified_time" content="2020-03-05T08:23:06.233Z">
 <meta property="article:author" content="nlby">
 <meta property="article:tag" content="android">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/05/vCVTqk7WjBYILHe.png">
   
     <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
   
@@ -194,7 +200,7 @@
   
     <div class="article-meta">
       <a href="/2020/03/05/a-study-1/" class="article-date">
-  	<time datetime="2020-03-05T06:07:28.000Z" itemprop="datePublished">2020-03-05</time>
+  	<time datetime="2020-03-05T08:21:35.000Z" itemprop="datePublished">2020-03-05</time>
 </a>
     </div>
   
@@ -243,64 +249,48 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>Intent</h3>
+        <p><strong>一、概述</strong></p>
 <a id="more"></a>
-**一、概述**
-（1）概述：Intent的中文意思是“意图，意向”，在Android中提供了Intent机制来协助**应用间的交互与通讯**，Intent负责对应用中**一次操作的动作、动作涉及数据、附加数据**进行描述，Android则根据此Intent的描述，负责找到对应的组件，将Intent传递给调用的组件，并完成组件的调用。Intent不仅可用于**应用程序之间**，也可用于应用程序内部的**Activity/Service之间的交互**。因此，可以将Intent理解为不同组件之间通信的“媒介”专门提供组件互相调用的相关信息。
-（2）功能：Intent 是一个将要执行的动作的抽象的描述，一般来说是作为参数来使用，由Intent来协助完成android各个组件之间的通讯。比如说调用startActivity()来启动一个activity,或者由broadcaseIntent()来传递给所有感兴趣的roadcaseReceiver, 再或
-者由startService()/bindservice()来启动一个后台的service。Intent可以启动一个Activity，也可以启动一个Service，还可以发起
-一个广播Broadcasts。
-![20200305021543318.png](https://i.loli.net/2020/03/05/vCVTqk7WjBYILHe.png)
-**二、属性和方法:**
+<p>（1）概述：Intent的中文意思是“意图，意向”，在Android中提供了Intent机制来协助<strong>应用间的交互与通讯</strong>，Intent负责对应用中<strong>一次操作的动作、动作涉及数据、附加数据</strong>进行描述，Android则根据此Intent的描述，负责找到对应的组件，将Intent传递给调用的组件，并完成组件的调用。Intent不仅可用于<strong>应用程序之间</strong>，也可用于应用程序内部的<strong>Activity/Service之间的交互</strong>。因此，可以将Intent理解为不同组件之间通信的“媒介”专门提供组件互相调用的相关信息。<br>（2）功能：Intent 是一个将要执行的动作的抽象的描述，一般来说是作为参数来使用，由Intent来协助完成android各个组件之间的通讯。比如说调用startActivity()来启动一个activity,或者由broadcaseIntent()来传递给所有感兴趣的roadcaseReceiver, 再或<br>者由startService()/bindservice()来启动一个后台的service。Intent可以启动一个Activity，也可以启动一个Service，还可以发起<br>一个广播Broadcasts。<br><img src="https://i.loli.net/2020/03/05/vCVTqk7WjBYILHe.png" alt="20200305021543318.png"><br><strong>二、属性和方法:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> • component(组件) ：目的组件。 </span><br><span class="line"></span><br><span class="line"> • action （动作）：用来表现意图的行动。 </span><br><span class="line"></span><br><span class="line"> • category （类别）：用来表现动作的类别。 </span><br><span class="line"></span><br><span class="line"> • data （数据）：表示与动作要操纵的数据。 </span><br><span class="line"></span><br><span class="line"> • type （数据类型）：对于data范例的描写。 </span><br><span class="line"></span><br><span class="line"> • extras （扩展信息）：扩展信息。 </span><br><span class="line"></span><br><span class="line"> • Flags （标志位）：期望这个意图的运行模式。</span><br><span class="line"> </span><br><span class="line"> • setClass(Context packageContext,Classcls)：设置该Intent将要启</span><br><span class="line">动的组件对应的类。</span><br><span class="line"></span><br><span class="line">• setClassName(Context packageContext,StringclassName)：设</span><br><span class="line">置该Intent将要启动的组件对应的类。</span><br><span class="line"></span><br><span class="line">• setClassName(String packageContext,StringclassName)：设置</span><br><span class="line">该Intent将要启动的组件对应的类。</span><br></pre></td></tr></table></figure>
-（1）Component属性：
+<p>（1）Component属性：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">• Component属性明确指定Intent的目标组件的类名称。 </span><br><span class="line"></span><br><span class="line">• ComponentName对象包含的构造器 ： </span><br><span class="line"></span><br><span class="line">• ComponentName(String pkg,String cls) ：创建在pkg所在包下的 </span><br><span class="line">  cls类所对应的组件 </span><br><span class="line"></span><br><span class="line">• ComponentName(Context pkg,String cls) ：创建在pkg所在包下的 </span><br><span class="line">  cls类所对应的组件 </span><br><span class="line"></span><br><span class="line">• ComponentName(Context pkg,Class cls)创建在pkg所在包下的cls </span><br><span class="line">  类所对应的组件 </span><br><span class="line"></span><br><span class="line">• 一个ComponentName需要指定包名和类名，这就可以唯一确定一 </span><br><span class="line">  个组件类。</span><br></pre></td></tr></table></figure>
-（2）Action属性：
-+ Action 是一个用户定义的普通字符串，代表该Intent索要完成的一个抽象“动作”。用于描述一个Android 应用程序组件，一个IntentFilter 可以包含多个Action。在AndroidManifest.xml 的Activity 定义时，可以在其节点指定一个Action列表用于标识Activity 所能接受的“动作”。
-+ Action要完成的只是一个抽象的动作，这个动作具体由哪个组件(Activity,Service,BroadcastReceiver)来完成，Action这个字符不管。比如Android提供的标准Action：Intent.ACTION_VIEW，它只表示一个抽象的查看动作，但具体什么，启动哪个Activity来看，Intent.ACTION_VIEW并不知道---这取决于Activity的配置，只要某个Activity的配置中包含了该ACTION_VIEW，该Activity就有可能被启动。
-+ 常见的ActivityAction：
-![20200305023018234.png](https://i.loli.net/2020/03/05/XpLYIvB46lw3FCj.png)
-+ 常见的Broadcast Action：
-![20200305023139385.png](https://i.loli.net/2020/03/05/pCN52JcIPdBFjxG.png)
-（3）Category属性：
-+ Category是要执行动作的目标所具有的特质或行为归类，在Intent对象中可添加**任意多个**category。
-+ 常见的category
-![20200305023435140.png](https://i.loli.net/2020/03/05/d9ayY3W2SpexFED.png)
-（4）Data和Type:
-+ Data，也就是执行动作要操作的数据。Android中采用指向数据的一个URI来表示，如在联系人应用中，一个指向某联系人的URI可能为：content://contacts/1。
-+ Type，即数据类型，显式指定Intent的数据类型（MIME）。一般Intent的数据类型能够根据数据本身进行判定，但是通过设置这个属性，可以强制采用显式指定的类型而不再进行推导。
-+ 在AndroidManifest.xml的<data/>标签中包含了以下几种子元素，他们定义了url的匹配规则：
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">• android:scheme：匹配url中的前缀，除了“http”、“https”、</span><br><span class="line">“tel”...之外，我们可以定义自己的前缀。</span><br><span class="line">• android:host：匹配url中的主机名部分，如“google.com”，如果</span><br><span class="line">定义为“*”则表示任意主机名。</span><br><span class="line">• android:port：匹配url中的端口。</span><br><span class="line">• android:path：匹配url中的路径。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"scott"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:host</span>=<span class="string">"com.scott.intent.data"</span> <span class="attr">android:port</span>=<span class="string">"7788"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:path</span>=<span class="string">"/target"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
-+ Intent的Action和Data组合例子：
-![20200305023958971.png](https://i.loli.net/2020/03/05/iGuRcVaTxXqnH8N.png)
-（5）Extras属性
-+ Extras属性主要用于传递目标组件所需要的额外的数据。通过putExtras()方法设置。
-+ 常用值如下所示：
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXTRA_BCC：存放邮件密送人地址的字符串数组。</span><br><span class="line">EXTRA_CC：存放邮件抄送人地址的字符串数组。</span><br><span class="line">EXTRA_EMAIL：存放邮件地址的字符串数组。</span><br><span class="line">EXTRA_SUBJECT：存放邮件主题字符串。</span><br><span class="line">EXTRA_TEXT：存放邮件内容。</span><br><span class="line">EXTRA_KEY_EVENT：以KeyEvent对象方式存放触发Intent的按键。</span><br><span class="line">EXTRA_PHONE_NUMBER：存放调用ACTION_CALL时的电话号码。</span><br></pre></td></tr></table></figure>
-（6）Flag（标记）
-+ Flag（标记）用于为Intent添加额外控制标记。
-+ 常用值如下所示：
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">• FLAG_ACTIVITY_BROUGHT_TO_FRONT：这个标志一般不是由程序代码设置的，如在launchMode中设置singleTask模式时系统帮你设定。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_CLEAR_TOP：如果目标Activity已经运行于当前的Task中，则关闭Activity Stack中在此Activity上方的所有Activity，然后将此Intent传递到该Activity实例内。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_NEW_TASK：将使Activity成为一个新Task的开始。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_NO_ANIMATION：这个标志将阻止系统进入下一个Activity时应用Acitivity迁移动画。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_NO_HISTORY：新的Activity将不再历史stack中保留。一旦离开，此Activity就关闭了。</span><br></pre></td></tr></table></figure>
-**三、显式INTENT和隐式Intent**
-1. 显式
-2. 隐式：不指定接收者，指定Action + Data，因未指定接收者，其意图需要经过过滤，即需要配置INTENT FILTER
-3. INTENT FILTER：在清单文件中的接收组件中注册
-&emsp;（0）概述：未指定接收者的隐式Intent，需要经过Action,Category,Data三种过滤联合筛选出可以接收意图的应用或组件。接收者是其他的应用，那么配置都用android提供的应该即可，但要指定自己应用中的组件接收，则需要通过自定义Action等来具体指定（ps:这样还不如显示Intent）。注意一定是三种都满足的才可接收Intent。
-&emsp; （1）意图过滤器
- + IntentFilter翻译成中文就是“意图过滤器”，主要用来过滤隐式意图。当用户进行一项操作的时候，Android系统会根据配置的“意图过滤器”来寻找可以响应该操作的组件，服务。
- + 例如当用户点击PDF文件的时候，Android系统就会通过设定好的意图过滤器，进行匹配测试。找到能够打开PDF文件的APP程序。
-（2）三重过滤
- + Android系统会根据我们配置的Intent Filter（意图过滤器），来进行匹配测试。匹配的时候，只会考虑三个方面：动作、数据（URI以及数据类型）和类别。
- + 也就是说Android系统会进行“动作测试”，“数据测试”，“类别测试”，来寻找可以响应隐式意图的组件或服务。
- + 另外，当对其他App程序开放组件和服务的时候也需要配置IntentFilter（意图过滤器），一个Activity可以配置多个<intent-filter>。
-（3）具体规则:
- + 对应<intent-filter>中的<action/>标签
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.如果<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>标签中有多个<span class="tag">&lt;<span class="name">action</span>/&gt;</span>，那么Intent请求的Action，只要匹配其中的一条<span class="tag">&lt;<span class="name">action</span>/&gt;</span>就可以通过了这条<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>的动作测试。</span><br><span class="line"> </span><br><span class="line">2.如果<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中没有包含任何<span class="tag">&lt;<span class="name">action</span>/&gt;</span>，那么无论什么Intent请求都无法和这条<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>匹配。</span><br><span class="line"></span><br><span class="line">3.如果Intent请求中没有设定Action(动作)，那么这个Intent请求就将顺利地通过<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>的动作测试（前提是<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中必须包含有<span class="tag">&lt;<span class="name">action</span>/&gt;</span>，否则与第二条冲突）。</span><br></pre></td></tr></table></figure>
- + 对应<intent-filter>中的<category />标签
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.Intent中的类别必须全部匹配<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中的<span class="tag">&lt;<span class="name">category</span> /&gt;</span>，但是<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中多余的<span class="tag">&lt;<span class="name">category</span> /&gt;</span>将不会导致匹配失败。例如：Intent中有3个类别，而意图过滤器中定义了5个，如果Intent中的3个类别都与过滤器中的匹配，那么过滤器中的另外2个，将不会导致类别测试失败。</span><br><span class="line"></span><br><span class="line">2.注意有一个例外，Android把所有传给startActivity()的隐式意图当作他们包含至少一个类别："android.intent.category.DEFAULT" （CATEGORY_DEFAULT常量）。因此，想要接收隐式意图的活动必须在它们的意图过滤器中包含"android.intent.category.DEFAULT"。</span><br></pre></td></tr></table></figure>
- + 对应<intent-filter>中的<data>标签
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. <span class="tag">&lt;<span class="name">data</span>&gt;</span>元素指定了可以接受的Intent传过来的数据URI和数据类型，当一个意图对象中的URI被用来和一个过滤器中的URI比较时，比较的是URI的各个组成部分。</span><br><span class="line"></span><br><span class="line">2. 例如：如果过滤器仅指定了一个scheme，所有该scheme的URIs都能够和这个过滤器相匹配；如果过滤器指定了一个scheme、主机名但没有路经部分，所有具有相同scheme和主机名的URIs都可以和这个过滤器相匹配，而不管它们的路经；如果过滤器指定了一个scheme、主机名和路经，只有具有相同scheme、主机名和路经的URIs才可以和这个过滤器相匹配。</span><br><span class="line"></span><br><span class="line">3. 当然，一个过滤器中的路径规格可以包含通配符，这样只需要部分匹配即可。</span><br></pre></td></tr></table></figure>
+<p>（2）Action属性：</p>
+<ul>
+<li>Action 是一个用户定义的普通字符串，代表该Intent索要完成的一个抽象“动作”。用于描述一个Android 应用程序组件，一个IntentFilter 可以包含多个Action。在AndroidManifest.xml 的Activity 定义时，可以在其节点指定一个Action列表用于标识Activity 所能接受的“动作”。</li>
+<li>Action要完成的只是一个抽象的动作，这个动作具体由哪个组件(Activity,Service,BroadcastReceiver)来完成，Action这个字符不管。比如Android提供的标准Action：Intent.ACTION_VIEW，它只表示一个抽象的查看动作，但具体什么，启动哪个Activity来看，Intent.ACTION_VIEW并不知道—这取决于Activity的配置，只要某个Activity的配置中包含了该ACTION_VIEW，该Activity就有可能被启动。</li>
+<li>常见的ActivityAction：<br><img src="https://i.loli.net/2020/03/05/XpLYIvB46lw3FCj.png" alt="20200305023018234.png"></li>
+<li>常见的Broadcast Action：<br><img src="https://i.loli.net/2020/03/05/pCN52JcIPdBFjxG.png" alt="20200305023139385.png"><br>（3）Category属性：</li>
+<li>Category是要执行动作的目标所具有的特质或行为归类，在Intent对象中可添加<strong>任意多个</strong>category。</li>
+<li>常见的category<br><img src="https://i.loli.net/2020/03/05/d9ayY3W2SpexFED.png" alt="20200305023435140.png"><br>（4）Data和Type:</li>
+<li>Data，也就是执行动作要操作的数据。Android中采用指向数据的一个URI来表示，如在联系人应用中，一个指向某联系人的URI可能为：content://contacts/1。</li>
+<li>Type，即数据类型，显式指定Intent的数据类型（MIME）。一般Intent的数据类型能够根据数据本身进行判定，但是通过设置这个属性，可以强制采用显式指定的类型而不再进行推导。</li>
+<li>在AndroidManifest.xml的<data/>标签中包含了以下几种子元素，他们定义了url的匹配规则：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">• android:scheme：匹配url中的前缀，除了“http”、“https”、</span><br><span class="line">“tel”...之外，我们可以定义自己的前缀。</span><br><span class="line">• android:host：匹配url中的主机名部分，如“google.com”，如果</span><br><span class="line">定义为“*”则表示任意主机名。</span><br><span class="line">• android:port：匹配url中的端口。</span><br><span class="line">• android:path：匹配url中的路径。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"scott"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:host</span>=<span class="string">"com.scott.intent.data"</span> <span class="attr">android:port</span>=<span class="string">"7788"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:path</span>=<span class="string">"/target"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>Intent的Action和Data组合例子：<br><img src="https://i.loli.net/2020/03/05/iGuRcVaTxXqnH8N.png" alt="20200305023958971.png"><br>（5）Extras属性</li>
+<li>Extras属性主要用于传递目标组件所需要的额外的数据。通过putExtras()方法设置。</li>
+<li>常用值如下所示：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXTRA_BCC：存放邮件密送人地址的字符串数组。</span><br><span class="line">EXTRA_CC：存放邮件抄送人地址的字符串数组。</span><br><span class="line">EXTRA_EMAIL：存放邮件地址的字符串数组。</span><br><span class="line">EXTRA_SUBJECT：存放邮件主题字符串。</span><br><span class="line">EXTRA_TEXT：存放邮件内容。</span><br><span class="line">EXTRA_KEY_EVENT：以KeyEvent对象方式存放触发Intent的按键。</span><br><span class="line">EXTRA_PHONE_NUMBER：存放调用ACTION_CALL时的电话号码。</span><br></pre></td></tr></table></figure>
+（6）Flag（标记）</li>
+<li>Flag（标记）用于为Intent添加额外控制标记。</li>
+<li>常用值如下所示：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">• FLAG_ACTIVITY_BROUGHT_TO_FRONT：这个标志一般不是由程序代码设置的，如在launchMode中设置singleTask模式时系统帮你设定。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_CLEAR_TOP：如果目标Activity已经运行于当前的Task中，则关闭Activity Stack中在此Activity上方的所有Activity，然后将此Intent传递到该Activity实例内。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_NEW_TASK：将使Activity成为一个新Task的开始。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_NO_ANIMATION：这个标志将阻止系统进入下一个Activity时应用Acitivity迁移动画。</span><br><span class="line"></span><br><span class="line">• FLAG_ACTIVITY_NO_HISTORY：新的Activity将不再历史stack中保留。一旦离开，此Activity就关闭了。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>三、显式INTENT和隐式Intent</strong></p>
+<ol>
+<li>显式</li>
+<li>隐式：不指定接收者，指定Action + Data，因未指定接收者，其意图需要经过过滤，即需要配置INTENT FILTER</li>
+<li>INTENT FILTER：在清单文件中的接收组件中注册<br>&emsp;（0）概述：未指定接收者的隐式Intent，需要经过Action,Category,Data三种过滤联合筛选出可以接收意图的应用或组件。接收者是其他的应用，那么配置都用android提供的应该即可，但要指定自己应用中的组件接收，则需要通过自定义Action等来具体指定（ps:这样还不如显示Intent）。注意一定是三种都满足的才可接收Intent。<br>&emsp; （1）意图过滤器<ul>
+<li>IntentFilter翻译成中文就是“意图过滤器”，主要用来过滤隐式意图。当用户进行一项操作的时候，Android系统会根据配置的“意图过滤器”来寻找可以响应该操作的组件，服务。</li>
+<li>例如当用户点击PDF文件的时候，Android系统就会通过设定好的意图过滤器，进行匹配测试。找到能够打开PDF文件的APP程序。<br>（2）三重过滤</li>
+<li>Android系统会根据我们配置的Intent Filter（意图过滤器），来进行匹配测试。匹配的时候，只会考虑三个方面：动作、数据（URI以及数据类型）和类别。</li>
+<li>也就是说Android系统会进行“动作测试”，“数据测试”，“类别测试”，来寻找可以响应隐式意图的组件或服务。</li>
+<li>另外，当对其他App程序开放组件和服务的时候也需要配置IntentFilter（意图过滤器），一个Activity可以配置多个<intent-filter>。<br>（3）具体规则:</li>
+<li>对应<intent-filter>中的<action/>标签<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.如果<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>标签中有多个<span class="tag">&lt;<span class="name">action</span>/&gt;</span>，那么Intent请求的Action，只要匹配其中的一条<span class="tag">&lt;<span class="name">action</span>/&gt;</span>就可以通过了这条<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>的动作测试。</span><br><span class="line"> </span><br><span class="line">2.如果<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中没有包含任何<span class="tag">&lt;<span class="name">action</span>/&gt;</span>，那么无论什么Intent请求都无法和这条<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>匹配。</span><br><span class="line"></span><br><span class="line">3.如果Intent请求中没有设定Action(动作)，那么这个Intent请求就将顺利地通过<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>的动作测试（前提是<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中必须包含有<span class="tag">&lt;<span class="name">action</span>/&gt;</span>，否则与第二条冲突）。</span><br></pre></td></tr></table></figure></li>
+<li>对应<intent-filter>中的<category />标签<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.Intent中的类别必须全部匹配<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中的<span class="tag">&lt;<span class="name">category</span> /&gt;</span>，但是<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>中多余的<span class="tag">&lt;<span class="name">category</span> /&gt;</span>将不会导致匹配失败。例如：Intent中有3个类别，而意图过滤器中定义了5个，如果Intent中的3个类别都与过滤器中的匹配，那么过滤器中的另外2个，将不会导致类别测试失败。</span><br><span class="line"></span><br><span class="line">2.注意有一个例外，Android把所有传给startActivity()的隐式意图当作他们包含至少一个类别："android.intent.category.DEFAULT" （CATEGORY_DEFAULT常量）。因此，想要接收隐式意图的活动必须在它们的意图过滤器中包含"android.intent.category.DEFAULT"。</span><br></pre></td></tr></table></figure></li>
+<li>对应<intent-filter>中的<data>标签<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. <span class="tag">&lt;<span class="name">data</span>&gt;</span>元素指定了可以接受的Intent传过来的数据URI和数据类型，当一个意图对象中的URI被用来和一个过滤器中的URI比较时，比较的是URI的各个组成部分。</span><br><span class="line"></span><br><span class="line">2. 例如：如果过滤器仅指定了一个scheme，所有该scheme的URIs都能够和这个过滤器相匹配；如果过滤器指定了一个scheme、主机名但没有路经部分，所有具有相同scheme和主机名的URIs都可以和这个过滤器相匹配，而不管它们的路经；如果过滤器指定了一个scheme、主机名和路经，只有具有相同scheme、主机名和路经的URIs才可以和这个过滤器相匹配。</span><br><span class="line"></span><br><span class="line">3. 当然，一个过滤器中的路径规格可以包含通配符，这样只需要部分匹配即可。</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+</li>
+</ol>
 <p><strong>四、代码测试</strong></p>
 
       
