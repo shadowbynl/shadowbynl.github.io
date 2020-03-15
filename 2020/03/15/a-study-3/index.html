@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>android基本概念（三） | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Activity生命周期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android基本概念（三）">
+<meta property="og:url" content="http://yoursite.com/2020/03/15/a-study-3/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="Activity生命周期">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/03/15/YXx2LbBHQ6chRlp.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/15/YQFb9mDX8xoVMiJ.png">
+<meta property="article:published_time" content="2020-03-15T07:38:41.000Z">
+<meta property="article:modified_time" content="2020-03-15T08:05:24.486Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/15/YXx2LbBHQ6chRlp.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://q5uc9wpxq.bkt.clouddn.com/xj.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/android/" style="font-size: 16.67px;">android</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 13.33px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-a-study-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/15/a-study-3/" class="article-date">
+  	<time datetime="2020-03-15T07:38:41.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      android基本概念（三）
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/03/15/a-study-3/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="android基本概念（三）">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Activity生命周期</strong></p>
+<a id="more"></a>
+<p><strong>一、Activity与状态改变</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">• Activity 是一个应用组件，用户可与其提供的屏幕进行交互，以执行拨打电话、拍摄照片、发送电子邮件或查看地图等操作。</span><br><span class="line">• 每个Activity 都会获得一个用于绘制其用户界面的窗口。窗口通常会充满屏幕，但也可小于屏幕并浮动在其他窗口之上。</span><br><span class="line">• 一个应用通常由多个彼此松散联系的Activity 组成。一般会指定应用中的某个Activity 为“主”Activity，即首次启动应用时呈现给用户的那个Activity。而且每个Activity 均可启动另一个Activity，以便执行不同的操作。每次新Activity 启动时，前一Activity 便会停止，但系统会在堆栈（“返回栈”）中保留该Activity。</span><br><span class="line">• 当新Activity 启动时，系统会将其推送到返回栈上，并取得用户焦点。返回栈遵循基本的“后进先出”堆栈机制，因此，当用户完成当前Activity 并按“返回”按钮时，系统会从堆栈中将其弹出（并销毁），然后恢复前一Activity。</span><br><span class="line">• 当一个Activity 因某个新Activity 启动而停止时，系统会通过该Activity 的生命周期回调方法通知其这一状态变化。</span><br><span class="line">• Activity 因状态变化—系统是创建Activity、停止Activity、恢复Activity 还是销毁Activity—而收到的回调方法可能有若干种，每一种回调都会为您提供执行与该状态变化相应的特定操作的机会。例如，停止时，您的Activity 应释放任何大型对象，例如网络或数据库连接。当Activity 恢复时，您可以重新获取所需资源，并恢复执行中断的操作。这些状态转变都是Activity 生命周期的一部分。</span><br></pre></td></tr></table></figure>
+<p>状态</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">• onCreate：Activity创建时调用。</span><br><span class="line">• onStart：可见未获取焦点，无法与之交互。</span><br><span class="line">• onResume：可见已获取焦点，可与之交互。</span><br><span class="line">• onPause：可见，失去焦点。</span><br><span class="line">• onStop：不可见。</span><br><span class="line">• onRestart：Activity重启。</span><br><span class="line">• onDestory：Activity被销毁。</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、生命周期</strong><br><img src="https://i.loli.net/2020/03/15/YXx2LbBHQ6chRlp.png" alt="20200315034843704.png"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">• Activity 的整个生命周期发生在onCreate() 调用与onDestroy() 调用之间。</span><br><span class="line">• 您的Activity 应在onCreate() 中执行“全局”状态设置（例如定义布局），并释放onDestroy() 中的所有其余资源。</span><br><span class="line">• 例如，如果您的Activity 有一个在后台运行的线程，用于从网络上下载数据，它可能会在onCreate() 中创建该线程，然后在onDestroy() 中停止该线程。</span><br><span class="line">• Activity 的可见生命周期发生在onStart() 调用与onStop() 调用之间。</span><br><span class="line">• 在这段时间，用户可以在屏幕上看到Activity 并与其交互。例如，当一个新Activity 启动，并且此Activity 不再可见时，系统会调用onStop()。您可以在调用这两个方法之间保留向用户显示Activity 所需的资源。</span><br><span class="line">• 例如，您可以在onStart() 中注册一个BroadcastReceiver以监控影响UI 的变化，并在用户无法再看到您显示的内容时在onStop() 中将其取消注册。在Activity 的整个生命周期，当Activity 在对用户可见和隐藏两种状态中交替变化时，系统可能会多次调用onStart() 和onStop()。</span><br><span class="line">• Activity 的前台生命周期发生在onResume() 调用与onPause() 调用之间。</span><br><span class="line">• 在这段时间，Activity 位于屏幕上的所有其他Activity 之前，并具有用户输入焦点。Activity 可频繁转入和转出前台—例如，当设备转入休眠状态或出现对话框时，系统会调用onPause()。</span><br><span class="line">• 由于此状态可能经常发生转变，因此这两个方法中应采用适度轻量级的代码，以避免因转变速度慢而让用户等待。</span><br></pre></td></tr></table></figure>
+
+<p><strong>三、注意点</strong><br>常见行为与调用方法</p>
+<p><strong>事件处理</strong><br><strong>一、概述</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">• 在Android 系统中，从用户与应用的交互中截获事件的方法不止一种。如考虑截获用户界面内的事件，则可从用户与之交互的特定视图对象中捕获事件。为此，View 类提供了多种方法。</span><br><span class="line">• 在您将用于构建布局的各种View 类中，您可能会注意到几种看起来适用于UI 事件的公共回调方法。当该对象上发生相应的操作时，Android 框架会调用这些方法。</span><br><span class="line">• 例如，在触摸一个视图对象（例如“按钮”）时，对该对象调用onTouchEvent() 方法。不过，为了截获此事件，您必须扩展View 类并重写该方法。然而，为了处理此类事件而扩展每个视图对象并不现实。</span><br><span class="line">• 正因如此，View 类还包含一系列嵌套接口以及您可以更加轻松定义的回调。这些接口称为事件侦听器，是您捕获用户与UI 之间交互的票证。</span><br><span class="line">• 尽管您通常会使用事件侦听器来侦听用户交互，但有时您确实需要扩展View 类以构建自定义组件。也许，您想扩展Button 类来丰富某些内容的样式。在这种情况下，您将能够使用该类的事件处理程序为类定义默认事件行为。</span><br><span class="line">• 事件侦听器是View 类中包含一个回调方法的接口。当用户与UI 项目之间的交互触发已注册此视图的侦听器时，Android 框架将调用这些方法。</span><br></pre></td></tr></table></figure>
+<p><strong>二、Android事件侦听器的回调方法</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">• onClick()：在View.OnClickListener中。当用户触摸项目（处于触摸模式下）时，或者使用导航键或轨迹球聚焦于项目，然后按适用的“Enter”键或按下轨迹球时，将调用此方法。</span><br><span class="line">• onLongClick()：在View.OnLongClickListener中。当用户触摸并按住项目（处于触摸模式下）时，或者使用导航键或轨迹球聚焦于项目，然后按住适用的“Enter”键或按住轨迹球（持续一秒钟）时，将调用此方法。</span><br><span class="line">• onFocusChange()：在View.OnFocusChangeListener中。当用户使用导航键或轨迹球导航到或远离项目时，将调用此方法。</span><br><span class="line">• onKey()：在View.OnKeyListener中。当用户聚焦于项目并按下或释放设备上的硬按键时，将调用此方法。</span><br><span class="line">• onTouch()：在View.OnTouchListener中。当用户执行可视为触摸事件的操作时，其中包括按下、释放或屏幕上的任何移动手势（在项目边界内），将调用此方法。</span><br><span class="line">• onCreateContextMenu()：在View.OnCreateContextMenuListener中。当（因持续“长按”而）生成上下文菜单时，将调用此方法。请参见菜单开发者指南中有关上下文菜单的阐述。</span><br><span class="line">• onClick() 回调没有返回值，但是其他某些事件侦听器方法必须返回布尔值。具体原因取决于事件。</span><br><span class="line">• 对于这几个事件侦听器，必须返回布尔值的原因如下：</span><br><span class="line">• onLongClick()：此方法返回一个布尔值，表示您是否已处理完事件，以及是否应该将它继续传下去。也就是说，返回true 表示您已经处理事件且事件应就此停止；如果您尚未处理事件和/或事件应该继续传递给其他任何点击侦听器，则返回false。</span><br><span class="line">• onKey()：此方法返回一个布尔值，表示您是否已处理完事件，以及是否应该将它继续传下去。也就是说，返回true 表示您已经处理事件且事件应就此停止；如果您尚未处理事件和/或事件应该继续传递给其他任何按键侦听器，则返回false。</span><br><span class="line">• onTouch()：此方法返回一个布尔值，表示侦听器是否处理完此事件。重要的是，此事件可以拥有多个分先后顺序的操作。因此，如果在收到关闭操作事件时返回false，则表示您并未处理完此事件，而且对其后续操作也不感兴趣。因此，您无需执行事件内的任何其他操作，如手势或最终操作事件。</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/15/YQFb9mDX8xoVMiJ.png" alt="20200315040128531.png"><br><strong>三、事件侦听实现的三种方式</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">• 使用匿名类需要编写额外代码，安全性最高。</span><br><span class="line">• 使用Activity 类更为方便，可以避免加载额外的类和分配对象，但需要对View的ID进行识别，可能引入安全风险。</span><br><span class="line">• 使用布局文件最为简单，但无法实现比较复杂的功能。</span><br><span class="line">• 需要根据项目实际情况进行选择。</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/15/as-use-5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Android Studio 使用（五）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/15/a-study-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android基本概念（二）</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="a-study-3" data-title="android基本概念（三）" data-url="http://yoursite.com/2020/03/15/a-study-3/"  data-images="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" data-content="android基本概念（三）">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
