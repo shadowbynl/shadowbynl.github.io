@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>区块链论文（一） | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="说明：第一篇对区块链在教育领域已有的应用、优势、挑战进行全面地介绍；第二篇详细介绍了基于区块链的高等教育学分平台EduCTX，但这个是一个起源于欧洲适合西方教学模式的平台；第三篇具体介绍了区块链在学历信息管理、学习成果评估方面的应用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链论文（一）">
+<meta property="og:url" content="http://yoursite.com/2020/03/16/block_paper_0/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="说明：第一篇对区块链在教育领域已有的应用、优势、挑战进行全面地介绍；第二篇详细介绍了基于区块链的高等教育学分平台EduCTX，但这个是一个起源于欧洲适合西方教学模式的平台；第三篇具体介绍了区块链在学历信息管理、学习成果评估方面的应用。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/03/16/XUe4YhODQJnqlaK.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/16/qYlwN1HyxGt43Rc.png">
+<meta property="article:published_time" content="2020-03-16T10:18:28.000Z">
+<meta property="article:modified_time" content="2020-03-16T10:34:48.331Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/16/XUe4YhODQJnqlaK.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://q5uc9wpxq.bkt.clouddn.com/xj.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/android/" style="font-size: 16.67px;">android</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 13.33px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-block_paper_0" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/16/block_paper_0/" class="article-date">
+  	<time datetime="2020-03-16T10:18:28.000Z" itemprop="datePublished">2020-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      区块链论文（一）
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/03/16/block_paper_0/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="区块链论文（一）">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说明：第一篇对区块链在教育领域已有的应用、优势、挑战进行全面地介绍；第二篇详细介绍了基于区块链的高等教育学分平台EduCTX，但这个是一个起源于欧洲适合西方教学模式的平台；第三篇具体介绍了区块链在学历信息管理、学习成果评估方面的应用。</p>
+<a id="more"></a>
+<p><strong>基于区块链的教育应用：系统回顾</strong><br><strong>一、说明</strong></p>
+<ol>
+<li>本文是对基于区块链的教育应用<strong>进行调查研究的系统综述</strong>。它着重于三个主要主题：（1）用区块链技术开发的教育应用程序；（2）区块链技术可以为教育带来的好处；（3）在教育中采用区块链技术的挑战。</li>
+<li>区块链在教育中的应用仍处于早期阶段。<ul>
+<li>只有少数教育机构已开始使用区块链技术。这些机构中的大多数都将其用于验证和共享其学生已取得的学历证书和/或学习成果的目的。</li>
+<li>但是，该领域的研究人员认为，区块链技术可以提供更多的功能，并且实际上可以彻底改变该领域。根据Nespor，区块链可能削弱教育机构作为认证代理的核心作用，并为学生提供更多的学习机会。</li>
+</ul>
+</li>
+<li>本文通过研究区块链技术在教育中的利用方式，为教育技术文献做出了及时的原创性贡献，即<strong>针对近年关于区块链技术在教育领域应用的零散的论文作出总结。</strong></li>
+</ol>
+<p><strong>二、论文调查统计的几个结论（第三节）</strong></p>
+<ol>
+<li><p>区块链在教育中的应用</p>
+<ul>
+<li>出于教育目的已开发了多种区块链应用程序。这些应用程序可分为十二类：证书管理，能力和学习成果管理，评估学生的专业能力，保护学习对象，确保协作学习环境，费用和学分转移，获得数字监护权同意，竞赛管理，版权管理，增强学生在电子学习，考试复习和支持终身学习中的互动。</li>
+</ul>
+</li>
+<li><p>区块链可以带给教育的好处</p>
+<ul>
+<li>10种好处：安全性、更好地控制如何访问学生的数据以及由谁访问、增强了责任感和透明度、增强信任、降低了成本、验证学生身份及其数字证书方面非常有用、可以改善评估学习成果和学生表现的方式、提高了数据交换和学生记录管理的效率、增强了学习者的交互性和系统互操作性、在支持学习者的职业决策方面可能非常有帮助</li>
+</ul>
+</li>
+<li><p>在教育中采用区块链技术的挑战(9)</p>
+<ul>
+<li>可扩展性：区块链网络中交易数量的增加导致区块大小的增加。这最终将增加事务延迟</li>
+<li>与区块链的隐私和安全性有关：利用区块链技术时可能遇到的不同类型的安全性和隐私问题，例如恶意攻击和数据泄漏。</li>
+<li>采用这项技术的成本：例如：计算能力成本，更改当前基础结构的成本，因事务缓慢而造成的时间成本以及管理大数据的成本。</li>
+<li>与信任有关：教育机构仍然不愿意在区块链网络上共享其数据</li>
+<li>设定区块链技术采用的界限困难：，教育机构可能会发现很难决定应通过区块链网络提供哪些数据和服务</li>
+<li>不可变性：这是区块链的主要特征，可能对在教育领域采用区块链技术构成挑战。这些文章解释说，不变性可能会使教育机构难以应用新的信息存储法律或纠正不正确的数据</li>
+<li>区块链技术的不成熟：区块链仍然遭受一些不成熟的问题，例如可用性差和设置复杂</li>
+<li>数据不可用：将数据管理交给用户自己可以使这些数据不可用，并可能影响依赖于此数据的应用程序</li>
+<li>削弱传统学校证书的价值：区块链可以允许学生充当他们自己终身的教育成就注册者，并且可能削弱教育机构作为认证代理人的核心作用。</li>
+</ul>
+</li>
+</ol>
+<p><strong>三、具体分析三个问题（第四节)</strong></p>
+<ol>
+<li>区块链技术已经为教育目的开发了哪些应用程序？<ul>
+<li>第一类重点关注与证书管理有关的某些应用程序:<br>此类别涉及处理所有形式的学历证书，成绩单，学生证书或任何其他形式的成绩记录。在教育领域，许多应用程序都使用区块链来发行数字证书。这些证书的大多数应用受益于使用区块链技术提供的高度信任和隐私。</li>
+<li>第二类集中在能力和学习成果管理上：<br>人们更加重视构建一些区块链应用程序，以改善学习目标并提高教育范围内的能力。这将有助于增强学习过程并丰富广泛的教育领域。由于区块链的高效率，许多应用程序可以基于定性和定量参数来测量和评估学生的表现。</li>
+<li>第三类涵盖与确保协作学习环境有关的应用程序：<br>该类别侧重于使用区块链支持学习环境的重要性。由于区块链提供了一个分散的网络，可以高度安全和完整性地轻松访问它，因此它为包括学生，教职员工和主管部门在内的所有各方建立了协作氛围。</li>
+<li>第四类与费用和积分转移有关：<br>由于区块链的高安全性和信任度，它包括一些具有类似功能的应用程序，用于在机构，组织甚至大学之间转移凭证记录或费用。通常，教育机构依靠第三方/中介机构来处理和批准学分或费用的转移。幸运的是，基于区块链的高安全级别，它可以用作交换信息和消除此类第三方或中间方需求的有效方式。</li>
+<li>第五类讨论了一些与获得数字监护权同意有关的应用程序：<br>区块链有助于增强传统的收集父母同意的方式，以电子方式收集。由于区块链技术可以提供信任，因此高度反映了这一点。区块链的去中心化性质有助于加快收集同意的过程，而不会损害其隐私。这对减轻大量学生，家长和教育机构之间的收集和通勤过程具有很大的影响。</li>
+<li>第六类涉及竞争管理：利用区块链技术来促进对竞争运营的管理并提高其效率和透明度。</li>
+<li>第七类是评估学生的专业能力，将学生的专业能力与特定行业联系在一起的另一类，以提供就业建议。</li>
+<li>第八类是为版权管理的类别保留所有权。</li>
+<li>第九类：在电子学习系统中增强学生的互动性被归类为采用区块链技术解决与学生在电子学习环境中的交互性相关的一些问题的另一应用类别。</li>
+<li>第十类：考试复习是此复习中确定的另一个应用程序类别。通过实施许可的区块链技术，可以使用受信任的分类帐极大地提高审计试卷的安全性。</li>
+<li>第十一类：支持终身学习是最后的应用类别。区块链技术在增强终身学习方面（例如提高技能，知识和效率）发挥了重要作用。</li>
+</ul>
+</li>
+<li>区块链技术可以为教育带来什么好处？<br>区块链技术可以为教育带来重大好处，包括高安全性，低成本，增强学生的评估，更好地控制数据访问，增强问责制和透明度，身份认证，增强信任，提高学生记录管理的效率，支持学习者的职业决策，并增强学习者的互动性。</li>
+<li>在教育中采用区块链技术面临哪些挑战？<ul>
+<li>安全性问题：<br> 尽管安全性是区块链技术的主要特征，但无法消除恶意攻击的风险</li>
+<li>可扩展性问题：<br>区块链交易速度慢，被称为区块链的可扩展性问题，是使用区块链时教育系统可能面临的问题之一。</li>
+<li>成本：<br>区块链是一项新兴技术，需要与旧系统集成。但是，采用和实施的成本可能很高。除了这种实现成本，区块链的许多技术的交易或计算成本也很高。</li>
+<li>信任与共享：<br>对于证书验证，需要所有机构都同意共享其数据。但是，问题是所有机构将如何准备好共享其数据？</li>
+<li>定义法律实体的边界不够清晰：<br>有些组织可能不想在其所有业务流程中采用区块链技术。在不定义传统系统中区块链的潜在利益的情况下，将面临关键挑战</li>
+<li>产品的可用性差，尤其是早期产品。在术语和技术的不成熟方面也缺乏明确性：<br>有必要通过简化区块链产品的接口来提高可用性，以使没有技术专长的个人可以轻松理解和使用该系统，有必要在现场进行可用性测试方面的进一步工作。良好的设计和简单的术语可以帮助教育行业适应区块链。</li>
+<li>区块链的不变性使其更难以编辑数据：<br>于政府机构来说，这种不可变性会给他们的公民数据提供法律和秩序上的麻烦。</li>
+<li>分散的区块链技术可能会影响任何教育系统流程的集中性。就像在区块链中一样，连续汇总的分类帐的可用性会影响传统学校凭证的价值</li>
+</ul>
+</li>
+</ol>
+<p><strong>四、未来研究领域</strong></p>
+<ol>
+<li>区块链可以带来巨大好处的一个主要领域是教育机构之间的合作与伙伴关系。</li>
+<li>职务驱动教育是可以使用区块链技术的另一个领域。工作驱动型教育的主要重点是提供满足当前和未来招聘需求并可以为参与计划的学生提供就业机会的教育和培训计划。</li>
+<li>区块链技术在认证和提高在线教育质量中的应用。尽管在线教育具有许多优点，例如成本较低，可访问性和灵活性，但它也有许多缺点。这些缺点最严重的是认证和低质量。大量的教育机构声称已获得认证，并提供高质量的在线课程。区块链有可能解决这个问题。<hr></li>
+</ol>
+<p><strong>EduCTX：基于区块链的高等教育学分平台</strong><br><strong>一、概述（文章的摘要）</strong></p>
+<ol>
+<li>基于区块链技术，我们提出了一个全球高等教育信用平台，名为EduCTX。该平台基于欧洲信用转移和累积系统（ECTS）的概念。它构成了一个<strong>全球信任的，分散式的高等教育学分和评分系统</strong>，可以为学生和高等教育机构（HEIs）以及其他潜在的利益相关者（例如公司，机构和组织）提供全球统一的观点。</li>
+<li>作为概念证明，我们提出了<strong>环境的原型实现，基于开源方舟区块链平台</strong>。EduCTX基于全球分布的对等网络，将处理，管理和控制ECTX令牌，这些令牌代表学生在完成课程（例如ECTS）中获得的学分。HEI是区块链网络的对等点。该平台是迈向更加透明和技术先进的高等教育系统形式的第一步。（令牌：token 可译为通证；HEI表示高等教育机构）</li>
+<li>EduCTX平台代表了EduCTX计划的基础，该计划期望各种HEI齐心协力，以创建一个全球高效，简化且无处不在的环境，从而避免语言和管理障碍。因此，我们邀请并鼓励HEI加入EduCTX计划和EduCTX区块链网络。<br><img src="https://i.loli.net/2020/03/16/XUe4YhODQJnqlaK.png" alt="20200313081848061.png"></li>
+</ol>
+<p><strong>二、建立该平台的背景与动机（论文第一节）</strong></p>
+<ol>
+<li>现存问题（即目前HEI数据库存储方式的问题）<ul>
+<li><strong>互操作性小</strong>：大多数高等教育机构（HEI）均以专有格式保留其学生的完整课程记录。这些数据库的结构可以由机构的工作人员专用并且可以在专用的在线系统中访问，因此互操作性很小或没有。</li>
+<li><strong>访问受限</strong>：通常，这些数据库托管在HEI内部的数据中心中，但对其IT专业人员的访问受到限制。学生可以以受限的，受密码保护的方式从外部访问其数据，而只能查看或打印其完整的课程记录（某些系统启用并记录学生的在线签入和签出考试）。关于此类系统，有几个关键点，包括数据标准化，存储位置，安全性以及如何过滤，分析和安全共享此类数据。与这些问题相关，HEI会无限期地维护学生的完整课程记录。由于法律原因，这是必需的，具体取决于国家/地区的政策。</li>
+<li><strong>共享困难</strong>：大多数情况下，机构不会共享学生的数据，甚至不会共享完整的课程记录。因此，学生在转移到另一所HEI的过程中可能会遇到困难，同时仍保留并证明其先前学校提供的课程的完整性。当学生想转移到存在语言，文字和行政障碍的另一个国家时，这个问题更加明显。而且，这些记录通常以不同的标准存储，</li>
+<li><strong>上述存在的访问、共享、安全性问题给学生后续的学习和工作带来困难</strong><br>尽管存在诸如ECTS之类的学术学分系统的统一标准，但采用和实施全球分散，可信赖，安全的学分平台仍然是一个挑战。许多障碍来自以下事实：学生的学业成绩敏感，并制定了复杂的管理规定。</li>
+</ul>
+</li>
+<li>论文提出的EduCTX<ul>
+<li>一个基于区块链的去中心化高等教育信用平台，名为EduCTX。它建立在分布式对等（P2P）网络系统上。该系统由于在全球范围内的存储容量和资源共享而具有灵活性，安全性和弹性</li>
+<li>EduCTX平台将基于区块链技术的高等教育学分和评分系统从模拟和物理世界转换为全球高效，简化，无所不在的版本。</li>
+<li><strong>论文的EduCTX计划</strong>：EduCTX平台是我们的EduCTX计划的基础（更多信息，请访问：eductx.org），该计划设想了一个统一，简化且全球无所不在的高等教育学分和评分系统。通过该计划，我们计划进一步推进和发展EduCTX概念。</li>
+</ul>
+</li>
+</ol>
+<p><strong>三、先前其他的做法与本系统的区别（第二节）</strong></p>
+<ol>
+<li><strong>封闭专用</strong>： 高等教育领域中的上述大多数项目都依赖于封闭的概念或想法，并且经常不讨论细节，甚至不停留在想法层面。一些相关项目专门提供给实体的封闭圈子。</li>
+<li><strong>开放</strong>：本文提出的想法依赖于开源技术（即实施的开源公共代码），其目的是将全球利益相关者纳入EduCTX计划，因此对于任何HEI的参与和包容性都是开放的。通过公开可用的平台和网络形象。所展示的平台基于ARK区块链技术，可通过Github软件开发平台获得原型实现。因此，拟议的EduCTX区块链平台是EduCTX计划的基础，该计划向所有HEI全球开放，以为学生的学分分配构建高效，简化，无所不在的解决方案，同时消除语言和管理障碍。</li>
+</ol>
+<p><strong>四、相关技术基础（第三节）</strong></p>
+<ol>
+<li><strong>欧洲学分转移和积累系统</strong><br>欧洲学分转移和累积系统（ECTS）是由欧洲委员会开发并得到欧盟成员国同意的高等教育分级系统的框架。它于1989年在Erasmus（学生交换）计划中成立。这个以学习者为中心的系统的目的是通过认可先前的学习成就，资格，经验和学习时间，促进学习计划的规划，交付和评估，以及促进学生的流动性[39]。ECTS学分表示学习量，它基于定义的学习结果和与学习相关的工作量。学习结果表示为个人的知识（他/她所知道，理解和能够做的事情），而工作量则是个人完成所有学习活动所需的估计时间。用60个ECTS学分评估学习结果和全日制学年的相关工作量。积分以整数表示。考虑到预期的学习成果和估计的工作量，会将不同数量的学分分配给不同的教育组成部分（课程）。一学分相当于25到30个小时的工作时间[39]。</li>
+<li>区块链-分布式账本技术<ul>
+<li>分布式共识</li>
+<li>网络节点</li>
+</ul>
+</li>
+<li>多重签名协议</li>
+</ol>
+<p><strong>五、EduCTX平台的架构描述（第四节）</strong></p>
+<ol>
+<li>概述<br>EduCTX区块链平台将以学术学分的形式处理，管理和控制ECTX令牌，并依赖于全球分布的P2P网络，其中区块链网络的对等方是HEI，平台的用户是学生和组织（例如，公司作为潜在雇主） 。<br><img src="https://i.loli.net/2020/03/16/qYlwN1HyxGt43Rc.png" alt="20200313084707943.png"></li>
+<li>架构中的四种重要方案，这些方案将在EduCTX中发挥作用。每个方案都由业务流程管理（BPM）图表表示<ul>
+<li>HEI加入EduCTX网络（学校注册）</li>
+<li>学生注册</li>
+<li>学生课程完成情况</li>
+<li>组织验证学生的信用记录</li>
+</ul>
+</li>
+</ol>
+<p><strong>六、EduCTX平台的原型实现（第五节）</strong></p>
+<ol>
+<li><strong>基础是使用ARK区块链</strong><br>ARK不仅是一种加密货币，而且还是一个旨在大规模采用区块链的生态系统。通过在高度安全和快速的ARK核心区块链之上构建EduCTX平台，集成关键的去中心化技术，该平台成为用户大学友好的生态系统，从而整体上提高了区块链技术的采用率。选择ARK技术作为代码库的主要原因是它的灵活性和开源性，以及客户端API实施的总体可用性。在撰写本文时，ARK提供了超过12种不同的客户端实现编程语言，从而使其他参与者（HEI，学生，雇主）以他们选择的编程语言加入该平台。</li>
+<li>要点<ul>
+<li>EduCTX生态系统构建基块</li>
+<li>加入EduCTX生态系统</li>
+</ul>
+</li>
+</ol>
+<p><strong>七、分析平台的应用和缺陷（第六节）</strong></p>
+<ol>
+<li>EduCTX计划<ul>
+<li>期望其周围的社区将进一步发展。所有确定的利益相关者（即高等教育机构，学生，公司）都可以受益于全球受信任的，分散的高等教育学分和评分系统，该系统<strong>易于使用且没有任何行政，脚本和语言障碍</strong>，因此为一个非常频繁的过程，遍及全球。</li>
+<li>倡议的目的<strong>不是完全改变和改变各国建立的现行学分和等级制度</strong>，而是通过增加透明度和自动化程度来促进其发展，以优化与高等教育系统有关的行政程序。实际上，由于法律原因（国家或跨国法律和法规），这两种系统在开始时并存是很可能的情况。</li>
+</ul>
+</li>
+<li>问题<br>区块链的私钥和公钥造成的使用和安全问题</li>
+</ol>
+<p><strong>八、结论与未来工作（第七节）</strong></p>
+<ol>
+<li>结论<ul>
+<li>EduCTX被提议为基于全球区块链的高等教育信用平台。拟议的平台利用了区块链的优势，以创建全球信任的高等教育学分和评分系统。作为概念验证，我们介绍了基于开源Ark区块链平台的EduCTX平台的原型实现。拟议的EduCTX平台针对学生和组织提出了全球统一的观点。</li>
+<li>方案基于分布式P2P网络系统。它将基于区块链技术的高等教育评分系统从当前的实际物理记录或传统数字记录（例如数据库）转换为高效，简化，无所不在的版本。可以预料，这样的系统可能会演变成一个统一的，简化的且在全球范围内普遍存在的高等教育学分和等级系统.</li>
+</ul>
+</li>
+<li>未来工作<br>扩展到基于智能合约和适当版本的区块链技术的基础上</li>
+</ol>
+<hr>
+**探索区块链技术及其在教育中的潜在应用**
+**一、当前教育中的区块链应用**
+如今，一些大学和学院已将区块链技术应用于教育中，其中大多数都将其用于支持学位管理和学习成果的总结评估。
+1. 学历信息（文凭）管理
+ + 区块链技术可以制定整个成绩单。在正式学习环境中，这包括学习内容和成果，以及学生的成绩和学历证书。随后，在非正式学习环境中，包括有关研究经验，技能，在线学习经验以及个人兴趣的信息。这些数据可以通过适当的方式安全地存储和访问在区块链网络上。**举例：**  尼科西亚大学是第一所使用区块链技术管理从MOOC平台收到的学生证书的学校（Sharples and Domingue 2016）。索尼全球教育还使用区块链技术创建了一个全球评估平台，以提供用于存储和管理学位信息的服务（Hoy 2017）。此外，麻省理工学院（MIT）和Learning Machine公司合作，设计了基于区块链技术的在线学习数字徽章。参加麻省理工学院媒体实验室项目并通过评估的学生将获得证书，并将其存储在区块链网络中（Skiba 2017）。此外，霍尔伯顿学校是第一家将区块链技术用于存储学位的学院，并声称他们将从2017年开始共享此信息。
+ + 区块链分类账本可以将各种教育信息与用户的唯一ID相匹配。它包括课堂学习行为，微观学术项目经验和宏观教育背景等。
+ + 区块链技术有助于减少程度欺诈。过去，有很多学位欺诈案件。但是，现在可以通过使用区块链来授予和管理学生学位来避免这种情况。来自世界各地的矿工会检查，验证和维护与用户ID匹配并存储在区块链中的数据。区块链分布式账本是一成不变且值得信赖的。因此，可靠性和权威性都得到了保证，这将大大减少学位欺诈。
+2. 学习成果评估
+ + 区块链可以用作“容量-货币转换银行”。具体而言，区块链学习分类账记录有关用户学习经历的详细信息，并跟踪其知识和技能的发展。所有这些都可以根据一系列全面的标准转换为一种数字货币，并存储在区块链网络中。通过努力学习，学生将获得奖励，这被称为“学习就是收益”（Sharples和Domingue，2016年）。
+ + 举例：Sharples和Domingue（2016）声称一种名为“荣誉”的教育声誉货币。它可以用来衡量学习成果并存储在虚拟钱包中。
+
+
+<p><strong>二、使用区块链技术的未来创新教育应用</strong><br>区块链技术还可以通过许多创新方式应用于教育。对于学习者和教师而言，区块链技术在形成评估，学习活动设计和实施以及跟踪整个学习过程方面都具有广阔的应用前景。</p>
+<ol>
+<li>激发学生学习积极性<ul>
+<li>从学生的角度来看，仍然有一些负面的主观或客观因素导致学习效果不佳，例如缺乏动力和财务压力。由于货币属性的特性，区块链可用于通过实施“学习即赚钱”来激励学生（Sharples和Domingue，2016年）。老师和学生之间的智能合约可以应用于教育场景。实时的奖励可以通过教师的简单点击就可以授予学生。学生将根据智能合约获得一定数量的数字货币作为奖励。这种钱可以存储在教育钱包中，用作学费，甚至可以用真实货币兑换。</li>
+</ul>
+</li>
+<li>形成性评估<ul>
+<li><strong>现存问题：难以跟踪教学细节和保证公平性</strong><br>形成性评估已被提倡很长时间，但由于追踪教学的每个细节并不容易，因此尚不成熟。应用区块链和智能合约可以应对这一挑战。值得注意的是，区块链的不可变性，可追溯性和可靠性意味着记录在区块链上的数据更加具体，真实和防盗。以“合作学习”为例，这是进行建构主义教学和培养学生与他人合作能力的一种极好的方式。但是，它常常伴随着搭便车的问题，妨碍了公平评估。区块链技术可以缓解这种现象。</li>
+<li><strong>区块链如何做到</strong><br>每个学生都通过其独特的帐户将其作品提交到学习平台，在该平台上运行的智能合约将审核学生的表现，并将结果记录在块中。协作期间的所有行为也将保存为块，以作为评估的依据。而且，公共区块链具有去中心化的特征。这意味着分布式分类帐可确保大多数节点的一致性。因此，作为区块链网络中的节点，在评估学生的意见时会考虑他们的意见。在这种情况下，区块链可确保评估的公平性。</li>
+</ul>
+</li>
+<li>教师的学习活动设计<ul>
+<li><strong>问题</strong><br>教师的教学活动难以得到正确评估，传统的基于学生反馈的方法往往是单方面的，缺乏主观性，对教师的进步无济于事。</li>
+<li><strong>区块链的做法</strong><br>可以基于区块链网络和智能合约构建新的评估系统。首先，教师需要向学校提交预先计划的教学活动，作为明确的合约。在教学过程中，所有教学活动都将记录在区块链网络中。智能合约将验证教学设计和实践的一致性，这将成为重要的教学评估指标。而且，教师与学校之间的智能合约 以及师生之间的相互验证和补充。符合标准的老师将获得数字货币作为奖励。它既是对教师教学技能的赞赏，也是对他们的鼓励。</li>
+</ul>
+</li>
+<li>学生的学习活动的实施与监督<ul>
+<li><strong>问题：未能得到有效监督</strong><br>从学生发展的角度来看，主管或学术顾问直接负责对学生课程的监督。他们有责任协助学生制定学习计划，并随时了解学生的研究活动和进度。但是，在实践中，这些问题没有得到检查和监督，因此，如果将来发生某些负面事件，区分责任是有争议的。</li>
+<li><strong>区块链的做法</strong><br>如果在该领域使用智能合约和区块链技术，这种情况将会改变。所有细节均应通过智能合约平台进行监控，并记录到区块链分类账本中。例如，上学期导师与学生讨论了多少次？主管以草稿和最终形式审查了论文几次？他们是否在选课和研究设计方面为学生提供适当的指导？由于区块链技术的可追溯性和不变性，学生和主管的行为都将记录在区块链分类账中。这种创新的应用程序可以保护双方的利益。</li>
+</ul>
+</li>
+<li>总结<ul>
+<li>区块链可用于<strong>构建衡量学习过程和结果的平衡。它是每个人的可靠和平等的价值证明</strong>。从理论上讲，由于区块链的去中心化和不变性，可以解决陌生人之间的信息不对称和信任问题。因为信息和价值是集体发布和维护的，所以它确保了真实性。它为人才投资提供了一种值得信赖的方式。</li>
+<li>区块链分类帐本<strong>跟踪您所学的一切</strong>。雇主可以使用此信息为您提供与您的技能相匹配的工作。另一方面，想要优秀员工的用户也可以求助于区块链账本。这将大大降低投资偏差和失败的风险。一言以蔽之，区块链最大化了双方的利益。  </li>
+</ul>
+</li>
+</ol>
+<p><strong>三、在教育中应用区块链技术的潜在问题</strong></p>
+<ol>
+<li>需要主观审查的学习行为和成果，智能合约难以评估<br>作为一个复杂的系统，一些学习行为和学习成果需要教师进行主观审查，例如论文和课堂演示。在没有人工干预的情况下，很难通过预编程的智能合约来评估这种学习活动。</li>
+<li>消除了正当理由修改记录的可能性<br>如果在学校使用教育性区块链系统，则所有学生的教育数据都将集成到区块链分类帐中。区块链技术的不变性功能将充当一把双刃剑。它消除了某些学生出于正当理由修改教育记录的可能性。</li>
+<li>区块链的效率<br>用于教育的区块链未解决许多技术问题或障碍。例如，工作机制达成共识浪费能源的经典证据并有以每秒事务（Vukolić数量方面表现欠佳2015年），这将花费额外的费用，并阻碍了其在学校的应用。</li>
+</ol>
+<p><strong>结论</strong></p>
+<ol>
+<li>区块链本质上是一种分布式账本技术，它使用密码技术和分布式共识算法来创建去中心化，可追溯性，不变性和货币属性的特征。它的货币属性有可能引发许多创新的教育应用。例如，通过实现“学习就是收益”，区块链技术可以培养学生的学习动力。它可以存储一套完整，可信赖的教育活动记录集，包括正式和非正式学习环境中的过程和结果。它还可以记录教师的教学行为和表现，从而为教学评估提供参考。简而言之，对于学习者和教师而言，区块链在教学设计，行为记录，分析以及形成性评估。同时，它给研究人员，开发人员和教育工作者带来了挑战和机遇。<ul>
+<li>对于研究人员而言，区块链具有广阔的潜力，可广泛应用于教育领域。但是，很少进行研究。<strong>在诸如教育革命能为其提供哪些机会等主题上进行更深入的研究将是一项挑战。如何更好地利用数字货币资产来增强学习动机和成就？</strong></li>
+<li>对于开发人员来说，这些创意只是将区块链应用于教育的第一步。这也是开发教育平台和软件的重要组成部分，这给开发人员带来了挑战。<strong>如何构建满足用户个性化需求的区块链平台？如何将硬件与区块链结合以创建数据采集和记录环境？如何维护海量的教育交易数据并将区块链技术集成到现有的教育工具和系统中？</strong></li>
+<li>对于教育者来说，采用区块链技术来设计基于智能联系的学习活动的一些好处是基于智能合约的学习活动可以被验证，健壮和可追溯。这种透明性功能为做得好的老师提供了强有力的保护。此外，关于教学绩效评估的学校管理也应改变以采用这项新技术。</li>
+</ul>
+</li>
+<li>21的实现ST世纪的<strong>安全，隐私，信任和平等</strong>可以通过blockchain技术来实现。<ul>
+<li>** 安全是指对有价值的属性和信息的保护**。如今，有些人拥有财产，但无法证明所有权，例如知识产权纠纷。它可能导致与他人的冲突。可以通过检查数据库中的记录以证明属性来使用区块链技术。一些商业信息，例如设计图纸，公司计划，可能被工业间谍窃取。区块链技术可以通过在区块链网络中记录数据来保护这些贵重物品业务。区块链技术可以保护教师的教学设计免遭篡改，从而提高了保护知识产权的安全性。</li>
+<li><strong>隐私意味着每个节点都保存完整的分类帐本，包括除真实身份之外的所有信息</strong>。为了隐私起见，所有用户标识均以ID号表示。这意味着区块链技术可以保护交易者的隐私，因为没有其他人拥有私钥。在教育场景中，记录在区块链上的所有有关学习经历的信息只能通过其唯一用户的私钥来获取。其他人无法访问，这意味着可以很好地保证区块链用户的隐私。</li>
+<li>至于信任，区块链技术可以将人们建立信任的方式从第三方机构建立信任转变为技术建立信任。当应用智能合约和区块链时，教师和学生的行为都将被记录和监控。主题之间的<strong>信任基于技术本身，而不是第三方</strong>。</li>
+<li><strong>平等是指每个人在区块链网络上享有的平等权利和机会</strong>。区块链技术的开放性，无边界和无许可的性质可以使每个人都平等地使用该技术以及使用该技术构建的网络。任何人都可以在区块链网络上申请电子钱包。区块链技术没有为用户设置任何限制。所有学校，老师和学生都可以每天将其应用，从而避免了权威偏见。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/15/as-use-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Studio 使用（五）</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="block_paper_0" data-title="区块链论文（一）" data-url="http://yoursite.com/2020/03/16/block_paper_0/"  data-images="http://q5uc9wpxq.bkt.clouddn.com/m1.jpg" data-content="区块链论文（一）">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
