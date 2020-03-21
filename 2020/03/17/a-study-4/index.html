@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>android基本概念（四） | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CONTENT PROVIDER">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android基本概念（四）">
+<meta property="og:url" content="http://yoursite.com/2020/03/17/a-study-4/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="CONTENT PROVIDER">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/03/17/8DHNwVeColYTSbx.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/17/b2BaFsqLC3OYjpQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/17/goseGX28Fz5ypKf.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/21/OCmFVaybQfjwYcS.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/21/VGFz2MfE6vyW9xQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/21/h3nKDZiMt5lSHJE.png">
+<meta property="article:published_time" content="2020-03-17T13:30:55.000Z">
+<meta property="article:modified_time" content="2020-03-21T14:33:00.444Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/17/8DHNwVeColYTSbx.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://q5uc9wpxq.bkt.clouddn.com/xj.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/android/" style="font-size: 16.67px;">android</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 13.33px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-a-study-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/17/a-study-4/" class="article-date">
+  	<time datetime="2020-03-17T13:30:55.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      android基本概念（四）
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/03/17/a-study-4/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="android基本概念（四）">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>CONTENT PROVIDER</strong></p>
+<a id="more"></a>
+<p><strong>一、ContentProvider内容提供者</strong><br>1.概述</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• ContentProvider即内容提供者，是Android四大组件之一。</span><br><span class="line">• ContentProvider为存储和获取数据提供统一的接口，可以在不同的应用程序之间共享数据。</span><br><span class="line">• Android内置的许多数据都是使用ContentProvider形式，供开发者调用的(如视频，音频，图片，通讯录等)。</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/17/8DHNwVeColYTSbx.png" alt="20200317093408539.png"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• ContentProvider提供了对底层数据存储方式的抽象。</span><br><span class="line">• Android框架中的一些类需要ContentProvider类型数据。</span><br><span class="line">• ContentProvider为应用间的数据交互提供了一个安全的环境。</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/17/b2BaFsqLC3OYjpQ.png" alt="20200317093704536.png"><br>2.方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">• ContentProvider提供以下方法：</span><br><span class="line">• query：查询；</span><br><span class="line">• insert：插入；</span><br><span class="line">• update：更新；</span><br><span class="line">• delete：删除；</span><br><span class="line">• getType：得到数据类型；</span><br><span class="line">• onCreate：创建数据时调用的回调函数。</span><br></pre></td></tr></table></figure>
+<p>3.配置属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">• 授权(android:authorities)：用于在系统内标识整个提供程序的符号名称。</span><br><span class="line">• 提供程序类名( android:name)：实现ContentProvider的类。</span><br><span class="line">• 启动和控制属性：这些属性决定Android 系统如何以及何时启动提供程序、提供程序的进程特性以及其他运行时设置：</span><br><span class="line">• android:enabled：允许系统启动提供程序的标志。</span><br><span class="line">• android:exported：允许其他应用使用此提供程序的标志。</span><br><span class="line">• android:initOrder：此提供程序相对于同一进程中其他提供程序的启动顺序。</span><br><span class="line">• android:multiProcess：允许系统在与调用客户端相同的进程中启动提供程序的标志。</span><br><span class="line">• android:process：应在其中运行提供程序的进程的名称。</span><br><span class="line">• android:syncable：指示提供程序的数据将与服务器上的数据同步的标志。</span><br></pre></td></tr></table></figure>
+<p><strong>二、ContentResolver内容解析者</strong><br>1.概述</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">• ContentResolver即内容解析器，程序通过ContentResolver可以访问ContentProvider提供的数据。</span><br><span class="line">• 使用ContentResolver对ContentProvider进行增、删、改、查的操作，应用程序开发者不需要知道ContentProvider的内部实现，ContentResolver可统一管理与不同ContentProvider间的操作。</span><br></pre></td></tr></table></figure>
+<p>2.URI</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• 每个ContentProvider都有一个公共的URI，这个URI用于表示这个ContentProvider所提供的数据。</span><br><span class="line">• Android所提供的ContentProvider都存放在android.provider包当中。</span><br><span class="line">• ContentResolver通过URI来区别不同的ContentProvider。</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/17/goseGX28Fz5ypKf.png" alt="20200317094209966.png"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">• URI（Universal Resource Identifier, 统一资源定位符）代表要操作的数据，Android上可用的每种资源，图像、视频片段等都可以用URI来表示：</span><br><span class="line">• 所有联系人的URI ：content://contacts/people </span><br><span class="line">• 某个联系人的URI : content://contacts/people/5 </span><br><span class="line">• 所有图片URI : content://media/external </span><br><span class="line">• 某个图片的URI：content://media/external/images/media/4</span><br></pre></td></tr></table></figure>
+<p><strong>三、案例代码</strong><br>1.自定义UserContentProvider，并用ContentResolver增加和获取数据<br>UserContentProvider.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.app_data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.ContentProvider;</span><br><span class="line"><span class="keyword">import</span> android.content.ContentUris;</span><br><span class="line"><span class="keyword">import</span> android.content.ContentValues;</span><br><span class="line"><span class="keyword">import</span> android.content.UriMatcher;</span><br><span class="line"><span class="keyword">import</span> android.database.Cursor;</span><br><span class="line"><span class="keyword">import</span> android.database.sqlite.SQLiteDatabase;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserContentProvider</span> <span class="keyword">extends</span> <span class="title">ContentProvider</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserContentProvider</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//自定义uri</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"UserContentProvider"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String PROVIDER_NAME = <span class="string">"com.example.app_data.UserContentProvider"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"content://"</span> + PROVIDER_NAME + <span class="string">"/user"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Uri CONTENT_URI = Uri.parse(URL);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义uri匹配码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> UriMatcher MATCHER = <span class="keyword">new</span> UriMatcher(UriMatcher.NO_MATCH); <span class="comment">// 若不匹配采用UriMatcher.NO_MATCH(-1)返回</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CODE_NOPARAM = <span class="number">1</span>;    <span class="comment">//无参                 // 匹配码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CODE_PARAM = <span class="number">2</span>;    <span class="comment">//带参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//自定义uri匹配模式</span></span><br><span class="line">    <span class="keyword">static</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 对等待匹配的URI进行匹配操作，com.example.app_data.UserContentProvider/user格式</span></span><br><span class="line">        <span class="comment">// 匹配返回CODE_NOPARAM，不匹配返回-1  无参的情况</span></span><br><span class="line">        MATCHER.addURI(<span class="string">"com.example.app_data.UserContentProvider"</span>, <span class="string">"user"</span>, CODE_NOPARAM);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #表示数字 com.example.app_data.UserContentProvider/user/10</span></span><br><span class="line">        <span class="comment">// 匹配返回CODE_PARAM，不匹配返回-1    有参的情况</span></span><br><span class="line">        MATCHER.addURI(<span class="string">"com.example.app_data.UserContentProvider"</span>, <span class="string">"user/#"</span>, CODE_PARAM);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//UserSQLiteOpenHelper中预先建好user表</span></span><br><span class="line">    <span class="keyword">private</span> UserSQLiteOpenHelper helper;    <span class="comment">//操作数据库</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String user_TABLE = <span class="string">"user"</span>; <span class="comment">//所用表名</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        helper = <span class="keyword">new</span> UserSQLiteOpenHelper(getContext(), <span class="string">"userdb"</span>); <span class="comment">//以上下文 和 所用数据库名为参数，此处写死了</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Uri <span class="title">insert</span><span class="params">(Uri uri, ContentValues cv)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Log.i(TAG, <span class="string">"insert()"</span>);</span><br><span class="line"></span><br><span class="line">        SQLiteDatabase db = helper.getWritableDatabase();</span><br><span class="line">        <span class="keyword">switch</span> (MATCHER.match(uri)) &#123;       <span class="comment">//插入的uri无参才是正确情况</span></span><br><span class="line">            <span class="keyword">case</span> CODE_NOPARAM:                  <span class="comment">//调用sqlite的插入方法</span></span><br><span class="line">                <span class="keyword">long</span> id = db.insert(user_TABLE, <span class="keyword">null</span>, cv);    <span class="comment">//若主键是自增的，则返回主键值；否则为行号</span></span><br><span class="line">                Uri insertUri = ContentUris.withAppendedId(uri, id);</span><br><span class="line">                <span class="keyword">return</span> insertUri;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"This is unknow uri: "</span> + uri);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(Uri uri, String selection, String[] selectionArgs)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Log.i(TAG, <span class="string">"delete()"</span>);</span><br><span class="line"></span><br><span class="line">        SQLiteDatabase db = helper.getWritableDatabase();</span><br><span class="line">        <span class="keyword">switch</span> (MATCHER.match(uri)) &#123;</span><br><span class="line">            <span class="keyword">case</span> CODE_NOPARAM:              <span class="comment">//无参删除所有记录</span></span><br><span class="line">                <span class="keyword">return</span> db.delete(user_TABLE, selection, selectionArgs);    <span class="comment">//删除所有记录</span></span><br><span class="line">            <span class="keyword">case</span> CODE_PARAM:        <span class="comment">//有参删除uri指明的记录</span></span><br><span class="line">                <span class="keyword">long</span> id = ContentUris.parseId(uri);        <span class="comment">//取得Uri后面的数字</span></span><br><span class="line">                String where = <span class="string">"_id = "</span> + id;</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">null</span> != selection &amp;&amp; !(selection.trim()).equals(<span class="string">""</span>))&#123;</span><br><span class="line">                    where += <span class="string">"and "</span> + selection;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> db.delete(user_TABLE, where, selectionArgs);</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"This is unknow uri: "</span> + uri);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(Uri uri, ContentValues cv, String selection, String[] selectionArgs)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Log.i(TAG, <span class="string">"update()"</span>);</span><br><span class="line"></span><br><span class="line">        SQLiteDatabase db = helper.getWritableDatabase();</span><br><span class="line">        <span class="keyword">switch</span> (MATCHER.match(uri)) &#123;</span><br><span class="line">            <span class="keyword">case</span> CODE_NOPARAM:</span><br><span class="line">                <span class="keyword">return</span> db.update(user_TABLE, cv, selection, selectionArgs);    <span class="comment">//更新所有记录</span></span><br><span class="line">            <span class="keyword">case</span> CODE_PARAM:</span><br><span class="line">                <span class="keyword">long</span> id = ContentUris.parseId(uri);        <span class="comment">//取得Uri后面的数字</span></span><br><span class="line">                String where = <span class="string">"_id = "</span> + id;</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">null</span> != selection &amp;&amp; !(selection.trim()).equals(<span class="string">""</span>))&#123;</span><br><span class="line">                    where += <span class="string">" and "</span> + selection;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> db.update(user_TABLE, cv, where, selectionArgs);</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"This is unknow uri: "</span> + uri);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回对应的内容类型</span></span><br><span class="line"><span class="comment">     * 如果返回集合的内容类型，必须以com.example.android.cursor.dir开头</span></span><br><span class="line"><span class="comment">     * 如果是单个元素，必须以com.example.android.cursor.item开头</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getType</span><span class="params">(Uri uri)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Log.i(TAG, <span class="string">"getType()"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (MATCHER.match(uri)) &#123;</span><br><span class="line">            <span class="keyword">case</span> CODE_NOPARAM:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"com.example.android.cursor.dir/user"</span>;</span><br><span class="line">            <span class="keyword">case</span> CODE_PARAM:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"com.example.android.cursor.item/user"</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"This is unknow uri: "</span> + uri);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Cursor <span class="title">query</span><span class="params">(Uri uri, String[] projection, String selection, String[] selectionArgs,</span></span></span><br><span class="line"><span class="function"><span class="params">                        String orderBy)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Log.i(TAG, <span class="string">"query()"</span>);</span><br><span class="line"></span><br><span class="line">        SQLiteDatabase db = helper.getReadableDatabase();</span><br><span class="line">        <span class="keyword">switch</span> (MATCHER.match(uri)) &#123;</span><br><span class="line">            <span class="keyword">case</span> CODE_NOPARAM:</span><br><span class="line">                <span class="keyword">return</span> db.query(user_TABLE, projection, selection, selectionArgs, <span class="keyword">null</span>, <span class="keyword">null</span>, orderBy);</span><br><span class="line">            <span class="keyword">case</span> CODE_PARAM:</span><br><span class="line">                <span class="keyword">long</span> id = ContentUris.parseId(uri);        <span class="comment">//取得Uri后面的数字</span></span><br><span class="line">                String where = <span class="string">"_id = "</span> + id;</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">null</span> != selection &amp;&amp; !(selection.trim()).equals(<span class="string">""</span>))&#123;</span><br><span class="line">                    where += <span class="string">"and "</span> + selection;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> db.query(user_TABLE, projection, where, selectionArgs, <span class="keyword">null</span>, <span class="keyword">null</span>, orderBy);</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"This is unknow uri: "</span> + uri);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>UserSQLiteOpenHelper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.app_data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.database.sqlite.SQLiteDatabase;</span><br><span class="line"><span class="keyword">import</span> android.database.sqlite.SQLiteOpenHelper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.Nullable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserSQLiteOpenHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserSQLiteOpenHelper</span><span class="params">(Context context, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, name, <span class="keyword">null</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserSQLiteOpenHelper</span><span class="params">(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, <span class="keyword">int</span> version)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, name, factory, version);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span>  <span class="comment">//首次创建数据库时调用，一般可写建表建库的操作</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase sqLiteDatabase)</span> </span>&#123;</span><br><span class="line">        sqLiteDatabase.execSQL(<span class="string">"create table if not exists user (_id integer primary key autoincrement, name text not null, password text not null)"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//当数据库的版本发生变化时，会自动执行</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase sqLiteDatabase, <span class="keyword">int</span> i, <span class="keyword">int</span> i1)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Activity文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.app_data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.ContentValues;</span><br><span class="line"><span class="keyword">import</span> android.database.Cursor;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main2Activity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//增加用户</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickAddUser</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">        <span class="comment">//以下的字段名是自定义表中写死的字段名，而系统提供的是static final String 需要通过相关provider调用（在里面定义）</span></span><br><span class="line">        values.put(<span class="string">"name"</span>, ((EditText)findViewById(R.id.editText)).getText().toString());</span><br><span class="line">        values.put(<span class="string">"password"</span>, ((EditText)findViewById(R.id.editText2)).getText().toString());</span><br><span class="line">        <span class="comment">//当前上下文的内容提供者通过uri与指定的provider建立联系</span></span><br><span class="line">        Uri uri = getContentResolver().insert(UserContentProvider.CONTENT_URI, values);</span><br><span class="line">        Toast.makeText(getBaseContext(), uri.toString(), Toast.LENGTH_LONG * <span class="number">3</span>).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取用户信息</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickRetrieveUser</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Cursor cursor = getContentResolver().query(UserContentProvider.CONTENT_URI , <span class="keyword">new</span> String[]&#123;<span class="string">"name"</span>, <span class="string">"password"</span>&#125;, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span> (cursor != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (cursor.moveToNext()) &#123;</span><br><span class="line"><span class="comment">//                Log.i("info", "_id:" + cursor.getInt(cursor.getColumnIndex("_id"))); 此处绝对不能多写id 因为上面的projection就没写id字段，返回结果也不会有</span></span><br><span class="line">                Log.i(<span class="string">"info"</span>, <span class="string">"name:"</span> + cursor.getString(cursor.getColumnIndex(<span class="string">"name"</span>)));</span><br><span class="line">                Log.i(<span class="string">"info"</span>, <span class="string">"password:"</span> + cursor.getString(cursor.getColumnIndex(<span class="string">"password"</span>)));</span><br><span class="line">            &#125;</span><br><span class="line">            cursor.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.动态获取权限</p>
+<p><strong>SharedPreferences</strong><br><strong>一、概述</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">• SharedPreferences对象指向包含键值对的文件并提供读写这些文件的简单方法。每个SharedPreferences文件由框架进行管理并且可以专用或共享。</span><br><span class="line">• SharedPreferences是一个轻量级的存储类，特别适合用于保存软件配置参数。使用SharedPreferences保存数据，其背后是用xml文件存放数据，文件存放在/data/data/<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>&gt;</span>/shared_prefs目录下。</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/21/OCmFVaybQfjwYcS.png" alt="20200321101737137.png"></p>
+<p><strong>二、保存key-value对</strong></p>
+<ol>
+<li>步骤<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• 使用Activity类的getSharedPreferences方法获取到SharedPreferences对象，指定文件名和访问权限。</span><br><span class="line">• 获得SharedPreferences.Editor对象，并使用该对象的putXXX方法保存key-value对。</span><br><span class="line">• 通过SharedPreferences.Editor的commit方法保存（提交）key-value对。</span><br></pre></td></tr></table></figure></li>
+<li>getSharedPreferences(String name, int mode)<br>使用getSharedPreferences(String name, int mode)方法来获取SharedPreferences实例，该方法第一个参数为实例名称（不带后缀），第二个参数为操作模式，共四种：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">• Context.MODE_PRIVATE：为默认操作模式，代表该文件是私有数据，只能被应用本身访问，在该模式下，写入的内容会覆盖原文件的内容，如果想把新写入的内容追加到原文件中。可以使用Context.MODE_APPEND</span><br><span class="line">• Context.MODE_APPEND：模式会检查文件是否存在，存在就往文件追加内容，否则就创建新文件。</span><br><span class="line">• MODE_WORLD_READABLE：表示当前文件可以被其他应用读取；</span><br><span class="line">• MODE_WORLD_WRITEABLE：表示当前文件可以被其他应用写入。</span><br></pre></td></tr></table></figure></li>
+<li>SharedPreferences.Editor<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">• 获取SharedPreferences实例之后，需要创建SharedPreferences.Editor以实现修改功能：</span><br><span class="line">• SharedPreferencespref = getSharedPreferences("myPref", MODE_PRIVATE);</span><br><span class="line">• SharedPreferences.Editoreditor = pref.edit();</span><br><span class="line"></span><br><span class="line">• 在SharedPreferences.Editor中使用putXXX方法存储键值对，并使用commit方法提交数据：</span><br><span class="line">• editor.putString(“name”, “刘全有");</span><br><span class="line">• editor.putInt("age", 25);</span><br><span class="line">• editor.putLong("time", System.currentTimeMillis());</span><br><span class="line">• editor.putBoolean("default", true);</span><br><span class="line">• …</span><br><span class="line">• editor.commit();</span><br><span class="line"></span><br><span class="line">• 使用remove方法删除SharedPreferences实例中某个键值对：</span><br><span class="line">• SharedPreferencespref = getSharedPreferences("myPref", MODE_PRIVATE);</span><br><span class="line">• SharedPreferences.Editoreditor = pref.edit();</span><br><span class="line">• Editor.remove(“name”);</span><br><span class="line">• editor.commit();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>File</strong><br><strong>一、Android系统文件路径说明</strong><br>Android应用可能访问以下文件系统路径</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">• /data/app：该文件夹存放着系统中安装的第三方应用的apk文件。Android 中应用的安装就是将应用的安装包原封不动地拷贝到/data/app 目录下，</span><br><span class="line">• 每个应用安装包本质上就是一个zip 格式的压缩文件。为了提升应用的启动效率，Android 会将解压出来的dex格式的应用代码文件解析提取后，缓存在/data/dalvik-cache 目录下。</span><br><span class="line"></span><br><span class="line">• /data/data：该文件夹存放存储包私有数据，对于设备中每一个安装的App，系统都会在内部存储空间的data/data 目录下以应用包名为名字自动创建与之对应的文件夹。</span><br><span class="line">• 用户卸载App 时，系统自动删除data/data 目录下对应包名的文件夹及其内容。</span><br><span class="line"></span><br><span class="line">• /system：通过Environment.getRootDirectory() 访问，该目录下也有一个app 目录，存放的是系统应用的apk文件。</span><br><span class="line">• /system/app 和/data/app 的区别为：</span><br><span class="line">• /system/app 里的软件获取了所有权限。</span><br><span class="line">• /system/app 只能root 后删除。</span><br><span class="line">• /system/app 文件夹有大小限制，卸载/system/app 目录下的文件并不会增加系统空间，即可用ROM 空间。</span><br><span class="line"></span><br><span class="line">• /mnt：这个目录专门用来当作挂载点挂在外部设备，如SD 卡，将会被系统视作一个文件夹，这个文件夹将会被系统嵌入到文件系统的mnt目录中，所以在/mnt目录下也会看到一个sdcard的快捷方式：</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/21/VGFz2MfE6vyW9xQ.png" alt="20200321121302256.png"><br><strong>二、apk组成</strong><br>1.在Android APK中，除了被编译的代码以外，还可以允许存储两种资源文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res：文件会被映射到R.java文件中，访问的时候直接通过资源ID即可访问，而且不能有目录结构，即不能再创建文件夹。</span><br><span class="line">assets：不会映射到R.java文件中，通过AssetManager来访问，能有目录结构，即可以自行创建文件夹。</span><br><span class="line">注意：res和assets只能读取，不能修改，每个文件大小不能超过1MB。</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/03/21/h3nKDZiMt5lSHJE.png" alt="20200321085430836.png"><br>2.读文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">• 读res资源文件：</span><br><span class="line">• InputStreamis = getResources().openRawResource(R.drawable.pop);</span><br><span class="line"></span><br><span class="line">• 读assets资源文件：</span><br><span class="line">• AssetManageram =  getAssets();  </span><br><span class="line">• InputStreamis = am.open("filename");</span><br></pre></td></tr></table></figure>
+<p><strong>三、data/data 目录</strong><br>对于设备中每一个安装的App，系统都会在内部存储空间的<br>data/data 目录下以应用包名为名字自动创建与之对应的文件夹。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">用户卸载App 时，系统自动删除data/data 目录下对应包名的文件夹及其内容。该目录下又把存储内容进行了分类：</span><br><span class="line">• data/data/包名/cache：存放的APP 的缓存信息。</span><br><span class="line">• data/data/包名/databases：存放APP 的数据库信息。</span><br><span class="line">• data/data/包名/files：存放APP 的文件信息。</span><br><span class="line">• data/data/包名/shared_prefs：存放APP内的SharedPreferences。</span><br><span class="line"></span><br><span class="line">• 若需要访问内部存储器data/data/包名/路径上的资源文件，可使用FileOutputStream和FileInputStream。</span><br><span class="line">• 若需要访问SD卡存储空间，需要先获取READ_EXTERNAL_STORAGE 或WRITE_EXTERNAL_STORAGE系统权限。</span><br><span class="line">• 外部存储在Android 文件系统中是sdcard目录，这里只是一个快捷方式，真正的目录是/storage/emulated/legacy 文件夹。</span><br><span class="line">• 仅能对data/data/包名/路径上的资源文件使用openFileOutput和openFileInput两个方法，不可进行其他操作。</span><br><span class="line"></span><br><span class="line">• 在AndroidMainfset.xml中获取SD卡文件写入、创建与删除权限：</span><br></pre></td></tr></table></figure>
+
+<p><strong>四、上下文API</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Environment 常用方法：</span><br><span class="line">• getDataDirectory()：获取Android 数据目录。</span><br><span class="line">• getDownloadCacheDirectory()：获取Android 下载/缓存内容目录。</span><br><span class="line">• getExternalStorageDirectory()：获取外部存储目录即SDCard。</span><br><span class="line">• getExternalStorageState()：获取外部存储设备的当前状态。</span><br><span class="line">• getRootDirectory()：获取Android 的根目录。</span><br><span class="line"></span><br><span class="line">getExternalStorageState()：获取SD卡存储状态，返回值可能为以下一种：</span><br><span class="line">• MEDIA_BAD_REMOVAL：在没有挂载前存储媒体已经被移除。</span><br><span class="line">• MEDIA_CHECKING：正在检查存储媒体。</span><br><span class="line">• MEDIA_MOUNTED：存储媒体已经挂载，并且挂载点可读/写。</span><br><span class="line">• MEDIA_MOUNTED_READ_ONLY：存储媒体已经挂载，挂载点只读。</span><br><span class="line">• MEDIA_NOFS：存储媒体是空白或是不支持的文件系统。</span><br><span class="line">• MEDIA_REMOVED：存储媒体被移除。</span><br><span class="line">• MEDIA_SHARED：存储媒体正在通过USB共享。</span><br><span class="line">• MEDIA_UNMOUNTABLE：存储媒体无法挂载。</span><br><span class="line">• MEDIA_UNMOUNTED：存储媒体没有挂载。</span><br><span class="line"></span><br><span class="line">getExternalStoragePublicDirectory(String type)：提供十个公共目录用来存储相对应的文件，返回值如下：</span><br><span class="line">• DIRECTORY_MUSIC：/storage/emulated/0/Music</span><br><span class="line">• DIRECTORY_PODCASTS：/storage/emulated/0/Podcasts</span><br><span class="line">• DIRECTORY_RINGTONES：/storage/emulated/0/Ringtones</span><br><span class="line">• DIRECTORY_ALARMS：/storage/emulated/0/Alarms</span><br><span class="line">• DIRECTORY_NOTIFICATIONS：/storage/emulated/0/Notifications</span><br><span class="line">• DIRECTORY_PICTURES：/storage/emulated/0/Pictures</span><br><span class="line">• DIRECTORY_MOVIES：/storage/emulated/0/Movies</span><br><span class="line">• DIRECTORY_DOWNLOADS：/storage/emulated/0/Downloads</span><br><span class="line">• DIRECTORY_DCIM：/storage/emulated/0/Dcim</span><br><span class="line">• DIRECTORY_DOCUMENTS：/storage/emulated/0/Documents</span><br><span class="line"></span><br><span class="line">Android2.2 引入了基于扩展存储器的应用缓存目录，该目录指向大容量的扩展存储器。与应用的内存私有目录一样，缓存目录会随着应用的卸载一并删除。</span><br><span class="line">• 和内部存储一样，会在SD 卡的Android/data 目录下生成对应包名的文件夹：</span><br><span class="line">• getExternalFilesDir(type)：返回/storage/emulated/0/Android/data/包名/files。</span><br><span class="line">• getExternalCacheDir()：返回/storage/emulated/0/Android/data/应用包名/cache。</span><br><span class="line">• getObbDir()：返回/storage/emulated/0/Android/obb/包名。</span><br></pre></td></tr></table></figure>
+
+<p><strong>五、文件API</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">对象实例化：</span><br><span class="line">• File file= new File ("/mnt/sdcard/test.txt");</span><br><span class="line">• File file= new File("/mnt/sdcard/temp", "test.txt");</span><br><span class="line">判断文件是否存在：</span><br><span class="line">• file.exists();</span><br><span class="line">删除文件：</span><br><span class="line">• file.delete();</span><br><span class="line"></span><br><span class="line">创建文件夹：</span><br><span class="line">• file=new File("/mnt/sdcard/temp");</span><br><span class="line">• file.mkdir();</span><br><span class="line">创建文件：</span><br><span class="line">• File file= new File ("/mnt/sdcard/temp/test.txt");</span><br><span class="line">• file.createNewFile();</span><br><span class="line"></span><br><span class="line">• booleanisDirectory() ：测试此File对象表示的文件是否是目录。</span><br><span class="line">• booleanmkdirs() ：创建包括父目录的目录。</span><br><span class="line">• String getAbsolutePath()：返回此对象表示的文件的绝对路径名。</span><br><span class="line">• String getName() ：返回此对象表示的文件的名称。</span><br><span class="line">• String getParent() ：返回此File对象的路径名的上一级,若路径名没有上一级，则返回null。</span><br><span class="line"></span><br><span class="line">• openFileOutput(String name,intmode);打开应用程序私有目录下的指定私有文件以写入数据，返回一个FileOutputStream对象，如果文件不存在就创建这个文件。</span><br><span class="line">• openFileInput(String fileName);   打开应用程序私有目录下的指定私有文件以读入数据，返回一个FileInputStream对象。</span><br><span class="line">openFileOutput()方法的第一参数用于指定文件名称，不能包含路径分隔符“/” ，如果文件不存在，Android 会自动创建它。</span><br><span class="line">openFileOutput()方法的第二参数用于指定操作模式，有四种模式：</span><br><span class="line">• Context.MODE_PRIVATE：为默认操作模式，代表该文件是私有数据，只能被应用本身访问，在该模式下，写入的内容会覆盖原文件的内容。</span><br><span class="line">• Context.MODE_APPEND：模式会检查文件是否存在，存在就往文件追加内容，否则就创建新文件。</span><br><span class="line">• MODE_WORLD_READABLE：表示当前文件可以被其他应用读取。</span><br><span class="line">• MODE_WORLD_WRITEABLE：表示当前文件可以被其他应用写入。</span><br><span class="line">• MODE_WORLD_READABLE+MODE_WORLD_WRITEABLE：既可以读又可以写。</span><br><span class="line"></span><br><span class="line">写文件：</span><br><span class="line">• FileOutputStreamfos = openFileOutput(fileName,MODE_PRIVATE);</span><br><span class="line">• byte[] bytes = message.getBytes();</span><br><span class="line">• fos.write(bytes);</span><br><span class="line">• fos.close();</span><br><span class="line"></span><br><span class="line">读文件：</span><br><span class="line">• FileInputStreamfin = openFileInput(fileName);</span><br><span class="line">• int length = fin.available();</span><br><span class="line">• byte[] buffer = new byte[length];</span><br><span class="line">• fin.read(buffer);</span><br><span class="line">• result = EncodingUtils.getString(buffer,ENCODING);</span><br><span class="line">• fin.close();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/19/a-study-5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          android基本概念（五）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/16/block_paper_0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">区块链论文（一）</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="a-study-4" data-title="android基本概念（四）" data-url="http://yoursite.com/2020/03/17/a-study-4/"  data-images="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" data-content="android基本概念（四）">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
