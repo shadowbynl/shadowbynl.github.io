@@ -9,16 +9,16 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第三章 JSP内置对象概述有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。 12345678910  变量名		                真实类型		        	作用* pageContext		        PageContext			当前页面共享数据，还可以获取其他八个内置对象* request			HttpServletRequest">
+  <meta name="description" content="第三章 JSP内置对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsp-study-2">
 <meta property="og:url" content="http://yoursite.com/2020/04/21/jsp-study-2/index.html">
 <meta property="og:site_name" content="Memory">
-<meta property="og:description" content="第三章 JSP内置对象概述有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。 12345678910  变量名		                真实类型		        	作用* pageContext		        PageContext			当前页面共享数据，还可以获取其他八个内置对象* request			HttpServletRequest">
+<meta property="og:description" content="第三章 JSP内置对象">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/jsp-study-2/20200421045448831.png">
 <meta property="article:published_time" content="2020-04-21T08:21:17.000Z">
-<meta property="article:modified_time" content="2020-05-29T00:18:28.177Z">
+<meta property="article:modified_time" content="2020-05-29T00:24:04.327Z">
 <meta property="article:author" content="nlby">
 <meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
@@ -245,7 +245,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>第三章 JSP内置对象</strong><br><strong>概述</strong><br>有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。</p>
+        <p><strong>第三章 JSP内置对象</strong></p>
+<a id="more"></a>
+<p><strong>概述</strong><br>有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  变量名		                真实类型		        	作用</span><br><span class="line">* pageContext		        PageContext			当前页面共享数据，还可以获取其他八个内置对象</span><br><span class="line">* request			HttpServletRequest		一次请求访问的多个资源(转发)</span><br><span class="line">* session			HttpSession			一次会话的多个请求间</span><br><span class="line">* application		        ServletContext			所有用户间共享数据</span><br><span class="line">* response			HttpServletResponse		响应对象</span><br><span class="line">* page				Object				当前页面(Servlet)的对象  this</span><br><span class="line">* out				JspWriter			输出对象，数据输出到页面上</span><br><span class="line">* config			ServletConfig			Servlet的配置对象</span><br><span class="line">* exception			Throwable			异常对象</span><br></pre></td></tr></table></figure>
 <p><strong>一、request 对象</strong></p>
 <ul>

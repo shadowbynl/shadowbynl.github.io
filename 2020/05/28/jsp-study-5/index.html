@@ -9,15 +9,15 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JSP文件操作一、File类1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。2.创建一个File对象的构造方法有3个： 123File(String filename);File(String directoryPath,Stringfilename);File(File f, String filename); 3.经常">
+  <meta name="description" content="JSP文件操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsp-study-5">
 <meta property="og:url" content="http://yoursite.com/2020/05/28/jsp-study-5/index.html">
 <meta property="og:site_name" content="Memory">
-<meta property="og:description" content="JSP文件操作一、File类1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。2.创建一个File对象的构造方法有3个： 123File(String filename);File(String directoryPath,Stringfilename);File(File f, String filename); 3.经常">
+<meta property="og:description" content="JSP文件操作">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-28T02:28:36.000Z">
-<meta property="article:modified_time" content="2020-05-29T00:18:48.321Z">
+<meta property="article:modified_time" content="2020-05-29T00:24:22.706Z">
 <meta property="article:author" content="nlby">
 <meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
@@ -243,7 +243,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>JSP文件操作</strong><br><strong>一、File类</strong><br>1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。<br>2.创建一个File对象的构造方法有3个：</p>
+        <p><strong>JSP文件操作</strong></p>
+<a id="more"></a>
+<p><strong>一、File类</strong><br>1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。<br>2.创建一个File对象的构造方法有3个：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File(String filename);</span><br><span class="line">File(String directoryPath,Stringfilename);</span><br><span class="line">File(File f, String filename);</span><br></pre></td></tr></table></figure>
 <p>3.经常使用File类的下列方法获取文件本身的一些信息</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">➢ public String getName() —获取文件的名字 </span><br><span class="line"></span><br><span class="line">➢ public boolean canRead() —判断文件是否是可读的 </span><br><span class="line"></span><br><span class="line">➢ public boolean canWrite() —判断文件是否可被写入 </span><br><span class="line"></span><br><span class="line">➢ public boolean exists() —判断文件是否存在 </span><br><span class="line"></span><br><span class="line">➢ public long length() —获取文件的长度 （单位是字节） </span><br><span class="line"></span><br><span class="line">➢ public String getAbsolutePath() —获取文件的绝对路径 </span><br><span class="line"></span><br><span class="line">➢ public String getParent() —获取文件的父目录 </span><br><span class="line"></span><br><span class="line">➢ public boolean isFile() —判断是否是正常文件，而不是目录 </span><br><span class="line"></span><br><span class="line">➢ public boolean isDirectory() —判断文件是否是一个目录 </span><br><span class="line"></span><br><span class="line">➢ public boolean isHidden() —判定是否隐藏文件 </span><br><span class="line"></span><br><span class="line">➢ public long lastModified() —获取最后修改时间</span><br></pre></td></tr></table></figure>

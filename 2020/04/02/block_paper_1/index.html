@@ -9,18 +9,18 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据流测试调查零、概述1.数据流测试定义数据流测试（DFT）是一系列测试策略，旨在验证每个程序变量的定义及其用途之间的相互作用。这种感兴趣的测试目标称为“ def-use”对。2.DFT发展DFT根据各种测试充足性标准（即数据流覆盖标准）选择测试数据，以练习每一对。 DFT的最初概念是由Herman于1976年提出的。从那时起，已经进行了许多理论和经验研究，以分析DFT的复杂性和有效性。在过去的四">
+  <meta name="description" content="数据流测试调查">
 <meta property="og:type" content="article">
 <meta property="og:title" content="block_paper_1">
 <meta property="og:url" content="http://yoursite.com/2020/04/02/block_paper_1/index.html">
 <meta property="og:site_name" content="Memory">
-<meta property="og:description" content="数据流测试调查零、概述1.数据流测试定义数据流测试（DFT）是一系列测试策略，旨在验证每个程序变量的定义及其用途之间的相互作用。这种感兴趣的测试目标称为“ def-use”对。2.DFT发展DFT根据各种测试充足性标准（即数据流覆盖标准）选择测试数据，以练习每一对。 DFT的最初概念是由Herman于1976年提出的。从那时起，已经进行了许多理论和经验研究，以分析DFT的复杂性和有效性。在过去的四">
+<meta property="og:description" content="数据流测试调查">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/block_paper_1/20200402103158035.png">
 <meta property="og:image" content="http://yoursite.com/block_paper_1/20200402103520307.png">
 <meta property="og:image" content="http://yoursite.com/block_paper_1/20200402110014352.png">
 <meta property="article:published_time" content="2020-04-02T01:44:28.000Z">
-<meta property="article:modified_time" content="2020-05-29T00:15:47.293Z">
+<meta property="article:modified_time" content="2020-05-29T00:23:22.981Z">
 <meta property="article:author" content="nlby">
 <meta property="article:tag" content="区块链">
 <meta name="twitter:card" content="summary">
@@ -247,7 +247,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>数据流测试调查</strong><br><strong>零、概述</strong><br><strong>1.数据流测试定义</strong><br>数据流测试（DFT）是一系列<strong>测试策略</strong>，旨在验证<strong>每个程序变量的定义及其用途之间的相互作用</strong>。这种感兴趣的测试目标称为“ def-use”对。<br><strong>2.DFT发展</strong><br>DFT根据各种<strong>测试充足性标准</strong>（即<strong>数据流覆盖标准</strong>）选择测试数据，以练习每一对。 DFT的最初概念是由Herman于1976年提出的。从那时起，已经进行了许多理论和经验研究，以分析DFT的复杂性和有效性。在过去的四十年中，DFT一直受到关注，并且提出了来自不同方面的各种方法来追求自动和高效的数据流测试。<br><strong>3.论文工作</strong><br>这项调查对数据流测试进行了详细的概述，包括执行和自动化数据流的挑战和方法：</p>
+        <p><strong>数据流测试调查</strong></p>
+<a id="more"></a>
+<p><strong>零、概述</strong><br><strong>1.数据流测试定义</strong><br>数据流测试（DFT）是一系列<strong>测试策略</strong>，旨在验证<strong>每个程序变量的定义及其用途之间的相互作用</strong>。这种感兴趣的测试目标称为“ def-use”对。<br><strong>2.DFT发展</strong><br>DFT根据各种<strong>测试充足性标准</strong>（即<strong>数据流覆盖标准</strong>）选择测试数据，以练习每一对。 DFT的最初概念是由Herman于1976年提出的。从那时起，已经进行了许多理论和经验研究，以分析DFT的复杂性和有效性。在过去的四十年中，DFT一直受到关注，并且提出了来自不同方面的各种方法来追求自动和高效的数据流测试。<br><strong>3.论文工作</strong><br>这项调查对数据流测试进行了详细的概述，包括执行和自动化数据流的挑战和方法：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">（1）介绍了用于识别def-use对的数据流分析技术； </span><br><span class="line">（2）分类并讨论了基于数据流的测试数据生成技术，例如基于搜索的测试，随机测试，基于抵押品覆盖率的测试，基于符号执行的测试以及基于模型检查的测试； </span><br><span class="line">（3）讨论了跟踪数据流覆盖范围的技术； </span><br><span class="line">（4）提出了几种DFT应用程序，包括软件故障定位，Web安全测试和规范一致性检查； </span><br><span class="line">（5）总结了最近的进展，并讨论了对更实际的数据流测试的未来研究方向。</span><br></pre></td></tr></table></figure>
 <p><strong>一、介绍</strong></p>
 <h5>DFT概念</h5>数据流测试（DFT）是一系列测试策略，它们选择**程序路径**来行使与数据对象有关的**定义使用关系**。它在所有路径测试和分支/语句测试之间进行定位，以查明潜在的数据流异常。当用作测试选择标准时，DFT可以提供更全面的测试方法，以确保某个软件的测试充分性，并检测要求不高的标准未必发现的错误。
