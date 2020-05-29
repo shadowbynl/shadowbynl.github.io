@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jsp-study-2 | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第三章 JSP内置对象概述有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。 12345678910  变量名		                真实类型		        	作用* pageContext		        PageContext			当前页面共享数据，还可以获取其他八个内置对象* request			HttpServletRequest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsp-study-2">
+<meta property="og:url" content="http://yoursite.com/2020/04/21/jsp-study-2/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="第三章 JSP内置对象概述有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。 12345678910  变量名		                真实类型		        	作用* pageContext		        PageContext			当前页面共享数据，还可以获取其他八个内置对象* request			HttpServletRequest">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/jsp-study-2/20200421045448831.png">
+<meta property="article:published_time" content="2020-04-21T08:21:17.000Z">
+<meta property="article:modified_time" content="2020-05-29T00:18:28.177Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/jsp-study-2/20200421045448831.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://q5uc9wpxq.bkt.clouddn.com/xj.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaWeb/" style="font-size: 16px;">JavaWeb</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 14px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 12px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-jsp-study-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/21/jsp-study-2/" class="article-date">
+  	<time datetime="2020-04-21T08:21:17.000Z" itemprop="datePublished">2020-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jsp-study-2
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JSP/">JSP</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/04/21/jsp-study-2/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="jsp-study-2">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>第三章 JSP内置对象</strong><br><strong>概述</strong><br>有些对象不用声明就可以在JSP页面的Java程序片和表达式部分使用，这就是JSP的内置对象。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  变量名		                真实类型		        	作用</span><br><span class="line">* pageContext		        PageContext			当前页面共享数据，还可以获取其他八个内置对象</span><br><span class="line">* request			HttpServletRequest		一次请求访问的多个资源(转发)</span><br><span class="line">* session			HttpSession			一次会话的多个请求间</span><br><span class="line">* application		        ServletContext			所有用户间共享数据</span><br><span class="line">* response			HttpServletResponse		响应对象</span><br><span class="line">* page				Object				当前页面(Servlet)的对象  this</span><br><span class="line">* out				JspWriter			输出对象，数据输出到页面上</span><br><span class="line">* config			ServletConfig			Servlet的配置对象</span><br><span class="line">* exception			Throwable			异常对象</span><br></pre></td></tr></table></figure>
+<p><strong>一、request 对象</strong></p>
+<ul>
+<li>HTTP通信协议是用户与服务器之间一种提交( 请求)信息与响应信息(request/response)的通信协议。</li>
+<li>在JSP中，内置对象request封装了用户提交的信息，那么该对象调用相应的方法可以获取封装的信息，即使用该对象可以获取用户提交的信息。</li>
+</ul>
+<p>1.获取用户提交的信息<br>JSP页面可以让request对象使用getParameter(String s)方法获取表单提交的信息。<br>2.处理中文字符编码<br>使用两种方式避免request对象获取的信息出现乱码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1．对信息重新编码</span><br><span class="line">    request将获取的信息重新编码，即用ISO-8859-1进</span><br><span class="line">    行编码，并将编码存放到一个字节数组中，然后再将这</span><br><span class="line">    个数组转化为字符串。如下列所示：</span><br><span class="line">    Stringstr=request.getParameter("message");</span><br><span class="line">    byteb[]=str.getBytes("ISO-8859-1");</span><br><span class="line">    str=newString(b);</span><br><span class="line">2．request设置编码</span><br><span class="line">    request在获取信息之前使用setCharacterEncoding</span><br><span class="line">    方法设置自己的编码为gb2312：</span><br><span class="line">    request.setCharacterEncoding("gb2312");</span><br></pre></td></tr></table></figure>
+<p>3.常用方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getProtocol() 获取用户向服务器提交信息所使用的通信协议，比如http/1.1等。</span><br><span class="line">getServletPath() 获取用户请求的JSP页面文件的目录。</span><br><span class="line">getContextPath()获取用户请求的当前Web服务目录。</span><br><span class="line">getRemoteAddr() 获取用户的IP地址。</span><br><span class="line">getRemoteHost() 获取用户机的名称（如果获取不到，就获取IP地址）。</span><br><span class="line">getServerName() 获取服务器的名称。</span><br><span class="line">getServerPort() 获取服务器的端口号。</span><br></pre></td></tr></table></figure>
+<p>4.处理HTML标记<br>5.处理超链接<br><strong>二、response 对象</strong></p>
+<ul>
+<li>当用户访问一个服务器的页面时，会提交一个HTTP请求，服务器收到请求时，返回HTTP响应。响应和请求类似，也有某种结构，每个响应都由状态行开始，可以包含几个头及可能的信息体（网页的结果输出部分）。</li>
+<li>与request对象相对应的对象是response对象。可以用response对象对用户的请求作出动态响应，向用户端发送数据。比如，当一个用户请求访问一个JSP页面时，该页面用page指令设置页面的contentType属性的值是text/html，那么JSP引擎将按着这种属性值响应用<br>户对页面的请求，将页面的静态部分返回给用户，用户浏览器接收到该响应就会使用HTML解释器解释执行所收到的信息。</li>
+</ul>
+<p>1.动态响应contentType属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由于page指令只能为contentType指定一个值来决定响应的MIME类型，如果想动态的改变这个属性的值来响应用户，就需要使用response对象的setContentType(String s)方法来改变contentType的属性值，该方法中的参数s可取值：text/html、text/plain、image/gif等</span><br><span class="line">当用setContentType方法动态改变了contentType的属性值，即响应的MIME类型，JSP引擎就会按着新的MIME类型将JSP页面的输出结果返回给用户.</span><br></pre></td></tr></table></figure>
+<p>2.response的HTTP文件头</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">响应也包括一些头。response对象可以使用方法addHeader(String head,Stringvalue);或setHeader(Stringhead,Stringvalue)动态添加新的响应头和头的值，将这些头发送给用户的浏览器。如果添加的头已经存在，则先前的头被覆盖。</span><br></pre></td></tr></table></figure>
+<p>3.response重定向</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">某些情况下，当响应用户时，需要将用户重新引导至另一个页面。例如，如果用户输入的表单信息不完整，就会再被引导到该表单的输入页面。</span><br><span class="line">可以使用response的sendRedirect(URL url)方法实现用户的重定向。</span><br></pre></td></tr></table></figure>
+<p>4.response的状态行</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">当服务器对用户请求进行响应时,它发送的首行称为状态行。</span><br><span class="line">1yy (１开头的３位数)：主要是实验性质的。</span><br><span class="line">2yy：用来表明请求成功的，例如，状态代码200可以表明已成功取得了请求的页面。</span><br><span class="line">3yy：用来表明在请求满足之前应采取进一步的行动。</span><br><span class="line">4yy：当浏览器做出无法满足的请求时，返回该状态代码，例如404表示请求的页面不存在</span><br><span class="line">5yy：用来表示服务器出现问题。例如，500说明服务器内部发生错误。</span><br><span class="line">一般不需要修改状态行，在出现问题时，服务器会自动响应，发送相应的状态码。</span><br><span class="line">我们也可以使用response对象的setStatus(int n)方法来改变响应的状态行的内容</span><br></pre></td></tr></table></figure>
+<p><img src="/jsp-study-2/20200421045448831.png" alt=""><br><strong>三、session对象</strong></p>
+<ul>
+<li>HTTP协议是一种无状态协议。一个用户向服务器发出请求（request），然后服务器返回响应（response），在服务器端不保留连接的有关信息，因此当下一次连接时，服务器已没有以前的连接信息了，无法判断这一次连接和以前的连接是否属于同一用户。</li>
+<li>当一个用户访问一个Web服务目录时，可能会在这个服务目录的几个页面反复连接、反复刷新一个页面或不断地向一个页面提交信息等，服务器应当通过某种办法知道这是同一个用户。</li>
+<li>Tomcat服务器可以使用内置session对象（会话）记录有关连接的信息。</li>
+</ul>
+<p>1.session对象的id</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.session对象被分配了一个String类型的id号，Tomcat服务器同时将这个id号发送到用户端，存放在用户的Cookie中。这样，session对象和用户之间就建立起一一对应的关系，即每个用户都对应着一个session对象（称作用户的会话），不同用户的session对象互不相同，具有不同的id号码。</span><br><span class="line">2.简单地说，用户在访问一个Web服务目录期间，服务器为该用户分配一个session对象（称作用户的会话），服务器可以在各个页面使用这个session记录当前用户的有关信息。而且服务器保证不同用户的session对象互不相同。</span><br></pre></td></tr></table></figure>
+<p>2.session对象与URL重写</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果用户不支持Cookie，JSP页面可以通过URL重写来实现session对象的唯一性。所谓URL重写，就是当用户从一个页面重新连接到一个页面时，通过向这个新的URL添加参数，把session对象的id传带过去，这样就可以保障用户在该网站各个页面中的session对象是完全相同的。</span><br><span class="line"></span><br><span class="line">可以使用response对象调用encodeURL()或encodeRedirectURL（）方法实现URL重写。</span><br></pre></td></tr></table></figure>
+<p>3.session对象存储数据</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">session对象驻留在服务器端，该对象调用某些方法保存用户在访问某个web服务目录期间的有关数据。</span><br><span class="line">session对象使用下列方法处理数据：</span><br><span class="line">1.publicvoidsetAttribute(String key,Object obj)</span><br><span class="line">session对象可以调用该方法将参数Object指定的对象obj添加到session对象中，并为添加的对象指定了一个索引关键字。</span><br><span class="line">2.publicObjectgetAttribute(Stringkey)</span><br><span class="line">获取session对象索引关键字是key的对象。</span><br></pre></td></tr></table></figure>
+<p>4.session对象的生存期限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session对象的生存期限依赖于session对象是否调用invalidate()方法使得session无效或session对象达到了设置的最长的“发呆”状态时间以及是否关闭服务器。</span><br><span class="line">如果关闭服务器，那么用户的session消失，所谓“发呆”状态时间是指用户对某个Web服务目录发出的两次请求之间的间隔时间（默认的发呆时间是30分钟）。</span><br></pre></td></tr></table></figure>
+<p>5.application对象<br>application由服务器负责创建，每个Web服务目录下的application对象被访问该服务目录的<br>所有的用户共享，但不同Web服务目录下的application互不相同。<br>application 对象的常用方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)publicvoidsetAttribute(String key,Object obj)</span><br><span class="line">application对象可以调用该方法将参数Object指定的对象obj添加到application对象中，并为添加的对象指定了一个索引关键字。</span><br><span class="line">(2)publicObjectAttribute(Stringkey)</span><br><span class="line">获取application对象含有的关键字是key的对象。</span><br></pre></td></tr></table></figure>
+<p><strong>五、out 对象</strong><br>out对象是一个输出流，用来向用户端输出数据。在前面的许多例子里曾多次使用out对象进行数据的输出。out对象可调用如下的方法用于各种数据的输出：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">out.print(char)， out.println(char)     </span><br><span class="line">out.print(double)， out.println(double)  </span><br><span class="line">out.print(fload)， out.println(float)     </span><br><span class="line">out.print(long)， out.println(long)       </span><br><span class="line">out.print(String)， out.println(String)   </span><br><span class="line">out.newLine() , out.flush()</span><br></pre></td></tr></table></figure>
+<p><strong>六、总结</strong><br>➢HTTP通信协议是用户与服务器之间一种提交（请求）信息与响应信息（request/response）的通信协议。在JSP中，内置对象request封装了用户提交的信息，request对象获取用户提交信息的最常用的方法是getParameter(String s)；内置对象response对象对用户的请求作出动态响应，向用户端发送数据。<br>➢HTTP协议是一种<strong>无状态协议</strong>。一个用户向服务器发出请求（request），然后服务器返回响应（respons），但不记忆连接的有关信息。所以，Tomcat服务器必须使用内置session对象（会话）记录有关连接的信息。同一个用户在某个Web服务目录中的session是相同的；同一个用户在不同的Web服务目录中的session是互不相同的；不同用户的session是互不相同的。<br>➢一个用户在某个Web服务目录的<strong>session对象的生存期限依赖于用户是否关闭浏览器、session对象是否调用invalidate()方法使得session无效或session对象是否达到了设置的最长的“发呆”状态时间</strong>。<br>➢内置对象application由服务器负责创建，每个Web服务目录下的application对象被访问该服务目录的所有用户共享；不同Web服务目录下的application互不相同。<br><strong>七、问题解决</strong></p>
+<ol>
+<li>iso-8859-1与gb2312与utf8<br>参考<a href="https://zhidao.baidu.com/question/26613602.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/26613602.html</a><br><a href="https://www.cnblogs.com/x_wukong/p/3675832.html" target="_blank" rel="noopener">https://www.cnblogs.com/x_wukong/p/3675832.html</a><br>可得结论：设置utf-8/ gbk2312为jsp charset且确定其request response字符集为utf-8/ gbk2312时，中文英文都不会有问题，意思就是在charset与必须手动设置的编码格式统一下，utf-8 gbk2312皆可正确处理所有字符，若没有手动设置，必须将传入的iso请求编码成iso，这关系就像gbk2312 utf-8可单向转成iso 而iso不能转成另两种处理，必须单独编码处理。</li>
+<li>各种内置对象的生命周期</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/28/jsp-study-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          jsp-study-3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/03/block_paper_2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">block_paper_2</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="jsp-study-2" data-title="jsp-study-2" data-url="http://yoursite.com/2020/04/21/jsp-study-2/"  data-images="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" data-content="jsp-study-2">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

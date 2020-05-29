@@ -125,7 +125,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/android/" style="font-size: 16.67px;">android</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 13.33px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a>
+						<a href="/tags/JavaWeb/" style="font-size: 16px;">JavaWeb</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 14px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 12px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
 					</div>
 				</section>
 				
@@ -187,11 +187,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-心理测量者" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-jsp-study-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/07/%E5%BF%83%E7%90%86%E6%B5%8B%E9%87%8F%E8%80%85/" class="article-date">
-  	<time datetime="2020-03-07T03:34:46.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/03/24/jsp-study-1/" class="article-date">
+  	<time datetime="2020-03-24T02:40:57.000Z" itemprop="datePublished">2020-03-24</time>
 </a>
     </div>
   
@@ -204,8 +204,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E5%BF%83%E7%90%86%E6%B5%8B%E9%87%8F%E8%80%85/">
-        心理测量者
+      <a class="article-title" href="/2020/03/24/jsp-study-1/">
+        jsp-study-1
         
       </a>
     </h1>
@@ -216,7 +216,92 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3>
+        <p><strong>第一章 JSP简介</strong><br><strong>一、什么是JSP</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ JSP是Java Server Pages的缩写，是由Sun公司倡导、许多公司参与，于1999年推出的一种动态网页技术标准。</span><br><span class="line">+ JSP是基于Java Servlet以及整个Java体系的Web开发技，利用这一技术可以建立安全、跨平台的先进动态网站。</span><br><span class="line">+ JSP和ASP技术非常相似，ASP的编程语言是VBScript和JavaScript，JSP使用的是Java。与ASP相比，JSP以Java技术为基础，又在许多方面做了改进，具有动态页面与静态页面分离，能够脱离硬件平台的束缚，以及编译后运行等优点，完全克服了ASP的脚本级执行的缺点。</span><br></pre></td></tr></table></figure>
+<p><strong>二、JSP页面</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ 在传统的HTML页面文件中加入java程序片和JSP标签就构成了一个JSP页面文件,简单地说，一个JSP页面除了普通的HTML标记符外，再使用标记符号“<span class="tag">&lt;<span class="name">%”，“%</span>&gt;</span>”加入Java程序片。</span><br><span class="line">+ 一个JSP页面文件的扩展名是jsp，文件的名字必须符合标识符规定，需要注意的是，JSP技术基于Java语言，名字区分大小写。</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span> %&gt;</span><br><span class="line">&lt;HTML&gt;&lt;BODY BGCOLOR=cyan&gt;</span><br><span class="line">&lt;h3&gt;这是一个简单的JSP页面&lt;/h3&gt;</span><br><span class="line">&lt;% <span class="keyword">int</span> i, sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i= <span class="number">1</span>; i &lt;= <span class="number">100</span>;i++)&#123;</span><br><span class="line">sum = sum+i;</span><br><span class="line">&#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;h5&gt;  <span class="number">1</span>到<span class="number">100</span>的连续和是：</span><br><span class="line">&lt;% = sum %&gt; </span><br><span class="line">&lt;/h5&gt;</span><br><span class="line">&lt;/BODY&gt;&lt;/HTML&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>三、JSP的运行原理</strong><br>1.当服务器上的一个JSP页面被第一次请求执行时，服务器上的JSP引擎首先将JSP页面文件转译成一个java 文件，再将这个java 文件编译生成字节码文件，然后通过执行字节码文件响应客户的请求，而当这个JSP页面再次被请求执行时，JSP引擎将直接执行这个字节码文件来响应客户，这也是JSP比ASP速度快的一个原因。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSP -- java -- 字节码</span><br></pre></td></tr></table></figure>
+<p>2.JSP页面的首次执行往往由服务器管理者来执行。这个字节码文件的主要工作是：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)  把JSP页面中普通的HTML标记符号（页面的静态部分）交给客户的浏览器负责显示。 </span><br><span class="line">(2)  执行“<span class="tag">&lt;<span class="name">%”和“%</span>&gt;</span>”之间的java 程序片（JSP页面中的动态部分），并把执行结果交给客户的浏览器显示。 </span><br><span class="line">(3)  当多个客户请求一个JSP页面时，JSP引擎为每个客户启动一个线程而不是启动一个进程，这些线程由JSP引擎服务器来管理，与传统的CGI为每个客户启动一个进程相比较，效率要高的多。 </span><br><span class="line">(4)  当多个客户请求一个JSP页面时，Tomcat服务器为每个客户启动一个线程，该线程负责执行常驻内存的字节码文件来响应相应客户的请求。这些线程由Tomcat服务器来管理，将CPU的使用权在各个线程之间快速切换，以保证每个线程都有机会执行字节码文件</span><br></pre></td></tr></table></figure>
+<p>3.jsp编译生成的java文件解析<br><strong>四、安装配置JSP运行环境</strong></p>
+<ol>
+<li>环境</li>
+<li>Web服务目录</li>
+</ol>
+<p><strong>五、JSP与Java Servlet的关系</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ Java Servlet是Java 语言的一部分，提供了用于服务器编程的API。Java Servlet就是编写在服务器端创建对象的Java类，习惯上称之为Servlet类，Servlet类的对象习惯上称之为一个servlet。</span><br><span class="line">+ JSP技术就是以JavaServlet为基础，提供了JavaServlet的几乎所有好处，当客户请求一个JSP页面时，Tomcat服务器自动生成Java文件（如first1$jsp.java）、编译Java文件，并用编译得到的字节码文件在服务器端创建一个servlet。但是JSP技术不是Java Servlet技术的全部，它只是JavaServlet技术的一个成功应用。</span><br><span class="line">+ 对于某些Web应用，就可能需要JSP+Javabean+servlet来完成，即需要服务器再创建一些servlet对象，配合JSP页面来完成整个Web应用程序的工作。</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二章 JSP语法</strong><br><strong>一、JSP页面的基本结构</strong><br>在传统的HTML页面文件中加入Java程序片和JSP标签，就构成了一个JSP页面。JSP页面可由5种元素组合而成：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">①普通的HTML标记符；</span><br><span class="line">②JSP标记，如指令标记、动作标记；</span><br><span class="line">③变量和方法的声明；</span><br><span class="line">④Java程序片；</span><br><span class="line">⑤Java表达式</span><br></pre></td></tr></table></figure>
+<p><strong>二、变量和方法的声明</strong><br>声明变量（类变量，所有用户共享）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在“<span class="tag">&lt;<span class="name">%!”和“%</span>&gt;</span>”标记符号之间声明变量和方法。</span><br><span class="line"></span><br><span class="line">在“<span class="tag">&lt;<span class="name">%!”和“%</span>&gt;</span>”标记符之间声明变量，即在“<span class="tag">&lt;<span class="name">%!”和“%</span>&gt;</span>”之间放置Java的变量声明语句。变量的类型可以是Java语言允许的任何数据类型，将这些变量称为JSP页面的成员变量。</span><br><span class="line"></span><br><span class="line">“<span class="tag">&lt;<span class="name">%!”和“%</span>&gt;</span>”之间声明的变量在整个JSP页面内都有效，与“<span class="tag">&lt;<span class="name">%!”、“%</span>&gt;</span>”标记符在JSP页面中所在的书写位置无关。JSP引擎将JSP页面转译成Java文件时，将“<span class="tag">&lt;<span class="name">%!”、“%</span>&gt;</span>” 标记符之间声明的变量作为类的成员变量，这些变量占有的内存空间直到JSP引擎关闭才释放。</span><br><span class="line"></span><br><span class="line">当多个用户请求一个JSP页面时，JSP引擎为每个用户启动一个线程，这些线程由JSP引擎来管理，这些线程共享JSP页面的成员变量，因此任何一个用户对JSP页面成员变量操作的结果，都会影响到其他用户。</span><br></pre></td></tr></table></figure>
+<p>定义方法（类方法）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在“<span class="tag">&lt;<span class="name">%!”和“%</span>&gt;</span>”标记符号之间定义方法，所定义的方法在整个JSP页面有效，可以在Java程序片中被调用。</span><br><span class="line"></span><br><span class="line">方法内声明的变量只在该方法内有效，当方法被调用时，方法内声明的变量被分配内存，方法被调用完毕即可释放这些变量所占的内存。</span><br></pre></td></tr></table></figure>
+<p><strong>三、Java程序片</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在“<span class="tag">&lt;<span class="name">%”和“%</span>&gt;</span>”之间插入Java程序片。一个JSP页面可以有许多程序片,这些程序片将被JSP引擎按顺序执行。</span><br><span class="line"></span><br><span class="line">程序片中声明的变量称为JSP页面的局部变量。</span><br><span class="line"></span><br><span class="line">多个客户请求一个JSP页面时,Java程序片将被执行多次，分别在不同的线程中执行。</span><br><span class="line"></span><br><span class="line">如果一个用户在执行Java程序片时调用JSP页面的方法操作成员变量，可能不希望其他用户也调用该方法操作成员变量，以免对其产生不利的影响,那么就应该将操作成员变量的方法用synchronized关键字修饰。</span><br><span class="line"></span><br><span class="line">一个JSP页面中的Java程序片会按其在页面中的顺序被执行,而且某个Java程序片中声明的局部变量在其后继的所有Java程序片以及表达式部分内都有效。利用Java程序片的这个性质,有时候可以将一个Java程序片分割成几个Java程序片,然后在这些Java程序片之间再插入其他标记元素。</span><br></pre></td></tr></table></figure>
+<p><strong>四、Java表达式</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">可以在“<span class="tag">&lt;<span class="name">%=”和“%</span>&gt;</span>”之间插入一个表达式，这个表达式必须能求值。表达式的值由服务器负责计算，并将计算结果用字符串形式发送到用户端显示。</span><br><span class="line"></span><br><span class="line">注意：不可插入语句，“&lt;%=”是一个完整的符号，“&lt;%”和“=”之间不要有空格</span><br><span class="line"></span><br><span class="line">在JSP页面中，表达式的值被表示成一个字符串的形式，即Tomcat引擎将表达式的结果转换成字符串，然后发送给用户的浏览器。因此，在编写JSP页面时，要把Java表达式按普通的文本来使用。</span><br></pre></td></tr></table></figure>
+<p><strong>五、JSP中的注释</strong><br>注释可以增强JSP页面的可读性，使JSP页面易于维护。JSP页面中的注释可分为两种。<br>（1）HTML注释</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在标记符号“<span class="comment">&lt;!--”和“--&gt;</span>”之间加入注释内容：<span class="comment">&lt;!-- 注释内容 --&gt;</span></span><br><span class="line">JSP引擎把HTML注释交给用户，因此用户通过浏览器查看JSP页面的源文件时，能够看到HTML注释。</span><br></pre></td></tr></table></figure>
+<p>（2）JSP 注释</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在标记符号“<span class="tag">&lt;<span class="name">%--”和“--%</span>&gt;</span>”之间加入注释内容：<span class="tag">&lt;<span class="name">%--</span> 注释内容<span class="attr">--</span>%&gt;</span></span><br><span class="line">JSP引擎忽略JSP注释，即在编译JSP页面时忽略JSP注释。</span><br></pre></td></tr></table></figure>
+<p><strong>六、JSP 指令标记</strong><br>1.page 指令标记</p>
+<ul>
+<li>page指令用来定义整个JSP页面的一些属性和这些属性的值，属性值用单引号或双引号括起来。可以用一个page指令指定多个属性的值,也可以使用多个page指令分别为每个属性指定值。</li>
+<li>page指令的作用对整个JSP页面有效，与其书写的位置无关，习惯把page指令写在JSP页面的最前面。</li>
+<li>page 指令标记可以指定如下属性的值contentType、import、language、session、buffer、auotFlush、isThreadSafe.</li>
+</ul>
+<p>（1）contentType属性<br> <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当用户请求一个JSP页面时，Tomcat服务器负责解释执行JSP页面，并将某些信息发送到用户的浏览器，以便用户浏览这些信息。Tomcat服务器同时负责通知用户的浏览器使用怎样的方法来处理所接收到的信息。</span><br><span class="line"></span><br><span class="line">contentType 属性值确定JSP 页面响应的MIME（MultipurposeInternetMailExtention）类型和JSP页面字符的编码。属性值的一般形式是"MIME类型”或"MIME类型;charset=编码"</span><br><span class="line"></span><br><span class="line">如果不使用page指令为contentType指定一个值，那么contentType属性的默认值是"text/html ; charset=ISO-8859-1“注：不允许两次使用page 指令给contentType属性指定不同的属性</span><br><span class="line">值</span><br></pre></td></tr></table></figure><br><a href="https://tool.oschina.net/commons/" target="_blank" rel="noopener">contentType类型对照表</a><br>（2）language属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">language属性定义JSP页面使用的脚本语言，该属性的值目前只能取"java"。</span><br><span class="line">例如:<span class="tag">&lt;<span class="name">%@pagelanguage="java"%</span>&gt;</span></span><br><span class="line">注：JSP页面默认有如上page指令。</span><br></pre></td></tr></table></figure>
+<p>（3）import属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">该属性的作用是为JSP页面引入Java运行环境提供的包中的类，这样就可以在JSP页面的程序片部分、变量及函数声明部分、表达式部分使用包中的类。</span><br><span class="line"></span><br><span class="line">使用page指令可以为import属性指定多个值，这些值用逗号分隔。该属性的值可以是某包中的所有类或一个具体的类。</span><br><span class="line"></span><br><span class="line">注：JSP页面默认import属性已经有" java.lang.*"、"javax.servlet.*"、"javax.servlet.jsp.*"、"javax.servlet.http.*"等值。</span><br></pre></td></tr></table></figure>
+<p>（4）session属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">session 属性用于设置是否需要使用内置的session对象。</span><br><span class="line"></span><br><span class="line">session的属 性 值可 以 是true或false。session属性默认的属性值是true。</span><br></pre></td></tr></table></figure>
+<p>（5）buffer属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">内置输出流对象out负责将服务器的某些信息或运行结果发送到用户端显示。</span><br><span class="line">buffer属性用来指定out设置的缓冲区的大小或不使用缓冲区。例如：</span><br><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">page</span> <span class="attr">buffer</span>= <span class="string">"24kb"</span> %&gt;</span></span><br><span class="line"></span><br><span class="line">buffer属性的默认值是8kb。buffer属性可以取值"none"，即设置out不使用缓冲区。</span><br></pre></td></tr></table></figure>
+<p>（6）autoFlush属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">autoFlush 属性指定out的缓冲区被填满时，缓冲区是否自动刷新。</span><br><span class="line">autoFlush可以取值true或false。</span><br><span class="line"></span><br><span class="line">autoFlush属性的默认值是true。当autoFlush属性取值false时，如果out的缓冲区填满，就会出现缓存溢出异常。当buffer的值是"none"时，autoFlush的值就不能设置成false</span><br></pre></td></tr></table></figure>
+<p>（7）isThreadSafe属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isThreadSafe属性用来设置JSP页面是否可多线程访问。</span><br><span class="line"></span><br><span class="line">isThreadSafe的属性值可取true或false。当isThreadSafe属性值设置为true时，JSP页面能同时响应多个用户的请求；当isThreadSafe属性值设置成false时，JSP页面同一时刻只能响应一个用户的请求，其他用户须排队等待。</span><br><span class="line"></span><br><span class="line">isThreadSafe属性的默认值是true。</span><br></pre></td></tr></table></figure>
+<p>（8）info属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">info属性的属性值是一个字符串，其目的是为JSP页面准备一个常用且可能要经常修改的字符串。</span><br><span class="line">例如，<span class="tag">&lt;<span class="name">%@page</span> <span class="attr">info</span>=<span class="string">"wearestudents"</span>%&gt;</span></span><br><span class="line"></span><br><span class="line">可以在JSP页面中使用方法：getServletInfo();获取info属性的属性值。</span><br><span class="line"></span><br><span class="line">注意：当JSP页面被转译成Java文件时，转译成的类是Servlet的一个子类，所以在JSP页面中可以使用Servlet类的方法：getServletInfo()。</span><br></pre></td></tr></table></figure>
+<p>2.include 指令标记</p>
+<ul>
+<li>语法格式 &lt;%@include file=”文件的URL”%&gt;</li>
+<li>include指令标记的作用是在JSP页面出现该指令的位置处，静态插入一个文件。</li>
+<li>所谓静态插入，就是<strong>当前JSP页面和插入的文件合并成一个新的JSP页面，然后JSP引擎再将这个新的JSP页面转译成Java文件</strong>。因此，插入文件后，<strong>必须保证新合并成的JSP页面符合JSP语法规则</strong>，即能够成为一个JSP页面文件。比如，被插入的文件是一个JSP页面，该JSP页面使用page指令为contentType 属性设置了的值：&lt;%@ page contentType=”application/msword”%&gt; 那么，合并后的JSP页面就两次使用page指令为contentType属性设置了不同的属性值，导致出现语法错误。因为JSP页面中的page指令只能为contentType指定一个值。</li>
+<li>使用include指令可以实现代码的复用。</li>
+</ul>
+<p><strong>七、动作标记</strong><br>动作标记是一种特殊的标记，它影响JSP运行时的功能。<br>1.include 动作标记</p>
+<ul>
+<li>include动作标记语法格式为<code>&lt;jsp:include page=&quot;文件的URL&quot;&gt;或&lt;jsp:include page=&quot;文件的URL&quot;&gt;param子标记&lt;/jsp:include&gt;</code></li>
+<li>include动作标记告诉JSP页面动态包含一个文件，即<strong>JSP页面运行时才将文件加入</strong>。</li>
+<li>与静态插入文件的include指令标记不同，当JSP引擎把JSP页面转译成Java文件时，<strong>不把JSP页面中动作指令include所包含的文件与原JSP页面合并为一个新的JSP页面，而是告诉Java解释器，这个文件在JSP运行时才包含进来</strong>。</li>
+<li>如果包含的文件是普通的文本文件，就将文件的内容发送到用户端，由用户端的浏览器负责显示；如果包含的文件是JSP文件，JSP引擎就执行这个文件，然后将执行的结果发送到用户端，并由用户端的浏览器负责显示这些结果。</li>
+</ul>
+<p>2.param 动作标记</p>
+<ul>
+<li>param标记以“名字—值”对的形式为其他标记提供附加信息，param标记不能独立使用，需作为jsp:include、jsp:forward、jsp:plugin标记的子标记来使用。</li>
+<li>param动作标记语法格式是：<code>&lt;jsp:param name=&quot;名字&quot;value=&quot;指定给param的值&quot;&gt;</code></li>
+<li>当该标记与jsp:include动作标记一起使用时，可以将<br>param标记中的值传递到include动作标记要加载的文件中去，被加载的JSP文件可以使用Tomcat服务器提供的request内置对象获取include动作标记的param子标记中name属性所提供的值。因此include动作标记通过使用param子标记来处理加载的文件，<strong>比include指令标记更为灵活</strong>。</li>
+</ul>
+<p>3.forward 动作标记</p>
+<ul>
+<li>forward动作标记的语法格式是：<code>&lt;jsp:forwardpage=&quot;要转向的页面&quot;/&gt;或&lt;jsp:forwardpage=&quot;要转向的页面&quot;&gt;param子标记
+&lt;/jsp:forward&gt;</code> </li>
+<li>该指令的作用是：从该指令处<strong>停止当前页面的执行，而转向执行page属性指定的JSP页面</strong>。需要注意的是，当forward动作标记不需要param子标记时，必须使用第一种形式。</li>
+<li>forward标记可以使用param动作标记作为子标记，向转向的页面传送信息。forward动作标记指定的要转向的JSP文件可以<strong>使用Tomcat服务器提供的request内置对象获取param子标记中name属性所提供的值</strong>。</li>
+<li>注意: 当前页面使用forward动作标记转向后，尽管用户看到了转向后的页面的效果，但浏览器地址栏中显示的仍然是转向前的JSP页面的URL地址，因此，如果刷新浏览器的显示，将再次执行当前浏览器地址栏中显示的JSP页面。</li>
+</ul>
+<p>4.useBean 动作标记</p>
+<ul>
+<li>该标记用来创建并使用一个Javabean，是非常重要的一个动作标记。</li>
+<li>Sun公司倡导的是：Javabean负责存储数据，JSP页面显示Javabean中的数据，而servlet负责管理Javabean中的数据。</li>
+</ul>
+<p><strong>九、总结</strong><br>➢一个JSP页面可由普通的HTML标记、JSP标记、成员变量和方法的声明、Java程序片和Java表达式组成。JSP引擎把JSP页面中的HTML标记交给用户的浏览器执行显示，负责处理JSP标记、变量和方法，同时负责运行Java程序片、计算Java表达式，并将需要显示的结果发送给用户的浏览器。<br>➢JSP页面中的成员变量是被所有用户共享的变量。Java程序片可以操作成员变量，任何一个用户对JSP页面成员变量操作的结果，都会影响到其他用户。<br>➢如果多个用户访问一个JSP页面，那么该页面中的Java程序片就会被执行多次，分别运行在不同的线程中，即运行在不同的时间片内。运行在不同线程中的Java程序片的局部变量互不干扰，即一个用户改变Java程序片中的局部变量的值不会影响其他用户的Java程序片中的局部变量。<br>➢page指令用来定义整个JSP页面的一些属性和这些属性的值。比较常用的两个属性是contentType和import。page指令只能为contentType指定一个值，但可以为import属性指定多个值。<br>➢include指令标记是在编译阶段就处理所需要的文件，被处理的文件在逻辑和语法上依赖于当前JSP页面，其优点是页面的执行速度快；而include动作标记是在JSP页面运行时才处理文件，被处理的文件在逻辑和语法上独立于当前JSP页面，其优点是可以使用param子标记更灵活地处理所需要的文件。</p>
+
       
     </div>
     
@@ -224,20 +309,94 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/2012/">2012</a>
+	<a class="article-category-link" href="/categories/JSP/">JSP</a>
 	</div>
 
 
       
         
 <div class="counter-tag counter">
-    <span id="/2020/03/07/%E5%BF%83%E7%90%86%E6%B5%8B%E9%87%8F%E8%80%85/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="心理测量者">
+    <span id="/2020/03/24/jsp-study-1/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="jsp-study-1">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-a-study-5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/19/a-study-5/" class="article-date">
+  	<time datetime="2020-03-19T14:20:08.000Z" itemprop="datePublished">2020-03-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/19/a-study-5/">
+        android基本概念（五）
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Android网络编程基础</strong></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2020/03/19/a-study-5/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="android基本概念（五）">
          &nbsp;
         view
     </span>
@@ -248,7 +407,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2020/03/07/%E5%BF%83%E7%90%86%E6%B5%8B%E9%87%8F%E8%80%85/#more">more >></a>
+          <a  href="/2020/03/19/a-study-5/#more">more >></a>
         </p>
       
     
@@ -265,11 +424,11 @@
 
 
   
-    <article id="post-Code-Geass-反叛的鲁路修" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-a-study-4" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/07/Code-Geass-%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="article-date">
-  	<time datetime="2020-03-07T03:26:51.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/03/17/a-study-4/" class="article-date">
+  	<time datetime="2020-03-17T13:30:55.000Z" itemprop="datePublished">2020-03-17</time>
 </a>
     </div>
   
@@ -282,8 +441,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/Code-Geass-%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/">
-        Code Geass 反叛的鲁路修
+      <a class="article-title" href="/2020/03/17/a-study-4/">
+        android基本概念（四）
         
       </a>
     </h1>
@@ -294,7 +453,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3>
+        <p><strong>CONTENT PROVIDER</strong></p>
       
     </div>
     
@@ -302,20 +461,20 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/2006/">2006</a>
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
 	</div>
 
 
       
         
 <div class="counter-tag counter">
-    <span id="/2020/03/07/Code-Geass-%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="Code Geass 反叛的鲁路修">
+    <span id="/2020/03/17/a-study-4/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="android基本概念（四）">
          &nbsp;
         view
     </span>
@@ -326,7 +485,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2020/03/07/Code-Geass-%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/#more">more >></a>
+          <a  href="/2020/03/17/a-study-4/#more">more >></a>
         </p>
       
     
@@ -343,11 +502,11 @@
 
 
   
-    <article id="post-来自风平浪静的明天" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-block_paper_0" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/07/%E6%9D%A5%E8%87%AA%E9%A3%8E%E5%B9%B3%E6%B5%AA%E9%9D%99%E7%9A%84%E6%98%8E%E5%A4%A9/" class="article-date">
-  	<time datetime="2020-03-07T03:22:07.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/03/16/block_paper_0/" class="article-date">
+  	<time datetime="2020-03-16T10:18:28.000Z" itemprop="datePublished">2020-03-16</time>
 </a>
     </div>
   
@@ -360,8 +519,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E6%9D%A5%E8%87%AA%E9%A3%8E%E5%B9%B3%E6%B5%AA%E9%9D%99%E7%9A%84%E6%98%8E%E5%A4%A9/">
-        来自风平浪静的明天
+      <a class="article-title" href="/2020/03/16/block_paper_0/">
+        区块链论文（一）
         
       </a>
     </h1>
@@ -372,7 +531,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3>
+        <p>说明：第一篇对区块链在教育领域已有的应用、优势、挑战进行全面地介绍；第二篇详细介绍了基于区块链的高等教育学分平台EduCTX，但这个是一个起源于欧洲适合西方教学模式的平台；第三篇具体介绍了区块链在学历信息管理、学习成果评估方面的应用。</p>
       
     </div>
     
@@ -380,20 +539,20 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/2013/">2013</a>
+	<a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a>
 	</div>
 
 
       
         
 <div class="counter-tag counter">
-    <span id="/2020/03/07/%E6%9D%A5%E8%87%AA%E9%A3%8E%E5%B9%B3%E6%B5%AA%E9%9D%99%E7%9A%84%E6%98%8E%E5%A4%A9/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="来自风平浪静的明天">
+    <span id="/2020/03/16/block_paper_0/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="区块链论文（一）">
          &nbsp;
         view
     </span>
@@ -404,7 +563,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2020/03/07/%E6%9D%A5%E8%87%AA%E9%A3%8E%E5%B9%B3%E6%B5%AA%E9%9D%99%E7%9A%84%E6%98%8E%E5%A4%A9/#more">more >></a>
+          <a  href="/2020/03/16/block_paper_0/#more">more >></a>
         </p>
       
     
@@ -421,11 +580,11 @@
 
 
   
-    <article id="post-狼与香辛料" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-as-use-5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/07/%E7%8B%BC%E4%B8%8E%E9%A6%99%E8%BE%9B%E6%96%99/" class="article-date">
-  	<time datetime="2020-03-07T03:15:51.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/03/15/as-use-5/" class="article-date">
+  	<time datetime="2020-03-15T08:05:36.000Z" itemprop="datePublished">2020-03-15</time>
 </a>
     </div>
   
@@ -438,8 +597,242 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E7%8B%BC%E4%B8%8E%E9%A6%99%E8%BE%9B%E6%96%99/">
-        狼与香辛料
+      <a class="article-title" href="/2020/03/15/as-use-5/">
+        Android Studio 使用（五）
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>代码</strong></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2020/03/15/as-use-5/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Android Studio 使用（五）">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2020/03/15/as-use-5/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-a-study-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/15/a-study-3/" class="article-date">
+  	<time datetime="2020-03-15T07:38:41.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/a-study-3/">
+        android基本概念（三）
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Activity生命周期</strong></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2020/03/15/a-study-3/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="android基本概念（三）">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2020/03/15/a-study-3/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-a-study-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/15/a-study-2/" class="article-date">
+  	<time datetime="2020-03-15T04:09:57.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/a-study-2/">
+        android基本概念（二）
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Service</strong></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2020/03/15/a-study-2/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="android基本概念（二）">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2020/03/15/a-study-2/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-to-love" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/08/to-love/" class="article-date">
+  	<time datetime="2020-03-07T23:42:21.000Z" itemprop="datePublished">2020-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/to-love/">
+        to love
         
       </a>
     </h1>
@@ -470,8 +863,8 @@
       
         
 <div class="counter-tag counter">
-    <span id="/2020/03/07/%E7%8B%BC%E4%B8%8E%E9%A6%99%E8%BE%9B%E6%96%99/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="狼与香辛料">
+    <span id="/2020/03/08/to-love/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="to love">
          &nbsp;
         view
     </span>
@@ -482,7 +875,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2020/03/07/%E7%8B%BC%E4%B8%8E%E9%A6%99%E8%BE%9B%E6%96%99/#more">more >></a>
+          <a  href="/2020/03/08/to-love/#more">more >></a>
         </p>
       
     
@@ -499,11 +892,11 @@
 
 
   
-    <article id="post-乒乓" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-灰色系列" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/07/%E4%B9%92%E4%B9%93/" class="article-date">
-  	<time datetime="2020-03-07T03:09:25.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/03/08/%E7%81%B0%E8%89%B2%E7%B3%BB%E5%88%97/" class="article-date">
+  	<time datetime="2020-03-07T23:32:40.000Z" itemprop="datePublished">2020-03-08</time>
 </a>
     </div>
   
@@ -516,8 +909,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E4%B9%92%E4%B9%93/">
-        乒乓
+      <a class="article-title" href="/2020/03/08/%E7%81%B0%E8%89%B2%E7%B3%BB%E5%88%97/">
+        灰色系列
         
       </a>
     </h1>
@@ -548,8 +941,8 @@
       
         
 <div class="counter-tag counter">
-    <span id="/2020/03/07/%E4%B9%92%E4%B9%93/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="乒乓">
+    <span id="/2020/03/08/%E7%81%B0%E8%89%B2%E7%B3%BB%E5%88%97/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="灰色系列">
          &nbsp;
         view
     </span>
@@ -560,7 +953,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2020/03/07/%E4%B9%92%E4%B9%93/#more">more >></a>
+          <a  href="/2020/03/08/%E7%81%B0%E8%89%B2%E7%B3%BB%E5%88%97/#more">more >></a>
         </p>
       
     
@@ -577,11 +970,11 @@
 
 
   
-    <article id="post-黑之契约者" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Another" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/07/%E9%BB%91%E4%B9%8B%E5%A5%91%E7%BA%A6%E8%80%85/" class="article-date">
-  	<time datetime="2020-03-07T02:57:59.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/03/08/Another/" class="article-date">
+  	<time datetime="2020-03-07T23:28:47.000Z" itemprop="datePublished">2020-03-08</time>
 </a>
     </div>
   
@@ -594,8 +987,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E9%BB%91%E4%B9%8B%E5%A5%91%E7%BA%A6%E8%80%85/">
-        黑之契约者
+      <a class="article-title" href="/2020/03/08/Another/">
+        Another
         
       </a>
     </h1>
@@ -619,15 +1012,15 @@
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/2007/">2007</a>
+	<a class="article-category-link" href="/categories/2012/">2012</a>
 	</div>
 
 
       
         
 <div class="counter-tag counter">
-    <span id="/2020/03/07/%E9%BB%91%E4%B9%8B%E5%A5%91%E7%BA%A6%E8%80%85/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="黑之契约者">
+    <span id="/2020/03/08/Another/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Another">
          &nbsp;
         view
     </span>
@@ -638,319 +1031,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2020/03/07/%E9%BB%91%E4%B9%8B%E5%A5%91%E7%BA%A6%E8%80%85/#more">more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-玉响" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/07/%E7%8E%89%E5%93%8D/" class="article-date">
-  	<time datetime="2020-03-07T02:50:50.000Z" itemprop="datePublished">2020-03-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E7%8E%89%E5%93%8D/">
-        玉响
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/2011/">2011</a>
-	</div>
-
-
-      
-        
-<div class="counter-tag counter">
-    <span id="/2020/03/07/%E7%8E%89%E5%93%8D/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="玉响">
-         &nbsp;
-        view
-    </span>
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2020/03/07/%E7%8E%89%E5%93%8D/#more">more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-好想告诉你" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/07/%E5%A5%BD%E6%83%B3%E5%91%8A%E8%AF%89%E4%BD%A0/" class="article-date">
-  	<time datetime="2020-03-07T02:42:25.000Z" itemprop="datePublished">2020-03-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E5%A5%BD%E6%83%B3%E5%91%8A%E8%AF%89%E4%BD%A0/">
-        好想告诉你
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/2009/">2009</a>
-	</div>
-
-
-      
-        
-<div class="counter-tag counter">
-    <span id="/2020/03/07/%E5%A5%BD%E6%83%B3%E5%91%8A%E8%AF%89%E4%BD%A0/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="好想告诉你">
-         &nbsp;
-        view
-    </span>
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2020/03/07/%E5%A5%BD%E6%83%B3%E5%91%8A%E8%AF%89%E4%BD%A0/#more">more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-a-study-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/05/a-study-1/" class="article-date">
-  	<time datetime="2020-03-05T08:21:35.000Z" itemprop="datePublished">2020-03-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/a-study-1/">
-        android基本概念（一）
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>一、概述</strong></p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
-	</div>
-
-
-      
-        
-<div class="counter-tag counter">
-    <span id="/2020/03/05/a-study-1/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="android基本概念（一）">
-         &nbsp;
-        view
-    </span>
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2020/03/05/a-study-1/#more">more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-as-use-4" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/04/as-use-4/" class="article-date">
-  	<time datetime="2020-03-04T12:34:55.000Z" itemprop="datePublished">2020-03-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/as-use-4/">
-        Android Studio 使用（四）
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>一、代码</strong></p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
-	</div>
-
-
-      
-        
-<div class="counter-tag counter">
-    <span id="/2020/03/04/as-use-4/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="Android Studio 使用（四）">
-         &nbsp;
-        view
-    </span>
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2020/03/04/as-use-4/#more">more >></a>
+          <a  href="/2020/03/08/Another/#more">more >></a>
         </p>
       
     
@@ -969,7 +1050,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 </div>

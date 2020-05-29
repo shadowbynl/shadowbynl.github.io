@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jsp-study-5 | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JSP文件操作一、File类1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。2.创建一个File对象的构造方法有3个： 123File(String filename);File(String directoryPath,Stringfilename);File(File f, String filename); 3.经常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsp-study-5">
+<meta property="og:url" content="http://yoursite.com/2020/05/28/jsp-study-5/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="JSP文件操作一、File类1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。2.创建一个File对象的构造方法有3个： 123File(String filename);File(String directoryPath,Stringfilename);File(File f, String filename); 3.经常">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-28T02:28:36.000Z">
+<meta property="article:modified_time" content="2020-05-29T00:18:48.321Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://q5uc9wpxq.bkt.clouddn.com/xj.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaWeb/" style="font-size: 16px;">JavaWeb</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 14px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 12px;">小说整理</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-jsp-study-5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/28/jsp-study-5/" class="article-date">
+  	<time datetime="2020-05-28T02:28:36.000Z" itemprop="datePublished">2020-05-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jsp-study-5
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JSP/">JSP</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/05/28/jsp-study-5/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="jsp-study-5">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>JSP文件操作</strong><br><strong>一、File类</strong><br>1.File类的对象主要用来获取文件本身的一些信息，例如文件所在的目录、文件的长度、文件读写权限等，不涉及对文件的读写操作。<br>2.创建一个File对象的构造方法有3个：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File(String filename);</span><br><span class="line">File(String directoryPath,Stringfilename);</span><br><span class="line">File(File f, String filename);</span><br></pre></td></tr></table></figure>
+<p>3.经常使用File类的下列方法获取文件本身的一些信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">➢ public String getName() —获取文件的名字 </span><br><span class="line"></span><br><span class="line">➢ public boolean canRead() —判断文件是否是可读的 </span><br><span class="line"></span><br><span class="line">➢ public boolean canWrite() —判断文件是否可被写入 </span><br><span class="line"></span><br><span class="line">➢ public boolean exists() —判断文件是否存在 </span><br><span class="line"></span><br><span class="line">➢ public long length() —获取文件的长度 （单位是字节） </span><br><span class="line"></span><br><span class="line">➢ public String getAbsolutePath() —获取文件的绝对路径 </span><br><span class="line"></span><br><span class="line">➢ public String getParent() —获取文件的父目录 </span><br><span class="line"></span><br><span class="line">➢ public boolean isFile() —判断是否是正常文件，而不是目录 </span><br><span class="line"></span><br><span class="line">➢ public boolean isDirectory() —判断文件是否是一个目录 </span><br><span class="line"></span><br><span class="line">➢ public boolean isHidden() —判定是否隐藏文件 </span><br><span class="line"></span><br><span class="line">➢ public long lastModified() —获取最后修改时间</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.io.*"</span>%&gt; </span><br><span class="line">&lt;HTML&gt;&lt;body bgcolor=cyan&gt;&lt;font Size=<span class="number">2</span>&gt;</span><br><span class="line">&lt;%  String jspPage=request.getServletPath();    <span class="comment">//请求的页面的名称</span></span><br><span class="line">    String webDir = request.getContextPath();<span class="comment">//获取当前Web服务目录的名称</span></span><br><span class="line">    webDir = webDir.substring(<span class="number">1</span>); <span class="comment">//去掉名称前面的目录符号：/</span></span><br><span class="line">    jspPage =jspPage.substring(<span class="number">1</span>); <span class="comment">//去掉名称前面的目录符号：/</span></span><br><span class="line">    File f= <span class="keyword">new</span> File(<span class="string">""</span>); <span class="comment">//该文件认为在Tomcat引擎启动的目录中，即bin目录中</span></span><br><span class="line">    String path = f.getAbsolutePath();</span><br><span class="line">    <span class="keyword">int</span> index = path.indexOf(<span class="string">"bin"</span>);</span><br><span class="line">    String tomcatDir = path.substring(<span class="number">0</span>,index);<span class="comment">//tomcat的安装目录</span></span><br><span class="line">    File file=<span class="keyword">new</span> File(tomcatDir+<span class="string">"/webapps/"</span>+webDir,jspPage);</span><br><span class="line">  %&gt;</span><br><span class="line">  文件&lt;%=file.getName()%&gt;是可读的吗？&lt;b&gt;&lt;%=file.canRead()%&gt;&lt;/b&gt;</span><br><span class="line"> &lt;br&gt;文件&lt;%=file.getName()%&gt;的长度：&lt;b&gt;&lt;%=file.length()%&gt;字节&lt;/b&gt;</span><br><span class="line"> &lt;br&gt;&lt;%=file.getName()%&gt;的父目录是:&lt;br&gt;&lt;b&gt;&lt;%=file.getParent()%&gt;&lt;/b&gt;</span><br><span class="line"> &lt;br&gt; &lt;%=file.getName()%&gt;的绝对路径是：&lt;br&gt;&lt;b&gt;&lt;%=file.getAbsolutePath()%&gt;</span><br><span class="line">&lt;/font&gt;&lt;/body&gt;&lt;/HTML&gt;</span><br></pre></td></tr></table></figure>
+<p>4.创建目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File对象调用方法public boolean mkdir()创建一个目录</span><br><span class="line">如果创建成功就返回true 否则返回false 如果该目录已经存在也将返回false</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.io.*"</span>%&gt; </span><br><span class="line">&lt;HTML&gt;&lt;body bgcolor=#EEFFAD&gt;&lt;font Size=2&gt;</span><br><span class="line">&lt;% </span><br><span class="line">    String webDir = request.getContextPath();<span class="comment">//获取当前Web服务目录的名称</span></span><br><span class="line">    webDir = webDir.substring(<span class="number">1</span>); <span class="comment">//去掉名称前面的目录符号：/</span></span><br><span class="line">    File f= <span class="keyword">new</span> File(<span class="string">""</span>); <span class="comment">//该文件认为在Tomcat引擎启动的目录中，即bin目录中</span></span><br><span class="line">    String path = f.getAbsolutePath();</span><br><span class="line">    <span class="keyword">int</span> index = path.indexOf(<span class="string">"bin"</span>);</span><br><span class="line">    String tomcatDir = path.substring(<span class="number">0</span>,index);<span class="comment">//tomcat的安装目录</span></span><br><span class="line">    File dir=<span class="keyword">new</span> File(tomcatDir+<span class="string">"/webapps/"</span>+webDir+<span class="string">"/image"</span>);</span><br><span class="line">%&gt;</span><br><span class="line"> &lt;br&gt; 在&lt;%=webDir%&gt;下创建一个新的目录：image,&lt;br&gt;成功创建了吗？</span><br><span class="line">    &lt;%=dir.mkdir()%&gt;</span><br><span class="line"> &lt;br&gt; image是目录吗？&lt;%=dir.isDirectory()%&gt;</span><br><span class="line">&lt;/font&gt;&lt;/body&gt;&lt;/HTML&gt;</span><br></pre></td></tr></table></figure>
+<p>5.列出目录中的文件<br>如果File对象是一个目录，那么该对象可以调用下面的方法获得目录下的文件和子目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public String  [ ]  list() 用字符串形式返回目录下的全部文件. </span><br><span class="line">public File [ ]  listFiles() 用File对象形式返回目录下的全部文件。</span><br></pre></td></tr></table></figure>
+<p>6.列出指定类型的文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➢public String [ ] list(FilenameFilter obj) 该方法用字符串形式返回目录下的指定类型的所有文件。 </span><br><span class="line"></span><br><span class="line">➢public  File  [ ]  listFiles(FilenameFilter obj)  该方法用File对象返回目录下的指定类型的所有文件。</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.io.*"</span>%&gt; </span><br><span class="line">&lt;%! <span class="class"><span class="keyword">class</span> <span class="title">FileJSP</span> <span class="keyword">implements</span> <span class="title">FilenameFilter</span></span>&#123; </span><br><span class="line">       String str=<span class="keyword">null</span>;</span><br><span class="line">       FileJSP(String s)&#123;</span><br><span class="line">          str=<span class="string">"."</span>+s;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File dir,String name)</span></span>&#123;</span><br><span class="line">          <span class="keyword">return</span> name.endsWith(str);</span><br><span class="line">       &#125;              </span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;HTML&gt;&lt;body bgcolor=#EEFFAD&gt;&lt;font Size=2&gt;</span><br><span class="line">&lt;% </span><br><span class="line">    String name=<span class="string">"jsp"</span>;</span><br><span class="line">    String webDir = request.getContextPath();</span><br><span class="line">    webDir = webDir.substring(<span class="number">1</span>); </span><br><span class="line">    File f= <span class="keyword">new</span> File(<span class="string">""</span>); </span><br><span class="line">    String path = f.getAbsolutePath();</span><br><span class="line">    <span class="keyword">int</span> index = path.indexOf(<span class="string">"bin"</span>);</span><br><span class="line">    String tomcatDir = path.substring(<span class="number">0</span>,index);<span class="comment">//tomcat的安装目录</span></span><br><span class="line">    File dir=<span class="keyword">new</span> File(tomcatDir+<span class="string">"/webapps/"</span>+webDir);</span><br><span class="line">%&gt;</span><br><span class="line"> &lt;br&gt; 在&lt;%=dir%&gt;下&lt;%=name%&gt;文件：</span><br><span class="line">&lt;%</span><br><span class="line">    FileJSP file_jsp=<span class="keyword">new</span> FileJSP(name);</span><br><span class="line">    String file_name[]=dir.list(file_jsp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;file_name.length;i++)</span><br><span class="line">       out.print(<span class="string">"&lt;br&gt;"</span>+file_name[i]);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/font&gt;&lt;/body&gt;&lt;/HTML&gt;</span><br></pre></td></tr></table></figure>
+<p>7.删除文件和目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➢File对象调用方法public boolean delete()删除当前对象代表的文件或目录.</span><br><span class="line">➢如果对象表示的是一个目录，则该目录必须是空目录.</span><br><span class="line">➢删除成功返回true.</span><br></pre></td></tr></table></figure>
+<p><strong>二、读写文件的常用流</strong><br>1.字节输入流</p>
+<ul>
+<li>如果对 文 件 读 取 需 求 比 较 简 单，那 么 可 以 使 用FileInputStream类（文件字节输入流），该类是InputStream类的子类（以字节为单位读取文件），该类的实例方法都是从InputStream类继承来的。</li>
+<li>使用输入流通常包括4个基本步骤：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 设定输入流的源</span><br><span class="line">2. 创建指向源的输入流</span><br><span class="line">3. 让输入流读取源中的数据</span><br><span class="line">4. 关闭输入流。</span><br></pre></td></tr></table></figure></li>
+<li>构造方法<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream(String name);</span><br><span class="line">FileInputStream(File file);</span><br><span class="line"></span><br><span class="line">第一个构造方法使用给定的文件名name创建FileInputStream</span><br><span class="line">流，第二个构造方法使用File对象创建FileInputStream流。</span><br><span class="line">参数name和file指定的文件称为输入流的源。</span><br><span class="line">File f= new File("hello.txt");   //指定输入流的源</span><br><span class="line">try &#123;</span><br><span class="line">    FileInputStream in= new FileInputStream(f); //创建指向源的输入流</span><br><span class="line">&#125;</span><br><span class="line">catch (IOException e) &#123;</span><br><span class="line">    System.out.println("File read error:"+e );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用输入流读取字节<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➢ 输入流的目的是提供读取源中数据的通道，程序可以通过这 </span><br><span class="line">   个通道读取源中的数据。文件字节流可以调用从父类继承的 </span><br><span class="line">   read方法顺序地读取文件，只要不关闭流，每次调用read方 </span><br><span class="line">   法就顺序地读取文件中的其余内容，直到文件的末尾或文件 </span><br><span class="line">   字节输入流被关闭。 </span><br><span class="line">➢int read() 读取单个字节的数据，该方法返回字节值 </span><br><span class="line">（0~255之间的一个整数），如果未读出字节就返回-1。 </span><br><span class="line">➢int read(byte  b[])  试图读取b.length个字节到字节数组b 中。 </span><br><span class="line">➢int read(byte b[], int off, int len) 试图读取len个字节到字 </span><br><span class="line">   节数组b 中，参数off指定从字节数组的某个位置开始存放读取 </span><br><span class="line">   的数据。</span><br></pre></td></tr></table></figure></li>
+<li>关闭流<br>输入流都提供了关闭方法close()，尽管程序结束时会自动关闭所有打开的流，但是当程序使用完流后，显式地关闭任何打开的流仍是一个良好的习惯</li>
+</ul>
+<p>2.字节输出流</p>
+<ul>
+<li>如果对 文 件 写 入 需 求 比 较 简 单，那 么 可 以 使 用FileOutputStream类（文件字节输出流），它是OutputStream类的子类（以字节为单位向文件写入内容），该类的实例方法都是从OutputStream类继承来的。</li>
+<li>使用输出流通常包括4个基本步骤：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 给出输出流的目的地</span><br><span class="line">2. 创建指向目的地的输出流</span><br><span class="line">3. 让输出流把数据写入到目的地</span><br><span class="line">4. 关闭输出流</span><br></pre></td></tr></table></figure></li>
+<li>构造方法<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream(String name);</span><br><span class="line">FileOutputStream(File file);</span><br><span class="line"></span><br><span class="line">第一个构造方法使用给定的文件名name创建FileOutputStream</span><br><span class="line">流，第二个构造方法使用File对象创建FileOutputStream流。</span><br><span class="line">参数name和file指定的文件称为输出流的目的地。</span><br><span class="line"></span><br><span class="line">如果输出流指向的文件不存在，java就创建该文件，如果已经</span><br><span class="line">存在，输出流将刷新该文件，使其长度为0.</span><br><span class="line"></span><br><span class="line">选择是否具有刷新功能的构造方法</span><br><span class="line">FileOutputStream(String name, booleanappend);</span><br><span class="line">FileOutputStream(File file, booleanappend);</span><br><span class="line">如果append=true，输出流不会刷新所指向的文件，write方法</span><br><span class="line">将从文件末尾开始向文件写入数据；如果append=false，输出</span><br><span class="line">流将刷新所指向的文件</span><br></pre></td></tr></table></figure></li>
+<li>使用输出流写字节<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➢ 输出流的目的是提供通往目的地的通道，程序可以通过这个 </span><br><span class="line"></span><br><span class="line">   通道将程序中的数据写入到目的地。文件字节流可以调用从 </span><br><span class="line"></span><br><span class="line">   父类继承的write方法顺序地写文件。FileOutStream流顺序 </span><br><span class="line"></span><br><span class="line">   地向文件写入内容，即只要不关闭流，每次调用write方法就 </span><br><span class="line"></span><br><span class="line">   顺序地向文件写入内容，直到流被关闭。 </span><br><span class="line"></span><br><span class="line">➢ void write(int n) 输出流调用该方法向目的地写入单个字节 </span><br><span class="line"></span><br><span class="line">➢ void write(byte  b[]) 输出流调用该方法向目的地写入一个字节数组。 </span><br><span class="line"></span><br><span class="line">➢ void write(byte  b[],int off,int  len)  给定字节数组中起始于偏移量off处取len个字节写到目的地。</span><br></pre></td></tr></table></figure></li>
+<li>关闭流<br>在操作系统把程序所写到输出流上的那些字节保存到磁盘上之前，有时被存放在内存缓冲区中，通过调用close()方法，可以保证操作系统把流缓冲区的内容写到它的目的地，即关闭输出流可以把该流所用的缓冲区的内容冲洗掉（通常冲洗到磁盘文件上）</li>
+</ul>
+<p>3.字符流</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">与FileInputStream 、FileOutputStream字节流相对应的是 </span><br><span class="line">FileReader、FileWriter字符流 （文件字符输入、输出流）， </span><br><span class="line">FileReader和FileWriter分别是Reader和Writer的子类.字符</span><br><span class="line">输入流和输出流的read和write方法使用字符数组读写数据， </span><br><span class="line">即以字符为基本单位处理数据。 </span><br><span class="line"></span><br><span class="line">构造方法分别是： </span><br><span class="line">FileReader(String filename); </span><br><span class="line">FileReader(File filename); </span><br><span class="line">FileWriter (String filename); </span><br><span class="line">FileWriter (File filename); </span><br><span class="line">FileWriter (String filename,boolean append); </span><br><span class="line">FileWriter (File filename,boolean append);</span><br></pre></td></tr></table></figure>
+
+<p>4.缓冲流</p>
+<ul>
+<li>BufferedReader类和BufferedWriter的构造方法分别是<br>BufferedReader(Readerin);<br>BufferedWriter(Writerout);</li>
+<li>BufferedReader流能够读取文本行，方法是readLine().<br>BufferedReader和BufferedWriter类创建的对象称为缓冲输<br>入、输出流，二者增强了读写文件的能力。需要注意的是二<br>者的源和目的地必须是字符输入流和字符输出流<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FileReader inOne=new FileReader(“studen.txt”);     //创建字符输入流</span><br><span class="line">BufferReader inTwo=new BufferReader(inOne);     //创建缓冲输入流</span><br><span class="line">FileWriter tofile=new FileWriter(“hello.txt”);     //创建字符输出流</span><br><span class="line">BufferWriter out=new BufferWriter(tofile);     //创建缓冲输入流</span><br><span class="line"></span><br><span class="line">readLine ()//读取一行 </span><br><span class="line">write(String s,int off, int len)//把字符串s写到流中，参数off是s开始处的偏移量，len是写入的字符数量 </span><br><span class="line">newLine()//写入一个回车符</span><br></pre></td></tr></table></figure></li>
+<li>可以把BufferedReader和BufferedWriter称为上层流，把它们指向的字符流称为底层流。 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Java采用缓存技术将上层流和底层流连接。底层字符输入流首先将数据读入缓存，BufferedReader流再从缓存读取数据；BufferedWriter流将数据写入缓存，底层字符输出流会不断地将缓存中的数据写入到目的地。</span><br><span class="line"></span><br><span class="line">当BufferedWriter流调用flush()刷新缓存或调用close()方法关闭时，即使缓存没有益满，底层流也会立刻将缓存的内容写入目的地</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=gb2312"</span> %&gt;</span><br><span class="line">&lt;HTML&gt;&lt;BODY bgcolor=cyan&gt;&lt;font size=<span class="number">2</span>&gt;</span><br><span class="line"> &lt;form action=<span class="string">"helpReadFile"</span> method=<span class="string">"post"</span> name=<span class="string">"form"</span>&gt;</span><br><span class="line"> 输入文件的路径(如:d:/<span class="number">2000</span>):</span><br><span class="line"> &lt;input type=<span class="string">"text"</span> name=<span class="string">"filePath"</span> size=<span class="number">12</span>&gt;</span><br><span class="line"> &lt;br&gt;输入文件的名字(如:Hello.java):</span><br><span class="line"> &lt;input type=<span class="string">"text"</span> name=<span class="string">"fileName"</span> size=<span class="number">9</span>&gt;</span><br><span class="line"> &lt;br&gt;&lt;input type=<span class="string">"submit"</span> value=<span class="string">"读取"</span> name=<span class="string">"submit"</span>&gt;</span><br><span class="line"> &lt;/form&gt;</span><br><span class="line">&lt;/font&gt;&lt;/BODY&gt;&lt;/HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=gb2312"</span> %&gt;</span><br><span class="line"> &lt;jsp:useBean id=<span class="string">"fileBean"</span> type=<span class="string">"mybean.data.Example8_4_Bean"</span> scope=<span class="string">"request"</span>/&gt;</span><br><span class="line">&lt;HTML&gt;&lt;body bgcolor=#EEFFAE&gt;&lt;font size=2&gt;</span><br><span class="line">  文件的位置: &lt;jsp:getProperty name=<span class="string">"fileBean"</span> property=<span class="string">"filePath"</span>/&gt;,</span><br><span class="line">  文件的名字：&lt;jsp:getProperty name=<span class="string">"fileBean"</span> property=<span class="string">"fileName"</span>/&gt;,</span><br><span class="line">  文件的长度：&lt;jsp:getProperty name=<span class="string">"fileBean"</span> property=<span class="string">"fileLength"</span>/&gt; 字节。</span><br><span class="line">  &lt;br&gt;文件的内容：</span><br><span class="line">  &lt;br&gt;&lt;TextArea  rows=<span class="string">"6"</span> cols=<span class="string">"60"</span>&gt;</span><br><span class="line">       &lt;jsp:getProperty name=<span class="string">"fileBean"</span> property=<span class="string">"fileContent"</span>/&gt;</span><br><span class="line">     &lt;/TextArea&gt;</span><br><span class="line">&lt;/font&gt;&lt;/body&gt;&lt;/HTML&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>三、RandomAccessFile类</strong><br>RandomAccessFile类创建的流与前面的输入、输出流不同。RandomAccessFile类既不是输入流类InputStream类的子类，<br>也不是输出流类Outputstream类的子类。<br>习惯上，仍然称RandomAccessFile类创建的对象为一个流。<br>RandomAccessFile流的指向既可以作为源也可以作为目的地。<br>换句话说，当想对一个文件进行读写操作时，可以创建一个<br>指向该文件的RandomAccessFile流，这样既可以从这个流读<br>取文件的数据，也可以通过这个流向文件写入数据。<br>1.构造方法</p>
+<ul>
+<li>RandomAccessFile类的两个构造方法<br>RandomAccessFile(String name,String mode)<br>RandomAccessFile(File file,String mode)</li>
+<li>参数name用来确定一个文件名，参数file是一个File对象,给<br>出创建的流的源 （也是流的目的地）。参数mode取 “r” （只<br> 读）或 “rw” （可读写），决定创建的流对文件的访问权利。 </li>
+</ul>
+<p>2.读写方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">readLine()从文件中读取一个文本行</span><br><span class="line">readUTF()从文件中读取一个UTF字符串</span><br><span class="line">seek(long a) 定位当前流在文件中的读写的位置</span><br><span class="line">write(byte b[]) 写b.length个字节到文件</span><br><span class="line">writeDouble(double v)向文件写入一个双精度浮点值</span><br><span class="line">writeInt(int v)向文件写入一个int值</span><br><span class="line">writeUTF(String s)写入一个UTF字符串</span><br><span class="line">getFilePointer() 获取当前流在文件中的读写的位置</span><br></pre></td></tr></table></figure>
+<p><strong>四、文件上传</strong></p>
+<ol>
+<li>用户通过一个JSP页面上传文件给服务器时，该JSP页面必须<br>含有File类型的表单，并且表单必须将ENCTYPE的属性值设成<br>multipart/form-data。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"接受上传文件的页面"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">ENCTYPE</span>=<span class="string">"multipart/form-data"</span></span></span><br><span class="line">&lt;Input type="File" name="picture" &gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>实例 例六<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=gb2312"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span> =<span class="string">"java.io.*"</span> %&gt;</span><br><span class="line"> &lt;jsp:useBean id=<span class="string">"fileBean"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"mybean.data.Example8_6_Bean"</span> scope=<span class="string">"request"</span>/&gt;</span><br><span class="line">&lt;HTML&gt;&lt;body&gt;</span><br><span class="line"> &lt;P&gt;选择要上传的文件：&lt;BR&gt;</span><br><span class="line"> &lt;form action=<span class="string">"upFile"</span> method=<span class="string">"post"</span> ENCTYPE=<span class="string">"multipart/form-data"</span>&gt;</span><br><span class="line">      &lt;input type=FILE name=<span class="string">"boy"</span> size=<span class="string">"45"</span>&gt; </span><br><span class="line">      &lt;br&gt; &lt;input type=<span class="string">"submit"</span> name =<span class="string">"boy"</span> value=<span class="string">"提交"</span>&gt;</span><br><span class="line"> &lt;/form&gt;</span><br><span class="line"> &lt;br&gt; 上传的文件名字：</span><br><span class="line"> &lt;jsp:getProperty name=<span class="string">"fileBean"</span> property=<span class="string">"fileName"</span>/&gt; </span><br><span class="line">   &lt;br&gt; 上传反馈：</span><br><span class="line"> &lt;jsp:getProperty name=<span class="string">"fileBean"</span> property=<span class="string">"mess"</span>/&gt;</span><br><span class="line"> &lt;%</span><br><span class="line">    String name=fileBean.getFileName();</span><br><span class="line">    <span class="keyword">boolean</span> boo =name.endsWith(<span class="string">".jpg"</span>);</span><br><span class="line">    boo = boo||name.endsWith(<span class="string">".gif"</span>);</span><br><span class="line">    <span class="keyword">if</span>(boo) &#123;</span><br><span class="line"> %&gt;     &lt;image src = "image/&lt;%=name%&gt;" width=200 height =200&gt;&lt;%=name %&gt;&lt;/image&gt;</span><br><span class="line"> &lt;% &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line"> %&gt;     &lt;%=name %&gt;</span><br><span class="line"> &lt;% &#125;</span><br><span class="line"> %&gt;</span><br><span class="line">&lt;/body&gt;&lt;/HTML&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> myservlet.control;</span><br><span class="line"><span class="keyword">import</span> mybean.data.Example8_6_Bean;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example8_6_Servlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException</span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.init(config);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">                        <span class="keyword">throws</span> ServletException,IOException</span>&#123;</span><br><span class="line">      request.setCharacterEncoding(<span class="string">"gb2312"</span>);</span><br><span class="line">      Example8_6_Bean fileBean=<span class="keyword">new</span> Example8_6_Bean();  <span class="comment">//创建Javabean对象</span></span><br><span class="line">      request.setAttribute(<span class="string">"fileBean"</span>,fileBean);</span><br><span class="line">      String fileName=<span class="keyword">null</span>;</span><br><span class="line">      HttpSession session=request.getSession(<span class="keyword">true</span>);</span><br><span class="line">      <span class="keyword">try</span>&#123;  </span><br><span class="line">         <span class="comment">//用客户的session对象的Id建立一个临时文件</span></span><br><span class="line">          String tempFileName=(String)session.getId();</span><br><span class="line">          String webDir = request.getContextPath();</span><br><span class="line">          webDir = webDir.substring(<span class="number">1</span>); </span><br><span class="line">          File f= <span class="keyword">new</span> File(<span class="string">""</span>); </span><br><span class="line">          String path = f.getAbsolutePath();</span><br><span class="line">          <span class="keyword">int</span> index = path.indexOf(<span class="string">"bin"</span>);</span><br><span class="line">          String tomcatDir = path.substring(<span class="number">0</span>,index);<span class="comment">//tomcat的安装目录</span></span><br><span class="line">          File dir=<span class="keyword">new</span> File(tomcatDir+<span class="string">"/webapps/"</span>+webDir+<span class="string">"/image"</span>);</span><br><span class="line">          dir.mkdir();          </span><br><span class="line">          <span class="comment">//建立临时文件f1</span></span><br><span class="line">          File f1=<span class="keyword">new</span> File(dir,tempFileName);</span><br><span class="line">          FileOutputStream o=<span class="keyword">new</span> FileOutputStream(f1);</span><br><span class="line">           <span class="comment">//将客户上传的全部信息存入f1</span></span><br><span class="line">          InputStream in=request.getInputStream();</span><br><span class="line">          <span class="keyword">byte</span> b[]=<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">10000</span>];</span><br><span class="line">          <span class="keyword">int</span> n;</span><br><span class="line">          <span class="keyword">while</span>( (n=in.read(b))!=-<span class="number">1</span>)&#123;</span><br><span class="line">             o.write(b,<span class="number">0</span>,n);</span><br><span class="line">          &#125;</span><br><span class="line">          o.close();</span><br><span class="line">          in.close();</span><br><span class="line">           <span class="comment">//读取临时文件f1，从中获取上传文件的名字和上传文件的内容</span></span><br><span class="line">          RandomAccessFile randomRead=<span class="keyword">new</span> RandomAccessFile(f1,<span class="string">"r"</span>);</span><br><span class="line">           <span class="comment">//读出f1的第2行，析取出上传文件的名字</span></span><br><span class="line">          <span class="keyword">int</span> second=<span class="number">1</span>;</span><br><span class="line">          String secondLine=<span class="keyword">null</span>;</span><br><span class="line">          <span class="keyword">while</span>(second&lt;=<span class="number">2</span>) &#123; </span><br><span class="line">              secondLine=randomRead.readLine();</span><br><span class="line">              second++;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//获取f1中第2行中"filename"之后“=”出现的位置:</span></span><br><span class="line">          <span class="keyword">int</span> position=secondLine.lastIndexOf(<span class="string">"="</span>);</span><br><span class="line">           <span class="comment">//客户上传的文件的名字是</span></span><br><span class="line">          fileName=secondLine.substring(position+<span class="number">2</span>,secondLine.length()-<span class="number">1</span>);</span><br><span class="line">          randomRead.seek(<span class="number">0</span>); <span class="comment">//再定位到文件f1的开头</span></span><br><span class="line">          <span class="comment">//获取第4行回车符号的位置</span></span><br><span class="line">          <span class="keyword">long</span>  forthEndPosition=<span class="number">0</span>;</span><br><span class="line">          <span class="keyword">int</span> forth=<span class="number">1</span>;</span><br><span class="line">          <span class="keyword">while</span>((n=randomRead.readByte())!=-<span class="number">1</span>&amp;&amp;(forth&lt;=<span class="number">4</span>))&#123;  </span><br><span class="line">             <span class="keyword">if</span>(n==<span class="string">'\n'</span>)&#123;</span><br><span class="line">                forthEndPosition=randomRead.getFilePointer();</span><br><span class="line">                forth++;</span><br><span class="line">             &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//根据客户上传文件的名字，将该文件存入磁盘</span></span><br><span class="line">          <span class="keyword">byte</span>  cc[]=fileName.getBytes(<span class="string">"ISO-8859-1"</span>);</span><br><span class="line">          fileName=<span class="keyword">new</span> String(cc);</span><br><span class="line">          File f2= <span class="keyword">new</span> File(dir,fileName);</span><br><span class="line">          RandomAccessFile randomWrite=<span class="keyword">new</span> RandomAccessFile(f2,<span class="string">"rw"</span>); </span><br><span class="line">          <span class="comment">//确定出文件f1中包含客户上传的文件的内容的最后位置，即倒数第6行</span></span><br><span class="line">          randomRead.seek(randomRead.length());</span><br><span class="line">          <span class="keyword">long</span> endPosition=randomRead.getFilePointer();</span><br><span class="line">          <span class="keyword">long</span> mark=endPosition;</span><br><span class="line">          <span class="keyword">int</span> j=<span class="number">1</span>;</span><br><span class="line">          <span class="keyword">while</span>((mark&gt;=<span class="number">0</span>)&amp;&amp;(j&lt;=<span class="number">6</span>)) &#123; </span><br><span class="line">              mark--;</span><br><span class="line">              randomRead.seek(mark);</span><br><span class="line">              n=randomRead.readByte();</span><br><span class="line">              <span class="keyword">if</span>(n==<span class="string">'\n'</span>)&#123;</span><br><span class="line">                 endPosition=randomRead.getFilePointer();</span><br><span class="line">                 j++;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//将randomRead流指向文件f1的第4行结束的位置</span></span><br><span class="line">          randomRead.seek(forthEndPosition);</span><br><span class="line">          <span class="keyword">long</span> startPoint=randomRead.getFilePointer();</span><br><span class="line">         <span class="comment">//从f1读出客户上传的文件存入f2（读取第4行结束位置和倒数第6行之间的内容）</span></span><br><span class="line">          <span class="keyword">while</span>(startPoint&lt;endPosition-<span class="number">1</span>)&#123;</span><br><span class="line">              n=randomRead.readByte();</span><br><span class="line">              randomWrite.write(n); </span><br><span class="line">              startPoint=randomRead.getFilePointer();</span><br><span class="line">          &#125;</span><br><span class="line">          randomWrite.close();</span><br><span class="line">          randomRead.close();</span><br><span class="line">          </span><br><span class="line">          fileBean.setMess(<span class="string">"上传成功"</span>); </span><br><span class="line">          fileBean.setFileName(fileName);   </span><br><span class="line">          f1.delete(); <span class="comment">//删除临时文件</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">catch</span>(Exception ee) &#123;</span><br><span class="line">          fileBean.setMess(<span class="string">"没有选择文件或上传失败"</span>); </span><br><span class="line">       &#125;</span><br><span class="line">      RequestDispatcher dispatcher=</span><br><span class="line">      request.getRequestDispatcher(<span class="string">"example8_6.jsp"</span>);</span><br><span class="line">      dispatcher.forward(request, response);</span><br><span class="line">   &#125; </span><br><span class="line">   <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span>  <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                      HttpServletResponse response)</span> </span></span><br><span class="line"><span class="function">                        <span class="keyword">throws</span> ServletException,IOException</span>&#123;</span><br><span class="line">      doPost(request,response);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>五、文件下载</strong></p>
+<ul>
+<li>JSP内置对象response调用方法getOutputStream()可以获取<br>一个指向用户的输出流，服务器将文件写入这个流，用户就<br>可以下载这个文件了。</li>
+<li>当提供下载功能时，应当使用response对象向用户发送HTTP<br>头信息，这样用户的浏览器就会调用相应的外部程序打开下载的文件，response调用setHeader方法添加下载头的格式如<br>下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">"Content-disposition"</span>,<span class="string">"attachment;filename="</span>下载文件名<span class="string">");</span></span><br></pre></td></tr></table></figure></li>
+<li>实例 例七</li>
+</ul>
+<p><strong>六、小结</strong></p>
+<ul>
+<li>输入流的指向称为源，程序从指向源的输入流中读取源中的<br>数据。而输出流的指向是数据要去的目的地，程序通过向输<br>出流中写入数据把信息送往目的地。</li>
+<li>FileInputStream和FileReader流都顺序地读取文件，只要<br> 不关闭流，每次调用read方法就顺序地读取源中其余的内容， 直到源的末尾或流被关闭 。 二者的区别是，   FileInputStream 流以字节 （byte）为单位读取文件；   FileReader流以字符 （char）为单位读取文件。 </li>
+<li>RandomAccessFile流的指向既可以作为源也可以作为目的<br>地，在读写文件时可以调用seek方法改变读写位置。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/28/jsp-study-6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          jsp-study-6
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/21/jsp-study-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jsp-study-4</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="jsp-study-5" data-title="jsp-study-5" data-url="http://yoursite.com/2020/05/28/jsp-study-5/"  data-images="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" data-content="jsp-study-5">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
