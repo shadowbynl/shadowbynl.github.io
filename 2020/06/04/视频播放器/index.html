@@ -17,7 +17,7 @@
 <meta property="og:description" content="视频播放器">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-04T03:54:38.000Z">
-<meta property="article:modified_time" content="2020-06-04T08:51:22.516Z">
+<meta property="article:modified_time" content="2020-06-04T23:45:50.445Z">
 <meta property="article:author" content="nlby">
 <meta name="twitter:card" content="summary">
   
@@ -237,7 +237,7 @@
         <p><strong>视频播放器</strong></p>
 <a id="more"></a>
 <p><embed id="media" src="https://saas.jialingmm.net/code.php?type=flv&vid=https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/60_f03d2e1892b1240be2e8b6422d779a82.mp4&userlink=http%3A%2F%2Fwww.imomoe.in%2Fplayer%2F7075-0-0.html&adress=Shan1Xi"
-                width="100%" height="700px"/><br><textarea id="showNameList" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea><br><textarea  id="showLinkList" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea><br><input id="getNameList" url="http://123.56.15.54:8080/cshelper_back_may" type="button" class="btn btn-default" value="初始化列表"><br><input id="selectedName" type="text" placeholder="输入选择的剧集名称" style="width: 100%; height: 100%" align="middle"><br><input  id="searchByName" url="http://123.56.15.54:8080/cshelper_back_may" type="button" class="btn btn-default" value="搜索"><br><input id="selectedLink" type="text" placeholder="输入选择的视频链接" style="width: 100%; height: 100%" align="middle"><br><input id="setMediaURL" type="button" class="btn btn-default" value="设置"></p>
+                width="100%" height="700px"/><br><textarea id="showNameList" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea><br><textarea  id="showLinkList" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea><br><input id="getNameList" url="http://123.56.15.54:8080/cshelper_back_may" type="button" class="btn btn-default" value="初始化列表"><br><input id="selectedName" type="text" placeholder="输入选择的剧集名称" style="width: 100%; height: 100%" align="middle"><br><input  id="searchByName" url="http://123.56.15.54:8080/cshelper_back_may" type="button" class="btn btn-default" value="搜索"><br><input id="findMediaName" url="http://123.56.15.54:8080/cshelper_back_may" type="button" class="btn btn-default" value="模糊搜索"><br><input id="selectedLink" type="text" placeholder="输入选择的视频链接" style="width: 100%; height: 100%" align="middle"><br><input id="setMediaURL" type="button" class="btn btn-default" value="设置"></p>
 <script>
         $("#getNameList").click(function () {
             alert($(this).attr("url"));
@@ -258,6 +258,13 @@
             alert($("#media").prop("src"));
             $("#media").css("display", "block");
         });
+           $("#findMediaName").click(function () {
+            alert($(this).attr("url"));
+            $.get($(this).attr("url") + "/media/findByAname.do", { aname: $("#selectedName").val()}, function (data) {
+                alert(data)
+                $("#showNameList").text(data);
+            });
+        })
     </script>
       
     </div>
