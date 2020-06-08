@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据解析 | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据获取和一些预处理操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据解析">
+<meta property="og:url" content="http://yoursite.com/2020/06/08/%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="数据获取和一些预处理操作">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-08T10:04:20.000Z">
+<meta property="article:modified_time" content="2020-06-08T11:11:32.142Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="Python Science">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaWeb/" style="font-size: 16px;">JavaWeb</a> <a href="/tags/Python-Science/" style="font-size: 12px;">Python Science</a> <a href="/tags/PythonWeb/" style="font-size: 10px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 14px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 12px;">小说整理</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-数据解析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/06/08/%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90/" class="article-date">
+  	<time datetime="2020-06-08T10:04:20.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据解析
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-Science/" rel="tag">Python Science</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/06/08/%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="数据解析">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>数据获取和一些预处理操作</strong></p>
+<a id="more"></a>
+<p>需为绘图准备数据，考虑几个来源，直接从csv读取，或者爬取。<br><strong>一、csv文件的读取与写入</strong></p>
+<ol>
+<li>读取<br>参考 <a href="https://www.cnblogs.com/cloud-ken/p/8432999.html" target="_blank" rel="noopener">https://www.cnblogs.com/cloud-ken/p/8432999.html</a><br><a href="https://www.jianshu.com/p/7ac36fafebea" target="_blank" rel="noopener">https://www.jianshu.com/p/7ac36fafebea</a><br><a href="https://www.cnblogs.com/liangxiyang/p/11272155.html" target="_blank" rel="noopener">https://www.cnblogs.com/liangxiyang/p/11272155.html</a><br>以下为两种方式：csv和pandas<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># csv</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./data/g1.csv"</span>, <span class="string">"r"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas</span></span><br><span class="line">df = pd.read_csv(<span class="string">"./data/g1.csv"</span>)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure></li>
+<li>写入<br>使用pandas<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接数据库 执行查询操作</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">"localhost"</span>, port=<span class="number">3306</span>, user=<span class="string">"root"</span>,password=<span class="string">"xxx"</span>,database=<span class="string">"data_ana"</span>,charset=<span class="string">"utf8"</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line">cursor.execute(<span class="string">"select * from anime"</span>)</span><br><span class="line">data_result = cursor.fetchall()</span><br><span class="line">print(len(data_result))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将查询所得元组转换为列表</span></span><br><span class="line">data_result = list(data_result)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(data_result)):</span><br><span class="line">    data_result[i] = list(data_result[i])</span><br><span class="line">data_result = np.array(data_result)</span><br><span class="line">print(data_result[:, <span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成csv文件 注意编码</span></span><br><span class="line">column_name = [<span class="string">"name"</span>, <span class="string">"grade"</span>, <span class="string">"desc"</span>]</span><br><span class="line">result = pd.DataFrame(columns=column_name, data=data_result[:, <span class="number">1</span>:])</span><br><span class="line">result.to_csv(<span class="string">"g1.csv"</span>, encoding=<span class="string">"utf_8_sig"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>二、数据解析<br>三种方式：xpath re json，一般是三者互相结合使用的</p>
+<ol>
+<li><p>利用requests库请求的一般方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">header=&#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://www.weather.com.cn/weather/101050703.shtml"</span></span><br><span class="line">response = requests.get(url, headers=header)</span><br><span class="line">html = response.content.decode(<span class="string">"utf-8"</span>)</span><br><span class="line"><span class="comment"># 然后可以使用不同的方式解析html</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结合xpath helper使用的xpath</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">exml = etree.HTML(html)</span><br><span class="line">name = exml.xpath(<span class="string">"//tr[1]/td/h1/text()"</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure></li>
+<li><p>结合网页源码使用的正则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意此处的多行正则匹配的写法</span></span><br><span class="line">all_data = re.findall(<span class="string">"(?s)hour3data=(.*?)&lt;/sc"</span>, html)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure></li>
+<li><p>在F12下查看得返回json页面或源码中的json字符串解析<br>参考 <a href="https://blog.csdn.net/lwg_1540652358/article/details/84111339" target="_blank" rel="noopener">https://blog.csdn.net/lwg_1540652358/article/details/84111339</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> jsonpath</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将json字符串转换为python中的json对象</span></span><br><span class="line">jsonobj = json.loads(content)</span><br><span class="line"><span class="comment"># 注意这个获取某节点下的某种子节点的方法（不包括再下级）</span></span><br><span class="line">confirmed_list = jsonpath.jsonpath(jsonobj,<span class="string">'$.data[*].confirmed'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>三、几个小脚本和通用写法</strong><br>1.下载某网站的图片 xpath<br>以下载bangumi的图片为例，当时的做法是先把所有图片的链接写入文本，<br>使用urllib爬取链接</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">rom urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">links = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>, <span class="number">21</span>):</span><br><span class="line">    url = <span class="string">"https://bangumi.tv/person?orderby=collects&amp;type=1&amp;page="</span> + str(i)</span><br><span class="line">    request = Request(url)</span><br><span class="line">    response = urlopen(request)</span><br><span class="line">    html = response.read()</span><br><span class="line">    s = str(html, encoding=<span class="string">"utf-8"</span>)</span><br><span class="line">    exml = etree.HTML(s)</span><br><span class="line">    names = exml.xpath(<span class="string">"//div[@class='browserCrtList']//div[2]/h3/a[@class='l']/text()"</span>)</span><br><span class="line">    imgs = exml.xpath(<span class="string">"//a[@class='avatar']/img[@class='avatar ll']/@src"</span>)</span><br><span class="line">    cons = exml.xpath(<span class="string">"//div[@class='browserCrtList']//div[2]/h3/a[@class='l']/@href"</span>)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"name.txt"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> names:</span><br><span class="line">            f.write(n + <span class="string">"\n"</span>)</span><br><span class="line">            f.flush()</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"img.txt"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> imgs:</span><br><span class="line">            f.write(i + <span class="string">"\n"</span>)</span><br><span class="line">            f.flush()</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"cons.txt"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> cons:</span><br><span class="line">            u = <span class="string">"https://bangumi.tv"</span> + c</span><br><span class="line">            f.write(u + <span class="string">"\n"</span>)</span><br><span class="line">            f.flush()</span><br></pre></td></tr></table></figure>
+<p>下载图片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"img.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    links = f.read().split()</span><br><span class="line"></span><br><span class="line">header=&#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> links:</span><br><span class="line">    l = <span class="string">"http:"</span> + l</span><br><span class="line">    response = requests.get(l, headers=header)</span><br><span class="line">    path = <span class="string">"v"</span> + str(count) + <span class="string">".jpg"</span></span><br><span class="line">    <span class="keyword">with</span> open(path, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(response.content)</span><br><span class="line">        f.flush()</span><br><span class="line">    count = count + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>2.连接数据库 保存与查询<br>查询</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接数据库 执行查询操作</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">"localhost"</span>, port=<span class="number">3306</span>, user=<span class="string">"root"</span>,password=<span class="string">"xxx"</span>,database=<span class="string">"data_ana"</span>,charset=<span class="string">"utf8"</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line">cursor.execute(<span class="string">"select * from anime"</span>)</span><br><span class="line">data_result = cursor.fetchall()</span><br><span class="line">print(len(data_result))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将查询所得元组转换为列表</span></span><br><span class="line">data_result = list(data_result)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(data_result)):</span><br><span class="line">    data_result[i] = list(data_result[i])</span><br><span class="line">data_result = np.array(data_result)</span><br><span class="line">print(data_result[:, <span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+<p>保存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cursor = conn.cursor()</span><br><span class="line"><span class="comment"># 注意由于pymysql底层的限制，占位只可以写%s 但实际上执行时可用的数据的类型可为其他</span></span><br><span class="line">sql = <span class="string">"INSERT INTO IMO(aname, link, links) VALUES (%s, %s, %s);"</span></span><br><span class="line">cursor.execute(sql, [name_list[i], link_list[i], <span class="string">""</span>])</span><br><span class="line">conn.commit()</span><br><span class="line">cursor.close()</span><br></pre></td></tr></table></figure>
+<p>建表<br>建表尤其注意sql语句的写法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">insert_video_sql = <span class="string">"INSERT INTO video(video_name) VALUES (%s);"</span></span><br><span class="line">      cursor.execute(insert_video_sql, [table_name])</span><br><span class="line">      conn.commit()</span><br><span class="line">      <span class="comment">#  创建数据表的sql 语句  并设置name_id 为主键自增长不为空</span></span><br><span class="line"></span><br><span class="line">sql_createTb = <span class="string">"""CREATE TABLE  `%s`(</span></span><br><span class="line"><span class="string">                 video_id INT NOT NULL AUTO_INCREMENT,</span></span><br><span class="line"><span class="string">                 detect_time VARCHAR(100),</span></span><br><span class="line"><span class="string">                 allp INT,yesp INT,nop INT,</span></span><br><span class="line"><span class="string">                 PRIMARY KEY(video_id))</span></span><br><span class="line"><span class="string">                 """</span> % (table_name)</span><br></pre></td></tr></table></figure>
+<p>同时有表名变量和字段变量的sql语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert_data_sql = <span class="string">'insert into `%s`(detect_time,allp,yesp,nop)'</span> % camera_table_name + <span class="string">' values (%s,%s,%s,%s)'</span></span><br><span class="line">cursor.execute(insert_data_sql, [theTime, all, yes, no])</span><br></pre></td></tr></table></figure>
+<p>3.csv生成中文乱码的解决<br>参考 <a href="https://blog.csdn.net/zhuzuwei/article/details/80890007" target="_blank" rel="noopener">https://blog.csdn.net/zhuzuwei/article/details/80890007</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(file_name,encoding=<span class="string">"utf_8_sig"</span>)</span><br></pre></td></tr></table></figure>
+<p>4.python多维数组切片<br>只可用numpy 参考<br><a href="https://www.jb51.net/article/138219.htm" target="_blank" rel="noopener">https://www.jb51.net/article/138219.htm</a><br><a href="https://blog.csdn.net/qiqicos/article/details/78971406" target="_blank" rel="noopener">https://blog.csdn.net/qiqicos/article/details/78971406</a><br><a href="https://www.cnblogs.com/yibeimingyue/p/10936509.html" target="_blank" rel="noopener">https://www.cnblogs.com/yibeimingyue/p/10936509.html</a><br>numpy数组与列表转换<br><a href="https://blog.csdn.net/qq_36387683/article/details/99302286" target="_blank" rel="noopener">https://blog.csdn.net/qq_36387683/article/details/99302286</a><br>5.十六进制与字符串的转换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"\u9999\u6e2f"</span>.encode(<span class="string">"utf-8"</span>).decode(<span class="string">"utf-8"</span>)</span><br><span class="line">print(a) <span class="comment"># 香港</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/08/matplotlib/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">matplotlib</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="数据解析" data-title="数据解析" data-url="http://yoursite.com/2020/06/08/%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90/"  data-images="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" data-content="数据解析">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
