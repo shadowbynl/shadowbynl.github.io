@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>live2d-study-1 | Memory</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于live2d两个问题的解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="live2d-study-1">
+<meta property="og:url" content="http://yoursite.com/2020/06/10/live2d-study-1/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="关于live2d两个问题的解决">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-10T00:36:32.000Z">
+<meta property="article:modified_time" content="2020-06-10T01:27:38.626Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="效果">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("F3vqXSGcnb9cM3bvLFT2skRf-gzGzoHsz", "kTj2Ad4Ye9Q3U5uHGjFXHCcx");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nlby</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">永远相信美好的事情即将发生</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						<li>
+						<iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=1&height=66">
+						</iframe></li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaWeb/" style="font-size: 15px;">JavaWeb</a> <a href="/tags/Python-Science/" style="font-size: 16.67px;">Python Science</a> <a href="/tags/PythonWeb/" style="font-size: 11.67px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 13.33px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 11.67px;">小说整理</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%95%88%E6%9E%9C/" style="font-size: 10px;">效果</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/zh-cn/docs/">hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://nlby.github.io/">another</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">nlby</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">nlby</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">永远相信美好的事情即将发生</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-live2d-study-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/06/10/live2d-study-1/" class="article-date">
+  	<time datetime="2020-06-10T00:36:32.000Z" itemprop="datePublished">2020-06-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      live2d-study-1
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%88%E6%9E%9C/" rel="tag">效果</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/live2d/">live2d</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/06/10/live2d-study-1/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="live2d-study-1">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>关于live2d两个问题的解决</strong></p>
+<a id="more"></a>
+<p>经过查找和测试代码，基本解决在桌面上显示live2d模型和在网页上显示moc3模型的问题。<br><strong>一、在桌面上显示live2d模型</strong></p>
+<ol>
+<li>先后参考<br><a href="https://github.com/search?q=%E6%A1%8C%E9%9D%A2live2d" target="_blank" rel="noopener">https://github.com/search?q=%E6%A1%8C%E9%9D%A2live2d</a><br><a href="https://github.com/fguby/Electron-elf" target="_blank" rel="noopener">https://github.com/fguby/Electron-elf</a> 界面好，但无法自定义模型和有音效<br><a href="https://github.com/dreamfalldown/AnimSprite" target="_blank" rel="noopener">https://github.com/dreamfalldown/AnimSprite</a> 未测试<br><a href="https://github.com/horou-dsk/live2d_desktop_kb" target="_blank" rel="noopener">https://github.com/horou-dsk/live2d_desktop_kb</a> 未测试<br><a href="https://github.com/super233/Desktop-Helper" target="_blank" rel="noopener">https://github.com/super233/Desktop-Helper</a> 未测试<br><a href="https://github.com/erwindy/live2d-desktop" target="_blank" rel="noopener">https://github.com/erwindy/live2d-desktop</a> 效果有一定缺陷，但是是最可用的<br><a href="https://github.com/fghrsh/live2d_demo" target="_blank" rel="noopener">https://github.com/fghrsh/live2d_demo</a> 一个网页插件</li>
+<li>最终使用<br><a href="https://github.com/erwindy/live2d-desktop" target="_blank" rel="noopener">https://github.com/erwindy/live2d-desktop</a><br>已修改样式，并添加自定义模型，在D盘的Download/live目录下</li>
+<li>综上代码，发现共用的一个依赖是 electron<br>是一个js开发桌面应用的框架<br>官网： <a href="https://www.electronjs.org/" target="_blank" rel="noopener">https://www.electronjs.org/</a></li>
+</ol>
+<p><strong>二、在网页上显示moc3模型</strong><br>经过很多测试，最终才确定可行的方案</p>
+<ol>
+<li>先贴可行的代码<br>参考： <a href="https://github.com/HCLonely/Live2dV3" target="_blank" rel="noopener">https://github.com/HCLonely/Live2dV3</a><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!------ 位置可自定义 ------&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Canvas"</span> <span class="attr">style</span>=<span class="string">"position: fixed; right: 10px; bottom: 10px;z-index: 99999999"</span> <span class="attr">id</span>=<span class="string">"L2dCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!------ 依赖 JS | Dependent JS ------&gt;</span></span><br><span class="line"><span class="comment">&lt;!---- 可选 | Optional ----&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 兼容低版本浏览器 | Compatible with low-level browsers --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"</span>&gt;</span> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 音频播放兼容 | Audio playback compatible --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/howler@2.1.3/dist/howler.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!---- 必需 | Required ----&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/static/live2dcubismcore.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pixi.js@4.6.1/dist/pixi.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- live2dv3.js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/static/live2dv3.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!------ 加载Live2d模型 | Load Live2d model ------&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">new</span> l2dViewer(&#123;</span></span><br><span class="line"><span class="javascript">             el: <span class="built_in">document</span>.getElementById(<span class="string">'L2dCanvas'</span>),</span></span><br><span class="line"><span class="actionscript">                basePath: <span class="string">'https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/assets'</span>, <span class="comment">// 模型根目录</span></span></span><br><span class="line"><span class="actionscript">                modelName: <span class="string">'aidang_2'</span>, <span class="comment">// 模型目录</span></span></span><br><span class="line"><span class="actionscript">                sizeLimit: <span class="literal">false</span>,</span></span><br><span class="line"><span class="actionscript">                mobileLimit: <span class="literal">false</span></span></span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">hello</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>参考<br><a href="https://github.com/search?q=live2d3" target="_blank" rel="noopener">https://github.com/search?q=live2d3</a><br>某大佬的一系列参考：<br><a href="https://gitee.com/nlby/Live2d-model/tree/master" target="_blank" rel="noopener">https://gitee.com/nlby/Live2d-model/tree/master</a><br><a href="https://eikanya.github.io/link/" target="_blank" rel="noopener">https://eikanya.github.io/link/</a><br><a href="https://github.com/Eikanya/eikanya.github.io" target="_blank" rel="noopener">https://github.com/Eikanya/eikanya.github.io</a> 通过分析loadModel.js文件，发现其加载模型url和<a href="https://github.com/HCLonely/Live2dV3" target="_blank" rel="noopener">https://github.com/HCLonely/Live2dV3</a> 的共同点，都是模型使用 jsdelivr</li>
+<li>关于模型加载的问题<br>开始使用<a href="https://github.com/HCLonely/Live2dV3" target="_blank" rel="noopener">https://github.com/HCLonely/Live2dV3</a> 的代码测试时，发现将模型换成本地的，无论如何都加载不出来，后来想到可能需要网络链接，于是开通腾讯COS，发现还不行，对比这份代码和dl的，发现两者的模型存放的url均使用了jsdeliv<br><a href="https://cdn.jsdelivr.net/gh/Eikanya/live2dCDN@1.2.1/live2dv3/assets/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Eikanya/live2dCDN@1.2.1/live2dv3/assets/</a><br><a href="https://cdn.jsdelivr.net/npm/live2dv3@1.2.2/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/npm/live2dv3@1.2.2/</a><br><a href="https://github.com/Eikanya/live2dCDN" target="_blank" rel="noopener">https://github.com/Eikanya/live2dCDN</a><br>于是就想到使用jsdeliv</li>
+<li>jsdeliv的使用<br>参考 <a href="https://blog.csdn.net/qq_36759224/article/details/86936453" target="_blank" rel="noopener">https://blog.csdn.net/qq_36759224/article/details/86936453</a><br>几个步骤，github建库上传相关文件 创建release 然后就可以用jsdeliv访问，注意仓库中文件的总大小一定不能超过50M，否则不能访问<br>本人仓库： <a href="https://github.com/nlby/live2dCDN/tree/1.0.2" target="_blank" rel="noopener">https://github.com/nlby/live2dCDN/tree/1.0.2</a><br><a href="https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/assets/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/assets/</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+	  
+	  <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+	  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/09/flask-study-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">flask-study-2</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="live2d-study-1" data-title="live2d-study-1" data-url="http://yoursite.com/2020/06/10/live2d-study-1/"  data-images="https://i.loli.net/2020/03/21/oSCA8lZVKMG6OBp.jpg" data-content="live2d-study-1">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+	    <!--
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>-->
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 nlby
+      </div>
+	  <!--<audio src="/music/1.mp3" autoplay="autoplay" loop="-1" /></audio>-->
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hk416.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
