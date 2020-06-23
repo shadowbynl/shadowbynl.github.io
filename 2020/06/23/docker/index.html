@@ -9,14 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="该篇记述一下docker的安装，基本命令与tomcat、mysql的配置。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="docker">
 <meta property="og:url" content="http://yoursite.com/2020/06/23/docker/index.html">
 <meta property="og:site_name" content="Memory">
+<meta property="og:description" content="该篇记述一下docker的安装，基本命令与tomcat、mysql的配置。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-23T10:46:53.000Z">
-<meta property="article:modified_time" content="2020-06-23T11:28:10.895Z">
+<meta property="article:modified_time" content="2020-06-23T13:20:49.290Z">
 <meta property="article:author" content="nlby">
+<meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Memory" type="application/atom+xml">
@@ -127,7 +130,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Go/" style="font-size: 14.29px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 15.71px;">JavaWeb</a> <a href="/tags/Python-Science/" style="font-size: 17.14px;">Python Science</a> <a href="/tags/PythonWeb/" style="font-size: 14.29px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.57px;">android</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.86px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 12.86px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 11.43px;">小说整理</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 11.43px;">总结</a> <a href="/tags/%E6%95%88%E6%9E%9C/" style="font-size: 10px;">效果</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 11.43px;">随笔</a>
+						<a href="/tags/Go/" style="font-size: 13.75px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 17.5px;">JavaWeb</a> <a href="/tags/Python-Science/" style="font-size: 16.25px;">Python Science</a> <a href="/tags/PythonWeb/" style="font-size: 13.75px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.75px;">android</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 12.5px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 11.25px;">小说整理</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 11.25px;">总结</a> <a href="/tags/%E6%95%88%E6%9E%9C/" style="font-size: 10px;">效果</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 20px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 15px;">随笔</a>
 					</div>
 				</section>
 				
@@ -213,7 +216,15 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li></ul>
+	</div>
+
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E5%AE%B9%E5%99%A8/">容器</a>
+	</div>
+
 
         
           
@@ -232,7 +243,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>该篇记述一下docker的安装，基本命令与tomcat、mysql的配置。</p>
+<a id="more"></a>
+<p><strong>一、docker安装</strong><br>参考 <a href="https://blog.csdn.net/b9567/article/details/105027440/" target="_blank" rel="noopener">https://blog.csdn.net/b9567/article/details/105027440/</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 安装需要的包</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"># 安装 apt 依赖包，用于通过HTTPS来获取仓库</span><br><span class="line">sudo apt-get install \</span><br><span class="line">   apt-transport-https \</span><br><span class="line">   ca-certificates \</span><br><span class="line">   curl \</span><br><span class="line">   gnupg-agent \</span><br><span class="line">   software-properties-common</span><br><span class="line">   </span><br><span class="line"># 添加 Docker 的官方 GPG 密钥</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"></span><br><span class="line"># 设置稳定版仓库</span><br><span class="line">sudo add-apt-repository \</span><br><span class="line">   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line">  $(lsb_release -cs) \</span><br><span class="line">  stable"</span><br><span class="line"></span><br><span class="line"># 安装 Docker-ce</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<p>修改docker镜像<br>参考 <a href="https://blog.csdn.net/jixuju/article/details/80158493" target="_blank" rel="noopener">https://blog.csdn.net/jixuju/article/details/80158493</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker默认的源为国外官方源，下载速度较慢，可改为国内，加速</span><br><span class="line">方案一</span><br><span class="line">修改或新增 /etc/docker/daemon.json</span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">"registry-mirrors": ["http://hub-mirror.c.163.com"]</span><br><span class="line">&#125;</span><br><span class="line">systemctl restart docker.service</span><br><span class="line"></span><br><span class="line">其余参考</span><br><span class="line">     https://blog.csdn.net/whatday/article/details/86770609</span><br><span class="line">https://blog.csdn.net/niukaoying6674/article/details/87788282</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、docker基本命令</strong><br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1、搜索镜像</span><br><span class="line">[root@localhost ~]# docker search tomcat</span><br><span class="line">2、拉取镜像</span><br><span class="line">[root@localhost ~]# docker pull tomcat</span><br><span class="line">3、根据镜像启动容器</span><br><span class="line">docker run ‐‐name mytomcat ‐d tomcat:latest</span><br><span class="line">4、docker ps  </span><br><span class="line">查看运行中的容器</span><br><span class="line">5、 停止运行中的容器</span><br><span class="line">docker stop  容器的id</span><br><span class="line">6、查看所有的容器</span><br><span class="line">docker ps ‐a</span><br><span class="line">7、启动容器</span><br><span class="line">docker start 容器id</span><br><span class="line">8、删除一个容器</span><br><span class="line"> docker rm 容器id</span><br><span class="line">9、启动一个做了端口映射的tomcat</span><br><span class="line">[root@localhost ~]# docker run ‐d ‐p 8888:8080 tomcat</span><br><span class="line">‐d：后台运行</span><br><span class="line">‐p: 将主机的端口映射到容器的一个端口    主机端口:容器内部的端口</span><br><span class="line"> </span><br><span class="line">10、为了演示简单关闭了linux的防火墙</span><br><span class="line">service firewalld status ；查看防火墙状态</span><br><span class="line">service firewalld stop：关闭防火墙</span><br><span class="line">11、查看容器的日志</span><br><span class="line">docker logs container‐name/container‐id</span><br><span class="line"> </span><br><span class="line">更多命令参看</span><br><span class="line">https://docs.docker.com/engine/reference/commandline/docker/</span><br><span class="line">可以参考每一个镜像的文档</span><br></pre></td></tr></table></figure>
+
+<p><strong>三、实例</strong><br>以下均为下载镜像后，启动容器运行实例的命令。</p>
+<ol>
+<li>tomcat<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name tomcat -d -p 8080:8080 -v /root/tomcat:/usr/local/tomcat/webapps tomcat</span><br></pre></td></tr></table></figure></li>
+<li>mysql<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=password -d mysql:5.5.62</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>四、配置过程中存在的问题与参考</strong></p>
+<ol>
+<li>高版本tomcat无法访问默认页面<br><a href="https://blog.csdn.net/weixin_42970847/article/details/104534764" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42970847/article/details/104534764</a><br><a href="https://blog.csdn.net/weixin_43309946/article/details/103223091" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43309946/article/details/103223091</a><br><a href="https://blog.csdn.net/LZJSTUDY/article/details/81097534" target="_blank" rel="noopener">https://blog.csdn.net/LZJSTUDY/article/details/81097534</a></li>
+<li>docker的挂载目录<br><a href="https://www.baidu.com/s?wd=docker%E5%AE%9E%E4%BE%8B%E7%9A%84%E7%9B%AE%E5%BD%95&amp;rsv_spt=1&amp;rsv_iqid=0xcc387ff200244ee5&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=20&amp;rsv_sug1=10&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=5030&amp;rsv_sug4=5029" target="_blank" rel="noopener">https://www.baidu.com/s?wd=docker%E5%AE%9E%E4%BE%8B%E7%9A%84%E7%9B%AE%E5%BD%95&amp;rsv_spt=1&amp;rsv_iqid=0xcc387ff200244ee5&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=20&amp;rsv_sug1=10&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=5030&amp;rsv_sug4=5029</a><br><a href="https://www.cnblogs.com/douh/p/12560439.html" target="_blank" rel="noopener">https://www.cnblogs.com/douh/p/12560439.html</a><br><a href="http://www.manongjc.com/article/148684.html" target="_blank" rel="noopener">http://www.manongjc.com/article/148684.html</a><br><a href="https://www.jianshu.com/p/806485990aea" target="_blank" rel="noopener">https://www.jianshu.com/p/806485990aea</a><br><a href="https://blog.csdn.net/one_chao/article/details/98671330" target="_blank" rel="noopener">https://blog.csdn.net/one_chao/article/details/98671330</a><br><a href="https://blog.csdn.net/wywinstonwy/article/details/106612226" target="_blank" rel="noopener">https://blog.csdn.net/wywinstonwy/article/details/106612226</a><br><a href="https://blog.csdn.net/i042416/article/details/82900177" target="_blank" rel="noopener">https://blog.csdn.net/i042416/article/details/82900177</a></li>
+</ol>
+
       
     </div>
     
