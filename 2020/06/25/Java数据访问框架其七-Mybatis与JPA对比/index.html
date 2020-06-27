@@ -9,13 +9,15 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="本篇是对ORM框架进行总结，记录一些mybatis与jpa框架的对比的文章。简单地说，mybatis优势在于多表和sql优化，jpa优势在于移植性。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java数据访问框架其七 | Mybatis与JPA对比">
 <meta property="og:url" content="http://yoursite.com/2020/06/25/Java%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E6%A1%86%E6%9E%B6%E5%85%B6%E4%B8%83-Mybatis%E4%B8%8EJPA%E5%AF%B9%E6%AF%94/index.html">
 <meta property="og:site_name" content="Memory">
+<meta property="og:description" content="本篇是对ORM框架进行总结，记录一些mybatis与jpa框架的对比的文章。简单地说，mybatis优势在于多表和sql优化，jpa优势在于移植性。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-25T15:41:29.000Z">
-<meta property="article:modified_time" content="2020-06-25T15:47:44.067Z">
+<meta property="article:modified_time" content="2020-06-27T15:03:01.860Z">
 <meta property="article:author" content="nlby">
 <meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
@@ -241,7 +243,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>本篇是对ORM框架进行总结，记录一些mybatis与jpa框架的对比的文章。简单地说，mybatis优势在于多表和sql优化，jpa优势在于移植性。</p>
+<a id="more"></a>
+<blockquote>
+<p>Spring Data项目<br><a href="https://spring.io/projects/spring-data" target="_blank" rel="noopener">https://spring.io/projects/spring-data</a></p>
+</blockquote>
+<p>Spring Data 项目的目的是为了简化构建基于Spring 框架应用的数据访问技术，包括非关系数据库、Map-Reduce 框架、云数据服务等等；另外也包含对关系数据库的访问支持。<br>• Spring Data 包含多个子项目：<br>– Spring Data Commons<br>– Spring Data JPA<br>– Spring Data KeyValue<br>– Spring Data LDAP<br>– Spring Data MongoDB<br>– Spring Data Gemfire<br>– Spring Data REST<br>– Spring Data Redis<br>– Spring Data for Apache Cassandra<br>– Spring Data for Apache Solr<br>– Spring Data Couchbase (community module)<br>– Spring Data Elasticsearch (community module)<br>– Spring Data Neo4j (community module)</p>
+<blockquote>
+<p>mybatis与jpa对比</p>
+</blockquote>
+<p><a href="https://www.baidu.com/s?wd=mybatis%E4%B8%8Ejpa&amp;rsv_spt=1&amp;rsv_iqid=0xccdc7fcb001e5769&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=17&amp;rsv_sug1=18&amp;rsv_sug7=101&amp;rsv_t=db289xARc8fGqE4zpbBCcvjoCZAR7TNFhtsF8rARNoL8hdMYLNMOAn3Ec%2FS%2ByPjFpKEr&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=13263&amp;rsv_sug4=14448" target="_blank" rel="noopener">https://www.baidu.com/s?wd=mybatis%E4%B8%8Ejpa&amp;rsv_spt=1&amp;rsv_iqid=0xccdc7fcb001e5769&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=17&amp;rsv_sug1=18&amp;rsv_sug7=101&amp;rsv_t=db289xARc8fGqE4zpbBCcvjoCZAR7TNFhtsF8rARNoL8hdMYLNMOAn3Ec%2FS%2ByPjFpKEr&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=13263&amp;rsv_sug4=14448</a><br><a href="https://www.cnblogs.com/llywy/p/10103136.html" target="_blank" rel="noopener">https://www.cnblogs.com/llywy/p/10103136.html</a><br><a href="https://www.jianshu.com/p/32ce87c163d6" target="_blank" rel="noopener">https://www.jianshu.com/p/32ce87c163d6</a><br><a href="https://www.cnblogs.com/ymstars/p/10629285.html" target="_blank" rel="noopener">https://www.cnblogs.com/ymstars/p/10629285.html</a><br><a href="https://blog.csdn.net/sinolover/article/details/96966213" target="_blank" rel="noopener">https://blog.csdn.net/sinolover/article/details/96966213</a><br><a href="https://blog.csdn.net/RAVEEE/article/details/89951468" target="_blank" rel="noopener">https://blog.csdn.net/RAVEEE/article/details/89951468</a><br><a href="https://www.jianshu.com/p/1fb00955302a" target="_blank" rel="noopener">https://www.jianshu.com/p/1fb00955302a</a><br><a href="https://www.zhihu.com/question/356307466" target="_blank" rel="noopener">https://www.zhihu.com/question/356307466</a></p>
+
       
     </div>
     
@@ -342,7 +354,7 @@ gitment.render('git')
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: true
+		open_in_new: false
 	}
 </script>
 

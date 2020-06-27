@@ -989,12 +989,12 @@ a {
   color: #c8c8c8;
 }
 .article-title {
-  color: #ffa500;
+  color: #fcfcfc;
   margin-left: 0px;
   font-weight: 300;
   line-height: 35px;
-  margin-bottom: 20px;
-  font-size: 26px;
+  margin-bottom: 10px;
+  font-size: 16px;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -o-transition: color 0.3s;
