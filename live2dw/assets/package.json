@@ -1,0 +1,39 @@
+{
+  "_from": "live2d-widget-model-violet",
+  "_id": "live2d-widget-model-violet@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-/oVc/1TRlBvIXISf5VBDsOOz5P84rxiyP/4q//Zh6G6bPsZxOe6m165asXyj7dKWZhpkxaQMI6lsIU1C2c+a9g==",
+  "_location": "/live2d-widget-model-violet",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "live2d-widget-model-violet",
+    "name": "live2d-widget-model-violet",
+    "escapedName": "live2d-widget-model-violet",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/live2d-widget-model-violet/-/live2d-widget-model-violet-1.0.0.tgz",
+  "_shasum": "7d931cce12d6cbb658d387aaf700ee0231ba5504",
+  "_spec": "live2d-widget-model-violet",
+  "_where": "D:\\Work\\HEXO-S\\blog-t-m",
+  "author": {
+    "name": "nlby"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "hexo-live2d-violet",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "live2d-widget-model-violet",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
