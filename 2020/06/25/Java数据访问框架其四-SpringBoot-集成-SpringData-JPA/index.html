@@ -114,7 +114,7 @@
       
 	
 
-	  <embed src="https://jxiaoc.github.io/animeMusic/demo.html" />
+	  <embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
     </nav>
   </div>
 </header>
@@ -399,14 +399,21 @@
     </div>
   </article>
   
-    
-  <section id="comments">
-  	
-
-    
-  </section>
-
-
+    <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
   
 </div>
 

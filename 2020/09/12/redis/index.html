@@ -18,15 +18,15 @@
   
   
   <title>redis | Memory</title>
-  <meta name="description" content="redis  概述与特性   Redis是一个高性能key&#x2F;value内存型数据库 Redis支持丰富的数据类型  String List Set ZSet Hash Redis支持持久化  内存数据 持久到硬盘中 Redis单线程,单进程  线程安全 分布式锁 效率高   环境与启动  一、windows本机win7下环境配置：二、Linux  相关指令   数据类型">
+  <meta name="description" content="redis  概述与特性   Redis是一个高性能key&#x2F;value内存型数据库 Redis支持丰富的数据类型  String List Set ZSet Hash Redis支持持久化  内存数据 持久到硬盘中 Redis单线程,单进程  线程安全 分布式锁 效率高   环境与启动  一、windows本机win7下环境配置：在redis中文网http:&#x2F;&#x2F;www.redis.cn&#x2F; 下载相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis">
 <meta property="og:url" content="http://nlbyd1119.online/2020/09/12/redis/index.html">
 <meta property="og:site_name" content="Memory">
-<meta property="og:description" content="redis  概述与特性   Redis是一个高性能key&#x2F;value内存型数据库 Redis支持丰富的数据类型  String List Set ZSet Hash Redis支持持久化  内存数据 持久到硬盘中 Redis单线程,单进程  线程安全 分布式锁 效率高   环境与启动  一、windows本机win7下环境配置：二、Linux  相关指令   数据类型">
+<meta property="og:description" content="redis  概述与特性   Redis是一个高性能key&#x2F;value内存型数据库 Redis支持丰富的数据类型  String List Set ZSet Hash Redis支持持久化  内存数据 持久到硬盘中 Redis单线程,单进程  线程安全 分布式锁 效率高   环境与启动  一、windows本机win7下环境配置：在redis中文网http:&#x2F;&#x2F;www.redis.cn&#x2F; 下载相关">
 <meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2020-09-12T06:47:40.000Z">
-<meta property="article:modified_time" content="2020-09-12T07:05:26.799Z">
+<meta property="article:modified_time" content="2020-09-12T08:03:51.330Z">
 <meta property="article:author" content="nlby">
 <meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
       
 	
 
-	  <embed src="https://jxiaoc.github.io/animeMusic/demo.html" />
+	  <embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
     </nav>
   </div>
 </header>
@@ -350,12 +350,22 @@
 <blockquote>
 <p>环境与启动</p>
 </blockquote>
-<p><strong>一、windows</strong><br>本机win7下环境配置：<br><strong>二、Linux</strong></p>
+<p><strong>一、windows</strong><br>本机win7下环境配置：<br>在redis中文网<a href="http://www.redis.cn/" target="_blank" rel="noopener">http://www.redis.cn/</a> 下载相关软件<br>安装客户端redis desktop manager 可查看库情况<br><strong>二、Linux</strong><br>docker方式</p>
 <blockquote>
-<p>相关指令</p>
+<p>库和键相关指令</p>
 </blockquote>
+<p>一、操作库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 1.Redis中库说明</span><br><span class="line">- 使用redis的默认配置器动redis服务后,默认会存在16个库,编号从0-15</span><br><span class="line">- 可以使用select 库的编号 来选择一个redis的库</span><br><span class="line"></span><br><span class="line"># 2.Redis中操作库的指令</span><br><span class="line">- 清空当前的库  FLUSHDB</span><br><span class="line">- 清空全部的库  FLUSHALL</span><br><span class="line"></span><br><span class="line"># 3.redis客户端显示中文</span><br><span class="line">-	./redis-cli  -p 7000 --raw</span><br></pre></td></tr></table></figure>
+<p>二、操作库<br>设置、删除、是否存在、设置失效期限（三个）、匹配、移动、剩余生成时间（两个）、随机返回、重命名、判断类型</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"># 1.DEL指令</span><br><span class="line">- 语法 :  DEL key [key ...] </span><br><span class="line">- 作用 :  删除给定的一个或多个key 。不存在的key 会被忽略。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值： 被删除key 的数量。 </span><br><span class="line"></span><br><span class="line"># 2.EXISTS指令</span><br><span class="line">- 语法:  EXISTS key</span><br><span class="line">- 作用:  检查给定key 是否存在。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值： 若key 存在，返回1 ，否则返回0。</span><br><span class="line"></span><br><span class="line"># 3.EXPIRE</span><br><span class="line">- 语法:  EXPIRE key seconds</span><br><span class="line">- 作用:  为给定key 设置生存时间，当key 过期时(生存时间为0 )，它会被自动删除。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 时间复杂度： O(1)</span><br><span class="line">- 返回值：设置成功返回1 。</span><br><span class="line"></span><br><span class="line"># 4.KEYS</span><br><span class="line">- 语法 :  KEYS pattern</span><br><span class="line">- 作用 :  查找所有符合给定模式pattern 的key 。</span><br><span class="line">- 语法:</span><br><span class="line">	KEYS * 匹配数据库中所有key 。</span><br><span class="line">	KEYS h?llo 匹配hello ，hallo 和hxllo 等。</span><br><span class="line">	KEYS h*llo 匹配hllo 和heeeeello 等。</span><br><span class="line">	KEYS h[ae]llo 匹配hello 和hallo ，但不匹配hillo 。特殊符号用 "\" 隔开</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值： 符合给定模式的key 列表。</span><br><span class="line"></span><br><span class="line"># 5.MOVE</span><br><span class="line">- 语法 :  MOVE key db</span><br><span class="line">- 作用 :  将当前数据库的key 移动到给定的数据库db 当中。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值： 移动成功返回1 ，失败则返回0 。</span><br><span class="line"></span><br><span class="line"># 6.PEXPIRE</span><br><span class="line">- 语法 :  PEXPIRE key milliseconds</span><br><span class="line">- 作用 :  这个命令和EXPIRE 命令的作用类似，但是它以毫秒为单位设置key 的生存时间，而不像EXPIRE 命令那样，以秒为单位。</span><br><span class="line">- 可用版本： &gt;= 2.6.0</span><br><span class="line">- 时间复杂度： O(1)</span><br><span class="line">- 返回值：设置成功，返回1  key 不存在或设置失败，返回0</span><br><span class="line"></span><br><span class="line"># 7.PEXPIREAT</span><br><span class="line">- 语法 :  PEXPIREAT key milliseconds-timestamp</span><br><span class="line">- 作用 :  这个命令和EXPIREAT 命令类似，但它以毫秒为单位设置key 的过期unix 时间戳，而不是像EXPIREAT那样，以秒为单位。</span><br><span class="line">- 可用版本： &gt;= 2.6.0</span><br><span class="line">- 返回值：如果生存时间设置成功，返回1 。当key 不存在或没办法设置生存时间时，返回0 。(查看EXPIRE 命令获取更多信息)</span><br><span class="line"></span><br><span class="line"># 8.TTL</span><br><span class="line">- 语法 :   TTL key</span><br><span class="line">- 作用 :   以秒为单位，返回给定key 的剩余生存时间(TTL, time to live)。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值：</span><br><span class="line">	当key 不存在时，返回-2 。</span><br><span class="line">	当key 存在但没有设置剩余生存时间时，返回-1 。</span><br><span class="line">	否则，以秒为单位，返回key 的剩余生存时间。</span><br><span class="line">- Note : 在Redis 2.8 以前，当key 不存在，或者key 没有设置剩余生存时间时，命令都返回-1 。</span><br><span class="line"></span><br><span class="line"># 9.PTTL</span><br><span class="line">- 语法 :  PTTL key</span><br><span class="line">- 作用 :  这个命令类似于TTL 命令，但它以毫秒为单位返回key 的剩余生存时间，而不是像TTL 命令那样，以秒为单位。</span><br><span class="line">- 可用版本： &gt;= 2.6.0</span><br><span class="line">- 返回值： 当key 不存在时，返回-2 。当key 存在但没有设置剩余生存时间时，返回-1 。</span><br><span class="line">- 否则，以毫秒为单位，返回key 的剩余生存时间。</span><br><span class="line">- 注意 : 在Redis 2.8 以前，当key 不存在，或者key 没有设置剩余生存时间时，命令都返回-1 。</span><br><span class="line"></span><br><span class="line"># 10.RANDOMKEY</span><br><span class="line">- 语法 :  RANDOMKEY</span><br><span class="line">- 作用 :  从当前数据库中随机返回(不删除) 一个key 。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值：当数据库不为空时，返回一个key 。当数据库为空时，返回nil 。</span><br><span class="line"></span><br><span class="line"># 11.RENAME</span><br><span class="line">- 语法 :  RENAME key newkey</span><br><span class="line">- 作用 :  将key 改名为newkey 。当key 和newkey 相同，或者key 不存在时，返回一个错误。当newkey 已经存在时，RENAME 命令将覆盖旧值。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值： 改名成功时提示OK ，失败时候返回一个错误。</span><br><span class="line"></span><br><span class="line"># 12.TYPE</span><br><span class="line">- 语法 :  TYPE key</span><br><span class="line">- 作用 :  返回key 所储存的值的类型。</span><br><span class="line">- 可用版本： &gt;= 1.0.0</span><br><span class="line">- 返回值：</span><br><span class="line">	none (key 不存在)</span><br><span class="line">	string (字符串)</span><br><span class="line">	list (列表)</span><br><span class="line">	set (集合)</span><br><span class="line">	zset (有序集)</span><br><span class="line">	hash (哈希表)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>数据类型</p>
+<p>数据类型及相关指令</p>
+</blockquote>
+<p><strong>一、String</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">| 命令                                       | 说明                                       |</span><br><span class="line">| ------------------------------------------ | ------------------------------------------ |</span><br><span class="line">| set                                        | 设置一个key/value                          |</span><br><span class="line">| get                                        | 根据key获得对应的value                     |</span><br><span class="line">| mset                                       | 一次设置多个key value                      |</span><br><span class="line">| mget                                       | 一次获得多个key的value                     |</span><br><span class="line">| getset                                     | 获得原始key的值，同时设置新值              |</span><br><span class="line">| strlen                                     | 获得对应key存储value的长度                 |</span><br><span class="line">| append                                     | 为对应key的value追加内容                   |</span><br><span class="line">| getrange 索引0开始                         | 截取value的内容                            |</span><br><span class="line">| setex                                      | 设置一个key存活的有效期（秒）              |</span><br><span class="line">| psetex                                     | 设置一个key存活的有效期（毫秒）            |</span><br><span class="line">| setnx                                      | 存在不做任何操作,不存在添加                |</span><br><span class="line">| msetnx原子操作(只要有一个存在不做任何操作) | 可以同时设置多个key,只有有一个存在都不保存 |</span><br><span class="line">| decr                                       | 进行数值类型的-1操作                       |</span><br><span class="line">| decrby                                     | 根据提供的数据进行减法操作                 |</span><br><span class="line">| Incr                                       | 进行数值类型的+1操作                       |</span><br><span class="line">| incrby                                     | 根据提供的数据进行加法操作                 |</span><br><span class="line">| Incrbyfloat                                | 根据提供的数据加入浮点数                   |</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>持久化机制</p>
 </blockquote>
 
       
@@ -396,14 +406,21 @@
     </div>
   </article>
   
-    
-  <section id="comments">
-  	
-
-    
-  </section>
-
-
+    <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
   
 </div>
 
