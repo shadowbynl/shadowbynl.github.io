@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>接口测试 | Memory</title>
+  <meta name="description" content="打算较全面地了解下postman的用法，但有一个很大的问题是，没有合适的接口可以辅助测试，因此又找了下可行的方案。  mock测试与mock.js  mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。在前端开发中使用。  http:&#x2F;&#x2F;mockjs.com&#x2F; mock.js可以集成在前端框架中使用 在线平台 用友云 https:&#x2F;&#x2F;mo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口测试">
+<meta property="og:url" content="http://nlbyd1119.online/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="打算较全面地了解下postman的用法，但有一个很大的问题是，没有合适的接口可以辅助测试，因此又找了下可行的方案。  mock测试与mock.js  mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。在前端开发中使用。  http:&#x2F;&#x2F;mockjs.com&#x2F; mock.js可以集成在前端框架中使用 在线平台 用友云 https:&#x2F;&#x2F;mo">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-09-30T10:41:38.000Z">
+<meta property="article:modified_time" content="2020-10-01T02:03:39.521Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://nlbyd1119.online/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css">
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nlby" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nlby</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> NanJing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+
+	  <embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+	  <iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width="100%" height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=0&height=66">
+	  </iframe>
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>记录和总结一下学习过程及其他</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2005/">2005</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2006/">2006</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2007/">2007</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2008/">2008</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2009/">2009</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2011/">2011</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2012/">2012</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2013/">2013</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2014/">2014</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2017/">2017</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/70/">70</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flask/">Flask</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSP/">JSP</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSql/">NoSql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ORM/">ORM</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E6%A1%86%E6%9E%B6/">Web框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/fabric/">fabric</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/live2d/">live2d</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/plot/">plot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E9%83%A8%E6%88%90%E4%B8%BAF/">全部成为F</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%99%E6%B3%95/">写法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9F%E8%83%BD%E7%82%B9%E5%AD%A6%E4%B9%A0/">功能点学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%B9%E5%99%A8/">容器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8E%A7%E5%88%B6%E5%99%A8/">控制器</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%BF%97/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/">框架使用</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E5%BF%B5/">概念</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">版本控制工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8C%AB%E8%85%BB/">猫腻</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%B8%83%E5%B1%80/">移动布局</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="tag-list-count">35</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Science/" rel="tag">Python Science</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PythonWeb/" rel="tag">PythonWeb</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" rel="tag">博客框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" rel="tag">声优记录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" rel="tag">小说整理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%88%E6%9E%9C/" rel="tag">效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Go/" style="font-size: 13.5px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 14px;">JavaWeb</a> <a href="/tags/Python-Science/" style="font-size: 13.6px;">Python Science</a> <a href="/tags/PythonWeb/" style="font-size: 13.3px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 13.8px;">android</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.2px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 13.4px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 13px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 13px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 13.1px;">小说整理</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.3px;">总结</a> <a href="/tags/%E6%95%88%E6%9E%9C/" style="font-size: 13px;">效果</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 13.9px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 13px;">通用</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 13.7px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">51</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/" class="title">接口测试</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-30T10:41:38.000Z" itemprop="datePublished">2020-09-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/29/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%92%8Csolidity%E5%A4%8D%E4%B9%A0%E5%85%B6%E4%B8%80/" class="title">以太坊和solidity复习其一</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-29T13:59:16.000Z" itemprop="datePublished">2020-09-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80%E4%B8%8Ejs%E4%B8%AD%E5%BA%94%E7%94%A8/" class="title">正则表达式基础与js中应用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-29T12:15:01.000Z" itemprop="datePublished">2020-09-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/27/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%92%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="title">关于机器学习和深度学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-27T08:28:05.000Z" itemprop="datePublished">2020-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/26/%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E3%80%81%E9%97%AE%E9%A2%98/" class="title">基本模式与相关技术、问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-26T06:45:09.000Z" itemprop="datePublished">2020-09-26</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+	<!------ 位置可自定义 ------>
+<div class="Canvas" style="position: fixed; right: 0px; bottom: 0px;z-index: 99999999" id="L2dCanvas"></div>
+
+<!------ 依赖 JS | Dependent JS ------>
+<!---- 可选 | Optional ---->
+<!-- 兼容低版本浏览器 | Compatible with low-level browsers -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"> </script>
+<!-- 音频播放兼容 | Audio playback compatible -->
+<script src="https://cdn.jsdelivr.net/npm/howler@2.1.3/dist/howler.min.js"></script>
+<!---- 必需 | Required ---->
+<script src="https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/static/live2dcubismcore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@4.6.1/dist/pixi.min.js"></script>
+<!-- live2dv3.js -->
+<script src="https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/static/live2dv3.js"></script>
+
+<!------ 加载Live2d模型 | Load Live2d model ------>	
+<script>
+    window.onload = () => {
+        new l2dViewer({
+             el: document.getElementById('L2dCanvas'),
+                basePath: 'https://cdn.jsdelivr.net/gh/Eikanya/live2dCDN@1.2.1/live2dv3/assets', // 模型根目录
+                modelName: 'xuefeng_3', // 模型目录
+                sizeLimit: false,
+                mobileLimit: false
+            
+            
+        })
+    }
+</script>
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-接口测试" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      接口测试
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/" class="article-date">
+	  <time datetime="2020-09-30T10:41:38.000Z" itemprop="datePublished">2020-09-30</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>打算较全面地了解下postman的用法，但有一个很大的问题是，没有合适的接口可以辅助测试，因此又找了下可行的方案。</p>
+<blockquote>
+<p>mock测试与mock.js</p>
+</blockquote>
+<p>mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。<br>在前端开发中使用。</p>
+<ul>
+<li><a href="http://mockjs.com/" target="_blank" rel="noopener">http://mockjs.com/</a> mock.js可以集成在前端框架中使用</li>
+<li>在线平台 用友云 <a href="https://mock.yonyoucloud.com/group/25227" target="_blank" rel="noopener">https://mock.yonyoucloud.com/group/25227</a></li>
+</ul>
+<blockquote>
+<p>rap</p>
+</blockquote>
+<p><a href="http://rap2.taobao.org/api" target="_blank" rel="noopener">http://rap2.taobao.org/api</a><br>RAP是一个新的解决方案，将前端后端拉倒一个团队仓库中，共享一个仓库，无论是URL地址，还是请求需要的参数，在团队仓库中双方都可以管理，并且可以记录团队成员修改了哪些接口，看最后会是谁背锅··手动滑稽。<br>前后同一套接口模板，RAP一种更高效的前后端协作方式。<br><a href="https://www.jianshu.com/p/869fa17dc9d4?from=singlemessage" target="_blank" rel="noopener">https://www.jianshu.com/p/869fa17dc9d4?from=singlemessage</a><br><a href="https://blog.csdn.net/u013090676/article/details/80593771" target="_blank" rel="noopener">https://blog.csdn.net/u013090676/article/details/80593771</a><br><a href="https://blog.csdn.net/bigsec/article/details/79385961" target="_blank" rel="noopener">https://blog.csdn.net/bigsec/article/details/79385961</a><br>相关手册<br><a href="https://github.com/thx/rap2-delos/wiki" target="_blank" rel="noopener">https://github.com/thx/rap2-delos/wiki</a></p>
+<blockquote>
+<p>postman</p>
+</blockquote>
+<p><strong>一、鉴权</strong></p>
+<p><strong>二、文件</strong></p>
+<p><strong>三、参考</strong></p>
+<h6 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h6><p> <a href="https://learning.postman.com/docs/getting-started/introduction/" target="_blank" rel="noopener">https://learning.postman.com/docs/getting-started/introduction/</a> </p>
+<h6 id="postman鉴权"><a href="#postman鉴权" class="headerlink" title="postman鉴权"></a>postman鉴权</h6><p> <a href="https://www.cnblogs.com/bzdmz/p/10296426.html" target="_blank" rel="noopener">https://www.cnblogs.com/bzdmz/p/10296426.html</a> </p>
+<h6 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h6><p> <a href="https://www.bilibili.com/video/BV1aV411o7U5?from=search&amp;seid=4014330563428209283" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1aV411o7U5?from=search&amp;seid=4014330563428209283</a> </p>
+<p> <a href="https://www.bilibili.com/video/BV134411v7Sj?from=search&amp;seid=4014330563428209283" target="_blank" rel="noopener">https://www.bilibili.com/video/BV134411v7Sj?from=search&amp;seid=4014330563428209283</a>  这个不错 且应该有资料</p>
+<h6 id="可利用api"><a href="#可利用api" class="headerlink" title="可利用api"></a>可利用api</h6><p> v2ex  <a href="https://www.v2ex.com/p/7v9TEc53" target="_blank" rel="noopener">https://www.v2ex.com/p/7v9TEc53</a> </p>
+<p>bilibili  <a href="https://github.com/SocialSisterYi/bilibili-API-collect" target="_blank" rel="noopener">https://github.com/SocialSisterYi/bilibili-API-collect</a> </p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>接口测试可以直接用b的api，相关功能学习可以参考教程。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://nlbyd1119.online/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/" title="接口测试" target="_blank" rel="external">http://nlbyd1119.online/2020/09/30/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nlby" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nlby" target="_blank"><span class="text-dark">nlby</span><small class="ml-1x"></small></a></h3>
+        <div></div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/09/29/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%92%8Csolidity%E5%A4%8D%E4%B9%A0%E5%85%B6%E4%B8%80/" title="以太坊和solidity复习其一"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+
+    <div class="copyright">
+    	
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+<script src="//cdn.jsdelivr.net/npm/gitment@0.0.3/dist/gitment.browser.min.js"></script>
+<script>
+var gitment = new Gitment({
+  // id默认为当前页面url，如果url后带参数或锚点，gitment要重新初始化
+  // https://github.com/imsun/gitment/issues/55
+  // 解决方案：id:window.location.pathname,或者将id设置为当前页面标题
+  id: '接口测试', 
+  owner: 'nlby', // 可以是你的GitHub用户名，也可以是github id
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  }
+})
+gitment.render('comments')
+</script>
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+</html>
