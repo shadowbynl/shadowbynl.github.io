@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>人工智能选修（伪） | Memory</title>
+  <meta name="description" content="2020.10.30 参考陈红老师在超星上贴的资料 https:&#x2F;&#x2F;mooc1-1.chaoxing.com&#x2F;mycourse&#x2F;studentcourse?courseId&#x3D;214363224&amp;clazzid&#x3D;31461135&amp;enc&#x3D;e78b0efbb151e0fc47b16b6c7f7ef68b&amp;cpi&#x3D;81187838&amp;vc&#x3D;1  基本涵盖上课讲到的ppt内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能选修（伪）">
+<meta property="og:url" content="http://nlbyd1119.online/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="2020.10.30 参考陈红老师在超星上贴的资料 https:&#x2F;&#x2F;mooc1-1.chaoxing.com&#x2F;mycourse&#x2F;studentcourse?courseId&#x3D;214363224&amp;clazzid&#x3D;31461135&amp;enc&#x3D;e78b0efbb151e0fc47b16b6c7f7ef68b&amp;cpi&#x3D;81187838&amp;vc&#x3D;1  基本涵盖上课讲到的ppt内">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/630a1625f7816178467f5a74529f2e0c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e85d3a86d41ed1ccdd8624ecb0ba4f47.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/94c8cc5890a45abae58005861370a941.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/168e403ac238d0ec32d1e6c2e816de06.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7fa57a0cd2fb88aa8f281c6614af1339.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/77c0b59bcd19be0c47c421821ae326c6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/04191a6757929837902165b32982b6b5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3990756caf7d0620dbbdc6d9366f6a09.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e364e7a1821cc25fb0ef32a0b11a0212.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/aae83d8b0ffd724141a6b5aae129b0b4.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5de62ce03e4c6a0ef3a00d67528f0624.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/46c04a9b95595e2225a0838b4a00cc69.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e91a06b9d9db01e756442f183f23492d.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5d8b201cc12453ab07c3a8612d64170f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b9cdb66e4192ab145298acd9701fc6a7.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/d3a971418d76317901eb2d006e3fc6e1.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/254e2a124a90078d445b11aedf85b22e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/10747ebc604f2f5a38edce11931528fe.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5a2b3330e79fcfebb7cd73dfbe4cb07a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/86583d2516598e404df540f7cae49f7e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ffe8271315ab5a5a592ba03a183ad09f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0a3c5530d2f2ec9e31b55b11d3cc501a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/169e48de1333c1eb0d741cb3e9866c65.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/9e24042048bc3b945d523d5b96374c6a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3c20de75fe7967ae88b3267a0fefbc91.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7f9f7c44e968d45765eca901ce9e2ad4.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b07a278716b920c8f0aee7cc551fb77b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/bfd074dde5598df9cbc4a5e0c8ddf871.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/75ca9dcd04efeb56f6805da653c8a24d.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0a2e769f6edbb8002c28a12921658f6c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/1e585d0f0f70c3987af8ef8e3936adcd.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/df6226597303d00666505585c65d3301.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/69a01917a9f7a31d47d0781d80cd293f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6da6a8d0c8ec4f5861a67848754c1401.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/fc072b88dc76d12426553abaacebe3d7.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3da400db88c68a1ba422b7ee3f2e744e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/c0104587136eee5cd44367d24fe7f3a6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0aa6a48853d589818656cb5ff20d4f88.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0ccb22136028f29d1f0b02733903fbf6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/76a809168ab0e8d839acd7c3cd938fab.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8eafef67b3c1cc2c9e35f8ef0f668a88.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/9b44d56dbe8c0aba8b7c405e528008e0.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/dfdaeb1f6d062a56d8433b2e7743cd62.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/75809374d241a7299a74ae77d00ca700.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/af4eef65256b2bbeb810e558effa0e7f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/1b63094bb8e40ad1c67badaff7d76f34.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/503dc974ed2916be9af94590aae0a5b5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7c874d3c480454f3c089650b2b5de96a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3b4db5d7d92fc92a4186dc4404309897.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/c53ae19197bcf2bf7e7a23a600d48bd4.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a5e66d2a858deeb937051071319cff71.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/2a2dd716aa95679c4e7bef69d54ebaa7.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/bb0bd3476dbb65bc50b0cb1c0e4c5940.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/14022786db30ae2c79640ee43aa017c5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b0103928acd873c022e637342070190b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/33dd44c62ed80d0911d88526e11ade5c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/2630c49b9342d32b121992d5f2d38e9f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/40c2ee9104797b92d5995bb848d42601.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/dc5d6944d72039ffd74b53f18d4c94ad.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8ee9d65c37e16e99d172146c271dc7cf.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8ca4eacd10d89030d3455f56c03a5d8e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/c3c11143fab0b599934787cae4740a27.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ed9f1b1136536cb46805160274bcb247.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/f85c36e8bb5c4c573522ead1f2fab013.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/289552a8937acaf27f4e18b36b555c92.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7159cc4de31559e7e036df11d2c83cd7.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7c874d3c480454f3c089650b2b5de96a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/767fe684f70e0f6d5bc8bd433e11ce2e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/543235f37d097ec21d05191c667cdd6e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b94930f8b7b475ba98179ca94448231e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7fb32dfb62f7d1229ee74cc15a2cac64.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ecdc72135495f4d08262078f00ea77ee.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a9e524efefdee34492f19ab12e724a5a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7ff7ffb54c7c75cab6849641a631c7f2.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/675e73f1c3bdc242cd39cdd5fbf5354f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0ff5b4d06d130d4d716331cb0f7f15e7.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/1f382cb73c70b4660dfd5cd7f92b2d04.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/56b59c1eb2d2189a604f8d4be759319d.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4549af223ffcbc489347bee4249af562.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/804c23eba4b9c57c9ff892d158e0eb66.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ec536b9da94ffb4d00ef169aad308f2e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/eb3658aa208299da99ef04e25038c725.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3b34637c6f2f57bc623a4f651e146bab.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4826c63acce5f225168e50032376353b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a888fc6393269d6ea9d86541125b41c1.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ef575fd30aaa1d28de6b81d4c6680dfa.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/2092b2a4953ecd1660edd9bfeeee8853.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5f953b15666f2c486a181d0313f5a89b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/92006001efb52aae23ae278aece48180.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6c84645b76ed148edb9e6101d56c4fbc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/426534cd6a60b9f1ad5706a758d396aa.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/239a61219022d9876be9ea6b7813019e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/86390a200104ec20fd3451daff6c0fca.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/bea0b1680b1e71ddaa062e4331ae75cc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/1690956e98a42864fd41134efd4ef2d9.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/f5c7422b1d0691d6bbbc703856e5d19b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ec14d8ea636a1345a3ce04aa25f2a38c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3bd021fc990faa33e09e79493543941a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a2330afe9b6c127e6ca3bcc8b8f970b6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/51629e7fc8e36a30f3ba24de8100e508.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4bc3d9717a1e375ae29dfffee06b8ebb.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/50a78360e8e069631ae4e76efbba3f83.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/cb04fba3b0c3d61c706035d9bed6dd89.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/9eea3553185a478b5f6af0599bb987c8.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e5376fb71a6f0b5d1aa9e92b716a9101.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7b3106c371a9a0a793ce1933452d4486.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ca892acbbb1efc2f11f219d571c44892.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/25e7c79bc26fc24f2c1db92f60b41a25.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b49dbe822329175bb591eafe7d7f92d9.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e183e007a4ae7f2f894b0864d6b760c3.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/32ec48abaac15e521259c405fa239eb0.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/c5a70a715bd4e6647f74a6b9fb640827.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/21e03fde90c3600929e45cd9b5901424.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b5e9453367e9d3c2a82e461b81abe8b4.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/46b1884d434694b7da47483e390f6dfb.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6a8db672ad91c8a5db221bb651f5dbaa.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ee0fcfae31a9a4a01bc5bf058f512f77.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e7f3235cf63f40b36c6c40979dcc7bf0.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/1c6f132c2252c172799421d402518b01.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/f024ec9a8fe76c591abbd4d3d83540d0.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/57ce760599f2e2fd630bc55b7c07874f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/daaa9f7b5d2bb12f83f339e889fdcfe8.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/dd699042112eb2f374d15238f5d39662.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/f4bf4585e3dfd1367acfdb3a8746dbfe.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/56c6a667725066b60631d19f16249d6e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ce9868e2de05fc0f0cedec2fe6f99ecc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ccec4dc008d9982901e136a5096bcd6a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/276bbec5bcea9821f2776df9c6684012.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/716a6d7d59d77ecfcd3d9b6c2741d691.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/41ac0f01d248ac8027b524d301bd848b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0d68a6441255ca35f7d23b872744f1ae.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ca01ff8ff5ff59005f8ae080f3b1d58f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/55e189fe4adfe8e638fcbc365f7037db.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/bf88da20e341c7b4a6c2e4f384b11633.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/bd054ffae651d14901a89594da3f1717.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b2b738d7f64db8429c71cc1f47be826e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/163f2e9cc23f2ca018fc2ea4210702e0.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/c49e4b1c65de488f6b39952df121ff2f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/c9fcbe82a1db78ab9e478c4574101cbe.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b1a2a5b83ae16dedad16c04c427b4d62.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/fdac0a6e59bdc4cf5185450ee63b3761.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4951d3c791239c506fb3128e83afb029.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/76583eaa7c744d71537d6d84bf765f68.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/72035a5eb7879fd3a5563c18b5905537.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/73746bfb798510de7d48546e9f03ad22.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0d90742c60d2169195b7b07f7591cde6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/719769cc69f3d237b1842567e1db12e3.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/731020b8e9886110585aa88a2a8d56f9.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e4a6a0bde3fce997c61c22b1dec2eb3c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/d2643b5179ec08fa0482cbf48478bde8.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5f503c47bd2c8b0e24402ceccfbd4c5e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6a85f4f98be973b1d354fa9a0a1595ca.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4b409c84e9b1f2d142b714a74852428f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b448c77e1acfe6aad5510a9f8ef2f127.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/fb5d9bea45f435007eaf89f80168b706.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4fffceb24ac1b3f2f56282c72caa9aff.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/70c23d37f9cf66948fa331c0efdacd96.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e4a016e333832de14c0996d173d80d4b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/403c1f8017dc196e9d7a8d00b8bc5c6f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/92f8519d3ca27b28dfd42fec9bf43698.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/50d2687935d14f72a0d5fa78e975cdb6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3c8782cbf90654050e2983ef41862657.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/976756f0e4350d54ae7fd1a751d992e6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/fb1b0478210cada9fa914eebf86cf8d0.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7db780791f75ab447d8e5ca040e589dc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/11cb3785102e376e3794a26510776523.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/78c41cd28723e1bf35b7b6328b8f989d.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e8793c20c73e559198b805118df45914.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8841b21451007408e506f8d129208d7f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7a2a54fca138f6c4f107a24679c466f2.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/754914ede92e6427dad1229f9913b350.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7e3d14a4b2777cc35f1effc5292ad9f6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/51ba1b2b9bbd7f02595b2748e7379d15.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/2504a737834668085180a37f965bd44f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/1f7fa6e3875b4edf0f7dd8a44c048786.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a5324882dac0c9fa2aa5435c2dcfe73a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7310709a1579844b6d5cba7137fa6bb5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6acf4f87869bb1eafaa4e72d5bfed629.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7e0f8474726f915afdcf39c0aeb941dc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/70b8fd2c8af1f3c7f23293c5420ce742.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/f0ccc657273ba2af4663cd7aa479c5ee.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/f1810141f778ab5398a159bec2c4f3f6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/d8ed3d48e9146756eae144a64fc11be3.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/512223232122b7c651eb2001b573381b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4501452df35ef783f602ba0f6181e825.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/20827f1e15291f844157cb5b6c762762.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a4c0013b071449becb28086ed44711cc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7b6bc0e8e9609f59bed16c3d1a2df0c9.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/819cc2f183311be286c0718952a94092.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/66286b3ebe01ffd9dece01e68983e49c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/141e59b1303809b9d02001ea8796a51e.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/d72ee5f449f3abf0e5590577fbb7127c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/677533f086f6c7d192385bb055d00580.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/dd271071e7c160104275fb8be8c3e82a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/9daf0540076fe38ef640ea7f0d9514f1.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8c869ccb8235e27498d8cc47e518e948.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3b52c35511d28776aa9f3434900e4680.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/58d87f5cc65b5a7253aeefe53d1cb83f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/606202f7c03e415b0620bbbcfff23963.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/51d05069501d1751d82384c3b8441918.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5150646edc54a3f382f7fffc68386467.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/14bdc65666284ecc196e3800929694f4.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a8fc1217afbd5a6a679d575baaccb082.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/d7bae84beeabe67a40750fcb4813c2ed.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/63e7b8201b79cbe2322c4be512592490.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8358bd5fe4860658f5ac1e40972c2ba9.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/fca21cccb7754ebf234df779ce1dd51b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4fa2778bef84f78701b6f7d3c84b1315.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a5e0baed9325bb572342da7888cfdcb2.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/09c1b3714f8ebcd17b079b761a4af874.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5bb7e457c2b486a035e67cf426b821c5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ea30ac0a881070aecf661489b7624167.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/66a72150bc95c9456b2d3107db90c084.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/13ee530ef32db944862f9d091e5ae209.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/571935bd199adaaf04500608c8419df5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b2936ebabf1e1d676e11ef9f08047623.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/736b520513d435c103f1e43d406572f5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/685097f2ee576ae7c5b6233d600c00bf.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/534ab29273087dc7fffcc063dbc57591.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/b292ae0c519d651944aa0c10498e9fcd.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/cf333d8827a89c6ecb2e8f2696bb2689.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0bd2c912374a6c4f0d48c41f6baa3c79.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0a13ae179205d4596fd0ed70ee5be6d5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6c3131c37e539e5fc00020f31d5310cb.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ed657e36a58410f4b52c0a6c484785f2.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/7e93da1beb9f77b05c84901bf08c979a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/cdfe6489be2f733f8c43cf64a6776f29.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/bb1b6d36749a435d47ab6067ce1d2514.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/364a4f5f5e852898c13149279339a247.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/102d6de53966277904c668e58c2c7d38.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/9120bff9bd04554e7dcb3c1ef71198ed.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6e5cd795109503aef3c23c2c0fe2877c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3ac9146ad0968059952681e23ccf0434.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/2704ac23e5e97aa746fd3b1c7aaefdf8.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/78e1e745228658e407c1a8c1bf70b5f6.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/2e07f501aefc47f6acf052d03cd9a764.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8eb71d0a378a8399fea17f54c57b33d3.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4b94cc640bc91a997ffa53109d6dbb20.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/964b7f0e235b663ab2271c933985e595.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6506929c2abde70852883464c036716b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e2268d966b821e1aa2909d5b88c0116b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/a806ab6325fbfd45f2c273dfa5b9bc90.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/9dbf9d4207c3aa572d9bc2a1b4b60425.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ca35c4be26d9c928f57e4808b6fbf468.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ac67338d9aed9bfb8153476b2309284b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/243d650c6cf897e2020770b49dad1a98.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/99c7fd07f7ae6f5b7e782e14422b403f.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ced94b97dfbf4d1e3fe5b8dcf194f42a.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/cb3fddce5f1f046e4621595e3cde46cc.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0f9d4e286c64bb578d05246cd59d9dcb.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/84e6a7a6d7f42385203bb276dcedfb37.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/4f7066ebcc463a97b26b6335fce06876.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ac4b14b7ad1b50d45dadeed24b4c837c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6023d49f0cf46820daca302f93c8c40b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/85a6af8574236c4da51eac06ae4c82b2.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/dbb00f16ca95beb416bc7b713846a002.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/95e67e724585ca870f25bc4d2b0f9293.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8ab984fe28551a4f8942fcb2717a4178.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/e1be97f4c14baaedc11bef9472230bf5.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/8bfb0a9d2890f1e25eff252098054c24.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3409461dc61e2e8102ef3acf58579726.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/3b2c876af758d11863365696517f12d7.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/5a5bb7675d98f0668fc467e65b4897b8.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/0579bbfa5d34e2cd6b1d63211a54fd5c.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/71c31b13ff21d0bf58442ac799d4e78b.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/622e81659a92028a6767d67db6d8a571.png">
+<meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/ae67b94d9732446b50c93bcca711f4f5.png">
+<meta property="article:published_time" content="2020-11-01T06:26:38.000Z">
+<meta property="article:modified_time" content="2020-11-01T06:29:27.085Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p.ananas.chaoxing.com/star3/origin/630a1625f7816178467f5a74529f2e0c.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://nlbyd1119.online/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css">
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nlby" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nlby</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> NanJing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+
+	  <embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+	  <iframe frameborder="no" border="0" marginwidth="0"
+						marginheight="0" width="100%" height=86 src="//music.163.com/outchain/player?type=0&id=4872500795&auto=0&height=66">
+	  </iframe>
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>记录和总结一下学习过程及其他</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2005/">2005</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2006/">2006</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2007/">2007</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2008/">2008</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2009/">2009</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2011/">2011</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2012/">2012</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2013/">2013</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2014/">2014</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2017/">2017</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/70/">70</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/80/">80</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flask/">Flask</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSP/">JSP</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSql/">NoSql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ORM/">ORM</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E6%A1%86%E6%9E%B6/">Web框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/fabric/">fabric</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/live2d/">live2d</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/plot/">plot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E9%83%A8%E6%88%90%E4%B8%BAF/">全部成为F</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%99%E6%B3%95/">写法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9F%E8%83%BD%E7%82%B9%E5%AD%A6%E4%B9%A0/">功能点学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%B9%E5%99%A8/">容器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8E%A7%E5%88%B6%E5%99%A8/">控制器</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%BF%97/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/">框架使用</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E5%BF%B5/">概念</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">版本控制工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8C%AB%E8%85%BB/">猫腻</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%B8%83%E5%B1%80/">移动布局</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Science/" rel="tag">Python Science</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PythonWeb/" rel="tag">PythonWeb</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" rel="tag">博客框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" rel="tag">声优记录</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" rel="tag">小说整理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%88%E6%9E%9C/" rel="tag">效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" rel="tag">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" rel="tag">番剧记录</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Go/" style="font-size: 13.5px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 14px;">JavaWeb</a> <a href="/tags/Python-Science/" style="font-size: 13.6px;">Python Science</a> <a href="/tags/PythonWeb/" style="font-size: 13.3px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 13.8px;">android</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 13.2px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.2px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 13.4px;">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" style="font-size: 13px;">博客框架</a> <a href="/tags/%E5%A3%B0%E4%BC%98%E8%AE%B0%E5%BD%95/" style="font-size: 13.1px;">声优记录</a> <a href="/tags/%E5%B0%8F%E8%AF%B4%E6%95%B4%E7%90%86/" style="font-size: 13.1px;">小说整理</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.3px;">总结</a> <a href="/tags/%E6%95%88%E6%9E%9C/" style="font-size: 13px;">效果</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 13px;">版本控制</a> <a href="/tags/%E7%95%AA%E5%89%A7%E8%AE%B0%E5%BD%95/" style="font-size: 13.9px;">番剧记录</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 13px;">通用</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 13.7px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">51</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/" class="title">人工智能选修（伪）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-11-01T06:26:38.000Z" itemprop="datePublished">2020-11-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/10/31/%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" class="title">汇编程序功能实现说明</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-10-31T15:58:55.000Z" itemprop="datePublished">2020-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/10/23/app%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96%E7%AD%96%E7%95%A5/" class="title">app数据抓取策略</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-10-23T11:32:25.000Z" itemprop="datePublished">2020-10-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/10/18/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%92%8Csolidity%E5%A4%8D%E4%B9%A0%E5%85%B6%E4%BA%8C/" class="title">以太坊和solidity复习其二</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-10-18T06:18:39.000Z" itemprop="datePublished">2020-10-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/10/14/8086%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="title">8086指令系统</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-10-14T12:12:48.000Z" itemprop="datePublished">2020-10-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+	<!------ 位置可自定义 ------>
+<div class="Canvas" style="position: fixed; right: 0px; bottom: 0px;z-index: 99999999" id="L2dCanvas"></div>
+
+<!------ 依赖 JS | Dependent JS ------>
+<!---- 可选 | Optional ---->
+<!-- 兼容低版本浏览器 | Compatible with low-level browsers -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"> </script>
+<!-- 音频播放兼容 | Audio playback compatible -->
+<script src="https://cdn.jsdelivr.net/npm/howler@2.1.3/dist/howler.min.js"></script>
+<!---- 必需 | Required ---->
+<script src="https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/static/live2dcubismcore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@4.6.1/dist/pixi.min.js"></script>
+<!-- live2dv3.js -->
+<script src="https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.0.2/static/live2dv3.js"></script>
+
+<!------ 加载Live2d模型 | Load Live2d model ------>	
+<script>
+    window.onload = () => {
+        new l2dViewer({
+             el: document.getElementById('L2dCanvas'),
+                basePath: 'https://cdn.jsdelivr.net/gh/nlby/live2dCDN@1.1.1/assets/', // 模型根目录
+                modelName: 'xuefeng_3', // 模型目录
+                sizeLimit: false,
+                mobileLimit: false
+            
+            
+        })
+    }
+</script>
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-人工智能选修（伪）" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      人工智能选修（伪）
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/" class="article-date">
+	  <time datetime="2020-11-01T06:26:38.000Z" itemprop="datePublished">2020-11-01</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>2020.10.30 参考陈红老师在超星上贴的资料 <a href="https://mooc1-1.chaoxing.com/mycourse/studentcourse?courseId=214363224&amp;clazzid=31461135&amp;enc=e78b0efbb151e0fc47b16b6c7f7ef68b&amp;cpi=81187838&amp;vc=1" target="_blank" rel="noopener">https://mooc1-1.chaoxing.com/mycourse/studentcourse?courseId=214363224&amp;clazzid=31461135&amp;enc=e78b0efbb151e0fc47b16b6c7f7ef68b&amp;cpi=81187838&amp;vc=1</a>  基本涵盖上课讲到的ppt内容 某些单元的部分课时是没有内容的</p>
+</blockquote>
+<h4 id="第一单元"><a href="#第一单元" class="headerlink" title="第一单元"></a>第一单元</h4><h5 id="第一课时"><a href="#第一课时" class="headerlink" title="第一课时"></a>第一课时</h5><p>参考资料：</p>
+<p>玛格丽特.博登编，刘西瑞等译，人工智能哲学，上海译文出版社，2001年<br>Stuart Russell等著，姜哲等译，人工智能—一种现代方法（第3版），清华大学出版社，2013年<br>George F.Luger著，史忠植等译，人工智能—复杂问题求解的结构和策略，机械工业出版社，2004年<br>Michael R.W. Dawson, From Bricks to Brains, AU Press, Athabasca University, 2010<br>史忠植，神经计算，电子工业出版社，1993年</p>
+<p><a href="http://ilab.usc.edu" target="_blank" rel="noopener">http://ilab.usc.edu</a></p>
+<p>1.1.1 为什么要研究人工智能</p>
+<p>​    建造智能体</p>
+<p>1.1.2 人类智能</p>
+<p>​    1.1.2.1 人类的自然智能活动</p>
+<p>​          解算题目、猜谜语、讨论问题、驾车、下棋、编制计划…<br>​    1.1.2.2 智能的定义</p>
+<p>​         史忠植（中科院）<br>​          智能是个体有目的的行为、合理的思维, 以及有效的适应环境的综合性能力。<br>​          通俗地说, 智能是个体认识客观事物和运用知识解决问题的能力。人类个体的智能是一种综合性能力, 具体讲, 可以包括感知与认识客观事物、客观世界与自我的能力; 通过学习取得经验、积累知识的能力; 理解知识、运用知识和运用经验分析问题和解决问题的能力; 联想、推理、判断、决策的能力;运用语言进行抽象、概括的能力; 发现、发明、创造、创新的能力;实时地、迅速地、合理地应付复杂环境的能力;预测、洞察事物发展变化的能力等。</p>
+<p>​         拉尔夫·霍络维（美国哥伦比亚大学神经古生物学家）<br>​         智能就是处理信息的能力</p>
+<p>   1.1.2.3 智能的起源</p>
+<p>​         是大脑的功能， 与神经、神经系统有关。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/630a1625f7816178467f5a74529f2e0c.png" alt="img"></p>
+<p>​    1.1.2.4 智能是否为人类所特有</p>
+<p>​           众说纷纭：</p>
+<p>​          Charies Darwin (1859, 《物种起源》)<br>​           人类智慧与那些进化得比较好的动物智慧的差异，只是一个进化水平的问题，而非本质上的区别</p>
+<p>​          John Searle（哲学家）<br>​           我们由什么构成直接影响着我们的智能[1980, 1992]。他认为思考仅发生在那些十分特殊的机器上—有生命且由蛋白质构成的机器。</p>
+<p>​          John McCarthy<br>​           智能是指达到目标的能力中的计算部分，人、许多动物、和一些机器具有不同类别和程度的智能</p>
+<p>​          …</p>
+<p>​          动物本能与智能:</p>
+<p>​          鹦鹉、树鹨、乌鸦、黑猩猩等。</p>
+<h5 id="第二课时"><a href="#第二课时" class="headerlink" title="第二课时"></a>第二课时</h5><p>1.2.1 机器能否具有智能</p>
+<p>​     典型观点：</p>
+<p>​     John Searle（哲学家）<br>​     我们由什么构成直接影响着我们的智能[1980, 1992]。他认为思考仅发生在那些十分特殊的机器上—有生命且由蛋白质构成的机器。</p>
+<p>​     Newell ，S i m o n物理符号系统假说[Newell &amp; Simon 1976]<br>​     这一假说指出，物理符号系统具备必要且足够的方法来进行普通智能行为。Newell 和S i m o n指出物理符号系统是类似数字计算机的机器，具备灵活处理符号数据的能力—加数、重排符号序列（如按字母顺序排列一组姓名）及符号替换等等</p>
+<p>​    Wilhelm Leibniz (哲学家、数学家 1646-1716)<br>​     世界上所有的东西包括大脑和思维都按照物理定律运作， 世界上较早设计机械装置做智能操作者</p>
+<p>​    Hubert Dreyfus (哲学家)《计算机不能做什么》，1972<br>   棋弈、语言翻译、问题求解和模式识别都依赖人类“信息加工”的特殊形式，而这种特殊形式的人类“信息加工”，反过来又取决于人类在世界中的存在方式。对这种处于某一局势之中的方式，原则上无法用现在能想象到的技巧加以程序化。机器不可能具有智能。</p>
+<p>1.2.2 人工智能的定义</p>
+<p>​     尚无统一的定义。例如：</p>
+<p>​     定义一<br>​      建造智能机器（特别是智能计算机程序）的科学与工程，她与类似的用计算机来理解人的智能的工作<br>   相关，但人工智能又无需局限于使用那些在生物上观察到的机制与方法 。</p>
+<p>​     定义二<br>​      致力于开发使计算机系统完成在人和其它动物的活动中被认为需要智能才能完成的技术的研究领域<br>​    </p>
+<p>​     定义三<br>​     人工智能是智能机器所执行的通常 与人类智能有关的功能，如判断、推理、证明、识别、感知、理解、设计、思考、规划、学习和问题求解等思维活动</p>
+<p>​     …</p>
+<p>​     各种定义，就其内涵来说都是要么关于思考过程（推理），要么关于行为的；就其性能来说都是要么关于类似人的性能，要么关于理想性能的。这就把基本的人工智能系统分为了四类，即象人一样思考的系统、理性思考的系统、象人一样动作的系统和理性动作的系统。</p>
+<p> 1.2.2.1 象人一样动作的系统</p>
+<p>​     图灵测试（Turing Test）<br>​     什么样的机器（Machine）才算是有智能的呢？<br>​      Turing, A.M. (1950). Computing machinery and intelligence. Mind, 59, 433-460.<br>​<br>​    “机器是否能够思考?” -&gt; “机器能否智能地动作（behave intelligently）?”<br>​      图灵测试 (模仿游戏)  </p>
+<p>​      <img src="https://p.ananas.chaoxing.com/star3/origin/e85d3a86d41ed1ccdd8624ecb0ba4f47.png" alt="img"></p>
+<p>​     计算机需要具有这些能力: 自然语言处理，知识表示，自动推理，机器学习</p>
+<p>1.2.2.2 象人一样思考的系统</p>
+<p>​      认知科学（Cognitive Science）</p>
+<p>​      分析过程: 通过内省或心理学实验建立大脑内部活动模型, 再以计算机程序表达出来。</p>
+<p>​      验证过程： 如果计算机程序的输入/输出和实时行为与人的行为相匹配，则说明该程序的某些机制可能也是人类自身所采用的机制</p>
+<p>1.2.2.3 理性思考的系统</p>
+<p>​      Aristotle (~ 384 B.C.) 是世界上第一个试图将正确的思考（right thinking）规范化的人<br>​      三段论（syllogisms） 形成不能驳倒（Irrefutable）的结论的推理过程<br>​      E.g., “Socrates 是人, 所有人都要死，所以Socrates也会死。”<br>​      一些希腊学园发展了各种形式的逻辑系统：<br>​      思维的符号标记 加上推导规则。他们认为这样的思维法则（ “laws of thought”）统治着人类的心智</p>
+<p>1.2.2.4 理性动作的系统</p>
+<p>​      理性行为: Doing the right thing!<br>​      在信念支持下达到目的的行动。</p>
+<p>​      The right thing: 预期获得最大回报的事情 。</p>
+<p>​      提供了有关人工智能的最一般的定义 – 研究和构造理性Agent<br>​      正确的推理 (“Laws of thought”)<br>​      不确定性处理<br>​      对资源受限的考虑 (e.g., reflex vs. deliberation)<br>​      认知技巧 (NLP, AR, knowledge representation, ML, etc.)</p>
+<h5 id="第三课时"><a href="#第三课时" class="headerlink" title="第三课时"></a>第三课时</h5><p>1.3.1 人工智能的研究特点与途径 </p>
+<p>​     综合性强<br>​     集中多个学科的思想和技术，交叉自然科学和社会科学。诞生于控制论、信息论和系统论，涉及哲学、心理学、认知科学、计算机科学、数理逻辑等等。</p>
+<p>​     不成熟<br>​     研究中，与人们的期望和人类自身的大脑结构和组织功能存在较大差距<br>​    </p>
+<p>​     研究价值<br>​     理论价值<br>​     实践价值</p>
+<p>​     研究途径多<br>​     功能模拟：符号主义（Symbolicism）学派<br>​      结构模拟：联结主义（Connectionism）学派<br>​      行为模拟：行为主义（Actionism）学派</p>
+<p>​     集成模拟： 上述途径取长补短。     </p>
+<p>1.3.1.1 符号主义学派</p>
+<p>​      又叫逻辑主义学派（Logicism）,心理学派（Psychlogism）,计算机学派，其主要原理是物理符号系统假设和有限合理性原则。</p>
+<p>​      该学派认为人工智能源于数学逻辑，认为人的认知基元是符号，认知过程即符号操作过程，知识是信息的一种形式，是构成智能的基础，人工智能的核心问题是知识表示、知识推理和知识运用。该学派强调功能模拟，认为人与计算机都是一种物理符号系统，能够用计算机来模拟人的智能。</p>
+<p>​      该学派的代表性成果是LT 逻辑理论家。</p>
+<p>1.3.1.2 联结主义学派</p>
+<p>​      又叫仿生学派（Bionicism）/生理学派（Physiologism）。主要原理是神经网络及神经网络间的连接机制与学习算法。</p>
+<p>​      该学派反对物理符号系统假设，认为人工智能源于仿生学，特别是人脑模型的研究。该学派强调结构模拟，认为生理神经网络结构的不同能够表现出不同的功能和行为，认为人的思维基元是神经元。</p>
+<p>​      该学派的代表性成果有：<br>​      McCulloch &amp; Pitts, 1943年创立的MP脑模型<br>​      60-70年代： 以感知机为代表的脑模型研究热潮<br>​      82、84年HopField提出用硬件模拟神经网络，86年Rumelhart提多层网络中的反向传播（BP）算法</p>
+<p>​      …</p>
+<p> 1.3.1.3 行为主义学派</p>
+<p>​       也叫进化主义学派（Evolutionism）、控制论学派（Cyberneticism）。其主要原理是控制论、感知-动作型控制系统。</p>
+<p>​       该学派认为人工智能源于控制论，认为智能取决于感知和行动；智能不需要知识、不需要表示、不需要推理；人工智能可以像人类智能一样逐步进化；智能行为只能在现实世界中与周围环境交互作用而表现出来；将神经系统工作原理与信息理论、控制理论、计算机联系起来，强调行为模拟的方法，认为功能结构和智能行为是不可分的。</p>
+<p>​       该学派早期主要模拟人在控制过程中的智能行为和作用<br>​          自寻优、自适应、自组织、自学习<br>​          控制论动物<br>​          80年代诞生了智能控制和智能机器人系统<br>​       代表作：<br>​          Brooks六足机器人 – 基于感知动作模式的模拟昆虫行为的控制系统</p>
+<p>1.3.2  人工智能的研究内容</p>
+<p>​      参见课本p13~p15</p>
+<h5 id="第四课时"><a href="#第四课时" class="headerlink" title="第四课时"></a>第四课时</h5><p>1.4.1 人工智能的基础</p>
+<p>​     哲学、数学、心理学、语言学、神经科学和控制论等是人工智能的学科基础。</p>
+<p>1.4.1.1 哲学基础</p>
+<p>​      从古希腊开始，哲人们（亚里士多德等）就开始了对智能的思索，Hubert Dreyfus据此认为人工智能开始于公元前450年。他们的探索结出了丰硕的果实， 如迪卡尔的身心二元论、莱布尼茨的一元论、Francis Bacon的《新工具论》、拉美特里的《人是机器》、David Hume 的归纳原理（《论人类天性》）、Rudolf Carnap的逻辑实证主义学说（《世界的逻辑结构》）等。而亚里士多德的目的手段分析方法最终由Newell 与 Simon 在他们的通用问题求解器GPS上得到了实现，最终完成了知识与行动的联结。</p>
+<p>1.4.1.2 数学基础</p>
+<p>​      数学家们在确定与不确定知识表示与推理、定理证明与计算复杂性等方面为人工智能的发展作出贡献：</p>
+<p>​      逻辑（Logic）<br>​          George Boole (1815-1864)： 1847年创立了布尔代数<br>​          Gottlob Frege (1848-1925)： 1879年建立了一阶逻辑<br>​      形式化研究的局限性<br>​          David Hilbert (1862-1943）: 数学家要解决的23大问题（含 著名的可判定性问题）：<a href="http://babbage.clarku.edu/~djoyce/hilbert/problems.html" target="_blank" rel="noopener">http://babbage.clarku.edu/~djoyce/hilbert/problems.html</a><br>​          Kurt Godel (1906-1978）: 不完备定理（1931）<br>​          Alfred Tarski (1902-1983 ）: 真概念不可定义性定理（1933）<br>​          Alonzo Church (1903-1995): Church－Turing不可判定定理（1936）<br>​          Cobham：1964 , Edmonds：1965 问题复杂性（多项式时间与指数时间）<br>​          Steven Cook (1971) ，Richard Karp (1972)： NP-完备理论<br>​      概率 （Probability）<br>​          Gerolamo Cardano (1501-1576)： 意大利数学家，首先提出概率思想框架<br>​          Pierre Fermat (1601-1665), James Bernoulli (1654-1705), Pierre Laplace (1749-1827)等：完善概率论，并引入统计处理的方法<br>​          Thomas Bayes (1702-1761)：Bayes准则、Bayes分析方法形成现代AI不确定推理的基础<br>​          John Von Neumann &amp; Oskar Morgenstern (1944): 决策理论（Decision Theory）-概率论和效用理论的结合 – 建立推理和行动的联结。</p>
+<p>1.4.1.3 心理学</p>
+<p>​      最早用科学心理学知识研究人类的视觉<br>​          Hermann von Helmholtz (1821-1894)：德国心理学家<br>​          Wilhelm Wundt (1832-1920)： Helmholtz的学生<br>​               1879年在莱比锡大学创建世界上第一个心理实验室<br>​               构造主义学派：内省法<br>​         《Handbook of Physiological Optics》</p>
+<p>​      John Watson(1878-1958) &amp; Edward Lee Thorndike (1874-1949)<br>​          行为主义（Behaviourism）学派<br>​          意识看不见、摸不着，无法进行客观研究，行为才应是心理学研究对象。<br>​          研究方法上：反对内省法，主张用客观实验观测可观测的行为<br>​          研究外在刺激和个体行为之间的联系</p>
+<p>​       认知心理学派<br>​           Frederic Bartlett (1886~1969): 认知模型<br>​           Kenneth Craik， 1943， 《The Nature of Explanation》. 确立精神地位<br>​               刺激 -&gt; 内部表示, 由认知过程转换为新的认知过程 -&gt; 行动（响应）<br>​               研究方法：如果计算机程序的输入/输出和实时行为与人的行为相匹配，则说明该程序的某些机制可能也是人类自身所采用的机制<br>​           认知科学（1956）：认知、程序    </p>
+<p>1.4.1.4 计算机</p>
+<p>​      <img src="https://p.ananas.chaoxing.com/star3/origin/94c8cc5890a45abae58005861370a941.png" alt="img"></p>
+<p>​     第五代<br>​     1981年10月，日本首先向世界宣告开始研制第五代计算机，并于1982年4月制订为期10年的“第五代计算机技术开发计划”，总投资为1000亿日元。第五代计算机的基本结构由知识库、推理机及自然人机接口构成。1992年夏季，日本正式宣布， 终止第五代计算机研制工作。</p>
+<p>​     第六代<br>​     第六代计算机是利用新型的硬件，模仿人脑的神经结构，开发出能辨别物体、能听懂声音、具有自己学习能力的“人工大脑”，也称神经电脑。</p>
+<p>​     2014年，美国《科学》周刊已将“IBM推出模仿人类大脑的芯片”列为年度十大科学突破之一。</p>
+<p>​     2020年9月，浙江大学、之江实验室研制出全球规模最大亿级神经元类脑计算机。</p>
+<p>1.4.1.5 神经科学</p>
+<p>​      神经科学研究神经系统，特别是大脑。大脑产生思维的精确方式是科学上最重大的神秘现象之一。18世纪中期以前，人们认为意识存在于心脏、脾或松果体。<br>​      </p>
+<p>​       认识到大脑与众不同<br>​          Aristotle, BC335: 在所有的动物中，与体型比例而言，人的大脑最大<br>​          西尔勒，1992， 大脑产生意识：简单细胞的集合导致思维、行动和意识</p>
+<p>​      Paul Broca(1824~1880)<br>​          研究大脑损伤病人的失语症<br>​         存在负责特点认知功能的大脑局部区域</p>
+<p>​      Camillo Golgi(1843~1926)<br>​         (1873) 染色技术，观察大脑的单个神经细胞<br>​         认为大脑的功能基本上是在嵌入了神经元的连续介质里完成的</p>
+<p>​      Santiago Ramon Cajal(1852~1934)<br>​         提出神经元学说<br>​         1906年与Golgi获得诺贝尔奖</p>
+<p>​      大脑活动测量<br>​         1929年，Hans Berger 发明脑电图记录仪（EEG）<br>​         1990年，Ogawa 开发功能性核磁共振成像仪(fMRI)<br>​         正电子断层扫描 PET</p>
+<p>1.4.1.6 控制论</p>
+<p>​      Norbert Wiener (1894-1964): 《控制论》（Cybernetics, 1948）<br>​            研究和模拟自动控制的生物和人工系统的学科<br>​     </p>
+<p>​      控制论工程的目标在20世纪40年代已经早就被明确表达：使系统展现出高度的灵活性；对变化的环境作出“智慧”的反应</p>
+<p>1.4.1.7 语言学</p>
+<p>​      语言学对人工智能的发展未发挥多少奠基性的作用。</p>
+<pre><code>AI和语言学的交叉:自然语言处理（NLP）, 知识表示(KR)
+    B.F.Skinner, 1957, 《Verbal Behaviour》
+        对语言学习的行为主义方法的全面描述
+    Noam Chomsky, 《Syntactic Structures》
+        奠定了衍生语法的哲学基础
+        句法模型易于用程序实现
+        将语言学研究的最高目标定在对人类心智的了解上
+人性与心智发展上的大问题
+    先天论与经验论的对立（Nativism Vs Empiricism）
+    天生与培育的区分(Nature Vs Nurture)</code></pre><p>​      AI研究课题<br>​         如何结合各种语境因素进行自然语言理解和推理，使智能机器人能够用人的自然语言与人进行成功的交际。</p>
+<p>​      21世纪是人脑研究的世纪， 也是脑神经语言学的世纪。</p>
+<p>1.4.2 人工智能的历史</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/168e403ac238d0ec32d1e6c2e816de06.png" alt="img"></p>
+<h4 id="第二单元"><a href="#第二单元" class="headerlink" title="第二单元"></a>第二单元</h4><h5 id="第一课时-1"><a href="#第一课时-1" class="headerlink" title="第一课时"></a>第一课时</h5><p>2.1.1 人工智能的历史（续）</p>
+<p>​    参见课本p3~p7 </p>
+<p>​    参见 尼克著 《人工智能简史》</p>
+<p>​    2.1.1.1 孕育期 （1956年前）</p>
+<p>​    2.2.1.2 形成时期 （1956~1970年）</p>
+<p>​    2.2.1.3 暗淡时期 （1966 ~ 1974年）</p>
+<p>​    2.2.1.4 知识应用时期 （1970 ~ 1988年）</p>
+<p>​    2.2.1.5 集成发展时期 （1986年至今）</p>
+<p>2.1.2 人工智能的应用与现状</p>
+<p>​    参见课本p18~22</p>
+<p>​    问题求解与博弈</p>
+<p>​    逻辑推理与定理证明</p>
+<p>​    …</p>
+<p>2.1.3 人工智能的道德风险与规范</p>
+<p> 2.1.3.1 人工智能的道德风险</p>
+<p>​     自动化导致失业<br>​     人们会拥有更多的闲暇或更大的压力<br>​     人们会失去作为人的独一无二的感觉<br>​     人们可能会失去更多的个人隐私<br>​     导致责任感的丧失<br>​      不加控制可能会导致人类种族的终结</p>
+<p>​         参见 雨果著 《人工智能简史》，库兹威尔 《奇点》</p>
+<p>​         为什么最近有很多名人，比如比尔盖茨，马斯克、霍金等，让人们警惕人工智能？人工智能很可能导致人类的永生或者灭绝，而这一切很可能在我们的有生之年发生。<br>​         Rossum’s Universal Robots,1921<br>​         The Terminator,1984<br>​         The Matrix, 1999<br>​         超级智能机器与智能爆炸<br>​         超人类主义</p>
+<p>2.1.3.2 人工智能的规范</p>
+<p>​      2.1.3.2.1 美国国防部宣布采纳人工智能五项伦理原则 （2019年10月）</p>
+<p>​         负责任的</p>
+<p>​         公平的</p>
+<p>​         可追溯的</p>
+<p>​         可靠的</p>
+<p>​         可控的</p>
+<p>​      2.1.3.2.2 中国新一代人工智能治理原则（2019年6月）</p>
+<p>​         发展负责任的人工智能的八项原则</p>
+<p>​            和谐友好</p>
+<p>​            公平公正</p>
+<p>​           包容共享</p>
+<p>​           尊重隐私</p>
+<p>​            安全可控</p>
+<p>​            共担责任</p>
+<p>​           开放协作</p>
+<p>​           敏捷治理</p>
+<h5 id="第二课时-1"><a href="#第二课时-1" class="headerlink" title="第二课时"></a>第二课时</h5><p>2.2.1 Agent</p>
+<p>​    Jon Doyle (1983): 理性Agent的设计是AI的核心。</p>
+<p>​    2.2.1.1 Agent的定义</p>
+<p>​    Agent 也叫智能体、艾真体、代理。</p>
+<p>​    百度百科: agent指能自主活动的软件或者硬件实体。</p>
+<p>​    其它定义:</p>
+<p>​    1) FIPA（Foundation for Intelligent Physical Agent），一个致力于Agent技术标准化的组织给Agent下的定义是：“Agent是驻留于环境中的实体，它可以解释从环境中获得的反映环境中所发生事件的数据，并执行对环境产生影响的行动。” 在这个定义中，Agent被看作是一种在环境中“生存”的实体，它既可以是硬件（如机器人），也可以是软件。</p>
+<p>​    2) 著名Agent理论研究学者Wooldridge博士等在讨论Agent时，则提出“弱定义”和“强定义”二种定义方法：弱定义Agent是指具有自主性、社会性、反应性和能动性等基本特性的Agent；强定义Agent是指不仅具有弱定义中的基本特性，而且具有移动性、通信能力、理性或其它特性的Agent；</p>
+<p>​    3) Franklin和Graesser则把Agent描述为“Agent是一个处于环境之中并且作为这个环境一部分的系统，它随时可以感测环境并且执行相应的动作，同时逐渐建立自己的活动规划以应付未来可能感测到的环境变化”；</p>
+<p>​    4) 著名人工智能学者、美国斯坦福大学的Hayes-Roth认为“智能Agent能够持续执行三项功能：感知环境中的动态条件；执行动作影响环境条件；进行推理以解释感知信息、求解问题、产生推断和决定动作”；5) Agent研究的先行者之一，美国的Macs则认为“自治或自主Agent是指那些宿主于复杂动态环境中，自治地感知环境信息，自主采取行动，并实现一系列预先设定的目标或任务的计算系统”。</p>
+<p>  Agent的定义 – Stuart的观点<br>   通过传感器感知所处环境并通过执行器对该环境产生作用的东西</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7fa57a0cd2fb88aa8f281c6614af1339.png" alt="img"><br>     Agent概念是一个分析系统的方法或工具<br>     不是要将世界绝对地分为智能体和非智能体两类事物<br>     Agent 举例：….</p>
+<p>​     2.2.1.2 Agent 的基本特性</p>
+<p>​          (1)自治性(Autonomy ) : Agent能根据外界环境的变化，而自动地对自己的行为和状态进行调整，而不是仅仅被动地接受外界的刺激，具有自我管理自我调节的能力。</p>
+<p>​          (2)反应性(Reactive):能对外界的刺激作出反应的能力。</p>
+<p>​          (3)主动性(Proactive):对于外界环境的改变，Agent能主动采取活动的能力。</p>
+<p>​          (4)社会性(Social ) : Agent具有与其它Agent或人进行合作的能力，不同的Agent可根据各自的意图与其它Agent进行交互，以达到解决问题的目的。</p>
+<p>​          (5)进化性:Agent能积累或学习经验和知识，并修改自己的行为以适应新环境。</p>
+<p>​      2.2.1.3 Agent的结构</p>
+<p>​           参见上图。</p>
+<p>​           感知序列：该智能体所收到的所有输入数据的完整历史<br>​           智能体函数 ：决定智能体行为的，将任意给定感知序列影射到智能体的行动的描述：f : P*  A<br>​           智能体程序：智能体函数的一个具体实现<br>​           智能体结构： 智能体程序在其上运行的物理装置<br>​            智能体 = 体系结构 + 程序</p>
+<p>​      2.2.1.4 Agent 举例</p>
+<p>​          1） 吸尘器Agent</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/77c0b59bcd19be0c47c421821ae326c6.png" alt="img"></p>
+<p>​          感知序列：<br>​          位置、内容， eg: [A, Dirty]<br>​          动作：<br>​          Left, Right, Suck, Noop<br>​          智能体函数与程序</p>
+<p> <img src="https://p.ananas.chaoxing.com/star3/origin/04191a6757929837902165b32982b6b5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3990756caf7d0620dbbdc6d9366f6a09.png" alt="img"></p>
+<p>​     2.2.1.5 理性Agent</p>
+<p>​          1) 理性Agent的定义<br>   对于每个可能的感知序列，根据已知的感知序列提供的证据和智能体内建的先验知识，选择使其性能度量最大化的行动的智能体。</p>
+<p>​          2）性能度量<br>​          刻画Agent成功程度的主观度量</p>
+<p>​          3）智能体的理性与下列因素(PEAS)有关<br>​          性能度量（Performance）<br>​          智能体对环境的先验知识(Environment)<br>​          智能体可以执行的动作(Actuator)<br>​          智能体目前的感知序列(Sensor)</p>
+<p>​           4）理性Agent 举例 —- 无人驾驶汽车</p>
+<p>​             Performance measure? 安全, 舒适, 守法，利润最大化， …<br>​             Environment? 街道/公路, 行人, 其它车辆, 气候, …<br>​             Actuators? 方向盘，加速器，刹车，信号灯，喇叭，显示器，…<br>​             Sensors? 摄像头，速度计，里程计，加速计，油量计，GPS …<br><img src="https://p.ananas.chaoxing.com/star3/origin/e364e7a1821cc25fb0ef32a0b11a0212.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/aae83d8b0ffd724141a6b5aae129b0b4.png" alt="img"></p>
+<p>​           表驱动法构造智能体函数 f : P* -〉 A</p>
+<p>​           Example: 防碰撞Agent - CAA<br>​                   传感器:   3 proximity sensors<br>​                   执行器:   方向盘, 刹车</p>
+<p>​       <img src="https://p.ananas.chaoxing.com/star3/origin/5de62ce03e4c6a0ef3a00d67528f0624.png" alt="img"></p>
+<p>​       怎样产生f?<br>​           对每个p 包含于 Pl X Pm X Pr<br>​           产生一个合适的行动a 包含于 S X B</p>
+<p>​       映射表有多大?<br>​          表大小 = 感知序列尺寸 x 行动数= |Pl | |Pm| |Pr| |S| |B|</p>
+<p>​          E.g., P = {close, medium, far}3   A = {left, straight, right} X {on, off}</p>
+<p>​              则表大小 = 27<em>3</em>2 = 162</p>
+<p>​       怎样选择行动? 搜索</p>
+<h5 id="第三课时-1"><a href="#第三课时-1" class="headerlink" title="第三课时"></a>第三课时</h5><p>2.3.1 Agent分类</p>
+<p>​     按照一般性排序，存在如下四种基本的智能体类型 ：</p>
+<p>​        简单反射型 agents<br>​        基于内部状态的反射型agents<br>​        基于目标的agents<br>​        基于效用的agents</p>
+<p>​     上述各类agents都可以转换成学习agents</p>
+<p>2.3.1.1 简单反射型 Agents</p>
+<p>​     根据某些条件-动作规则来对环境作出反应， 这种条件与动作的联结可以是先天内在的，也可以是后天习得的。</p>
+<p>​     如:  如果前面有车刹车灯亮则踩刹车<br>​         如果有异物进入眼睛则眨眼睛</p>
+<p>​     这种if-then规则也叫产生式。<br>​    </p>
+<p>​     优点：结构简单<br>​          反应快速<br>​     缺点：智能有限</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/46c04a9b95595e2225a0838b4a00cc69.png" alt="img"></p>
+<p>2.3.1.2 基于内部状态的反射型Agents</p>
+<p>​      根据当前感知信息、世界如何演化的模型和执行动作对环境的影响来更新内部状态，选择相应的动作。对付部分可观测环境的有效途径。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e91a06b9d9db01e756442f183f23492d.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5d8b201cc12453ab07c3a8612d64170f.png" alt="img"></p>
+<p>2.3.1.3 基于目标的Agents</p>
+<p>​      在感知与动作之间建立联结与目标相关。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b9cdb66e4192ab145298acd9701fc6a7.png" alt="img"></p>
+<p>这种Agent 会推理，考虑当前行动对将来的影响</p>
+<p>方法：搜索、规划</p>
+<p>优点：灵活<br>缺点：效率低</p>
+<p>2.3.1.4 基于效用的Agent</p>
+<p>​      基于效用的Agent更关心如何产生高品质的行为。</p>
+<p>​      效用函数： 状态  -〉  实数，描述智能体与状态相关的偏好程度，帮助决策。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/d3a971418d76317901eb2d006e3fc6e1.png" alt="img"></p>
+<p>2.3.1.5 学习Agents</p>
+<p>智能体程序是如何形成的？</p>
+<p> 图灵（1950）：建造学习机器，教育它们</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/254e2a124a90078d445b11aedf85b22e.png" alt="img"></p>
+<h5 id="第四课时-1"><a href="#第四课时-1" class="headerlink" title="第四课时"></a>第四课时</h5><p>2.4.1 环境类型</p>
+<p>​     可获得的与不可获得的环境 (Accessible vs. inaccessible)</p>
+<p>​     确定性的与不确定的环境 (Deterministic vs. nondeterministic)<br>​     片段式的与非片段式的环境 ( Episodic vs. nonepisodic)<br>​     静态的与动态的环境 (Static vs. dynamic)<br>​     离散的与连续的环境 (Discrete vs. Continuous)<br>​     单智能体与多智能体环境 (single agent Vs. Muti-Agent)</p>
+<p> 2.4.1.1   可获得的 vs 不可获得的环境 (Accessible vs. inaccessible)</p>
+<p>​     如果智能体的传感装置可以获得环境的与选择行动有关的全部状态之所有方面的信息， 这样的环境就是可获得的（或可观察的）。</p>
+<p> 2.4.1.2   确定性的与非确定性的环境 (Deterministic vs. nondeterministic)</p>
+<p>​     如果环境的下一个状态由当前状态和Agent所选行动完全决定，则这样的环境称为确定性的环境。从Agent的观点看，如果环境不可获得，则环境是非确定性的。如果环境是确定性的除非有其它智能体活动的影响，则称该环境是策略性的。</p>
+<p>2.4.1.3 片段式的与非片段式的环境 (Episodic vs. nonepisodic)</p>
+<p>​     如果Agent 动作的质量仅与当前一段时间的环境有关，与其它时间段的环境无关，则称该环境为片段式的。</p>
+<p>2.4.1.4 静态的与动态的环境 (Static vs. dynamic)</p>
+<p>​      如果Agent在思考做决策的时候，环境会变化，则称这样的环境是动态的， 否则是静态的。如环境随时间不变但性能会变，则为半动态环境。</p>
+<p>2.4.1.5 离散的与连续的环境 (Discrete vs. Continuous)</p>
+<p>​     如果环境中的Agent 有有限数量不同而清晰定义的感知和行动，则 该环境是离散的。否则是连续的。</p>
+<p>2.4.1.6 单智能体与多智能体 (Single Agent vs. Multi-Agents )</p>
+<p>​     智能体所在世界里没有其它智能体，则是单智能体环境，否则是多智能体环境。</p>
+<p>2.4.1.7 环境举例</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/10747ebc604f2f5a38edce11931528fe.png" alt="img"></p>
+<h4 id="第三单元"><a href="#第三单元" class="headerlink" title="第三单元"></a>第三单元</h4><h5 id="第一课时-2"><a href="#第一课时-2" class="headerlink" title="第一课时"></a>第一课时</h5><p>3.1 问题求解与搜索</p>
+<p>   3.1.1 人工智能的问题类型</p>
+<p>   单状态问题（Single-state problem）<br>   确定的、完全可观察的环境<br>   Agent 知道世界的一切，因此可以计算最优的行动序列抵达目标状态</p>
+<p>   无传感问题（Sensorless problem）<br>   确定的、不可观察的环境<br>   Agent 在朝目标状态努力的过程中必须对假定的状态和行动序列进行推理</p>
+<p>  偶发性问题 （Contingency problem）<br>   随机的与/或部分可观察的环境<br>  传感器必须提供当前状态下的新信息<br>  答案是一个偶发性规划（Contingent Plan）或策略(Policy)<br>  通常搜索和执行交织执行</p>
+<p>   探索性问题 （Exploration problem）<br>   状态空间未知<br>  在采取行动时发现和学习环境的知识</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5a2b3330e79fcfebb7cd73dfbe4cb07a.png" alt="img"></p>
+<p>  3.1.1.1 单状态问题例子</p>
+<p>   例1 测量问题</p>
+<p>   <img src="https://p.ananas.chaoxing.com/star3/origin/86583d2516598e404df540f7cae49f7e.png" alt="img">    </p>
+<p>​    用此三个桶, 如何量出7 升水?</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ffe8271315ab5a5a592ba03a183ad09f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0a3c5530d2f2ec9e31b55b11d3cc501a.png" alt="img"></p>
+<p>例2 8数码游戏问题</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/169e48de1333c1eb0d741cb3e9866c65.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/9e24042048bc3b945d523d5b96374c6a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3c20de75fe7967ae88b3267a0fefbc91.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/7f9f7c44e968d45765eca901ce9e2ad4.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b07a278716b920c8f0aee7cc551fb77b.png" alt="img"></p>
+<p>   状态（state）是物理世界的抽象<br>  节点（node）是组成搜索树的数据结构，反应了世界的状态。<br>       父节点, 子节点，深度（depth）, 路径代价g(x)</p>
+<p>  节点扩展（Expand）：找出当前节点的后继节点</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/bfd074dde5598df9cbc4a5e0c8ddf871.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/75ca9dcd04efeb56f6805da653c8a24d.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0a2e769f6edbb8002c28a12921658f6c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/1e585d0f0f70c3987af8ef8e3936adcd.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/df6226597303d00666505585c65d3301.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/69a01917a9f7a31d47d0781d80cd293f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6da6a8d0c8ec4f5861a67848754c1401.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/fc072b88dc76d12426553abaacebe3d7.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3da400db88c68a1ba422b7ee3f2e744e.png" alt="img"></p>
+<h5 id="第二课时-2"><a href="#第二课时-2" class="headerlink" title="第二课时"></a>第二课时</h5><p>3.2 搜索策略的评估</p>
+<p>​    问题求解需要扩展节点，选择下一个待扩展节点，选择策略的不同导致搜索算法性能上的差异，如何评价不同的搜索算法？</p>
+<p>3.2.1 搜索算法评价准则<br>     完备性（Completeness）<br>        如果存在一个答案，是否总能找到？<br>     时间复杂性（Time complexity）<br>        找到一个解要花多少时间？<br>     空间复杂性（Space complexity）<br>        在执行搜索过程中需要多少存储空间?<br>     最优性（Optimality）<br>        是否保证有一个代价最小（least-cost）的解？</p>
+<p>3.2.1.1  时间和空间复杂性的度量依据<br>       b – 搜索树的最大分支因子（max branching factor）<br>       d – 最小代价解的深度（depth of the least-cost solution）<br>       m – 搜索树的最大深度 (可以为无限)</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/c0104587136eee5cd44367d24fe7f3a6.png" alt="img"></p>
+<p>3.2.1.2 算法复杂性</p>
+<p>​      3.2.1.2.1 为何要考虑算法的复杂性？</p>
+<p>​       一个问题从原理上讲是可以解决的，但在实际应用中如果花的时间太长而变得无用。</p>
+<p>​      3.2.1.2.2 怎样评估算法的复杂性？</p>
+<p>​      使用渐近分析方法, 估算尺寸为n的问题当n趋向无穷大时所需的时间或操作 。</p>
+<p>​      3.2.1.2.3 例子: 旅行推销员问题的复杂度</p>
+<p>​             有 n 个城市, 城市i与j间的里程数为 Lij</p>
+<p>​             推销员想找出一条路，要求做到：<br>​               1）访问所有城市。<br>​                2）每个城市只访问一次。<br>​                3）整个行走路程尽可能短。</p>
+<p> <img src="https://p.ananas.chaoxing.com/star3/origin/0aa6a48853d589818656cb5ff20d4f88.png" alt="img"></p>
+<p>​          这是一个“难” 处理的问题，因为至今已知的处理这个问题的算法都具有指数复杂度 , 也即解决n个城市访问问题所需操作按exp(n) 增长。</p>
+<p>​      3.2.1.2.4  多项式时间复杂度问题（Polynomial-time (P) problems）<br>​               操作数与问题尺寸间的关系是多项式关系。例如，将n个数按照升序排列， 有的算法复杂度n2, 好的算法n log(n)。</p>
+<p>​      3.2.1.2.5  Landau符号 O（）与o( )</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0ccb22136028f29d1f0b02733903fbf6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/76a809168ab0e8d839acd7c3cd938fab.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8eafef67b3c1cc2c9e35f8ef0f668a88.png" alt="img"></p>
+<p>3.2.2 搜索算法与其评价</p>
+<p>​     盲目搜索策略</p>
+<p>​         宽度优先搜索（Breadth-first）<br>​         代价一致搜索 （Uniform-cost）<br>​         深度优先搜索 （Depth-first）<br>​         深度有限搜索 （Depth-limited）<br>​         迭代深入深度优先搜索 （Iterative deepening）</p>
+<p>​     启发式搜索策略</p>
+<p>​         贪婪最佳优先 （Best first）<br>​         A* 搜索<br>3.2.2.1 宽度优先搜索（Breadth-first）</p>
+<p>​      待扩展节点组织成FIFO（先进先出）队列。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/9b44d56dbe8c0aba8b7c405e528008e0.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/dfdaeb1f6d062a56d8433b2e7743cd62.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/75809374d241a7299a74ae77d00ca700.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/af4eef65256b2bbeb810e558effa0e7f.png" alt="img"></p>
+<p>宽度有限搜索性能：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/1b63094bb8e40ad1c67badaff7d76f34.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/503dc974ed2916be9af94590aae0a5b5.png" alt="img"></p>
+<p>3.2.2.2 等代价搜索</p>
+<p>​      计算从起始节点到当前待扩展节点的路径代价和,将待扩展节点队列按代价和从小到大排列,扩展代价最小的未扩展节点。</p>
+<p>​      当所有路径代价相等时，代价一致搜索等于宽度优先策略搜索。 </p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7c874d3c480454f3c089650b2b5de96a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3b4db5d7d92fc92a4186dc4404309897.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/c53ae19197bcf2bf7e7a23a600d48bd4.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a5e66d2a858deeb937051071319cff71.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/2a2dd716aa95679c4e7bef69d54ebaa7.png" alt="img"></p>
+<p>3.2.2.3 深度优先搜索</p>
+<p>​      待扩展节点加入LIFO（Last In First Out）队列进行扩展。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/bb0bd3476dbb65bc50b0cb1c0e4c5940.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/14022786db30ae2c79640ee43aa017c5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b0103928acd873c022e637342070190b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/33dd44c62ed80d0911d88526e11ade5c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/2630c49b9342d32b121992d5f2d38e9f.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/40c2ee9104797b92d5995bb848d42601.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/dc5d6944d72039ffd74b53f18d4c94ad.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8ee9d65c37e16e99d172146c271dc7cf.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8ca4eacd10d89030d3455f56c03a5d8e.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/c3c11143fab0b599934787cae4740a27.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ed9f1b1136536cb46805160274bcb247.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/f85c36e8bb5c4c573522ead1f2fab013.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/289552a8937acaf27f4e18b36b555c92.png" alt="img"></p>
+<h5 id="第三课时-2"><a href="#第三课时-2" class="headerlink" title="第三课时"></a>第三课时</h5><p>3.3 启发式搜索</p>
+<p>   启发式搜索又叫有信息搜索或智能搜索。</p>
+<p>   例如：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7159cc4de31559e7e036df11d2c83cd7.png" alt="img">  </p>
+<p>​    8-puzzle 有 9！/2 = 181440 个状态<br>   15-puzzle 有 1012 个状态<br>   24-puzzle 有 1025 个状态</p>
+<p>​    如果一个不漏地搜索， 时间空间复杂度都高， 需要尽可能减少搜索范围。这种利用已有知识或具体问题领域特性信息（启发式）减少搜索范围的搜索方法叫启发式搜索。</p>
+<p>   常见的启发式搜索策略包括：</p>
+<p>   1) 最佳优先 （Best first）搜索<br>   2) A* 搜索</p>
+<p>   均须对每个节点使用一个评价函数 f(n)，估算其“合意度“， 扩展最合意的未扩展节点。</p>
+<p>3.3.1 最佳优先 （Best first）搜索</p>
+<p>​     最佳优先搜索（Best-First Search) 也叫 贪婪搜索。<br>​     </p>
+<p>​     最佳优先搜索使用的估价函数为:<br>​     f(n) = h(n) = 从节点n到目标节点的估计代价(heuristics)</p>
+<p>​     对于罗马尼亚旅游问题， 其估价函数选取了 f(n) = hSLD(n) = 从n到Bucharest的直线距离。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7c874d3c480454f3c089650b2b5de96a.png" alt="img"></p>
+<p>其搜索过程如下：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/767fe684f70e0f6d5bc8bd433e11ce2e.png" alt="img"><br>   <img src="https://p.ananas.chaoxing.com/star3/origin/543235f37d097ec21d05191c667cdd6e.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b94930f8b7b475ba98179ca94448231e.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7fb32dfb62f7d1229ee74cc15a2cac64.png" alt="img"></p>
+<p>贪婪搜索的性能:</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ecdc72135495f4d08262078f00ea77ee.png" alt="img"></p>
+<p>3.3.2 A* 搜索</p>
+<p>​     由于最佳优先忽略了从起始节点到当前节点的路径代价而得不到最优解, A* 搜索避免扩展总路径代价较高的路径, 解决了此问题。</p>
+<p>​    其节点扩展估价函数为: f(n) = g(n) + h(n)<br>​       其中： g(n) – 到达n时的路径代价<br>​             h(n) – 从节点 n到目标节点的最低代价的估计值<br>​             f(n) –  从节点n到目标节点的估计总代价</p>
+<p>​    一般来说， 使用f(n)作为估价函数的搜索算法称为A算法。</p>
+<p>​    A* 搜索使用一个可采纳的（ admissible）启发式, 即,<br>​       h(n) &lt;= h<em>(n) ，此处 h</em>(n) 是从n到达目标节点的真实代价</p>
+<p>​      如: hSLD(n) 就是罗马尼亚旅游问题A* 搜索使用的可采纳启发式，决不会过高估计实际的路程距离。</p>
+<p>​    如果h(n)是可采纳的启发式，则A* 搜索既是完备的也是最优的。</p>
+<p>​    3.3.2.1 罗马尼亚旅游问题A* 搜索举例</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a9e524efefdee34492f19ab12e724a5a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7ff7ffb54c7c75cab6849641a631c7f2.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/675e73f1c3bdc242cd39cdd5fbf5354f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0ff5b4d06d130d4d716331cb0f7f15e7.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/1f382cb73c70b4660dfd5cd7f92b2d04.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/56b59c1eb2d2189a604f8d4be759319d.png" alt="img"></p>
+<p>3.3.2.2 A*搜索的最优性证明</p>
+<p>​      假定队列中产生了某些次优的目标G2。设 n 是一个到达最优目标G1 的最短路径上的未扩展节点：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4549af223ffcbc489347bee4249af562.png" alt="img"></p>
+<p>3.3.2.3 A* 算法性能</p>
+<p>  启发式的一致性（单调型）：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/804c23eba4b9c57c9ff892d158e0eb66.png" alt="img"></p>
+<p>性能：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ec536b9da94ffb4d00ef169aad308f2e.png" alt="img"></p>
+<h5 id="第四课时-2"><a href="#第四课时-2" class="headerlink" title="第四课时"></a>第四课时</h5><p>3.4 启发函数 </p>
+<p>  3.4.1 如何评价启发函数？</p>
+<p>​       <img src="https://p.ananas.chaoxing.com/star3/origin/eb3658aa208299da99ef04e25038c725.png" alt="img"></p>
+<p>  3.4.2 启发函数的精确度对性能的影响</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>搜索代价</th>
+<th>有效分支因子</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>d</td>
+<td>IDS</td>
+<td>A*(h1)</td>
+<td>A*(h2)</td>
+<td>IDS</td>
+<td>A*(h1)</td>
+<td>A*(h2)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>6</td>
+<td>6</td>
+<td>2.45</td>
+<td>1.79</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>4</td>
+<td>112</td>
+<td>13</td>
+<td>12</td>
+<td>2.87</td>
+<td>1.48</td>
+<td>1.45</td>
+</tr>
+<tr>
+<td>6</td>
+<td>680</td>
+<td>20</td>
+<td>18</td>
+<td>2.73</td>
+<td>1.34</td>
+<td>1.30</td>
+</tr>
+<tr>
+<td>8</td>
+<td>6384</td>
+<td>39</td>
+<td>25</td>
+<td>2.80</td>
+<td>1.33</td>
+<td>1.24</td>
+</tr>
+<tr>
+<td>10</td>
+<td>47127</td>
+<td>93</td>
+<td>39</td>
+<td>2.79</td>
+<td>1.38</td>
+<td>1.22</td>
+</tr>
+<tr>
+<td>12</td>
+<td>3644035</td>
+<td>227</td>
+<td>73</td>
+<td>2.78</td>
+<td>1.42</td>
+<td>1.24</td>
+</tr>
+<tr>
+<td>14</td>
+<td>-</td>
+<td>539</td>
+<td>113</td>
+<td>-</td>
+<td>1.44</td>
+<td>1.23</td>
+</tr>
+<tr>
+<td>16</td>
+<td>-</td>
+<td>1301</td>
+<td>211</td>
+<td>-</td>
+<td>1.45</td>
+<td>1.25</td>
+</tr>
+<tr>
+<td>18</td>
+<td>-</td>
+<td>3056</td>
+<td>363</td>
+<td>-</td>
+<td>1.46</td>
+<td>1.26</td>
+</tr>
+<tr>
+<td>20</td>
+<td>-</td>
+<td>7276</td>
+<td>676</td>
+<td>-</td>
+<td>1.47</td>
+<td>1.27</td>
+</tr>
+<tr>
+<td>22</td>
+<td>-</td>
+<td>18094</td>
+<td>1219</td>
+<td>-</td>
+<td>1.48</td>
+<td>1.28</td>
+</tr>
+<tr>
+<td>24</td>
+<td>-</td>
+<td>39135</td>
+<td>1641</td>
+<td>-</td>
+<td>1.48</td>
+<td>1.26</td>
+</tr>
+</tbody></table>
+<p>注：IDS 对应于迭代深入搜索算法。</p>
+<p>上表可以看出使用h2启发式的A* 搜索其搜索代价与有效分支因子好于使用h1启发式的A* 搜索, 也远好于迭代深入搜索。</p>
+<p>  3.4.3 设计可采纳的启发函数</p>
+<pre><code>一个松弛问题的最优解的耗散是原问题的一个可采纳的启发式。</code></pre><p>​      松弛问题: 降低了行动限制的问题。</p>
+<p>​      松弛问题的自动构造：<br>​      Eg, 如果A与B水平或垂直相邻而且B是空的，则一个棋子可以从方格A移动到方格B。去掉其中一、两个条件，可以得到如下几个松弛问题：<br>​       1）一个棋子可以从方格A移动到方格B( 则每个方块可以移动到任何地方），则 h1(n) 可以给出最短解。<br>​       2）一个棋子可以从方格A移动到方格B, 如果A和B相邻 （一个方块可以移动到任何相邻位置），则 h2(n) 可以给出最短解。</p>
+<p>​      找不到“毫无疑问最好的”启发式怎么办？<br>​      如果一个可采纳启发式的集合h1,h2,…hm对问题是可用的，则合成启发式h比所有成员启发式更有优势：<br>​     h(n) = max(h1(n), …, hm(n))</p>
+<p>  3.4.4 从经验里学习启发函数</p>
+<p>​      求解大量的8数码游戏，每个8数码游戏的最优解提供学习h(n)的实例，每个实例包括解路径上的一个状态和从这个状态到达解路径的耗散。利用各种学习算法从这些值中学习h(n)。</p>
+<p>​     归纳学习算法,Eg:<br>​      x1(n) : 不在位的棋子数<br>​      X2(n): 现在相邻并且在目标状态中也相邻的棋子数<br>​      h(n) = c1x1(n) + c2x2(n)</p>
+<p>3.5 迭代改进</p>
+<p>​    在许多问题中，达到目标的路径是无需关心的，只要获得问题的最优解即可，如：ＶＬＳＩ布线、八皇后问题等就是这样。解决这类问题的局部搜索算法从当前状态出发，只移动到与之相邻的状态，不保留搜索路径，　通过反复迭代获得最终答案，且由于不保留中间状态，使用的内存很少，因此适合于探索很大的甚至无限的状态空间。这类算法包括：　爬山算法、模拟退火算法和遗传算法等。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3b34637c6f2f57bc623a4f651e146bab.png" alt="img"></p>
+<p>3.5.1 爬山算法</p>
+<p>　<img src="https://p.ananas.chaoxing.com/star3/origin/4826c63acce5f225168e50032376353b.png" alt="img">　<img src="https://p.ananas.chaoxing.com/star3/origin/a888fc6393269d6ea9d86541125b41c1.png" alt="img"></p>
+<p>3.5.2 模拟退火算法</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ef575fd30aaa1d28de6b81d4c6680dfa.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/2092b2a4953ecd1660edd9bfeeee8853.png" alt="img"></p>
+<p>3.5.3 遗传算法</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5f953b15666f2c486a181d0313f5a89b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/92006001efb52aae23ae278aece48180.png" alt="img"></p>
+<h4 id="第四单元"><a href="#第四单元" class="headerlink" title="第四单元"></a>第四单元</h4><h5 id="第一课时-3"><a href="#第一课时-3" class="headerlink" title="第一课时"></a>第一课时</h5><p>4.1 盲目搜索与启发式搜索的复习与讨论</p>
+<p>4.1.1 讨论</p>
+<p>​     1) 盲目搜索与启发式搜索的异同</p>
+<p>​     2) 启发式函数的自动化构造</p>
+<p>4.2 盲目搜索与启发式搜索算法练习</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6c84645b76ed148edb9e6101d56c4fbc.png" alt="img"></p>
+<h5 id="第二课时-3"><a href="#第二课时-3" class="headerlink" title="第二课时"></a>第二课时</h5><p>4.2 对抗搜索</p>
+<p>   4.2.1 机器博弈历史回顾</p>
+<p>​      机器博弈的骗局 The Turk ( Wolfgang von Kempelen: 1734~1804 )<br>​      第一个严肃讨论计算机下国际象棋和西洋跳棋可能性的 人 (Babbage, 1846)<br>​      第一部真正的博弈机器- 专门下国际象棋残局的机器（Leonardo Torres y Quevedo, 1890）<br>​      博弈论的基础 (Ernst Zermelo, 1912; Von Neumann, 1944)<br>​      发展机器如何下棋的思想（Konarad Zuse , 1945）<br>​      国际象棋程序的一种可能设计（Minmax搜索、深度截断、评价函数）（Nobert Wiener, 1948）<br>​      现代博弈程序的基本思想（静止搜索）（Claude Shannon, 1950）<br>​      撰写第一个能够 完整下国际象棋的程序 (Turing, 1951)<br>​      用机器学习的方法来改善评价函数的精确度 (Samuel, 1952-57)<br>​      用剪枝的办法来实现更深的搜索(a-b 剪枝) (McCarthy, 1956)</p>
+<p>​       …</p>
+<h5 id="第三课时-3"><a href="#第三课时-3" class="headerlink" title="第三课时"></a>第三课时</h5><h5 id="第四课时-3"><a href="#第四课时-3" class="headerlink" title="第四课时"></a>第四课时</h5><h4 id="第五单元"><a href="#第五单元" class="headerlink" title="第五单元"></a>第五单元</h4><h5 id="第一课时-4"><a href="#第一课时-4" class="headerlink" title="第一课时"></a>第一课时</h5><h5 id="第二课时-4"><a href="#第二课时-4" class="headerlink" title="第二课时"></a>第二课时</h5><h5 id="第三课时-4"><a href="#第三课时-4" class="headerlink" title="第三课时"></a>第三课时</h5><p>5.3. 博弈树搜索</p>
+<p>5.3.1  博弈<br>   诸如下棋、打牌、竞技、战争等一类竟争性智能活动被称为博弈。在竞争的多智能体环境中，每个智能体的目标是冲突的。</p>
+<p>   人工智能中的博弈有完整信息的、确定性的、轮流行动的、两个游戏者之间的零和游戏，也有多人、非零和、随机游戏。</p>
+<p>   对于二人零和、全信息、非偶然博弈有如下特征：</p>
+<p>   1）对垒双方MAX、MIN 轮流采取行动，博弈的结果只有三种情况，即MAX胜MIN败、MAX败MIN胜与和局。</p>
+<p>   2）对垒过程中任何一方都了解当前的格局和过去的历史。</p>
+<p>   3）任何一方采取行动时都选取对自己最为有利而对对方最为不利的对策。</p>
+<p>5.3.2 博弈树</p>
+<p>   把博弈过程以图表示出来得到的与或树称为博弈树。</p>
+<p>   博弈树的特点：</p>
+<p>   1）博弈的初始格局是初始节点；</p>
+<p>   2） 博弈树中的“或节点”和“与节点”逐层交替出现；</p>
+<p>   3） 所有己方获胜的终局都是本原问题， 相应的节点是可解节点； 所有使对方获胜的终局都是不可解节点。</p>
+<p>   假定MAX先走， 处于奇数深度级的节点是MAX 节点， 相应的偶数级是MIN节点。</p>
+<p>5.3.3 博弈树搜索的资源限制</p>
+<p>​    很多游戏的搜索空间非常巨大， 如国际象棋:   b = 35, m=100  nodes = 35的 100次方 ，    如果每个节点花１ns来处理，则每行一步棋将要花约 10 的50次方 millennia　的计算时间。  由于资源（时间、内存）的限制，博弈树搜索的最优解不可行／不可能, 故只好求近似解。<br>　<br>​    通过深度限制与剪枝（Pruning），放弃搜索树的对最后决定无用的部分，使搜索更加有效率。<br>　　<br>​    使用评价函数（Evaluation functions）：在不进行完整搜索的情况下近似估计一个对局状态的真实效用值。 </p>
+<p>5.3.4 MINMAX算法</p>
+<p>​     1) 设博弈的双方中一方为MAX, 另一方为MIN。然后为其中的一方寻找一个最优行动方案。</p>
+<p>​     2）为了找到当前的最有行动方案， 需要考虑每一方案 实施后对方可能采取的所有行动。</p>
+<p>​    3）为计算得分， 需要根据问题的特性信息定义一个估价函数，用来估算当前博弈树端节点的得分。</p>
+<p>​    4）当端节点的估值计算出来后， 再推算出父节点的得分。对MAX节点，选其子节点中最大的得分作为MAX的得分（即选择对自己最有利的方案 ）； 对MIN节点，选择其子节点中最小的得分作为MIN节点的得分。这样计算出的父节点的得分称为倒推值。</p>
+<p>​    5）如果一个行动方案能获得较大的倒推值，则它就是当前最好的行动方案。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/426534cd6a60b9f1ad5706a758d396aa.png" alt="img"></p>
+<p>5.3.5 MINMAX-- 剪枝算法</p>
+<p>​    MINMAX 算法效率低，需要- （alpha-beita）剪枝技术, 其基本思想是 边生成博弈树边计算评估各节点的倒推值，并且根据评估出的倒推值范围及时停止扩展那些已无必要再扩展的子节点， 即相当于剪去了博弈树上的一些分支， 从而节约了机器开销， 提高了搜索效率。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/239a61219022d9876be9ea6b7813019e.png" alt="img"></p>
+<p>​    </p>
+<p>5.3.6 不确定性游戏的博弈</p>
+<p>​     如西洋双陆棋这样的游戏， 其博弈树在MIN 、MAX节点层之间还要加上几率节点。几率由骰子决定。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/86390a200104ec20fd3451daff6c0fca.png" alt="img"></p>
+<p>包含几率因素的游戏决策算法：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/bea0b1680b1e71ddaa062e4331ae75cc.png" alt="img"></p>
+<h5 id="第四课时-4"><a href="#第四课时-4" class="headerlink" title="第四课时"></a>第四课时</h5><p>5.4 基于知识的智能体</p>
+<p>5.4.1 基于知识的Agent 概述<br>     以Wumpus游戏问题为例。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/1690956e98a42864fd41134efd4ef2d9.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/f5c7422b1d0691d6bbbc703856e5d19b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ec14d8ea636a1345a3ce04aa25f2a38c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3bd021fc990faa33e09e79493543941a.png" alt="img"></p>
+<p>5.4.2 命题逻辑与推理 （略）</p>
+<p>​     请参见课本相关章节。</p>
+<p>​     5.4.2.1 知识与知识表示语言</p>
+<p>​     5.4.2.2 命题逻辑的符号</p>
+<p>​     5.4.2.3 命题逻辑的语法</p>
+<p>​     5.4.2.4 命题逻辑的语义</p>
+<p>​     5.4.2.5 命题逻辑的推理<br>​          Wumpus 世界例子</p>
+<h4 id="第六单元"><a href="#第六单元" class="headerlink" title="第六单元"></a>第六单元</h4><h5 id="第一课时-5"><a href="#第一课时-5" class="headerlink" title="第一课时"></a>第一课时</h5><p>6.1 命题逻辑与推理</p>
+<p>6.1.1 引子</p>
+<p>  <img src="https://p.ananas.chaoxing.com/star3/origin/a2330afe9b6c127e6ca3bcc8b8f970b6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/51629e7fc8e36a30f3ba24de8100e508.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4bc3d9717a1e375ae29dfffee06b8ebb.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/50a78360e8e069631ae4e76efbba3f83.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/cb04fba3b0c3d61c706035d9bed6dd89.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/9eea3553185a478b5f6af0599bb987c8.png" alt="img">)<img src="https://p.ananas.chaoxing.com/star3/origin/e5376fb71a6f0b5d1aa9e92b716a9101.png" alt="img"></p>
+<p>6.1.2 命题逻辑</p>
+<p>  命题逻辑是最简单的逻辑： 研究命题与命题之间关系的符号逻辑系统。<br>  命题是具有真假意义的陈述句。<br>  命题逻辑的语法定义允许出现的句子。<br>  命题符号表示命题或对世界的陈述。</p>
+<p>6.1.2.1 命题逻辑的符号</p>
+<p>   命题符号表示命题或对世界的陈述， 它可能是真的， 也可能是假的。使用靠近英语字母表末尾的大写字母表示命题。</p>
+<p>   命题演算的符号包括：</p>
+<p>   命题符号，如P， Q， R， S， …</p>
+<p>   真值符号，如 true, false</p>
+<p>   连接符号，如 ¬， ^ ，V， =&gt; ， =</p>
+<p>6.1.2.2 命题逻辑的语句与语法</p>
+<p>   不可分割的原子命题符号构成原子语句。           </p>
+<p>   由句子或者原子语句等通过逻辑连接符构成的语句称为复合句。</p>
+<p>   命题逻辑语句的BNF语法：</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7b3106c371a9a0a793ce1933452d4486.png" alt="img"></p>
+<p>  通过一系列合适规则构建的语句叫合适公式。   </p>
+<p>6.1.2.3 命题逻辑的语义</p>
+<p>  语义定义了用于判定关于特定模型的语句真值的规则。<br>  一个模型就是对命题符号的一种可能解释，为命题语句赋真值被称为解释， 也就是将命题符号影射到T或F。</p>
+<p>  如某个语句有符号P1,2、P2,2、P3,1 则其一个可能的模型为：<br>  M1 = {P1,2 = false, P2,2=false, P3,1 = true}</p>
+<p>  对于原子语句，其真值这样确定：</p>
+<p>  1）每个模型中True代表真， False代表假。</p>
+<p>  2）其它的每个命题符号的真值在模型中指定。</p>
+<p>  对于任何复合句S和任何模型m,¬S在m中为真，当且仅当S在m中为假。</p>
+<p>  连接符的规则按以下原则确定：</p>
+<p>   1）¬S 为真， iff S为假；<br>   2）S1 ^ S2为真， iff S1为真，且S2为真；</p>
+<p>   3）S1 V S2为真， iff S1为真，或者S2为真；</p>
+<p>   4）S1＝&gt;S2 为真， iff S1为假，或者S2为真，</p>
+<p>​             为假，iff 　 S1为真，且S2为假；<br>   5）S1  S2为真， iff S1＝&gt;S2为真，且S2 ＝&gt;S１为真</p>
+<p>6.1.2.4 用命题逻辑来表示Wumpus 世界</p>
+<p> <img src="https://p.ananas.chaoxing.com/star3/origin/ca892acbbb1efc2f11f219d571c44892.png" alt="img"></p>
+<h5 id="第二课时-5"><a href="#第二课时-5" class="headerlink" title="第二课时"></a>第二课时</h5><p>6.2 命题逻辑的推理</p>
+<p>6.2.1 方法一：枚举法</p>
+<p>  枚举出模型，验证alpha在KB为真的每个模型中为真。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/25e7c79bc26fc24f2c1db92f60b41a25.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b49dbe822329175bb591eafe7d7f92d9.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e183e007a4ae7f2f894b0864d6b760c3.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/32ec48abaac15e521259c405fa239eb0.png" alt="img"></p>
+<p>6.2.2 方法二：命题逻辑的推理规则法</p>
+<p>6.2.2.1 逻辑等价  </p>
+<p>  如果两个不同语句有相同的真值表则称该两语句逻辑等价。</p>
+<p>  利用逻辑等价恒等式可以实现逻辑表达式的语法结构变换，把一种表达式的语句变换成另一种表达式。</p>
+<p>  ¬(¬A) = A         双重否定消去<br>  ¬(A ^ B) = (¬A) V (¬B)     摩根律<br>  ¬(A V B) = (¬A) ^ (¬B)     摩根律<br>  A ^ B = B ^ A                 ^的可交换性<br>  A V B = B V A              V的可交换性<br>  (A ^ B) ^ C = A ^ (B ^ C)         ^的结合律<br> （A V B） V C = A V (B V C)       V的结合律<br> (A =&gt; B) = (¬ B =&gt; ¬ A)         逆否命题<br> A =&gt; B = (¬A) V B          蕴涵消去<br> A  B = (A =&gt; B) ^ (B =&gt; A)      双向蕴涵消去<br> A ^ (B V C) = (A ^ B) V (A ^ C)         ^ 对 V的分配律<br> A V (B ^ C) = ((A V B) ^(A V C))        V 对 ^的分配律</p>
+<p>6.2.2.2 语句的合法性</p>
+<p>   一个句子如果在所有模型中均为真，则是合法的,或 有效的、永真的。合法语句也被称为重言式（Tautology）。<br>  如：<br>  T<br>  T V A<br>  A V (¬A)<br>  ¬(A ^ (¬A))<br>  A  A                       (注： 为双向蕴含)<br>  ((P V Q)  P) V (¬P ^ Q)<br>  (P  Q) =&gt; (P =&gt; Q)</p>
+<p>   演绎定理<br>   KB |= , iff KB =&gt; 是合法的     （注： 为语句alpha）</p>
+<p>6.2.2.3 可满足性</p>
+<p>  可满足性： 一个句子如果在某些模型中为真，则它是可满足的。如: </p>
+<p>​      (R1^R2^R3^R4^R5)是可满足的<br>​      A V B, C是可满足的</p>
+<p>  一个句子在模型m中为真，则称m满足, 或m是的一个模型</p>
+<p>  不可满足性： 一个句子如果没有模型使其为真，则它是不可满足的<br>   如：A ^ ¬A</p>
+<p>  反证法<br>   KB |=  , iff (KB ^ ¬) 是不可满足的</p>
+<p>  证明： 推理规则的应用序列称为一个证明<br>        在标准搜索算法中可以使用推理规则作为算子<br>        一般需要将句子转换为标准句式 – 范式</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/c5a70a715bd4e6647f74a6b9fb640827.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/21e03fde90c3600929e45cd9b5901424.png" alt="img"></p>
+<p>6.2.2.4 命题逻辑的推理模式（推理规则）</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b5e9453367e9d3c2a82e461b81abe8b4.png" alt="img"></p>
+<p>​      <img src="https://p.ananas.chaoxing.com/star3/origin/46b1884d434694b7da47483e390f6dfb.png" alt="img"></p>
+<p>6.2.2.5 归结规则与推理过程的完备性</p>
+<p>  运用推理规则进行推理，如果规则不充分，那么推理目标将不可达。而如果单一的归结规则结合完备的搜索算法一起使用， 则可得到完备的搜索算法。</p>
+<p>  任何完备的搜索算法， 只使用归结规则， 就可以生成命题逻辑中被任何知识库蕴涵的任何结论，<br>命题逻辑中归结的完备性定理被称为基本归结定理。</p>
+<p>  如果子句集是不可满足的，那么这些子句的归结闭包包含空子句。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6a8db672ad91c8a5db221bb651f5dbaa.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ee0fcfae31a9a4a01bc5bf058f512f77.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e7f3235cf63f40b36c6c40979dcc7bf0.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/1c6f132c2252c172799421d402518b01.png" alt="img"></p>
+<p>6.2.2.6 前向链接算法与后向链接算法</p>
+<p>前向链接（Forward chaining）<br>思想：从已知的事实出发，判定单个命题符号q是否被霍恩子句数据库所蕴涵的算法</p>
+<p>后向链接（Backward chaining）<br>思想：从查询q开始， 如果q为真，则推理结束，反之，寻找知识库中那些能以q为结论的蕴涵，如果其所有的前提都为真，则q为真。</p>
+<p>两种算法对霍恩式知识库是完备的。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/f024ec9a8fe76c591abbd4d3d83540d0.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/57ce760599f2e2fd630bc55b7c07874f.png" alt="img"></p>
+<h5 id="第三课时-5"><a href="#第三课时-5" class="headerlink" title="第三课时"></a>第三课时</h5><p>6.3 一阶逻辑</p>
+<p>6.3.1 命题逻辑的优缺点</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/daaa9f7b5d2bb12f83f339e889fdcfe8.png" alt="img"></p>
+<p>6.3.2 一阶逻辑</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/dd699042112eb2f374d15238f5d39662.png" alt="img"></p>
+<p>6.3.3 FOL 语法</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/f4bf4585e3dfd1367acfdb3a8746dbfe.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/56c6a667725066b60631d19f16249d6e.png" alt="img"></p>
+<p>6.3.4 FOL 原子语句</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ce9868e2de05fc0f0cedec2fe6f99ecc.png" alt="img"></p>
+<p>6.3.5 FOL复合句</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ccec4dc008d9982901e136a5096bcd6a.png" alt="img"></p>
+<p>6.3.6 FOL的语义</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/276bbec5bcea9821f2776df9c6684012.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/716a6d7d59d77ecfcd3d9b6c2741d691.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/41ac0f01d248ac8027b524d301bd848b.png" alt="img"></p>
+<p>6.3.7 量词</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0d68a6441255ca35f7d23b872744f1ae.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ca01ff8ff5ff59005f8ae080f3b1d58f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/55e189fe4adfe8e638fcbc365f7037db.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/bf88da20e341c7b4a6c2e4f384b11633.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/bd054ffae651d14901a89594da3f1717.png" alt="img"></p>
+<p>6.3.8 等式</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b2b738d7f64db8429c71cc1f47be826e.png" alt="img"></p>
+<h5 id="第四课时-5"><a href="#第四课时-5" class="headerlink" title="第四课时"></a>第四课时</h5><p>6.4 一阶逻辑推理</p>
+<p>6.4.1 引子</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/163f2e9cc23f2ca018fc2ea4210702e0.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/c49e4b1c65de488f6b39952df121ff2f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/c9fcbe82a1db78ab9e478c4574101cbe.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b1a2a5b83ae16dedad16c04c427b4d62.png" alt="img"></p>
+<p>6.4.2 一阶逻辑推理</p>
+<p>6.4.2.1 简化到命题逻辑的推理方法</p>
+<p>  运用一些简单的推理规则来处理包含量词的语句， 将知识库语句转换为命题逻辑语句，再使用命题推理来完成一阶推理。</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/fdac0a6e59bdc4cf5185450ee63b3761.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4951d3c791239c506fb3128e83afb029.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/76583eaa7c744d71537d6d84bf765f68.png" alt="img"></p>
+<p>6.4.2.2 一阶逻辑推理之一般分离规则</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/72035a5eb7879fd3a5563c18b5905537.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/73746bfb798510de7d48546e9f03ad22.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0d90742c60d2169195b7b07f7591cde6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/719769cc69f3d237b1842567e1db12e3.png" alt="img"></p>
+<p>6.4.2.3 一阶逻辑推理的归结规则</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/731020b8e9886110585aa88a2a8d56f9.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e4a6a0bde3fce997c61c22b1dec2eb3c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/d2643b5179ec08fa0482cbf48478bde8.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5f503c47bd2c8b0e24402ceccfbd4c5e.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6a85f4f98be973b1d354fa9a0a1595ca.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4b409c84e9b1f2d142b714a74852428f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b448c77e1acfe6aad5510a9f8ef2f127.png" alt="img"></p>
+<p>6.4.3 一阶知识库举例</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/fb5d9bea45f435007eaf89f80168b706.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4fffceb24ac1b3f2f56282c72caa9aff.png" alt="img"></p>
+<p>6.4.4 前向链接算法</p>
+<p>、</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/70c23d37f9cf66948fa331c0efdacd96.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e4a016e333832de14c0996d173d80d4b.png" alt="img"></p>
+<p>6.4.5 后向链接算法</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/403c1f8017dc196e9d7a8d00b8bc5c6f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/92f8519d3ca27b28dfd42fec9bf43698.png" alt="img"></p>
+<h4 id="第七单元"><a href="#第七单元" class="headerlink" title="第七单元"></a>第七单元</h4><h5 id="第一课时-6"><a href="#第一课时-6" class="headerlink" title="第一课时"></a>第一课时</h5><p>7.1 复习一阶逻辑推理</p>
+<p>7.2 一阶逻辑中的知识工程</p>
+<p>   知识库构造的一般过程谓之知识工程。知识工程师在构造知识库时， 需要对特定领域进行调查，总结出该领域的重要概念，创建该领域内的对象和关系的形式化表示。</p>
+<p>   7.2.1 知识工程的过程</p>
+<p>   不同的知识工程项目在内容、范围和难度方面差别比较大， 但所有这样的项目都包括以下步骤：</p>
+<p>   1）确定任务。</p>
+<p>   明确知识库支持的问题范围以及对于每个特定的问题实例可以采用的事实种类。</p>
+<p>   2）搜集相关知识。</p>
+<p>​    知识工程师可以是该领域的专家，或者要与真正的专家合作提取专家的知识， 这个过程叫知识获取。该过程需要了解任务决定的知识库范围， 并了解该领域是如何实际运转的。</p>
+<p>   3） 确定谓词、函数和常量的词汇表。</p>
+<p>​    把重要的领域级的概念转换为逻辑级的名称。其结果就是域的本体论的一个词表。</p>
+<p>​    本体论是关于存在或实体的本质的理论， 它说明哪种事物是存在的。</p>
+<p>   4）对域的通用知识进行编码。</p>
+<p>​    由知识工程师对所有词汇项写出公理，给出项的含义，使专家可以对内容进行检查。</p>
+<p>   5) 对特定问题实例的描述进行编码。</p>
+<p>​    写出已经是本体论一部分的概念实例的原子语句。这也可能由逻辑智能体的传感器提供。</p>
+<p>   6）把查询提交给推理过程并获取答案。</p>
+<p>​    让推理机对公理和问题相关的事实进行操作， 推导出我们有兴趣了解的内容。</p>
+<p>   7）调试知识库。</p>
+<p>​    知识库是否正确，推导出错误的结论，或者是否缺少某条公理而致无法回答某些查询等。</p>
+<p>  7.2.2 例子</p>
+<p>​    &lt;略&gt;</p>
+<h5 id="第二课时（锁）"><a href="#第二课时（锁）" class="headerlink" title="第二课时（锁）"></a>第二课时（锁）</h5><h5 id="第三课时-6"><a href="#第三课时-6" class="headerlink" title="第三课时"></a>第三课时</h5><p>7.3 规划(续)</p>
+<p>7.3.1 情景演算规划</p>
+<p>7.3.2 STRIPS</p>
+<h5 id="第四课时-6"><a href="#第四课时-6" class="headerlink" title="第四课时"></a>第四课时</h5><p>7.4 偏序规划(Partial Order Planning)</p>
+<p>7.4.1 搜索Agent、逻辑Agent、规划Agent 的异同</p>
+<p>   搜索Agent：<br>   能够考虑一系列行动的后果，在行动之前作出计划。</p>
+<p>   逻辑Agent：<br>   使用当前世界状态的明确的、逻辑的表示，在此基础上选择合适行动。<br>   逻辑Agent可以处理搜索Agent无法处理的复杂的、不可观察的环境。</p>
+<p>   规划Agent:<br>   将搜索的方法和逻辑的方法结合起来，构造规划Agent。<br>   在最高抽象层次，规划任务和搜索任务相同，规划Agent在更抽象的规划空间层次搜索答案，规划算法可以被视为特殊的定理证明机，可以有效地使用描述行动的公理进行推理。<br>   规划Agent 可以使用分治法，将目标分为子目标，然后将这些答案合并起来，构造最终的行动方案。</p>
+<p>   搜索与规划的区别主要体现在：</p>
+<p>  表示目标、状态的方法不同，表示和构造行动序列的方法的不同。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>搜索Agent</th>
+<th>规划Agent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>行动的表示</td>
+<td>行动由产生后继状态的程序描述</td>
+<td>前提和效应的逻辑描述</td>
+</tr>
+<tr>
+<td>状态的表示</td>
+<td>状态表示仅用于产生后继状态、启发式函数估计、目标测试</td>
+<td>逻辑语句集合（一般用一阶逻辑）</td>
+</tr>
+<tr>
+<td>目标的表示</td>
+<td>以目标测试、启发式函数的形式表示，目标不能被分解，以方便于实现目标</td>
+<td>逻辑语句集合</td>
+</tr>
+<tr>
+<td>计划的表示</td>
+<td>答案是一系列不可打断的行动序列</td>
+<td>开放状态、行动、目标的表示；规划次序和执行次序之间无必然联系，先做“显然的”和“重要的”决策，可以极大减小分支因子；世界各部分的相互独立性，可以分治法完成目标规划；</td>
+</tr>
+</tbody></table>
+<p>7.4.2 两种规划系统解决方案</p>
+<p>情景演算（Situation calculus）<br>– 基于一阶逻辑<br>– 用情景变量来描述世界的新状态<br>– 使用FOL中的推理方法进行推理 ；但是逻辑推理是半可判定的，因此定理证明有时候未必能在合理的时间内给出答案</p>
+<p>• STRIPS<br>– STRIPS – Stanford research institute problem solver<br>– 相对情景演算来说，表达能力足够强<br>– 限制可能的答案， 搜索空间更加小<br>– 使用特定的称为规划器（Planner）的算法，来代替通用定理证明机来求解问题<br>– 允许设计更加高效的规划算法</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/50d2687935d14f72a0d5fa78e975cdb6.png" alt="img"></p>
+<p>7.4.3 偏序规划</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3c8782cbf90654050e2983ef41862657.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/976756f0e4350d54ae7fd1a751d992e6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/fb1b0478210cada9fa914eebf86cf8d0.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7db780791f75ab447d8e5ca040e589dc.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/11cb3785102e376e3794a26510776523.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/78c41cd28723e1bf35b7b6328b8f989d.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e8793c20c73e559198b805118df45914.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8841b21451007408e506f8d129208d7f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7a2a54fca138f6c4f107a24679c466f2.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/754914ede92e6427dad1229f9913b350.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7e3d14a4b2777cc35f1effc5292ad9f6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/51ba1b2b9bbd7f02595b2748e7379d15.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/2504a737834668085180a37f965bd44f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/1f7fa6e3875b4edf0f7dd8a44c048786.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a5324882dac0c9fa2aa5435c2dcfe73a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7310709a1579844b6d5cba7137fa6bb5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6acf4f87869bb1eafaa4e72d5bfed629.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7e0f8474726f915afdcf39c0aeb941dc.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/70b8fd2c8af1f3c7f23293c5420ce742.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/f0ccc657273ba2af4663cd7aa479c5ee.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/f1810141f778ab5398a159bec2c4f3f6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/d8ed3d48e9146756eae144a64fc11be3.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/512223232122b7c651eb2001b573381b.png" alt="img"></p>
+<h4 id="第八单元"><a href="#第八单元" class="headerlink" title="第八单元"></a>第八单元</h4><h5 id="第一单元-1"><a href="#第一单元-1" class="headerlink" title="第一单元"></a>第一单元</h5><p>8.1 机器学习</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4501452df35ef783f602ba0f6181e825.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/20827f1e15291f844157cb5b6c762762.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a4c0013b071449becb28086ed44711cc.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7b6bc0e8e9609f59bed16c3d1a2df0c9.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/819cc2f183311be286c0718952a94092.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/66286b3ebe01ffd9dece01e68983e49c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/141e59b1303809b9d02001ea8796a51e.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/d72ee5f449f3abf0e5590577fbb7127c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/677533f086f6c7d192385bb055d00580.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/dd271071e7c160104275fb8be8c3e82a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/9daf0540076fe38ef640ea7f0d9514f1.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8c869ccb8235e27498d8cc47e518e948.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3b52c35511d28776aa9f3434900e4680.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/58d87f5cc65b5a7253aeefe53d1cb83f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/606202f7c03e415b0620bbbcfff23963.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/51d05069501d1751d82384c3b8441918.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5150646edc54a3f382f7fffc68386467.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/14bdc65666284ecc196e3800929694f4.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a8fc1217afbd5a6a679d575baaccb082.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/d7bae84beeabe67a40750fcb4813c2ed.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/63e7b8201b79cbe2322c4be512592490.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8358bd5fe4860658f5ac1e40972c2ba9.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/fca21cccb7754ebf234df779ce1dd51b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4fa2778bef84f78701b6f7d3c84b1315.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a5e0baed9325bb572342da7888cfdcb2.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/09c1b3714f8ebcd17b079b761a4af874.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5bb7e457c2b486a035e67cf426b821c5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ea30ac0a881070aecf661489b7624167.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/66a72150bc95c9456b2d3107db90c084.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/13ee530ef32db944862f9d091e5ae209.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/571935bd199adaaf04500608c8419df5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b2936ebabf1e1d676e11ef9f08047623.png" alt="img"></p>
+<h5 id="第二课时-6"><a href="#第二课时-6" class="headerlink" title="第二课时"></a>第二课时</h5><h5 id="第三课时-7"><a href="#第三课时-7" class="headerlink" title="第三课时"></a>第三课时</h5><p>8.3.1 逻辑回归</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/736b520513d435c103f1e43d406572f5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/685097f2ee576ae7c5b6233d600c00bf.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/534ab29273087dc7fffcc063dbc57591.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/b292ae0c519d651944aa0c10498e9fcd.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/cf333d8827a89c6ecb2e8f2696bb2689.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0bd2c912374a6c4f0d48c41f6baa3c79.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0a13ae179205d4596fd0ed70ee5be6d5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6c3131c37e539e5fc00020f31d5310cb.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ed657e36a58410f4b52c0a6c484785f2.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/7e93da1beb9f77b05c84901bf08c979a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/cdfe6489be2f733f8c43cf64a6776f29.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/bb1b6d36749a435d47ab6067ce1d2514.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/364a4f5f5e852898c13149279339a247.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/102d6de53966277904c668e58c2c7d38.png" alt="img"></p>
+<p>8.3.2 多层神经网络</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/9120bff9bd04554e7dcb3c1ef71198ed.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6e5cd795109503aef3c23c2c0fe2877c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3ac9146ad0968059952681e23ccf0434.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/2704ac23e5e97aa746fd3b1c7aaefdf8.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/78e1e745228658e407c1a8c1bf70b5f6.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/2e07f501aefc47f6acf052d03cd9a764.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8eb71d0a378a8399fea17f54c57b33d3.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4b94cc640bc91a997ffa53109d6dbb20.png" alt="img"></p>
+<h5 id="第四课时-7"><a href="#第四课时-7" class="headerlink" title="第四课时"></a>第四课时</h5><p>8.4 机器视觉</p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/964b7f0e235b663ab2271c933985e595.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6506929c2abde70852883464c036716b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e2268d966b821e1aa2909d5b88c0116b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/a806ab6325fbfd45f2c273dfa5b9bc90.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/9dbf9d4207c3aa572d9bc2a1b4b60425.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ca35c4be26d9c928f57e4808b6fbf468.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ac67338d9aed9bfb8153476b2309284b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/243d650c6cf897e2020770b49dad1a98.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/99c7fd07f7ae6f5b7e782e14422b403f.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ced94b97dfbf4d1e3fe5b8dcf194f42a.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/cb3fddce5f1f046e4621595e3cde46cc.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0f9d4e286c64bb578d05246cd59d9dcb.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/84e6a7a6d7f42385203bb276dcedfb37.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/4f7066ebcc463a97b26b6335fce06876.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ac4b14b7ad1b50d45dadeed24b4c837c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/6023d49f0cf46820daca302f93c8c40b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/85a6af8574236c4da51eac06ae4c82b2.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/dbb00f16ca95beb416bc7b713846a002.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/95e67e724585ca870f25bc4d2b0f9293.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8ab984fe28551a4f8942fcb2717a4178.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/e1be97f4c14baaedc11bef9472230bf5.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/8bfb0a9d2890f1e25eff252098054c24.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3409461dc61e2e8102ef3acf58579726.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/3b2c876af758d11863365696517f12d7.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/5a5bb7675d98f0668fc467e65b4897b8.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/0579bbfa5d34e2cd6b1d63211a54fd5c.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/71c31b13ff21d0bf58442ac799d4e78b.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/622e81659a92028a6767d67db6d8a571.png" alt="img"></p>
+<p><img src="https://p.ananas.chaoxing.com/star3/origin/ae67b94d9732446b50c93bcca711f4f5.png" alt="img"></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://nlbyd1119.online/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/" title="人工智能选修（伪）" target="_blank" rel="external">http://nlbyd1119.online/2020/11/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%80%89%E4%BF%AE%EF%BC%88%E4%BC%AA%EF%BC%89/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nlby" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nlby" target="_blank"><span class="text-dark">nlby</span><small class="ml-1x"></small></a></h3>
+        <div></div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    <div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: window.decodeURIComponent(window.location.pathname),
+  owner: 'nlby',
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  },
+})
+gitment.render('git')
+</script>
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/10/31/%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" title="汇编程序功能实现说明"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+
+    <div class="copyright">
+    	
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+<script src="//cdn.jsdelivr.net/npm/gitment@0.0.3/dist/gitment.browser.min.js"></script>
+<script>
+var gitment = new Gitment({
+  // id默认为当前页面url，如果url后带参数或锚点，gitment要重新初始化
+  // https://github.com/imsun/gitment/issues/55
+  // 解决方案：id:window.location.pathname,或者将id设置为当前页面标题
+  id: '人工智能选修（伪）', 
+  owner: 'nlby', // 可以是你的GitHub用户名，也可以是github id
+  repo: 'nlbyvh.github.io',
+  oauth: {
+    client_id: '6d53a92df707fc123e7a',
+    client_secret: '2bd9e28afe88cb142fa8fa7092c9a8c20ae25555',
+  }
+})
+gitment.render('comments')
+</script>
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+</html>
