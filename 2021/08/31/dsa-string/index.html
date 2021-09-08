@@ -28,9 +28,9 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://shadowbynl.github.io/images/dsa-string/20210831031557889.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1630468420332">
+    <link rel="stylesheet" href="/css/style.css?v=1631075862238">
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1630468420332">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1631075862238">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -54,7 +54,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>Articles</span>7</div>
+        <div><span>Articles</span>11</div>
         <div><span>Tags</span>1</div>
         <div><span>Categories</span>5</div>
     </div>
@@ -126,7 +126,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/大四/">大四</a>
-          <span class="category-list-count">1</span>
+          <span class="category-list-count">2</span>
         </li>
 
         
@@ -171,7 +171,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">Archive</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -211,9 +211,9 @@
 <p>对字符串相关问题进行记录</p>
 </blockquote>
 <span id="more"></span>
-<h2 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h2><h3 id="朴素模式匹配"><a href="#朴素模式匹配" class="headerlink" title="朴素模式匹配"></a>朴素模式匹配</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="/images/dsa-string/20210831031557889.png" alt="" class="lazyload"></p>
-<h3 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="/images/dsa-string/20210831072134870.png" alt="" class="lazyload"></p>
-<h3 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h3><h4 id="leetcode214"><a href="#leetcode214" class="headerlink" title="leetcode214"></a>leetcode214</h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shortest-palindrome/">https://leetcode-cn.com/problems/shortest-palindrome/</a></p>
+<h2><span id="字符串匹配">字符串匹配</span></h2><h3><span id="朴素模式匹配">朴素模式匹配</span></h3><p><img src="/images/dsa-string/20210831031557889.png" alt></p>
+<h3><span id="kmp算法">KMP算法</span></h3><p><img src="/images/dsa-string/20210831072134870.png" alt></p>
+<h3><span id="相关题目">相关题目</span></h3><h4><span id="leetcode214">leetcode214</span></h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shortest-palindrome/">https://leetcode-cn.com/problems/shortest-palindrome/</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。</span></span><br><span class="line"><span class="comment">0 &lt;= s.length &lt;= 5 * 10^4</span></span><br><span class="line"><span class="comment">s 仅由小写英文字母组成</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">shortestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="function">string <span class="title">t</span><span class="params">(s.rbegin(), s.rend())</span></span>;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        s = s + <span class="string">&#x27;#&#x27;</span> + t;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">ne</span><span class="params">(n * <span class="number">2</span> + <span class="number">2</span>)</span></span>;</span><br><span class="line">        ne[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, k = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (k &gt;= <span class="number">0</span> &amp;&amp; s[i] != s[k]) k = ne[k];</span><br><span class="line">            i++;</span><br><span class="line">            k++;</span><br><span class="line">            ne[i] = k;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; ne[i] &lt;&lt; &quot; &quot; &lt;&lt; s[i]&lt;&lt; endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = ne[<span class="number">2</span> * n + <span class="number">1</span>];</span><br><span class="line">        string left = s.<span class="built_in">substr</span>(<span class="number">0</span>, len), right = s.<span class="built_in">substr</span>(len, n - len);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">string</span>(right.<span class="built_in">rbegin</span>(), right.<span class="built_in">rend</span>()) + left + right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
   </article>
 
@@ -276,7 +276,7 @@
 
  
 
-<script async src="/js/app.js?v=1630468420335"></script>
+<script async src="/js/app.js?v=1631075862240"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>

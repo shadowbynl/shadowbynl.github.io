@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>wsl相关配置 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="为允许大四上人工神经网络的程序，需要配置wsl2上的cuda相关环境，现记述一下相关过程与参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wsl相关配置">
+<meta property="og:url" content="https://shadowbynl.github.io/2021/09/03/env-wsl/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="为允许大四上人工神经网络的程序，需要配置wsl2上的cuda相关环境，现记述一下相关过程与参考">
+<meta property="og:locale">
+<meta property="og:image" content="https://shadowbynl.github.io/images/env-wsl/20210907105912380.png">
+<meta property="og:image" content="https://shadowbynl.github.io/images/env-wsl/20210907110629749.png">
+<meta property="article:published_time" content="2021-09-03T02:35:30.000Z">
+<meta property="article:modified_time" content="2021-09-08T04:37:34.430Z">
+<meta property="article:author" content="nlby">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shadowbynl.github.io/images/env-wsl/20210907105912380.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1631075862224">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1631075862224">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>11</div>
+        <div><span>Tags</span>1</div>
+        <div><span>Categories</span>5</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/javase/" style="font-size: 10px;">javase</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="wsl相关配置" class="lazyload">
+              <h1>wsl相关配置</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月03日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+</div>
+
+      
+
+      <blockquote>
+<p>为允许大四上人工神经网络的程序，需要配置wsl2上的cuda相关环境，现记述一下相关过程与参考</p>
+</blockquote>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#1-介绍">1 介绍</a></li>
+<li><a href="#2-本机cuda相关配置">2 本机cuda相关配置</a></li>
+<li><a href="#3-关于wsl2的测试">3 关于wsl2的测试</a><ul>
+<li><a href="#win10虚拟机的问题">win10虚拟机的问题</a></li>
+<li><a href="#修改用户密码">修改用户密码</a></li>
+<li><a href="#安装图形界面">安装图形界面</a></li>
+<li><a href="#安装mysql80">安装MySql8.0</a></li>
+<li><a href="#文件传送">文件传送</a></li>
+<li><a href="#备份">备份</a></li>
+</ul>
+</li>
+<li><a href="#4-wsl2-cuda配置">4 wsl2 cuda配置</a><ul>
+<li><a href="#41-官网文档校园网打不开">4.1 官网文档（校园网打不开）</a></li>
+<li><a href="#42-cuda相关">4.2 cuda相关</a></li>
+<li><a href="#43-综上">4.3 综上</a></li>
+<li><a href="#44-其他方案">4.4 其他方案</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="1-介绍">1 介绍</span></h2><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/about">https://docs.microsoft.com/zh-cn/windows/wsl/about</a><br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10">https://docs.microsoft.com/zh-cn/windows/wsl/install-win10</a><br>本机在2021.4.30时安装过wsl2 ubuntu2</p>
+<h2><span id="2-本机cuda相关配置">2 本机cuda相关配置</span></h2><p>本机目前环境为cuda11.0 gpu为rtx3060<br><img src="/images/env-wsl/20210907105912380.png" alt><br><img src="/images/env-wsl/20210907110629749.png" alt></p>
+<h2><span id="3-关于wsl2的测试">3 关于wsl2的测试</span></h2><h3><span id="win10虚拟机的问题">win10虚拟机的问题</span></h3><blockquote>
+<p>这里先提一下之前在win10上安装vmware后没法开启虚拟机的问题 这里进行详细记述，简单说就是win10本身的虚拟机功能和vmware冲突<br>参考 <a target="_blank" rel="noopener" href="https://www.chenkaihua.com/2019/09/23/hyper-off/">https://www.chenkaihua.com/2019/09/23/hyper-off/</a></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">安装virtualbox后发现开启不了虚拟机，根据网上资料得知，是因为微软默认开启了hyper-v,即便是在启用或关闭Windows功能里不启用Hyper-V,也不能解决问题，需要解决的话就需要彻底关闭hyper-v功能。从知乎问题上(Windows 10 下如何彻底关闭 Hyper-V 服务？ - 张林军的回答 - 知乎)找到了最简单的解决办法。</span><br><span class="line"></span><br><span class="line">快捷键win+x,使用管理员权限打开Windows Powershell</span><br><span class="line">关闭：bcdedit /set hypervisorlaunchtype off</span><br><span class="line">开启: bcdedit /set hypervisorlaunchtype auto</span><br></pre></td></tr></table></figure>
+<h3><span id="修改用户密码">修改用户密码</span></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">win10中WSL登录是不用密码的，当需要使用用户权限但是忘记密码的时候，可以使用如下办法以root身份登录WSL并重置密码</span><br><span class="line"></span><br><span class="line">1、以管理员身份打开 PowerShell ;</span><br><span class="line">2、输入命令 wsl.exe --user root ;</span><br><span class="line">3、命令 passwd root 修改 root 用户密码。</span><br><span class="line"></span><br><span class="line">忘记其他用户密码</span><br><span class="line">su</span><br><span class="line">passwd 用户名</span><br></pre></td></tr></table></figure>
+<p>参考<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/my-blogs-for-everone/articles/13973872.html">https://www.cnblogs.com/my-blogs-for-everone/articles/13973872.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28120227/article/details/100677167">https://blog.csdn.net/qq_28120227/article/details/100677167</a></p>
+<h3><span id="安装图形界面">安装图形界面</span></h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LA411n7BK?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1LA411n7BK?spm_id_from=333.999.0.0</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; apt upgrade</span><br><span class="line">sudo apt install xrdp</span><br><span class="line">sudo apt install xfce4 xfce4-goodies</span><br><span class="line">sudo vim /etc/xrdp/xrdp.ini</span><br><span class="line">echo xfce4-session &gt; ~/.xsession</span><br><span class="line">sudo vim /etc/xrdp/startwm.sh</span><br><span class="line">sudo /etc/init.d/xrdp start</span><br><span class="line"></span><br><span class="line">ip a</span><br><span class="line">sudo apt install firefox</span><br></pre></td></tr></table></figure>
+<h3><span id="安装mysql80">安装MySql8.0</span></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">安装mysql</span><br><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br><span class="line">查看默认密码</span><br><span class="line">sudo cat /etc/mysql/debian.cnf</span><br><span class="line">默认方式登陆</span><br><span class="line">mysql -u debian-sys-maint -p        // 用户名以自己的配置文件为准</span><br><span class="line">更改密码</span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;flush privileges;</span><br><span class="line">mysql&gt;ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;你的密码&#x27;;</span><br><span class="line">mysql&gt;flush privileges;</span><br><span class="line">重启服务</span><br><span class="line">sudo service mysql restart</span><br><span class="line">开启端口</span><br><span class="line">vim /etc/mysql/mysql.conf.d/mysqld.cnf </span><br><span class="line">注释掉 bind-address = 127.0.0.1</span><br><span class="line">允许访问</span><br><span class="line">use mysql;</span><br><span class="line">select host from user where user = &#x27;root&#x27;;</span><br><span class="line">update user set host = &#x27;%&#x27; where user = &#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>参考<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/99c4baca1983">https://www.jianshu.com/p/99c4baca1983</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaozhounandu/p/14497835.html">https://www.cnblogs.com/xiaozhounandu/p/14497835.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/patrickding/p/6435459.html">https://www.cnblogs.com/patrickding/p/6435459.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/iiiiiilikangshuai/article/details/100905996">https://blog.csdn.net/iiiiiilikangshuai/article/details/100905996</a><br>补充vim<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang1393214887/article/details/106233991">https://blog.csdn.net/yang1393214887/article/details/106233991</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40853073/article/details/81707177">https://blog.csdn.net/weixin_40853073/article/details/81707177</a></p>
+<h3><span id="文件传送">文件传送</span></h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/x356982611/article/details/80077085">https://blog.csdn.net/x356982611/article/details/80077085</a></p>
+<h3><span id="备份">备份</span></h3><h2><span id="4-wsl2-cuda配置">4 wsl2 cuda配置</span></h2><blockquote>
+<p>先说结论：总体上完成配置的要求有<br>1 硬件<br>2 驱动<br>3 wsl上的专用cuda<br>4 dev通道的windows<br>先后参照一个去年的视频教程、多篇博客、官网文档，在20.04 18.04等上先后安了三个版本的cuda，均测试失败，暂认为是没有安装dev预览版windows所致，但若进入dev通道升级为win11，对本机系统的稳定性有影响，也不容易回退，所以暂时放弃这个方案。<br>下面记述一下过程及参考</p>
+</blockquote>
+<h3><span id="41-官网文档校园网打不开">4.1 官网文档（校园网打不开）</span></h3><p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html#rel-460-15">https://docs.nvidia.com/cuda/wsl-user-guide/index.html#rel-460-15</a><br>本机安装驱动和dev通道情况下，执行以下命令</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin</span><br><span class="line">$ sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600</span><br><span class="line">$ wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda-repo-wsl-ubuntu-11-4-local_11.4.0-1_amd64.deb</span><br><span class="line">$ sudo dpkg -i cuda-repo-wsl-ubuntu-11-4-local_11.4.0-1_amd64.deb</span><br><span class="line">$ sudo apt-key add /var/cuda-repo-wsl-ubuntu-11-4-local/7fa2af80.pub</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get -y install cuda</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/cuda-11.4/samples/4_Finance/BlackScholes</span><br><span class="line">$ make BlackScholes</span><br><span class="line">$ ./BlackScholes</span><br></pre></td></tr></table></figure>
+<p>在本机上，测试失败，提示大意为找不到驱动/gpu<br><code>CUDA error at ../../common/inc/helper_cuda.h:779 code=35(cudaErrorInsufficientDriver) &quot;cudaGetDevice</code><br><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda/wsl/download">https://developer.nvidia.com/cuda/wsl/download</a></p>
+<h3><span id="42-cuda相关">4.2 cuda相关</span></h3><h4><span id="安装好没有自动配置环境变量手动配置">安装好没有自动配置环境变量，手动配置</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yinxian9019/article/details/106756280/">https://blog.csdn.net/yinxian9019/article/details/106756280/</a></p>
+<h4><span id="阿里云cuda镜像">阿里云cuda镜像</span></h4><p><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/nvidia-cuda/ubuntu1804/x86_64/">https://mirrors.aliyun.com/nvidia-cuda/ubuntu1804/x86_64/</a><br><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/nvidia-cuda/ubuntu2004/x86_64/">https://mirrors.aliyun.com/nvidia-cuda/ubuntu2004/x86_64/</a></p>
+<h4><span id="卸载现有驱动cuda">卸载现有驱动/cuda</span></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get remove --purge nvidia-* </span><br><span class="line">$ sudo apt-get autoremove</span><br><span class="line"></span><br><span class="line">dpkg -l | grep -i nvidia</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_32820767/article/details/83818885">https://blog.csdn.net/weixin_32820767/article/details/83818885</a><br><a target="_blank" rel="noopener" href="https://qastack.cn/ubuntu/206283/how-can-i-uninstall-a-nvidia-driver-completely">https://qastack.cn/ubuntu/206283/how-can-i-uninstall-a-nvidia-driver-completely</a></p>
+<h4><span id="几种方案但没有参考价值都更新太快了">几种方案，但没有参考价值（都更新太快了）</span></h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1FZ4y1p7Qp?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1FZ4y1p7Qp?spm_id_from=333.999.0.0</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20291997/article/details/106897324">https://blog.csdn.net/qq_20291997/article/details/106897324</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36815313/article/details/107641262">https://blog.csdn.net/weixin_36815313/article/details/107641262</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/152533150">https://zhuanlan.zhihu.com/p/152533150</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/122286055">https://zhuanlan.zhihu.com/p/122286055</a></p>
+<h4><span id="各种报错">各种报错</span></h4><p><code>NVIDIA-SMI has failed because it couldn&#39;t communicate with the NVIDIA driver. 
+Make sure that the latest NVIDIA driver is installed and running.</code><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89714824">https://zhuanlan.zhihu.com/p/89714824</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42084747/article/details/84371079?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link">https://blog.csdn.net/weixin_42084747/article/details/84371079?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link</a></p>
+<h4><span id="ubuntu卸载">ubuntu卸载</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33711641/article/details/90386490?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.control&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/weixin_33711641/article/details/90386490?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.control&amp;spm=1001.2101.3001.4242</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38410428/article/details/82930814">https://blog.csdn.net/qq_38410428/article/details/82930814</a></p>
+<h4><span id="比较有价值的参考方案但还是失败了和官网错误类似">比较有价值的参考方案，但还是失败了，和官网错误类似</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010953692/article/details/113830046">https://blog.csdn.net/u010953692/article/details/113830046</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.aliyun.com/nvidia-cuda/ubuntu1804/x86_64/cuda-ubuntu1804.pin</span><br><span class="line">sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600</span><br><span class="line">sudo apt-key adv --fetch-keys https://mirrors.aliyun.com/nvidia-cuda/ubuntu1804/x86_64/7fa2af80.pub</span><br><span class="line">sudo add-apt-repository &quot;deb https://mirrors.aliyun.com/nvidia-cuda/ubuntu1804/x86_64/ /&quot;</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get -y install cuda</span><br></pre></td></tr></table></figure>
+<h3><span id="43-综上">4.3 综上</span></h3><p>基本可以判断是没有用dev通道的问题，参考一篇博客的评论（五月左右）提到切换到dev通道按官网方式就成功了，但这样风险有些大，所以不再尝试。<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/386362341">https://zhuanlan.zhihu.com/p/386362341</a> 极不容易回退，也不稳定</p>
+<h3><span id="44-其他方案">4.4 其他方案</span></h3><p>1.本机上是有完整可用的cuda+opencv的环境的，就看代码怎么改了。。<br>2.先下数据集，数据集官方的下载速度很慢（校园网），一般找不到其他的就得耗流量了。。</p>
+<p>hmdb51<br><a target="_blank" rel="noopener" href="https://www.pianshen.com/article/1325689931/">https://www.pianshen.com/article/1325689931/</a><br><a target="_blank" rel="noopener" href="https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/">https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/</a><br>ucf101<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40162095/article/details/111870161">https://blog.csdn.net/weixin_40162095/article/details/111870161</a></p>
+<p>其他<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/alec1987/article/details/69388699?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-6.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-6.no_search_link">https://blog.csdn.net/alec1987/article/details/69388699?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-6.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-6.no_search_link</a></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2021/09/03/env-wsl/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2021&#x2F;09&#x2F;03&#x2F;env-wsl&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2021&#x2F;09&#x2F;03&#x2F;env-wsl&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1631075862226"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>
