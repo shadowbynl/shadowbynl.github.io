@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>关于编程学习的问题 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="夏令营结束后的八月，心还是有些浮的，一直想回家回不成，所谓准备实习，但实际每天花在准备上的工夫很少，不够专注，效果很差。到九月初回顾自己的技术体系，发现有很多漏洞和模糊的地方，这时候认识到对于找这样的后端开发的工作来说，不专注地学习其基础的方方面面再去看面经总结，而是直接被动接收一些很粗略的知识，是绝对不能应付找工作的要求的。如果以后想干开发，在现在这么卷的情况下，不沉下心来学习准备，而是抱着一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于编程学习的问题">
+<meta property="og:url" content="https://shadowbynl.github.io/2021/09/11/abstj/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="夏令营结束后的八月，心还是有些浮的，一直想回家回不成，所谓准备实习，但实际每天花在准备上的工夫很少，不够专注，效果很差。到九月初回顾自己的技术体系，发现有很多漏洞和模糊的地方，这时候认识到对于找这样的后端开发的工作来说，不专注地学习其基础的方方面面再去看面经总结，而是直接被动接收一些很粗略的知识，是绝对不能应付找工作的要求的。如果以后想干开发，在现在这么卷的情况下，不沉下心来学习准备，而是抱着一">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-10T16:08:33.000Z">
+<meta property="article:modified_time" content="2021-09-11T12:26:54.797Z">
+<meta property="article:author" content="nlby">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1631363269950">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1631363269950">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>12</div>
+        <div><span>Tags</span>1</div>
+        <div><span>Categories</span>5</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/javase/" style="font-size: 10px;">javase</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="关于编程学习的问题" class="lazyload">
+              <h1>关于编程学习的问题</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月11日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+</div>
+
+      
+
+      <blockquote>
+<p>夏令营结束后的八月，心还是有些浮的，一直想回家回不成，所谓准备实习，但实际每天花在准备上的工夫很少，不够专注，效果很差。到九月初回顾自己的技术体系，发现有很多漏洞和模糊的地方，这时候认识到对于找这样的后端开发的工作来说，不专注地学习其基础的方方面面再去看面经总结，而是直接被动接收一些很粗略的知识，是绝对不能应付找工作的要求的。如果以后想干开发，在现在这么卷的情况下，不沉下心来学习准备，而是抱着一个“顺便”的态度，很难会有什么作为。近来先后找过同样学习后端开发的同学聊过两次（已有腾讯网易），对我有些启发，在这篇中简单总结下，同时后续关于总体学习的反思也在此记述。</p>
+</blockquote>
+<span id="more"></span>
+<h2><span id="一-一个专注的态度和学习方法">一、一个专注的态度和学习方法</span></h2><p>其实回顾我过去这二十年，很难说我真正学会了什么技能，很多事浅尝辄止，很多事勉强应付。到现在能通过保研拿到这么一个打黑工的机会已经算是我牺牲比别人多几倍的时间（浪费）而争取到的一个并不怎么样的结果。未来靠什么才能生存，需要真正学会什么，我一直都很清楚，但态度和做法实际并不坚定。长久以来，我习惯看视频教程草草学习，看别人怎么做，但自己很少有练习思考，也很少有总结。往往事情一多起来，我就会中断技术的学习，很多东西一直反复，导致目前很难说掌握了什么技术。这种轻慢的应对技术学习的态度，导致的虚浮的技术水平，进而使我本人内心各方面其实都相当不自信。到现在这个阶段，今年的冬天我就要22周岁了，身体素质差，眼下较不抵触的路就是之后两年去南软外包公司去挣4k的月薪，而选择这条意味着未来我将走死开发这条路了。一个电子信息的硕士，学不到新的研究生阶段才能学到的知识，也不会有曾经渴望的导师的引导，有的只是在用身体换钱一条路走到黑的未来，对于我来说其实也算是较适合的了。不太想科研，也欠缺交际的能力，选择了计算机专业的话还是走开发较好，在这种意义上南软是个尚可的选择，算是有了title也有了一个缓冲学习的机会。如果我做了这样的选择，我未来三年内将完全以java开发为主了。和本科前三年的学习完全不同，前三年是在水绩点、竞赛等的同时自学编程，有一段没一段的，总会为完成课内的很多事而中断技术学习很长时间。而未来三年，在完全就业导向下，java这条线就是我主修的，学用、做项目就是我必须投入的。为了在研一的暑假能找到一份尚可不那么累的工作，我必须从现在开始，投入进去，可能这个学期的实习不太好找，但一定要开始打基础，奠定随时能找面试找工作的知识基础，本科毕业前，必须去尝试找实习找工作，至少得参加几十次面试积累经验，这样过渡到研究生再做一年开发后，才算好做一些。因此，我现在要做的是，明确该如何继续学习下去，需要看什么如何做，应该持有一个怎样的态度。</p>
+<h2><span id="二-差异是如何造成的">二、差异是如何造成的</span></h2><p>一年前的暑假基本算是我后端开发技能最熟练的时候了，那时候为完成课设和竞赛等差不多自己完整写过四五个web系统或桌面程序，到暑假给学院开发科研信息系统时我也是搭建基础环境框架、编写原始文档的主力，我的同学那时候刚接触web开发，还有很多问题需要问我。到大三以后，纠结于考研保研中很多时间不知不觉挥霍，结果保研考研没准备，项目也没怎么做，很多是在原来写的系统上修修改改，很多方面变得生疏了。而我的同学从今年年初开始准备面试和实习，每天花相当多的时间看书做笔记写算法题，逐一攻克java基础的各方面，稳扎稳打，其实半年左右，已经足够对javase、并发编程、虚拟机、框架等各方面有一个深入的认知了，同时做做项目，在校招中已经足够获得不错的offer了。可以说，一年过后，我现在不管从理论还是实操上都差了不少了。很大程度上是我过去半年的重心不在就业准备上面，但更重要的其实是我学习的方法和态度、认知不正确。我不管学什么，总是先找很多参考的资料，选择很长时间，再开始，但往往坚持不长时间就因其他事情而放弃，最终收效甚微。我可是太喜欢反思总结，而不去切实学习了。学而不思则罔，思而不学则殆。眼下最重要的就是调整认知，走入java技术体系的一个正常的学习路线。</p>
+<h2><span id="三-方法">三、方法</span></h2><p>通过与同学的交流，我认识到，对校招而言（暂时不谈社招），基础很重要，开发相关的理论也很多。</p>
+<blockquote>
+<p>java相关的知识体系</p>
+</blockquote>
+<ul>
+<li>javase 十几个方面</li>
+<li>juc并发编程 netty rpc</li>
+<li>jvm</li>
+<li>数据库</li>
+<li>中间件</li>
+<li>设计模式</li>
+<li>计算机基础</li>
+</ul>
+<p>而对于这样的基础理论的学习与实践，之前我的认知是视频教程+面经，可能很多人也是这么做的，但我确实这样做了之后感觉吸收不多，不踏实，可能是不够专注，但我同时也一直都清楚看书去学习技术，看文档才是搞开发最正的路线，再多的视频等也是给你提炼知识的，而且学习效果可能会比较差，所以这些基础理论的学习必须看书细过+实践。</p>
+<blockquote>
+<p>考查的重心</p>
+</blockquote>
+<p>微服务从来不是基础考核的重心，因此与其关注复杂的微服务项目，不如先学好基础的理论和做做基本全面的项目。</p>
+<blockquote>
+<p>牛客的用处</p>
+</blockquote>
+<p>算法题目 面经 项目</p>
+<blockquote>
+<p>关键是什么</p>
+</blockquote>
+<p>看的多，全面，关键是思想</p>
+<h2><span id="具体">具体</span></h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java这个ks路线还得走完框架，然后基础还得那么过</span><br><span class="line"></span><br><span class="line">但有些书得开始计划看了，初步决定在平板上看，博客做笔记，同时实践（需要先整下平板里以前的笔记）</span><br></pre></td></tr></table></figure>
+<h3><span id="书">书</span></h3><ul>
+<li>java核心技术卷一/卷二</li>
+<li>深入理解java虚拟机 第三版</li>
+<li>java并发编程的艺术</li>
+<li>java并发编程实战</li>
+</ul>
+<p>网络</p>
+<ul>
+<li>图解http</li>
+<li>图解tcp</li>
+<li>自顶向下</li>
+<li>谢希仁</li>
+</ul>
+<p>计算机基础</p>
+<ul>
+<li>深入理解计算机系统</li>
+<li>春风</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">忽然意识到cs科班生应该沉下心研读些cs体系的东西</span><br></pre></td></tr></table></figure>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2021/09/11/abstj/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2021&#x2F;09&#x2F;11&#x2F;abstj&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2021&#x2F;09&#x2F;11&#x2F;abstj&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1631363269955"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>
