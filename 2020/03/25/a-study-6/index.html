@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>android基本概念（六） - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="安卓常用画图类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android基本概念（六）">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/03/25/a-study-6/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="安卓常用画图类">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2020/03/25/8GrHh4C2fK3oVub.png">
+<meta property="article:published_time" content="2020-03-25T13:07:46.000Z">
+<meta property="article:modified_time" content="2021-10-07T08:24:47.449Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/25/8GrHh4C2fK3oVub.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633595196582">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633595196582">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>34</div>
+        <div><span>Tags</span>2</div>
+        <div><span>Categories</span>13</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="android基本概念（六）" class="lazyload">
+              <h1>android基本概念（六）</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年03月25日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.9k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 17 分钟</a>
+</div>
+
+      
+
+      <p><strong>安卓常用画图类</strong></p>
+<span id="more"></span>
+
+<!-- toc -->
+
+
+
+<!-- tocstop -->
+
+<p><strong>一、概述</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• Bitmap：相当于我们绘制出来的图像，获取图像文件信息，对图像进行剪切、旋转、缩放，压缩等操作，并可以以指定格式保存图像文件。</span><br><span class="line">• Paint：相当于我们绘图所用的画笔，绘制几何，文本，位图的风格与颜色信息。</span><br><span class="line">• Canvas：相当于我们绘图所用的画布，调用方法进行图像绘制。</span><br></pre></td></tr></table></figure>
+<p><strong>二、BITMAP</strong><br>1.作用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• Bitmap在Android中指的是一张图片，可以是png，也可以是jpg等其他图片格式。</span><br><span class="line">• Bitmap是Android系统中的图像处理中最重要类之一。Bitmap可以获取图像文件信息，对图像进行剪切、旋转、缩放，压缩等操作，并可以以指定格式保存图像文件。</span><br><span class="line">• Bitmap是一个final类，因此不能被继承。Bitmap只有一个构造方法，且该构造方法是没有任何访问权限修饰符修饰，也就是说该构造方法是friendly。</span><br></pre></td></tr></table></figure>
+<p>2.内部枚举类<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2020/03/25/8GrHh4C2fK3oVub.png" alt="20200325092139753.png" class="lazyload"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">• Bitmap中有两个内部枚举类：</span><br><span class="line">• Config是用来设置颜色配置信息的。</span><br><span class="line">• CompressFormat是用来设置压缩方式的。</span><br><span class="line"></span><br><span class="line">• Bitmap.Config.ALPHA_8：颜色信息只由透明度组成，占8位。</span><br><span class="line">• Bitmap.Config.ARGB_4444：颜色信息由透明度与R（Red），G（Green），B（Blue）四部分组成，每个部分都占4位，总共占16位。</span><br><span class="line">• Bitmap.Config.ARGB_8888：颜色信息由透明度与R（Red），G（Green），B（Blue）四部分组成，每个部分都占8位，总共占32位。是Bitmap默认的颜色配置信息，也是最占空间的一种配置。</span><br><span class="line">• Bitmap.Config.RGB_565：颜色信息由R（Red），G（Green），B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位。</span><br><span class="line"></span><br><span class="line">• Bitmap.CompressFormat.JPEG：表示以JPEG压缩算法进行图像压缩，压缩后的格式可以是&quot;.jpg&quot;或者&quot;.jpeg&quot;，是一种有损压缩。</span><br><span class="line">• Bitmap.CompressFormat.PNG：表示以PNG压缩算法进行图像压缩，压缩后的格式可以是&quot;.png&quot;，是一种无损压缩。</span><br><span class="line">• Bitmap.CompressFormat.WEBP：表示以WebP压缩算法进行图像压缩，压缩后的格式可以是&quot;.webp&quot;，是一种有损压缩，质量相同的情况下，WebP格式图像的体积要比JPEG格式图像小40%。美中不足的是，WebP格式图像的编码时间“比JPEG格式图像长8倍”。</span><br></pre></td></tr></table></figure>
+<p>3.构造</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">• Bitmap的类构造函数是私有的，因此不能直接通过构造方法实例化。</span><br><span class="line">• 一般利用Bitmap的静态方法createBitmap()和BitmapFactory的decode系列静态方法创建Bitmap对象。</span><br><span class="line"></span><br><span class="line">• BitmapFactory类提供了4类方法用来加载Bitmap：</span><br><span class="line">• decodeFile()：从文件系统加载。</span><br><span class="line">• String sd_patch= “/sdcard/test.png”;</span><br><span class="line">• Bitmap bm= BitmapFactory.decodeFile(sd_path);</span><br><span class="line"></span><br><span class="line">• decodeResource()：以R.drawable.xxx的形式从本地资源中加载。</span><br><span class="line">• Bitmap bm = BitmapFactory.decodeResource(this.getContext().getResources(), R.drawable.pop);</span><br><span class="line"></span><br><span class="line">• decodeStream()：从输入流加载。</span><br><span class="line">• FileInputStream = new FileInputStream(“/sdcard/test.png”);</span><br><span class="line">• Bitmap bm= BitmapFactory.decodeStream(fis);</span><br><span class="line"></span><br><span class="line">• decodeByteArray()：从字节数组中加载。</span><br><span class="line">• Bitmap bm = BitmapFactory.decodeByteArray(myByte,0,myByte.length);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>二、PAINT</strong><br>1.构造</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">• Paint有3个构造方法，可以通过这3个构造方法创建Paint对象：</span><br><span class="line">• Paint()：用默认设置创建一个Paint对象。</span><br><span class="line">• Paint(int flags)：用特殊标记创建一个Paint对象：</span><br><span class="line">• Paint.FILTER_BITMAP_FLAG：使位图过滤的位掩码标志。</span><br><span class="line">• Paint.ANTI_ALIAS_FLAG：使位图抗锯齿的标志。</span><br><span class="line">• Paint.DITHER_FLAG：使位图进行有利的抖动的位掩码标志。</span><br><span class="line">• Paint(Paint paint)：用指定Paint对象的参数初始化一个新的Paint对象。</span><br></pre></td></tr></table></figure>
+<p>2.常用方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">• Paint常用方法：</span><br><span class="line">• setARGB(int a, int r, int g, int b)：设置画笔颜色。</span><br><span class="line">• setAntiAlias(booleanaa)：设置是否抗锯齿。</span><br><span class="line">• setColor(int color)：设置画笔颜色。</span><br><span class="line">• setAlpha(int a)：设置画笔透明度。</span><br><span class="line">• setTextSize(float textSize)：设置字体大小。</span><br><span class="line">• setUnderlineText(booleanunderlineText)：设置文本带有下划线效果。</span><br><span class="line">• setStrikeThruText(booleanstrikeThruText)：设置文本带删除线效果。</span><br><span class="line"></span><br><span class="line">• setTextSkewX(float skewX)：设置文本倾斜度。</span><br><span class="line">• setTextScaleX(float scaleX)：设置文本缩放大小。</span><br><span class="line">• setTextAlign(Paint.Alignalign)：设置文本对齐方式。</span><br><span class="line">• setTypeface(Typeface typeface)：设置字体。</span><br><span class="line">• setStyle(Paint.Stylestyle)：设置画笔样式，画笔样式有3种：Paint.Style.FILL：默认值，用这种风格绘制的几何图与文本将被填充，它画出来的是实心图</span><br><span class="line">• Paint.Style.STROKE：用这种风格绘制的几何图与文本将被画出外边框，它画出来的是空心图</span><br><span class="line">• Paint.Style.FILL_AND_STROKE：用这种风格绘制的几何图与文本将被填充并被画出外边框，从表面看它画出来的也是实心图，不过比一般画出来的实心图多了一层外边框。</span><br><span class="line"></span><br><span class="line">• setStrokeWidth(float width)：设置画笔外边框的宽度，可以想象成画笔“画出线条的宽度”。</span><br><span class="line">• setXfermode(Xfermodexfermode)：设置图像重叠时的处理方式。</span><br><span class="line">• setShader(Shadershader)：设置着色器。</span><br><span class="line">• setPathEffect(PathEffecteffect)：设置或者清除路径效果。</span><br></pre></td></tr></table></figure>
+<p><strong>三、CANVAS</strong><br>1.概述</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">• Canvas拥有“绘制”调用，可以调用方法进行图像绘制。</span><br><span class="line">• 画图时需要4个基本元素：</span><br><span class="line">• 拥有像素的Bitmap。</span><br><span class="line">• 可以进行绘制调用的Canvas。</span><br><span class="line">• 图元（比如：Rect, Path, text, Bitmap）。</span><br><span class="line">• 描述风格与颜色的Paint。</span><br></pre></td></tr></table></figure>
+<p>2.构造</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• Canvas有两个构造方法，可以通过这两个构造方法创建Canvas对象：</span><br><span class="line">• Canvas()：创建一个空的Canvas对象。</span><br><span class="line">• Canvas(Bitmap bitmap)：用指定的位图构造一个Canvas对象。</span><br></pre></td></tr></table></figure>
+<p>3.常用方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">• drawARGB()：用指定ARGB颜色填充画布上面的位图</span><br><span class="line">• drawRGB()：用指定RGB颜色填充画布上面的位图</span><br><span class="line">• drawColor()：用指定颜色填充画布上面的位图</span><br><span class="line">• drawArc()：画圆弧</span><br><span class="line">• drawBitmap()：画位图</span><br><span class="line">• drawCircle()：画圆</span><br><span class="line">• drawLine()：画直线</span><br><span class="line"></span><br><span class="line">• drawLines()：画折线</span><br><span class="line">• drawOval()：画椭圆</span><br><span class="line">• drawRect()：画矩形</span><br><span class="line">• drawRoundRect()：画圆角矩形</span><br><span class="line">• drawPoint()：画点</span><br><span class="line">• drawPoints()：画一组点</span><br><span class="line">• drawPath()：画路径</span><br><span class="line">• drawText()：画文本</span><br></pre></td></tr></table></figure>
+<p><strong>ANIMATION</strong><br><strong>一、概述</strong><br>Android Animation分为两类</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">• 传统动画：包括帧动画（Frame Animation）和补间动画（Tween Animation），又称为DrawableAnimation和View Animation。</span><br><span class="line">• 属性动画（Property Animation）。</span><br></pre></td></tr></table></figure>
+<p><strong>二、传统动画</strong><br>Frame Animation</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• Frame Animation（DrawableAnimation）是最容易实现的一种动画，这种动画更多的依赖于完善的UI资源。</span><br><span class="line">• Frame Animation的原理是将一张张单独的图片连贯的进行播放，从而在视觉上产生一种动画的效果。</span><br><span class="line">• 这种动画的实质其实是Drawable，所以这种动画的XML定义方式文件一般放在res/drawable/目录下。</span><br></pre></td></tr></table></figure>
+<p>TweenAnimation</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">• TweenAnimation（View Animation）可以在一个视图容器内执行一系列简单变换。譬如，有一个TextView对象，可以移动、旋转、缩放、透明度设置其文本，当然，如果它有一个背景图像，背景图像会随着文本变化。</span><br><span class="line">• TweenAnimation 具体有4种形式：alpha（淡入淡出），translate（位移），scale（缩放大小），rotate（旋转）。</span><br><span class="line">• 补间动画通过XML或Android代码定义，建议使用XML文件定义，因为它更具可读性、可重用性。</span><br><span class="line"></span><br><span class="line">--------------------关于配置anime--------------------</span><br><span class="line">相关类名：</span><br><span class="line">• AlphaAnimation：渐变透明度动画效果，对应XML中的<span class="tag">&lt;<span class="name">alpha</span>&gt;</span>，放置在res/anim/目录。</span><br><span class="line">• RotateAnimation：画面转移旋转动画效果，对应XML中的<span class="tag">&lt;<span class="name">rotate</span>&gt;</span>，放置在res/anim/目录。</span><br><span class="line">• ScaleAnimation：渐变尺寸伸缩动画效果，对应XML中的<span class="tag">&lt;<span class="name">scale</span>&gt;</span>，放置在res/anim/目录。</span><br><span class="line">• TranslateAnimation：画面转换位置移动动画效果，对应XML中的<span class="tag">&lt;<span class="name">translate</span>&gt;</span> 放置在res/anim/目录。</span><br><span class="line">• AnimationSet：一个持有其它动画元素alpha、scale、translate、rotate或者其它set元素的容器，对应XML中的<span class="tag">&lt;<span class="name">set</span>&gt;</span>，放置在res/anim/目录。</span><br><span class="line"></span><br><span class="line">Animation属性：</span><br><span class="line">• android:detachWallpaper：是否在壁纸上运行，对应setDetachWallpaper(boolean)。</span><br><span class="line">• android:duration：动画持续时间，毫秒为单位，对应setDuration(long)。</span><br><span class="line">• android:fillAfter：控件动画结束时是否保持动画最后的状态，对应setFillAfter(boolean) 。</span><br><span class="line">• android:fillBefore：控件动画结束时是否还原到开始动画前的状态，对应setFillBefore(boolean)。</span><br><span class="line">• android:fillEnabled：与android:fillBefore效果相同，对应setFillEnabled(boolean) 。</span><br><span class="line">• android:interpolator：设定插值器（指定的动画效果，譬如回弹等），对应setInterpolator(Interpolator)。</span><br><span class="line">• android:repeatCount：重复次数，对应setInterpolator(Interpolator)。</span><br><span class="line">• android:repeatMode：重复类型有两个值，reverse表示倒序回放，restart表示从头播放，对应setInterpolator(Interpolator) 。</span><br><span class="line">• android:startOffset：调用start函数之后等待开始运行的时间，单位为毫秒，对应setStartOffset(long)。</span><br><span class="line">• android:zAdjustment：表示被设置动画的内容运行时在Z轴上的位置（top/bottom/normal），默认为normal ，对应setZAdjustment(int)。</span><br><span class="line"></span><br><span class="line">• Interpolator 主要作用是可以控制动画的变化速率，就是动画进行的快慢节奏：</span><br><span class="line">• @android:anim/accelerate_decelerate_interpolator：动画始末速率较慢，中间加速。</span><br><span class="line">• @android:anim/accelerate_interpolator：动画开始速率较慢，之后慢慢加速。</span><br><span class="line">• AnticipateInterpolator@android:anim/anticipate_interpolator开始的时候从后向前甩。</span><br><span class="line">• @android:anim/anticipate_overshoot_interpolator类似上面AnticipateInterpolator。</span><br><span class="line">• @android:anim/bounce_interpolator：动画结束时弹起。</span><br><span class="line">• @android:anim/cycle_interpolator：循环播放速率改变为正弦曲线。</span><br><span class="line">• @android:anim/decelerate_interpolator：动画开始快然后慢。</span><br><span class="line">• @android:anim/linear_interpolator：动画匀速改变。</span><br><span class="line">• @android:anim/overshoot_interpolator：向前弹出一定值之后回到原来位置。</span><br></pre></td></tr></table></figure>
+<p>逐帧动画&amp; 补间动画存在一定的缺点：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• 作用对象局限。有些情况下的动画效果只是视图的某个属性&amp; 对象而不是整个视图。</span><br><span class="line">• 没有改变View的属性，只是改变视觉效果。补间动画只是改变了View的视觉效果，而不会真正去改变View的属性。</span><br><span class="line">• 动画效果单一。补间动画只能实现平移、旋转、缩放&amp; 透明度这些简单的动画需求，一旦遇到相对复杂的动画效果，即超出了上述4种动画效果，那么补间动画则无法实现。</span><br></pre></td></tr></table></figure>
+<p><strong>三、属性动画（Property Animation）</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">• 为了解决补间动画的缺陷，在Android 3.0（API 11）开始，系统提供了一种全新的动画模式：属性动画（Property Animation）。</span><br><span class="line">• 作用对象：任意Java 对象，不再局限于视图View对象。</span><br><span class="line">• 实现的动画效果：可自定义各种动画效果，不再局限于4种基本变换：平移、旋转、缩放&amp; 透明度。</span><br><span class="line">• 工作原理：在一定时间间隔内，通过不断对值进行改变，并不断将该值赋给对象的属性，从而实现该对象在该属性上的动画效果。</span><br></pre></td></tr></table></figure>
+<p><strong>四、ANIMATION LISTENER</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">• anim.setAnimationListener(<span class="keyword">new</span> AnimationListener() &#123;</span><br><span class="line">• <span class="meta">@Override</span></span><br><span class="line">• <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancle</span><span class="params">(Animation animation)</span> </span>&#123;…&#125;</span><br><span class="line">• <span class="meta">@Override</span></span><br><span class="line">• <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animation animation)</span> </span>&#123;…&#125;</span><br><span class="line">• <span class="meta">@Override</span></span><br><span class="line">• <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animation animation)</span> </span>&#123;…&#125;</span><br><span class="line">• <span class="meta">@Override</span></span><br><span class="line">• <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animation animation)</span> </span>&#123;…&#125;</span><br><span class="line">• &#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>MEDIAPLAYER</strong><br><strong>一、功能与设置源</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">• Android可以通过Mediaplayer类提供的API，实现以下音频、视频文件的播放：</span><br><span class="line">• 自带resource资源：MediaPlayer.create(this, R.raw.test);</span><br><span class="line">• SD卡或其他文件路径下的媒体文件：mp.setDataSource(“/sdcard/test.mp3”);</span><br><span class="line">• 网络媒体文件：mp.setDataSource(&quot;http://www.citynorth.cn/music/confucius.mp3&quot;);</span><br><span class="line"></span><br><span class="line">• setDataSource一共四个方法：</span><br><span class="line">• setDataSource(String path) ；//文件系统路径</span><br><span class="line">• setDataSource(FileDescriptorfd)；//assets文件</span><br><span class="line">• setDataSource(Context context, Uri uri)；//网络虚拟路径</span><br><span class="line">• setDataSource(FileDescriptorfd, long offset, long length)；</span><br><span class="line">• 若URI中包含网络资源，需在AndroidManifest.xml中申请Internet访问权限：</span><br><span class="line">• <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>二、生命周期</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">• Idle 状态：当使用new()方法创建一个MediaPlayer对象或者调用了其reset()方法时，该MediaPlayer对象处于idle状态。这两种方法的一个重要差别就是：如果在这个状态下调用了getDuration()等方法（相当于调用时机不正确），通过reset()方法进入idle状态的话会触发OnErrorListener.onError()，并且MediaPlayer会进入Error状态；如果是新创建的MediaPlayer对象，则并不会触发onError(),也不会进入Error状态。</span><br><span class="line">• End 状态：通过release()方法可以进入End状态，只要MediaPlayer对象不再被使用，就应当尽快将其通过release()方法释放掉，以释放相关的软硬件组件资源，这其中有些资源是只有一份的（相当于临界资源）。如果MediaPlayer对象进入了End状态，则不会在进入任何其他状态了。</span><br><span class="line">• Initialized 状态：这个状态比较简单，MediaPlayer调用setDataSource()方法就进入Initialized状态，表示此时要播放的文件已经设置好了。</span><br><span class="line"></span><br><span class="line">• Prepared 状态：初始化完成之后还需要通过调用prepare()或prepareAsync()方法，这两个方法一个是同步的一个是异步的，只有进入Prepared状态，才表明MediaPlayer到目前为止都没有错误，可以进行文件播放。</span><br><span class="line">• Preparing 状态：这个状态比较好理解，主要是和prepareAsync()配合，如果异步准备完成，会触发OnPreparedListener.onPrepared()，进而进入Prepared状态。MediaPlayer准备资源调用prepare()时，会执行一段稍长的时间，因为它在解码媒体数据，如果解码时间过长那么会出现主线程阻塞，从而触发ANR异常，导致程序运行很慢，所以框架提供了prepareAsync()异步准备方法并提供资源准备监听，当资源准备完成会触发MediaPlayer.OnPreparedListener的onPrepared()方法。</span><br><span class="line"></span><br><span class="line">• Stop 状态：Started或者Paused状态下均可调用stop()停止MediaPlayer，而处于Stop状态的MediaPlayer要想重新播放，需要通过prepareAsync()和prepare()回到先前的Prepared状态重新开始才可以。</span><br><span class="line">• PlaybackCompleted状态：文件正常播放完毕，而又没有设置循环播放的话就进入该状态，并会触发OnCompletionListener的onCompletion()方法。此时可以调用start()方法重新从头播放文件，也可以stop()停止MediaPlayer，或者也可以seekTo()来重新定位播放位置。</span><br><span class="line"></span><br><span class="line">• Error状态：如果由于某种原因MediaPlayer出现了错误，会触发OnErrorListener.onError()事件，此时MediaPlayer即进入Error状态，及时捕捉并妥善处理这些错误是很重要的，可以帮助我们及时释放相关的软硬件资源，也可以改善用户体验。</span><br><span class="line">• 通过setOnErrorListener(android.media.MediaPlayer.OnErrorListener)可以设置该监听器。如果MediaPlayer进入了Error状态，可以通过调用reset()来恢复，使得MediaPlayer重新返回到Idle状态。</span><br></pre></td></tr></table></figure>
+<p><strong>三、常用方法</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">• int getCurrentPosition()：获取当前播放的位置。</span><br><span class="line">• int getAudioSessionId()：返回音频的session ID。</span><br><span class="line">• int getDuration()：得到文件的时间。</span><br><span class="line">• TrackInfo[] getTrackInfo()：返回一个track信息的数组。</span><br><span class="line">• booleanisLooping()：是否循环播放。</span><br><span class="line">• booleanisPlaying()：是否正在播放。</span><br><span class="line"></span><br><span class="line">• void pause ()：暂停。</span><br><span class="line">• void start ()：开始。</span><br><span class="line">• void stop ()：停止。</span><br><span class="line">• void prepare()：同步的方式装载流媒体文件。</span><br><span class="line">• void prepareAsync()：异步的方式装载流媒体文件。</span><br><span class="line">• void reset()：重置MediaPlayer至未初始化状态。</span><br><span class="line">• void release ()：回收流媒体资源。</span><br><span class="line">• void seekTo(int msec)：指定播放的位置（以毫秒为单位时间）。</span><br><span class="line"></span><br><span class="line">• void setAudioStreamType(intstreamtype)：指定流媒体类型。</span><br><span class="line">• void setLooping(booleanlooping)：设置是否单曲循环。</span><br><span class="line">• void setNextMediaPlayer(MediaPlayernext)：当这个MediaPlayer播放完毕后，MediaPlayernext开始播放。</span><br><span class="line">• void setWakeMode(Context context, int mode)：设置CPU唤醒的状态。</span><br><span class="line">• void setScreenOnWhilePlaying(Boolean screenOn)：播放时是否保持屏幕常亮，是否阻止屏幕自动休眠。</span><br></pre></td></tr></table></figure>
+<p><strong>四、展示控件–SurfaceView</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">• View通过刷新来重绘视图，Android系统通过发出VSYNC信号来进行屏幕的重绘，刷新的时间间隔为16ms。在一些需要频繁刷新，执行很多逻辑操作的时候，超过了16ms，就会导致卡顿.</span><br><span class="line">• SurfaceView继承自View，但拥有独立的绘制表面，即它不与其宿主窗口共享同一个绘图表面，可以单独在一个线程进行绘制，并不会占用主线程的资源。这样，绘制就会比较高效，游戏，视频播放，还有最近热门的直播，都可以用SurfaceView。</span><br><span class="line"></span><br><span class="line">SurfaceView和View的区别：</span><br><span class="line">• View主要适用于主动更新的情况下，而SurfaceView主要适用于被动更新，例如频繁地刷新。</span><br><span class="line">• View在主线程中对画面进行刷新，而SurfaceView通常会通过一个子线程来进行页面的刷新。</span><br><span class="line">• View在绘图时没有使用双缓冲机制，而SufaceView在底层实现机制中就已经实现了双缓冲机制。</span><br></pre></td></tr></table></figure>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/03/25/a-study-6/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;03&#x2F;25&#x2F;a-study-6&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;03&#x2F;25&#x2F;a-study-6&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/android/" rel="tag">android</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633595196585"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>
