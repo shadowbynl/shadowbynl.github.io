@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>汇编程序功能实现说明 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="该篇对汇编中一些基本功能的实现方法进行记述和说明。  INT 21h  转载自 http:&#x2F;&#x2F;blog.eonew.cn&#x2F;archives&#x2F;41 INT 21h常用功能号AH &#x3D; 01h出口参数：AL&#x3D;ASCII子符功能说明：键但输入一个字符。如果AL&#x3D;00h.应再次调用该功能获取扩展ASClI字初代码。本功能将在屏称上显示输入的内容（有回显）。调用该功能如果没有按键输入，则一直循环等待直到按键才">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编程序功能实现说明">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/10/31/%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="该篇对汇编中一些基本功能的实现方法进行记述和说明。  INT 21h  转载自 http:&#x2F;&#x2F;blog.eonew.cn&#x2F;archives&#x2F;41 INT 21h常用功能号AH &#x3D; 01h出口参数：AL&#x3D;ASCII子符功能说明：键但输入一个字符。如果AL&#x3D;00h.应再次调用该功能获取扩展ASClI字初代码。本功能将在屏称上显示输入的内容（有回显）。调用该功能如果没有按键输入，则一直循环等待直到按键才">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-10-31T15:58:55.000Z">
+<meta property="article:modified_time" content="2020-11-01T03:53:48.264Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899650">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899650">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="汇编程序功能实现说明" class="lazyload">
+              <h1>汇编程序功能实现说明</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年10月31日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+</div>
+
+      
+
+      <p>该篇对汇编中一些基本功能的实现方法进行记述和说明。</p>
+<blockquote>
+<p>INT 21h</p>
+</blockquote>
+<p>转载自 <a target="_blank" rel="noopener" href="http://blog.eonew.cn/archives/41">http://blog.eonew.cn/archives/41</a></p>
+<h3><span id="int-21h常用功能号">INT 21h常用功能号</span></h3><h4><span id="ah-01h">AH = 01h</span></h4><p>出口参数：AL=ASCII子符<br>功能说明：键但输入一个字符。如果AL=00h.应再次调用该功能获取扩展ASClI字初代码。本功能将在屏称上显示输入的内容（有回显）。调用该功能如果没有按键输入，则一直循环等待直到按键才结束功能调用，此时控制返回调用程序</p>
+<h4><span id="ah02h">AH=02h</span></h4><p>入口参数：DL=欲显示的ASCIl字符<br>功能说明：在屏幕当前光标的位置显示一个字符</p>
+<h4><span id="ah06h">AH=06h</span></h4><p>入口参数：DL=FFh（对应输入功能），DL=欲显示的ASCII得（对应输出功能）<br>出口参数：AL=ASCII字符</p>
+<p>功能说明：对应入口参数DL=FFh，是一个键盘输入功能调用，调用该功能不论是否有按键输入，都将结束功能调用，标志ZF反映是否按键：条件转移指令的为零条件Z（ZF=1）表示无按键；不为零条件NZ（ZF=0）表示有按键，AL返回输入字符的ASCII码。如果AL=00h，应再次调用该功能获取扩展ASCII字符代码。本功能不在屏幕上显示输入的内容（无回显）</p>
+<p>对应入口参数DL=ASCIl字符，是一个显示输出功能调用，与02h功能调用一样</p>
+<h4><span id="ah09h">AH=09h</span></h4><p>入口参数：DS:DX=欲显示的字符中逻辑地址（段地址:偏移地址）<br>功能说明：将指定的字符中在当前光标位置开始显示。字符串可以是任何长度，还可以包含控制字符（例如回车0Dh，换行0Ah），但必须以“$”（其ASCII码为24h）字符结尾</p>
+<h4><span id="ah0ah">AH=0Ah</span></h4><p>入口参数：DS:DX=键盘输入缓冲区逻辑地址（段地址:偏移地址）<br>功能说明：读取从键盘输入的一个字符串（有回显），直到按下回车键，键盘输入缓冲区的第一个字节是缓冲区字节大小（最大为255）.第2个字节在调用结束时被功能调用填进输入的字符个数，第3个字节开始存放输入字符的ASClI码，最后是回车字符（ODh）</p>
+<h4><span id="ah4ch">AH=4Ch</span></h4><blockquote>
+<p>生成随机数并显示</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line">DATA	SEGMENT</span><br><span class="line">	PLN		DB 0DH, 0AH, &#x27;$&#x27;</span><br><span class="line">	SEED10	DB 10 DUP(0)</span><br><span class="line">	SEED80	DB 80 DUP(0)</span><br><span class="line">DATA	ENDS</span><br><span class="line"></span><br><span class="line">STACK	SEGMENT</span><br><span class="line">		DB 100 DUP(0)</span><br><span class="line">STACK	ENDS         </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CODE	SEGMENT</span><br><span class="line">		ASSUME CS:CODE, DS:DATA, SS:STACK</span><br><span class="line">START:	</span><br><span class="line">		MOV AX, DATA</span><br><span class="line">		MOV DS, AX</span><br><span class="line">		MOV ES, AX</span><br><span class="line">		MOV AX, STACK</span><br><span class="line">		MOV SS, AX</span><br><span class="line">                  </span><br><span class="line">        CALL SEED </span><br><span class="line">		 										;生成80个随机数种子</span><br><span class="line">		</span><br><span class="line">		;显示80个随机数</span><br><span class="line">		LEA DI, SEED80</span><br><span class="line">		MOV CX, 80</span><br><span class="line">LOP100:	MOV BX, 80</span><br><span class="line">		SUB BX, CX</span><br><span class="line">		MOV AX, [DI+BX]</span><br><span class="line">		CALL DISHEX</span><br><span class="line">		LOOP LOP100</span><br><span class="line">		</span><br><span class="line">		MOV AH, 4CH</span><br><span class="line">		INT 21H     </span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">;</span><br><span class="line">;此子程序为获取种子程序,其中用到了随机数生成器</span><br><span class="line">;产生80个种子数的随机数,存储在SEED80中</span><br><span class="line">;</span><br><span class="line">SEED   	PROC                         </span><br><span class="line">       	PUSH CX</span><br><span class="line">      	PUSH DX</span><br><span class="line">     	PUSH AX</span><br><span class="line">     	PUSH BX</span><br><span class="line">     	PUSH SI</span><br><span class="line">     	PUSH DI</span><br><span class="line"></span><br><span class="line">     	LEA SI, SEED10</span><br><span class="line">LOP0: </span><br><span class="line">        STI</span><br><span class="line">        MOV AH, 0                				    	;读时钟计数器值</span><br><span class="line">        INT 1AH</span><br><span class="line">        MOV AX, DX            							;第一步:得到第一号一个种子DX,将DX复制给AX</span><br><span class="line">        MOV CH, 0										;CH用来防止多次循环无解</span><br><span class="line">LOP1:   </span><br><span class="line">		MOV CL, 4</span><br><span class="line">		INC CH</span><br><span class="line">		CMP CH, 5</span><br><span class="line">        JZ LOP0</span><br><span class="line">        ROR AX, CL 										;第二步:将AX循环右移4位,得到二号种子两个AH和AL									</span><br><span class="line">        CMP AH, AL</span><br><span class="line">        JZ LOP1											;确保AH与AL不等</span><br><span class="line">        MOV [SI], AH 									;将AH放入SEED10中</span><br><span class="line">        MOV [SI+1], AL 									;将AL放入SEED10中</span><br><span class="line"></span><br><span class="line">LOP2:</span><br><span class="line">		MUL AH 											;循环超过4个或者第一次,AH与AL相乘</span><br><span class="line">		MOV CH, 0										;CH清零</span><br><span class="line">         										</span><br><span class="line">LOP3:   </span><br><span class="line">		MOV CL, 4</span><br><span class="line">		INC CH</span><br><span class="line">		CMP CH, 5</span><br><span class="line">        JZ LOP2</span><br><span class="line">        ROR AX, CL 										;第三步:AH与AL相乘之后，再将AX循环右移4位,得到新的AH和AL</span><br><span class="line">        CMP AH, AL 										;确保AH、AL、[SI]、[SI+1]四个数不等</span><br><span class="line">        JZ LOP3											</span><br><span class="line">        CMP AH, [SI]</span><br><span class="line">        JZ LOP3</span><br><span class="line">        CMP AH, [SI+1]</span><br><span class="line">        JZ LOP3</span><br><span class="line">        CMP AL, [SI]</span><br><span class="line">        JZ LOP3</span><br><span class="line">        CMP AL, [SI+1]</span><br><span class="line">        JZ LOP3</span><br><span class="line">        MOV [SI+2], AH 									;将AH放入SEED10中</span><br><span class="line">        MOV [SI+3], AL 									;将AL放入SEED10中,第二步完成,得到三号种子SEED10中的4个</span><br><span class="line"></span><br><span class="line">        MOV AX, [SI]									;三号种子相互异或,得到四号种子SEED10中的10个</span><br><span class="line">        XOR AX, [SI+1]</span><br><span class="line">        MOV [SI+4], AX</span><br><span class="line">        MOV AX, [SI]</span><br><span class="line">        XOR AX, [SI+2]</span><br><span class="line">        MOV [SI+5], AX</span><br><span class="line">        MOV AX, [SI]</span><br><span class="line">        XOR AX, [SI+3]</span><br><span class="line">        MOV [SI+6], AX</span><br><span class="line">        MOV AX, [SI+1]</span><br><span class="line">        XOR AX, [SI+2]</span><br><span class="line">        MOV [SI+7], AX</span><br><span class="line">        MOV AX, [SI+1]</span><br><span class="line">        XOR AX, [SI+3]</span><br><span class="line">        MOV [SI+8], AX</span><br><span class="line">        MOV AX, [SI+2]</span><br><span class="line">        XOR AX, [SI+3]</span><br><span class="line">        MOV [SI+9], AX                                  </span><br><span class="line">        												</span><br><span class="line">		LEA DI, SEED80									;第四步:三号种子的10个种子分别循环右移一位8次，得到四号种子SEED80中的80个</span><br><span class="line">        MOV CH, 0</span><br><span class="line">        MOV BH, 0</span><br><span class="line">LOP10:													;此时套用两层循环,第一层循环(外层)为循环三号种子中的10个种子</span><br><span class="line">		MOV BL, CH    									;CH为第一层循环(外层)计数(10),代表10个种子</span><br><span class="line">		MOV CL, 0										;CL为第二层循环(内层)计数(8)</span><br><span class="line">		MOV AX, [SI+BX]									;每个第二层循环处理的种子为[SI+CH],暂存至AX做处理</span><br><span class="line">LOP11:													;第二层循环(内层)为三号种子中每个种子做循环右移一位处理8次</span><br><span class="line">		PUSH AX                        					;将AX暂存至DX</span><br><span class="line">		MOV AL, CL                                      ;此处开始计算四号种子中种子的存放位置,存放位置公式为[DI+CH+CL*10]</span><br><span class="line">		MOV DL, 10</span><br><span class="line">		MUL DL</span><br><span class="line">		MOV BL, CH</span><br><span class="line">		ADD BX, AX</span><br><span class="line">		POP AX 		                                    ;还原AX</span><br><span class="line">		MOV [DI+BX], AX 								;计算种子存放位置结束</span><br><span class="line">		PUSH CX</span><br><span class="line">		MOV CL, 3</span><br><span class="line">		ROR AX, CL</span><br><span class="line">		POP CX</span><br><span class="line">		INC CL</span><br><span class="line">		CMP CL, 8</span><br><span class="line">		JNZ LOP11</span><br><span class="line">		INC CH</span><br><span class="line">		CMP CH, 10</span><br><span class="line">		JNZ LOP10</span><br><span class="line"></span><br><span class="line">		POP DI</span><br><span class="line">		POP SI</span><br><span class="line">		POP BX</span><br><span class="line">	    POP AX</span><br><span class="line">        POP DX</span><br><span class="line">        POP CX</span><br><span class="line">        RET</span><br><span class="line">SEED    ENDP		   </span><br><span class="line"></span><br><span class="line">;</span><br><span class="line">;此子程序为将一个数以十六进制数输出</span><br><span class="line">;DEBUG用的</span><br><span class="line">;</span><br><span class="line">DISHEX 	PROC 	NEAR</span><br><span class="line">		PUSH AX</span><br><span class="line">		PUSH CX</span><br><span class="line">		PUSH DX        </span><br><span class="line"></span><br><span class="line">   		MOV CX, 0404H</span><br><span class="line">DIS1:</span><br><span class="line">   		ROL AX, CL</span><br><span class="line">    	MOV DX, AX</span><br><span class="line">    	AND DL, 0FH</span><br><span class="line">    	CALL DISCHAR</span><br><span class="line">    	DEC CH              ;; 控制循环4次 因为低两位才表示随机数值 考虑如何跳过前两个循环</span><br><span class="line">    	JNZ DIS1</span><br><span class="line"></span><br><span class="line">		MOV DL, &#x27;H&#x27;                						 ;十六进制数后面加上H</span><br><span class="line">    	MOV AH, 2</span><br><span class="line">    	INT 21H</span><br><span class="line"></span><br><span class="line">    	POP DX</span><br><span class="line">    	POP CX</span><br><span class="line">    	POP AX</span><br><span class="line">    	RET</span><br><span class="line">DISHEX 	ENDP</span><br><span class="line"></span><br><span class="line">DISCHAR PROC 	NEAR</span><br><span class="line">    	PUSH AX     </span><br><span class="line">    	CMP CH, 03H          ;; 如果CH的值大于等于03H 即前两个高位值 则直接跳过</span><br><span class="line">    	JGE  P2             </span><br><span class="line">    	CMP DL, 0AH                  					 ;判断DL中低四位为数字还是为字母</span><br><span class="line">    	JL PRINT1                     					 ;DL中低四位为数字,跳转</span><br><span class="line">    	ADD DL, 7                    					 ;DL中低四位为字母,0AH+7=11H,所以下面就从11H+30H=41H开始算</span><br><span class="line">PRINT1:</span><br><span class="line">    	ADD DL, 30H                    					 ;30H为0的ASCLL码,41H为A的ASCLL码,61H为A的ASCLL码</span><br><span class="line">    	MOV AH, 2                     					 ;输出DL中的对应的ASCLL码字符</span><br><span class="line">    	INT 21H             ;; 说明一下 要打印的值在DL里面 此处给AH=2 就是为了在中断时调用相应的功能 参数位置在DL中</span><br><span class="line">    	POP AX</span><br><span class="line">    	RET       </span><br><span class="line">P2:</span><br><span class="line">        POP AX</span><br><span class="line">        RET</span><br><span class="line">DISCHAR ENDP</span><br><span class="line"></span><br><span class="line">CODE	ENDS</span><br><span class="line">    END START</span><br></pre></td></tr></table></figure>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/10/31/%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;10&#x2F;31&#x2F;%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;10&#x2F;31&#x2F;%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899653"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

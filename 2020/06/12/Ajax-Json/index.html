@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>Ajax-Json - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="一、Json基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax-Json">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/06/12/Ajax-Json/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="一、Json基础">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-06-12T14:50:19.000Z">
+<meta property="article:modified_time" content="2020-06-13T08:52:53.045Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899825">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899825">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Ajax-Json" class="lazyload">
+              <h1>Ajax-Json</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年06月12日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 23 分钟</a>
+</div>
+
+      
+
+      <p><strong>一、Json基础</strong></p>
+<span id="more"></span>
+<ol>
+<li>基本规则<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 数据在名称/值对中：json数据是由键值对构成的</span><br><span class="line">	* 键用引号(单双都行)引起来，也可以不使用引号</span><br><span class="line">	* 值得取值类型：</span><br><span class="line">		1. 数字（整数或浮点数）</span><br><span class="line">		2. 字符串（在双引号中）</span><br><span class="line">		3. 逻辑值（true 或 false）</span><br><span class="line">		4. 数组（在方括号中）	&#123;&quot;persons&quot;:[&#123;&#125;,&#123;&#125;]&#125;</span><br><span class="line">		5. 对象（在花括号中） &#123;&quot;address&quot;:&#123;&quot;province&quot;：&quot;陕西&quot;....&#125;&#125;</span><br><span class="line">		6. null</span><br><span class="line">* 数据由逗号分隔：多个键值对由逗号分隔</span><br><span class="line">* 花括号保存对象：使用&#123;&#125;定义json 格式</span><br><span class="line">* 方括号保存数组：[]</span><br></pre></td></tr></table></figure></li>
+<li>获取数据<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1. json对象.键名</span><br><span class="line">2. json对象[&quot;键名&quot;]</span><br><span class="line">3. 数组对象[索引]</span><br><span class="line">4. 遍历</span><br><span class="line"></span><br><span class="line">---------------------------------</span><br><span class="line"> //1.定义基本格式</span><br><span class="line"> var person = &#123;&quot;name&quot;: &quot;张三&quot;, age: 23, &#x27;gender&#x27;: true&#125;;</span><br><span class="line"> var ps = [&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 23, &quot;gender&quot;: true&#125;,</span><br><span class="line">     &#123;&quot;name&quot;: &quot;李四&quot;, &quot;age&quot;: 24, &quot;gender&quot;: true&#125;,</span><br><span class="line">     &#123;&quot;name&quot;: &quot;王五&quot;, &quot;age&quot;: 25, &quot;gender&quot;: false&#125;];</span><br><span class="line">     </span><br><span class="line">//2.获取person对象中所有的键和值</span><br><span class="line">//for in 循环</span><br><span class="line">/* for(var key in person)&#123;</span><br><span class="line">    //这样的方式获取不行。因为相当于  person.&quot;name&quot;</span><br><span class="line">    //alert(key + &quot;:&quot; + person.key);</span><br><span class="line">    alert(key+&quot;:&quot;+person[key]);</span><br><span class="line">&#125;*/</span><br><span class="line"></span><br><span class="line">//3.获取ps中的所有值</span><br><span class="line">for (var i = 0; i &lt; ps.length; i++) &#123;</span><br><span class="line">    var p = ps[i];</span><br><span class="line">    for(var key in p)&#123;</span><br><span class="line">        alert(key+&quot;:&quot;+p[key]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>三、Java中的Json解析</strong></p>
+<ol>
+<li>JSON解析器<br>常见的解析器：Jsonlib，Gson，fastjson，jackson<br>因为spring中集成了jackson，所以使用它进行json解析</li>
+<li>转换方法<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. 导入jackson的相关jar包</span><br><span class="line">2. 创建Jackson核心对象 ObjectMapper</span><br><span class="line">3. 调用ObjectMapper的相关方法进行转换</span><br><span class="line"></span><br><span class="line">1. 转换方法：</span><br><span class="line">    * writeValue(参数1，obj):</span><br><span class="line">        参数1：</span><br><span class="line">            File：将obj对象转换为JSON字符串，并保存到指定的文件中</span><br><span class="line">            Writer：将obj对象转换为JSON字符串，并将json数据填充到字符输出流中</span><br><span class="line">            OutputStream：将obj对象转换为JSON字符串，并将json数据填充到字节输出流中</span><br><span class="line">    * writeValueAsString(obj):将对象转为json字符串</span><br><span class="line"></span><br><span class="line">2. 注解：</span><br><span class="line">	1. @JsonIgnore：排除属性。</span><br><span class="line">	2. @JsonFormat：属性值得格式化 @JsonFormat(pattern = &quot;yyyy-MM-dd&quot;)</span><br><span class="line"></span><br><span class="line">3. 复杂java对象转换</span><br><span class="line">	1. List：数组</span><br><span class="line">	2. Map：对象格式一致</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
+<li>测试代码与结果<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"><span class="keyword">import</span> domain.User;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JSONTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">&quot;nnn&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 测试java对象转换为json字符串</span></span><br><span class="line">            result = mapper.writeValueAsString(user);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JsonProcessingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(result);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 测试json字符串转换为java对象</span></span><br><span class="line">            user = mapper.readValue(result, User.class);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(user.toString());</span><br><span class="line">        User user2 = user;</span><br><span class="line">        List&lt;User&gt; userList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        userList.add(user);</span><br><span class="line">        userList.add(user2);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 测试List&lt;Object&gt;转换为json字符串</span></span><br><span class="line">            System.out.println(mapper.writeValueAsString(userList));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JsonProcessingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;张三&quot;</span>);</span><br><span class="line">        map.put(<span class="string">&quot;sex&quot;</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 测试Map转换为json字符串</span></span><br><span class="line">            System.out.println(mapper.writeValueAsString(map));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JsonProcessingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;status&quot;:0,&quot;message&quot;:null,&quot;id&quot;:null,&quot;username&quot;:&quot;nnn&quot;,&quot;password&quot;:&quot;1&quot;,&quot;phone&quot;:&quot;1&quot;,&quot;mail&quot;:&quot;1&quot;,&quot;createAt&quot;:&quot;2020年6月13日16时3分&quot;,&quot;updateAt&quot;:&quot;2020年6月13日16时3分&quot;&#125;</span><br><span class="line">User&#123;id=&#x27;null&#x27;, username=&#x27;nnn&#x27;, password=&#x27;1&#x27;, phone=&#x27;1&#x27;, mail=&#x27;1&#x27;, createAt=&#x27;2020年6月13日16时3分&#x27;, updateAt=&#x27;2020年6月13日16时3分&#x27;&#125;</span><br><span class="line">[&#123;&quot;status&quot;:0,&quot;message&quot;:null,&quot;id&quot;:null,&quot;username&quot;:&quot;nnn&quot;,&quot;password&quot;:&quot;1&quot;,&quot;phone&quot;:&quot;1&quot;,&quot;mail&quot;:&quot;1&quot;,&quot;createAt&quot;:&quot;2020年6月13日16时3分&quot;,&quot;updateAt&quot;:&quot;2020年6月13日16时3分&quot;&#125;,&#123;&quot;status&quot;:0,&quot;message&quot;:null,&quot;id&quot;:null,&quot;username&quot;:&quot;nnn&quot;,&quot;password&quot;:&quot;1&quot;,&quot;phone&quot;:&quot;1&quot;,&quot;mail&quot;:&quot;1&quot;,&quot;createAt&quot;:&quot;2020年6月13日16时3分&quot;,&quot;updateAt&quot;:&quot;2020年6月13日16时3分&quot;&#125;]</span><br><span class="line">&#123;&quot;sex&quot;:&quot;男&quot;,&quot;name&quot;:&quot;张三&quot;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>测试过程中出现的问题与解决方法<br>!!! JUnit version 3.8 or later expected:报错<br>解决参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/XYmar/article/details/96275926">https://blog.csdn.net/XYmar/article/details/96275926</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/niuniu1994/article/details/82814132">https://blog.csdn.net/niuniu1994/article/details/82814132</a><br>将所用junit依赖上移</li>
+</ol>
+<p><strong>三、Java中 Ajax请求-Json响应</strong><br>在java这里，先说一下Ajax请求与Json响应的原理。注意Json的响应，必须是将数据转换为Json字符串的，java中利用springmvc的注解，可以使用注解标识，方法返回对象、列表类型均可，这是相对python处理的一个优点。<br>为确定一般情况下的处理方式，进行了如下测试：</p>
+<ul>
+<li>返回文本即dataType:”Text”</li>
+<li>返回java对象 响应回调取值</li>
+<li>返回java列表 响应回调遍历</li>
+</ul>
+<p> 1.测试代码<br> 前端ajax请求<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"> 测试返回文本 url中无.do java</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:8080/test/text&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;测试&quot;</span>/&gt;</span></span><br><span class="line">测试返回java对象 java</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test2&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:8080/test/json&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;测试二&quot;</span>/&gt;</span></span><br><span class="line">测试返回 返回列表对象 java</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test3&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:8080/test/json2&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;测试三&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../js/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	$(<span class="string">&quot;#test&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			alert($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>));</span></span><br><span class="line"><span class="javascript">		    $.ajax(&#123;</span></span><br><span class="line"><span class="javascript">	                <span class="attr">url</span>:$(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>) , <span class="comment">// 请求路径</span></span></span><br><span class="line"><span class="javascript">	                <span class="attr">type</span>:<span class="string">&quot;GET&quot;</span> , <span class="comment">//请求方式</span></span></span><br><span class="line"><span class="javascript">	                <span class="comment">//data: &quot;username=jack&amp;age=23&quot;,//请求参数</span></span></span><br><span class="line"><span class="javascript">	                <span class="comment">//data:&#123;&quot;username&quot;:&quot;jack&quot;,&quot;age&quot;:23&#125;,</span></span></span><br><span class="line"><span class="javascript">	                <span class="attr">success</span>:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	                    alert(data);</span></span><br><span class="line"><span class="javascript">	                &#125;,<span class="comment">//响应成功后的回调函数</span></span></span><br><span class="line"><span class="javascript">	                <span class="attr">error</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	                    alert(<span class="string">&quot;出错啦...&quot;</span>)</span></span><br><span class="line"><span class="javascript">	                &#125;,<span class="comment">//表示如果请求响应出现错误，会执行的回调函数</span></span></span><br><span class="line"><span class="javascript">	</span></span><br><span class="line"><span class="javascript">	                <span class="attr">dataType</span>:<span class="string">&quot;text&quot;</span><span class="comment">//设置接受到的响应数据的格式</span></span></span><br><span class="line"><span class="javascript">	            &#125;);	</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript">	$(<span class="string">&quot;#test2&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			alert($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>));</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> req_data = &#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">username</span>: <span class="string">&quot;nnn&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">password</span>: <span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="javascript">			&#125;</span></span><br><span class="line"><span class="javascript">			$.get($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>), req_data, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> data)&#123;</span></span><br><span class="line"><span class="javascript">		            alert(key+<span class="string">&quot;:&quot;</span>+data[key]);</span></span><br><span class="line"><span class="javascript">		        &#125;</span></span><br><span class="line"><span class="javascript">			&#125;);</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript">	$(<span class="string">&quot;#test3&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			alert($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>));</span></span><br><span class="line"><span class="javascript">			$.get($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>), <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">		            <span class="keyword">var</span> u = data[i];</span></span><br><span class="line"><span class="javascript">		            <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> u)&#123;</span></span><br><span class="line"><span class="javascript">		                alert(key+<span class="string">&quot;:&quot;</span>+u[key]);</span></span><br><span class="line"><span class="javascript">		            &#125;</span></span><br><span class="line"><span class="javascript">		        &#125;</span></span><br><span class="line"><span class="javascript">			&#125;);</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br> 后端<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> dao.IUserDao;</span><br><span class="line"><span class="keyword">import</span> domain.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpHeaders;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.MediaType;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.ResponseEntity;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.CrossOrigin;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/test&quot;)</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AJTestController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> IUserDao userDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/text&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseEntity&lt;String&gt; <span class="title">testText</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        String content = <span class="string">&quot;测试返回文本&quot;</span>;</span><br><span class="line">        HttpHeaders responseHeaders = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">        responseHeaders.setContentType(<span class="keyword">new</span> MediaType(<span class="string">&quot;text&quot;</span>,<span class="string">&quot;html&quot;</span>, Charset.forName(<span class="string">&quot;UTF-8&quot;</span>)));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;String&gt;(content, responseHeaders, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/json&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">testJson</span><span class="params">(String username, String password)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        User user = userDao.findUserByName(username);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> User();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(user.getUsername());</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/json2&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">testJson2</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userDao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>2.细节</p>
+<ul>
+<li>当用$.ajax设置data或设置$.get的第二个参数时，注意无论是采用字典的方式或是”&amp;”连接串的方式，设置的都是请求参数，和Content-Type无关，和json处理无关。</li>
+<li>当ajax请求中未指明dataType即响应数据类型时，具体响应数据类型由后端决定，是纯文本还是json由具体响应结果决定，即不设置dataType，后端代码中使用了@ResponseBody响应体就是json类型；但一旦设置为”text”或”json”，后端就必须响应相应类型的数据，否则是无法获取响应数据的。</li>
+</ul>
+<p>3.总结<br>由于springmvc注解的存在，使java对象转换为json字符串很容易，这是相对python处理的一个显著优点。</p>
+<p><strong>四、python中的json解析</strong><br>这里统一说一下python中json解析的一般方法和flask中的做法，以及flask为何采用自定的方法。<br><strong>1.python中的json模块</strong><br>json模块提供了四个功能：dumps、dump、loads、load，用于字符串 和 python数据类型间进行转换</p>
+<ul>
+<li><p>json.loads()<br>把Json格式字符串解码转换成Python对象 从json到python的类型转化对照如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">strList = <span class="string">&#x27;[1, 2, 3, 4]&#x27;</span></span><br><span class="line">strDict = <span class="string">&#x27;&#123;&quot;city&quot;: &quot;北京&quot;, &quot;name&quot;: &quot;范爷&quot;&#125;&#x27;</span></span><br><span class="line">json.loads(strList) </span><br><span class="line"><span class="comment"># [1, 2, 3, 4]</span></span><br><span class="line">json.loads(strDict) <span class="comment"># json数据自动按Unicode存储</span></span><br><span class="line"><span class="comment"># &#123;u&#x27;city&#x27;: u&#x27;\u5317\u4eac&#x27;, u&#x27;name&#x27;: u&#x27;\u5927\u732b&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>json.dumps()<br>实现python类型转化为json字符串，返回一个str对象 把一个Python对象编码转换成Json字符串<br>从python原始类型向json类型的转化对照如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">listStr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">tupleStr = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">dictStr = &#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;北京&quot;</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;范爷&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">json.dumps(listStr)</span><br><span class="line"><span class="comment"># &#x27;[1, 2, 3, 4]&#x27;</span></span><br><span class="line">json.dumps(tupleStr)</span><br><span class="line"><span class="comment"># &#x27;[1, 2, 3, 4]&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意：json.dumps() 序列化时默认使用的ascii编码</span></span><br><span class="line"><span class="comment"># 添加参数 ensure_ascii=False 禁用ascii编码，按utf-8编码</span></span><br><span class="line"></span><br><span class="line">json.dumps(dictStr) </span><br><span class="line"><span class="comment"># &#x27;&#123;&quot;city&quot;: &quot;\\u5317\\u4eac&quot;, &quot;name&quot;: &quot;\\u5927\\u5218&quot;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(json.dumps(dictStr, ensure_ascii=<span class="literal">False</span>))</span><br><span class="line"><span class="comment"># &#123;&quot;city&quot;: &quot;北京&quot;, &quot;name&quot;: &quot;范爷&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>json.dump()<br>将Python内置类型序列化为json对象后写入文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">listStr = [&#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;北京&quot;</span>&#125;, &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;范爷&quot;</span>&#125;]</span><br><span class="line">json.dump(listStr, <span class="built_in">open</span>(<span class="string">&quot;listStr.json&quot;</span>,<span class="string">&quot;w&quot;</span>), ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">dictStr = &#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;北京&quot;</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;范爷&quot;</span>&#125;</span><br><span class="line">json.dump(dictStr, <span class="built_in">open</span>(<span class="string">&quot;dictStr.json&quot;</span>,<span class="string">&quot;w&quot;</span>), ensure_ascii=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>json.load()<br>读取文件中json形式的字符串元素 转化成python类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">strList = json.load(<span class="built_in">open</span>(<span class="string">&quot;listStr.json&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(strList)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [&#123;u&#x27;city&#x27;: u&#x27;\u5317\u4eac&#x27;&#125;, &#123;u&#x27;name&#x27;: u&#x27;\u5927\u5218&#x27;&#125;]</span></span><br><span class="line"></span><br><span class="line">strDict = json.load(<span class="built_in">open</span>(<span class="string">&quot;dictStr.json&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(strDict)</span><br><span class="line"><span class="comment"># &#123;u&#x27;city&#x27;: u&#x27;\u5317\u4eac&#x27;, u&#x27;name&#x27;: u&#x27;\u5927\u5218&#x27;&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>2.使用JsonPath解析Json字符串</strong><br>具体在数据解析篇中介绍。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">JsonPath 是一种信息抽取类库，是从JSON文档中抽取指定信息的工具，提供多种语言实现版本，包括：Javascript, Python， PHP 和 Java。</span><br><span class="line"></span><br><span class="line">JsonPath 对于 JSON 来说，相当于 XPATH 对于 XML。</span><br><span class="line"></span><br><span class="line">安装方法：`pip install jsonpath`</span><br><span class="line"></span><br><span class="line">官方文档：http://goessner.net/articles/JsonPath</span><br></pre></td></tr></table></figure>
+<p><strong>3.flask中处理python的过程</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># jsonify 与 json.dumps 作用类似 把python json对象（字典）转换为 json字符串 但两者处理返回的 Content-Type不同</span><br><span class="line"># 前端请求时 contentType: &quot;application/json&quot; 实则请求体中的定义按字典来（这个说法是错的） 但后端接收的应该是json字符串</span><br><span class="line"># 后端处理时 需先用 request.get_json() 转换为字典对象 再取值</span><br><span class="line"># 经过测试 get请求设置的那些 data 不管是以 &amp; 拼接的 还是传入字典  其类似都和json无关 只是普通的请求参数 python后端通过request.args获取</span><br><span class="line"># 只有 post请求时 且 contentType: &quot;application/json&quot; 才为请求体中要求是 json数据 且一定注意 需要将字典对象 用 JSON.stringify 转换为json字符串</span><br><span class="line"># 综上 请求和响应的处理其实是一致的 传送的必须是  json 字符串 若想取里面的值需要转换成json对象（字典）</span><br><span class="line"># 后端flask需要用 get_json()  前端 当把 dataType设置为 json时 其即会自动处理为json对象</span><br><span class="line"># 其实根据 java的测试来看 dataType设置不是关键的 关键是后端如何响应 如果不设置 该返回什么还是会返回什么</span><br><span class="line"># 但一旦设置了dataType 就必须一致</span><br></pre></td></tr></table></figure>
+<p><strong>4.对比</strong></p>
+<ul>
+<li>python中json模块的dumps方法和flask的jsonify方法<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a25357f2d930">https://www.jianshu.com/p/a25357f2d930</a></li>
+<li>js中的stringify方法和上述两方法作用类似</li>
+<li>python中json模块的loads方法和flask的request.get_json()方法</li>
+</ul>
+<p><strong>五、python中 Ajax请求-Json响应</strong><br>主要说明使用flask框架的情况。get方法和java类似，但post方法一定注意csrf验证的问题；且python flask相对ssm一个很大的缺陷就是没有方法将对象、列表之类的直接转换为json字符串，需要自行先对对象进行序列化处理。<br>为确定一般情况下的处理方式，进行了如下测试：</p>
+<ul>
+<li>ajax get请求</li>
+<li>ajax post请求</li>
+<li>返回对象/列表的情况</li>
+</ul>
+<p>1.测试代码<br>前端ajax请求</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">测试 get python</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test4&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:5000/api/v1.0/test&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;测试四&quot;</span>/&gt;</span></span><br><span class="line">测试 post python</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test5&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:5000/api/v1.0/test&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;测试五&quot;</span>/&gt;</span></span><br><span class="line">测试 返回 对象/列表转成的json对象</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test6&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:5000/api/v1.0/test2&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;测试六&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../js/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	</span></span><br><span class="line"><span class="javascript">	$(<span class="string">&quot;#test4&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			alert($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>));</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> req_data = &#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">username</span>: <span class="string">&quot;nnn&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">password</span>: <span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="javascript">			&#125;</span></span><br><span class="line"><span class="javascript">			$.get($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>), req_data, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				alert(data);</span></span><br><span class="line"><span class="javascript">			&#125;);</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">name</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> r = <span class="built_in">document</span>.cookie.match(<span class="string">&quot;\\b&quot;</span> + name + <span class="string">&quot;=([^;]*)\\b&quot;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> r ? r[<span class="number">1</span>] : <span class="literal">undefined</span>;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">	</span></span><br><span class="line"><span class="javascript">	$(<span class="string">&quot;#test5&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			alert($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>));</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> req_data = &#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">username</span>: <span class="string">&quot;nnn&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">password</span>: <span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="javascript">			&#125;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> req_json = <span class="built_in">JSON</span>.stringify(req_data);</span></span><br><span class="line"><span class="javascript">			$.ajax(&#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">url</span>: $(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>),</span></span><br><span class="line"><span class="javascript">				<span class="attr">type</span>: <span class="string">&quot;post&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="attr">data</span>: req_json,</span></span><br><span class="line"><span class="javascript">				<span class="attr">contentType</span>: <span class="string">&quot;application/json&quot;</span>,</span></span><br><span class="line"><span class="javascript">				<span class="comment">// dataType: &quot;json&quot;,</span></span></span><br><span class="line"><span class="javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">&quot;X-CSRFToken&quot;</span>: getCookie(<span class="string">&quot;csrf_token&quot;</span>)</span></span><br><span class="line"><span class="javascript">                &#125;, <span class="comment">// 请求头，将csrf_token值放到请求中，方便后端csrf进行验证</span></span></span><br><span class="line"><span class="javascript">				<span class="attr">success</span>: <span class="function"><span class="keyword">function</span> (<span class="params">resp</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">					alert(resp);</span></span><br><span class="line"><span class="javascript">					alert(resp.msg)</span></span><br><span class="line"><span class="javascript">				&#125;</span></span><br><span class="line"><span class="javascript">        &#125;)</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript">    $(<span class="string">&quot;#test6&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			alert($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>));</span></span><br><span class="line"><span class="javascript">			$.get($(<span class="built_in">this</span>).attr(<span class="string">&quot;url&quot;</span>), <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">		            <span class="keyword">var</span> u = data[i];</span></span><br><span class="line"><span class="javascript">		            <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> u)&#123;</span></span><br><span class="line"><span class="javascript">		                alert(key+<span class="string">&quot;:&quot;</span>+u[key]);</span></span><br><span class="line"><span class="javascript">		            &#125;</span></span><br><span class="line"><span class="javascript">		        &#125;</span></span><br><span class="line"><span class="javascript">			&#125;);</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript">	</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>后端flask视图函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> api</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> jsonify, request</span><br><span class="line"><span class="keyword">from</span> ihome.models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="comment"># jsonify 与 json.dumps 作用类似 把python json对象（字典）转换为 json字符串 但两者处理返回的 Content-Type不同</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前端请求时 contentType: &quot;application/json&quot; 实则请求体中的定义按字典来（这个说法是错的） 但后端接收的应该是json字符串</span></span><br><span class="line"><span class="comment"># 后端处理时 需先用 request.get_json() 转换为字典对象 再取值</span></span><br><span class="line"><span class="comment"># 经过测试 get请求设置的那些 data 不管是以 &amp; 拼接的 还是传入字典  其类似都和json无关 只是普通的请求参数 python后端通过request.args获取</span></span><br><span class="line"><span class="comment"># 只有 post请求时 且 contentType: &quot;application/json&quot; 才为请求体中要求是 json数据 且一定注意 需要将字典对象 用 JSON.stringify 转换为json字符串</span></span><br><span class="line"><span class="comment"># 综上 请求和响应的处理其实是一致的 传送的必须是  json 字符串 若想取里面的值需要转换成json对象（字典）</span></span><br><span class="line"><span class="comment"># 后端flask需要用 get_json()  前端 当把 dataType设置为 json时 其即会自动处理为json对象</span></span><br><span class="line"><span class="comment"># 其实根据 java的测试来看 dataType设置不是关键的 关键是后端如何响应 如果不设置 该返回什么还是会返回什么</span></span><br><span class="line"><span class="comment"># 但一旦设置了dataType 就必须一致</span></span><br><span class="line"><span class="meta">@api.route(<span class="params"><span class="string">&quot;/test&quot;</span>, methods=[<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;GET&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_json</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;test&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(request.get_json())</span><br><span class="line">    <span class="comment"># return &quot;hello&quot;</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(msg=<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列化对象</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">serialize</span>(<span class="params">model</span>):</span></span><br><span class="line">    <span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> class_mapper</span><br><span class="line">    columns = [c.key <span class="keyword">for</span> c <span class="keyword">in</span> class_mapper(model.__class__).columns]</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>((c, <span class="built_in">getattr</span>(model, c)) <span class="keyword">for</span> c <span class="keyword">in</span> columns)</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.route(<span class="params"><span class="string">&quot;/test2&quot;</span>, methods=[<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;GET&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_json_object</span>():</span></span><br><span class="line">    user_list = User.query.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(user_list)):</span><br><span class="line">        user_list[i] = serialize(user_list[i])</span><br><span class="line">    <span class="built_in">print</span>(user_list)</span><br><span class="line">    <span class="keyword">return</span> jsonify(user_list)</span><br></pre></td></tr></table></figure>
+<p>2.细节说明</p>
+<ul>
+<li>java中的get和post请求参数和请求体的区别、dataType的设置等同</li>
+<li>当请求方法为post，且contentType: “application/json”时，需要请求体中为json字符串，需将定义的字典用js中的JSON.stringify转换为json字符串</li>
+<li>序列化python自定义类的方法 </li>
+</ul>
+<p>3.序列化python自定义对象的方法<br>参考：<br><a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E6%80%8E%E6%A0%B7%E5%B0%86python%E7%B1%BB%E5%AE%9A%E4%B9%89%E4%B8%BA%E5%8F%AFjson%E5%BA%8F%E5%88%97%E5%8C%96&amp;rsv_spt=1&amp;rsv_iqid=0xef52e02a0016d473&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=57&amp;rsv_sug1=16&amp;rsv_sug7=101&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=23331&amp;rsv_sug4=24614">https://www.baidu.com/s?wd=%E6%80%8E%E6%A0%B7%E5%B0%86python%E7%B1%BB%E5%AE%9A%E4%B9%89%E4%B8%BA%E5%8F%AFjson%E5%BA%8F%E5%88%97%E5%8C%96&amp;rsv_spt=1&amp;rsv_iqid=0xef52e02a0016d473&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=57&amp;rsv_sug1=16&amp;rsv_sug7=101&amp;rsv_sug2=0&amp;rsv_btype=i&amp;inputT=23331&amp;rsv_sug4=24614</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30670151/article/details/97388207">https://blog.csdn.net/weixin_30670151/article/details/97388207</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xuelians/article/details/79999275">https://blog.csdn.net/xuelians/article/details/79999275</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41431904/article/details/80733600">https://blog.csdn.net/weixin_41431904/article/details/80733600</a><br><a target="_blank" rel="noopener" href="https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=flask%E8%BF%94%E5%9B%9E%E5%AF%B9%E8%B1%A1&amp;fenlei=256&amp;rsv_pq=9269d48900010ebb&amp;rsv_t=6d28cuzG5OZ6ZbTQBO2Uf9NWwP54HKc0OrWY1MrdcgcayGwRFoF82cTYQaE&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=17&amp;rsv_sug1=20&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_btype=i&amp;prefixsug=flask%25E8%25BF%2594%25E5%259B%259E%25E5%25AF%25B9%25E8%25B1%25A1&amp;rsp=1&amp;inputT=10815&amp;rsv_sug4=10816">https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=flask%E8%BF%94%E5%9B%9E%E5%AF%B9%E8%B1%A1&amp;fenlei=256&amp;rsv_pq=9269d48900010ebb&amp;rsv_t=6d28cuzG5OZ6ZbTQBO2Uf9NWwP54HKc0OrWY1MrdcgcayGwRFoF82cTYQaE&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=17&amp;rsv_sug1=20&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_btype=i&amp;prefixsug=flask%25E8%25BF%2594%25E5%259B%259E%25E5%25AF%25B9%25E8%25B1%25A1&amp;rsp=1&amp;inputT=10815&amp;rsv_sug4=10816</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43665151/article/details/103969991">https://blog.csdn.net/qq_43665151/article/details/103969991</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011205177/article/details/31775133">https://blog.csdn.net/u011205177/article/details/31775133</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/fanyunlei/article/details/31775133">https://blog.csdn.net/fanyunlei/article/details/31775133</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33995481/article/details/89371518">https://blog.csdn.net/weixin_33995481/article/details/89371518</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_30809315/article/details/86686413">https://blog.csdn.net/baidu_30809315/article/details/86686413</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=jsonify%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1&amp;rsv_spt=1&amp;rsv_iqid=0xc7fd38c0001541cb&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;rqlang=cn&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;oq=python%25E5%25AF%25B9%25E8%25B1%25A1%2520JSON%2520serializable&amp;rsv_btype=t&amp;inputT=17048&amp;rsv_t=54a2mgS05wbRRO0Tc7JK2a1HhOoF%2B5%2Fl3FA6f55WAx1J8YcodcspBzx6abZf0k6W2nbF&amp;rsv_sug3=74&amp;rsv_pq=c886278d0014b3a7&amp;rsv_sug1=24&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_sug4=18114">https://www.baidu.com/s?wd=jsonify%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1&amp;rsv_spt=1&amp;rsv_iqid=0xc7fd38c0001541cb&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;rqlang=cn&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=tb&amp;oq=python%25E5%25AF%25B9%25E8%25B1%25A1%2520JSON%2520serializable&amp;rsv_btype=t&amp;inputT=17048&amp;rsv_t=54a2mgS05wbRRO0Tc7JK2a1HhOoF%2B5%2Fl3FA6f55WAx1J8YcodcspBzx6abZf0k6W2nbF&amp;rsv_sug3=74&amp;rsv_pq=c886278d0014b3a7&amp;rsv_sug1=24&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_sug4=18114</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/JENREY/article/details/87715651">https://blog.csdn.net/JENREY/article/details/87715651</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/t8116189520/article/details/91562915">https://blog.csdn.net/t8116189520/article/details/91562915</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012887259/article/details/103345128">https://blog.csdn.net/u012887259/article/details/103345128</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bf3f9078af74">https://www.jianshu.com/p/bf3f9078af74</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42226324/article/details/82989304">https://blog.csdn.net/qq_42226324/article/details/82989304</a><br><a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=python%E5%B0%86%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E6%88%90json&amp;rsv_spt=1&amp;rsv_iqid=0xbe54345400280b02&amp;issp=1&amp;f=3&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=ts_1&amp;rsv_sug3=25&amp;rsv_sug1=18&amp;rsv_sug7=101&amp;rsv_sug2=1&amp;rsv_btype=i&amp;prefixsug=python%25E5%25B0%2586%25E5%25AF%25B9%25E8%25B1%25A1zhuan&amp;rsp=1&amp;inputT=9836&amp;rsv_sug4=10597">https://www.baidu.com/s?wd=python%E5%B0%86%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E6%88%90json&amp;rsv_spt=1&amp;rsv_iqid=0xbe54345400280b02&amp;issp=1&amp;f=3&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_dl=ts_1&amp;rsv_sug3=25&amp;rsv_sug1=18&amp;rsv_sug7=101&amp;rsv_sug2=1&amp;rsv_btype=i&amp;prefixsug=python%25E5%25B0%2586%25E5%25AF%25B9%25E8%25B1%25A1zhuan&amp;rsp=1&amp;inputT=9836&amp;rsv_sug4=10597</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qttblog/p/8615205.html">https://www.cnblogs.com/qttblog/p/8615205.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiumingcheng/p/11589657.html">https://www.cnblogs.com/qiumingcheng/p/11589657.html</a></p>
+<p>最终参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_30809315/article/details/86686413">https://blog.csdn.net/baidu_30809315/article/details/86686413</a></p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">serialize</span>(<span class="params">model</span>):</span></span><br><span class="line">    <span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> class_mapper</span><br><span class="line">    columns = [c.key <span class="keyword">for</span> c <span class="keyword">in</span> class_mapper(model.__class__).columns]</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>((c, <span class="built_in">getattr</span>(model, c)) <span class="keyword">for</span> c <span class="keyword">in</span> columns)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 参数为自定义类的对象</span></span><br></pre></td></tr></table></figure>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/06/12/Ajax-Json/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;06&#x2F;12&#x2F;Ajax-Json&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;06&#x2F;12&#x2F;Ajax-Json&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%86%99%E6%B3%95/">写法</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899829"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

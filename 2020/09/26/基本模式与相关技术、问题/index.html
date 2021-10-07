@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>基本模式与相关技术、问题 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="本篇是在基本了解过前端vue+elementui、各种模板、前端框架，学习过基于springboot的基本配置、ORM框架、统一处理等，以及中间件redis及一些数据库后，对这一系列技术如何学习、使用进行总结，算是要解决长久以来的一些不确定的问题。此外，也会对一些零碎的概念或问题进行解答。  参考  zimughttps:&#x2F;&#x2F;edu.51cto.com&#x2F;course&#x2F;19170.html 教程ht">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本模式与相关技术、问题">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/09/26/%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E3%80%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="本篇是在基本了解过前端vue+elementui、各种模板、前端框架，学习过基于springboot的基本配置、ORM框架、统一处理等，以及中间件redis及一些数据库后，对这一系列技术如何学习、使用进行总结，算是要解决长久以来的一些不确定的问题。此外，也会对一些零碎的概念或问题进行解答。  参考  zimughttps:&#x2F;&#x2F;edu.51cto.com&#x2F;course&#x2F;19170.html 教程ht">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-09-26T06:45:09.000Z">
+<meta property="article:modified_time" content="2020-09-26T14:21:05.391Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899705">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899705">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="基本模式与相关技术、问题" class="lazyload">
+              <h1>基本模式与相关技术、问题</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年09月26日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
+</div>
+
+      
+
+      <p>本篇是在基本了解过前端vue+elementui、各种模板、前端框架，学习过基于springboot的基本配置、ORM框架、统一处理等，以及中间件redis及一些数据库后，对这一系列技术如何学习、使用进行总结，算是要解决长久以来的一些不确定的问题。此外，也会对一些零碎的概念或问题进行解答。</p>
+<blockquote>
+<p>参考</p>
+</blockquote>
+<p>zimug<br><a target="_blank" rel="noopener" href="https://edu.51cto.com/course/19170.html">https://edu.51cto.com/course/19170.html</a> 教程<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/hanxt/springboot2/1776439">https://www.kancloud.cn/hanxt/springboot2/1776439</a> 文档<br><a target="_blank" rel="noopener" href="https://gitee.com/hanxt/boot-launch/tree/master/">https://gitee.com/hanxt/boot-launch/tree/master/</a> 新版代码<br>baizhi</p>
+<blockquote>
+<p>一些问题的解答</p>
+</blockquote>
+<p><strong>一、VO PO BO DTO DO</strong><br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/hanxt/springboot2/1776439">https://www.kancloud.cn/hanxt/springboot2/1776439</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011870547/article/details/81077153">https://blog.csdn.net/u011870547/article/details/81077153</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hz_blog/article/details/8506823?utm_medium=distribute.pc_relevant_download.none-task-blog-baidujs-3.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_download.none-task-blog-baidujs-3.nonecase">https://blog.csdn.net/hz_blog/article/details/8506823?utm_medium=distribute.pc_relevant_download.none-task-blog-baidujs-3.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_download.none-task-blog-baidujs-3.nonecase</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41604862/article/details/79675223?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/qq_41604862/article/details/79675223?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/jslrjb/article/details/86597851">https://blog.csdn.net/jslrjb/article/details/86597851</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30298497/article/details/99066720?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">https://blog.csdn.net/weixin_30298497/article/details/99066720?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">PO：persistent object 持久对象</span><br><span class="line"></span><br><span class="line">1 ．有时也被称为Data对象，对应数据库中的entity，可以简单认为一个PO对应数据库中的一条记录。</span><br><span class="line"></span><br><span class="line">2 ．在hibernate持久化框架中与insert/delet操作密切相关。</span><br><span class="line"></span><br><span class="line">3 ．PO中不应该包含任何对数据库的操作。</span><br><span class="line"></span><br><span class="line">POJO ：plain ordinary java object 无规则简单java对象</span><br><span class="line"></span><br><span class="line">一个中间对象，可以转化为PO、DTO、VO。</span><br><span class="line"></span><br><span class="line">1 ．POJO持久化之后==〉PO</span><br><span class="line"></span><br><span class="line">（在运行期，由Hibernate中的cglib动态把POJO转换为PO，PO相对于POJO会增加一些用来管理数据库entity状态的属性和方法。PO对于programmer来说完全透明，由于是运行期生成PO，所以可以支持增量编译，增量调试。）</span><br><span class="line"></span><br><span class="line">2 ．POJO传输过程中==〉DTO</span><br><span class="line"></span><br><span class="line">3 ．POJO用作表示层==〉VO</span><br><span class="line"></span><br><span class="line">PO 和VO都应该属于它。</span><br><span class="line"></span><br><span class="line">BO：business object 业务对象</span><br><span class="line"></span><br><span class="line">业务对象主要作用是把业务逻辑封装为一个对象。这个对象可以包括一个或多个其它的对象。</span><br><span class="line"></span><br><span class="line">比如一个简历，有教育经历、工作经历、社会关系等等。我们可以把教育经历对应一个PO，工作经历对应一个PO，社会关系对应一个PO。</span><br><span class="line"></span><br><span class="line">建立一个对应简历的BO对象处理简历，每个BO包含这些PO。</span><br><span class="line"></span><br><span class="line">这样处理业务逻辑时，我们就可以针对BO去处理。</span><br><span class="line"></span><br><span class="line">封装业务逻辑为一个对象（可以包括多个PO，通常需要将BO转化成PO，才能进行数据的持久化，反之，从DB中得到的PO，需要转化成BO才能在业务层使用）。</span><br><span class="line"></span><br><span class="line">关于BO主要有三种概念</span><br><span class="line"></span><br><span class="line">1 、只包含业务对象的属性；</span><br><span class="line"></span><br><span class="line">2 、只包含业务方法；</span><br><span class="line"></span><br><span class="line">3 、两者都包含。</span><br><span class="line"></span><br><span class="line">在实际使用中，认为哪一种概念正确并不重要，关键是实际应用中适合自己项目的需要。</span><br><span class="line"></span><br><span class="line">VO：value object 值对象 / view object 表现层对象</span><br><span class="line"></span><br><span class="line">1 ．主要对应页面显示（web页面/swt、swing界面）的数据对象。</span><br><span class="line"></span><br><span class="line">2 ．可以和表对应，也可以不，这根据业务的需要。</span><br><span class="line"></span><br><span class="line">DTO（TO）：Data Transfer Object 数据传输对象</span><br><span class="line"></span><br><span class="line">1 ．用在需要跨进程或远程传输时，它不应该包含业务逻辑。</span><br><span class="line"></span><br><span class="line">2 ．比如一张表有100个字段，那么对应的PO就有100个属性（大多数情况下，DTO内的数据来自多个表）。但view层只需显示10个字段，没有必要把整个PO对象传递到client，这时我们就可以用只有这10个属性的DTO来传输数据到client，这样也不会暴露server端表结构。到达客户端以后，如果用这个对象来对应界面显示，那此时它的身份就转为VO。</span><br><span class="line"></span><br><span class="line">DAO：data access object数据访问对象</span><br><span class="line"></span><br><span class="line">1 ．主要用来封装对DB的访问（CRUD操作）。</span><br><span class="line"></span><br><span class="line">2 ．通过接收Business层的数据，把POJO持久化为PO。</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VO与DTO的区别</span><br><span class="line"></span><br><span class="line">大家可能会有个疑问（在笔者参与的项目中，很多程序员也有相同的疑惑）：既然DTO是展示层与服务层之间传递数据的对象，为什么还需要一个VO呢？对！对于绝大部分的应用场景来说，DTO和VO的属性值基本是一致的，而且他们通常都是POJO，因此没必要多此一举，但不要忘记这是实现层面的思维，对于设计层面来说，概念上还是应该存在VO和DTO，因为两者有着本质的区别，DTO代表服务层需要接收的数据和返回的数据，而VO代表展示层需要显示的数据。</span><br><span class="line"></span><br><span class="line">用一个例子来说明可能会比较容易理解：例如服务层有一个getUser的方法返回一个系统用户，其中有一个属性是gender(性别)，对于服务层来说，它只从语义上定义：1-男性，2-女性，0-未指定，而对于展示层来说，它可能需要用“帅哥”代表男性，用“美女”代表女性，用“秘密”代表未指定。说到这里，可能你还会反驳，在服务层直接就返回“帅哥美女”不就行了吗？对于大部分应用来说，这不是问题，但设想一下，如果需求允许客户可以定制风格，而不同风格对于“性别”的表现方式不一样，又或者这个服务同时供多个客户端使用（不同门户），而不同的客户端对于表现层的要求有所不同，那么，问题就来了。再者，回到设计层面上分析，从职责单一原则来看，服务层只负责业务，与具体的表现形式无关，因此，它返回的DTO，不应该出现与表现形式的耦合。</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、postman一般测试方法</strong> </p>
+<p><strong>三、序列化与ID</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangqiang9x/article/details/84541316">https://blog.csdn.net/wangqiang9x/article/details/84541316</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangqiang9x/article/details/90409507">https://blog.csdn.net/wangqiang9x/article/details/90409507</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/liji_xc/article/details/47302455">https://blog.csdn.net/liji_xc/article/details/47302455</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/liji_xc/article/details/47290695">https://blog.csdn.net/liji_xc/article/details/47290695</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013815832/article/details/95212567?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/u013815832/article/details/95212567?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yansum/p/12602561.html">https://www.cnblogs.com/yansum/p/12602561.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lixuwu/p/10662339.html">https://www.cnblogs.com/lixuwu/p/10662339.html</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d1f100cebf2a">https://www.jianshu.com/p/d1f100cebf2a</a><br><a target="_blank" rel="noopener" href="http://www.360doc.com/content/15/0413/20/15242507_462975436.shtml">http://www.360doc.com/content/15/0413/20/15242507_462975436.shtml</a><br><a target="_blank" rel="noopener" href="https://www.csdn.net/gather_26/MtTacgwsNDI0OTktYmxvZwO0O0OO0O0O.html">https://www.csdn.net/gather_26/MtTacgwsNDI0OTktYmxvZwO0O0OO0O0O.html</a><br><a target="_blank" rel="noopener" href="https://www.imooc.com/qadetail/110529?t=109890">https://www.imooc.com/qadetail/110529?t=109890</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">什么是序列化反序列化？</span><br><span class="line">Java序列化是将对象转换为字节流的过程，因此我们可以将其存储在磁盘上或通过网络发送。</span><br><span class="line">反序列化是相反的过程–将字节流转换为内存中的对象。</span><br><span class="line">序列化过程</span><br><span class="line">在序列化期间，java运行时将版本号与每个可序列化的类相关联,此数字称为 serialVersionUID。</span><br><span class="line">在反序列化期间,用于验证序列化对象的发送者和接收者是否已为该对象加载了与序列化兼容的类。如果接收者为对象加载的类serialVersionUID与相应的发送者的类不同，则反序列化将导致InvalidClassException。</span><br><span class="line">假设一个英国人和另一个印度人都将分别执行序列化和反序列化。在这种情况下， 为了验证在印度的接收者是经过验证的人，JVM会创建一个唯一ID，称为SerialVersionUID。</span><br><span class="line"></span><br><span class="line">在大多数情况下，序列化和反序列化这两个活动都是由具有相同系统和相同位置的单个人完成的。</span><br><span class="line"></span><br><span class="line">但是在序列化中，发送者和接收者不是同一个人，即，这些人可能不同，机器或系统可能不同，并且位置必须不同。在序列化中，发送方和接收方都应仅在开始时具有.class文件，即，要进行序列化的人和准备反序列化的人仅应在开始时包含相同的.class文件。</span><br><span class="line"></span><br><span class="line">序列化：序列化时，每个对象发送方JVM都会保存一个Unique Identifier。JVM负责根据发送方系统中存在的相应.class文件生成该唯一ID。</span><br><span class="line"></span><br><span class="line">反序列化：反序列化时，接收方JVM将与对象关联的唯一ID与本地类Unique ID进行比较，即JVM还将基于接收方系统中存在的相应.class文件创建唯一ID。如果两个唯一的ID都匹配，则将仅执行反序列化。否则，我们将获得Runtime Exception，提示InvalidClassException。这个唯一的标识符不过是SerialVersionUID。</span><br><span class="line"></span><br><span class="line">SerialVersionUID的生成：</span><br><span class="line">就平台和版本而言，发送者和接收者都应使用相同的JVM。否则，由于不同的SerialVersionUID，接收器无法反序列化。</span><br><span class="line">发送方和接收方都应使用相同的.class文件版本。序列化后，如果接收方的.class文件中有任何更改，则接收方无法反序列化。</span><br><span class="line">为了在内部生成SerialVersionUID，JVM可能使用复杂的算法，这可能会导致性能问题。</span><br></pre></td></tr></table></figure>
+<p>如何生成序列化id<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/aa494661239/article/details/80520418">https://blog.csdn.net/aa494661239/article/details/80520418</a><br>修改idea设置 一键生成<br><strong>四、日期处理与显示</strong></p>
+<p><strong>五、TODO</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/carter_yu/article/details/90410540">https://blog.csdn.net/carter_yu/article/details/90410540</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Tpf386/p/11684437.html">https://www.cnblogs.com/Tpf386/p/11684437.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/shi_hong_fei_hei/article/details/86606414">https://blog.csdn.net/shi_hong_fei_hei/article/details/86606414</a><br><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/ff42efa9c25811c19e2202ef.html">https://jingyan.baidu.com/article/ff42efa9c25811c19e2202ef.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36205206/article/details/94723082">https://blog.csdn.net/qq_36205206/article/details/94723082</a><br><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-nx4b2dto.html">https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-nx4b2dto.html</a></p>
+<p><strong>六、多表</strong></p>
+<p><strong>七、增改</strong></p>
+<blockquote>
+<p>技术选型与学习</p>
+</blockquote>
+<p>从数据库到前端，可以分为七个部分。<br><strong>一、数据库选型与相关</strong><br>主要是mysql  redis  mongodb 这几种的相关原理、命令、配置</p>
+<p><strong>二、ORM框架</strong><br>基本的jdbc、spring data系列和mybatis+mp，基本看下来其实最后写法都差不多。<br>spring data系列是由代码生成表，mybatis+相关插件+mp是由表生成代码。<br>需要注意的三方面，一是配置，一是多表的实现，一是分页的实现。<br>对于mybatis，有总结的最佳使用方法。<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/hanxt/springboot2/1177609">https://www.kancloud.cn/hanxt/springboot2/1177609</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mybatis，尤其涉及多表+动态，建议使用xml方式</span><br><span class="line">使用驼峰映射结果属性</span><br></pre></td></tr></table></figure>
+
+<p><strong>三、统一返回数据和异常处理</strong><br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/hanxt/springboot2/1177634">https://www.kancloud.cn/hanxt/springboot2/1177634</a><br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/hanxt/springboot2/1177635">https://www.kancloud.cn/hanxt/springboot2/1177635</a><br>问题：分页的封装</p>
+<p><strong>四、视图</strong><br>三种方案：</p>
+<ul>
+<li>elementui + vue</li>
+<li>layui</li>
+<li>freemarker</li>
+</ul>
+<p><strong>五、其他框架</strong><br>spring cloud<br>搜索</p>
+<p><strong>六、中间件等</strong><br>消息队列<br>分布式文件系统<br>nginx<br>日志：springboot默认实现使用logback 门面使用slf4j</p>
+<p><strong>七、机制</strong><br>jwt实现<br>权限管理<br>文件相关</p>
+<blockquote>
+<p>工具</p>
+</blockquote>
+<p>hutools<br><a target="_blank" rel="noopener" href="https://hutool.cn/docs/#/">https://hutool.cn/docs/#/</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bQ4y1M7d9?p=2">https://www.bilibili.com/video/BV1bQ4y1M7d9?p=2</a></p>
+<blockquote>
+<p>实验</p>
+</blockquote>
+<p>为将这些技术进行集中搭配处理，总结可用的技术点，需要对作者代码进行测试，自行编写案例进行测试实践。<br>先归纳一下要集成的技术点：</p>
+<ul>
+<li>第一部分（通用）：统一数据处理、异常处理、日志配置、swagger、lombok</li>
+<li>第二部分（单表ORM选择）：mybatis + mp | spring data jpa | mongodb | redis<br>总结单表规范</li>
+<li>第三部分（多表和分页实现策略）</li>
+<li>第四部分（前端选型）：完全分离、layui、freemarker</li>
+<li>第五部分：结合机制、功能点 jwt poi</li>
+<li>第六部分：安全框架</li>
+</ul>
+<p>由此，应进行的步骤：<br> 首先是对单个点的源码进行测试，这个基本不能单独做，需要看哪check就行。<br> 所以关键是新建一个应用，模拟一个简单场景，以此来集成各个技术。<br> <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">模拟如下场景：</span><br><span class="line">一个简单的有角色权限的系统（当前先不加安全控制）</span><br><span class="line">因此先简单模拟一个作者--书籍--读者的关系 两两间一对多 读者和作者先不涉及系统的用户和角色概念</span><br><span class="line">目前先做的是这样一个关联关系集成各种技术的小案例</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>问题记录</p>
+</blockquote>
+<p><strong>一、mysql</strong><br>在华为云上安装mysql并连接时，又出现问题<code>2003-can&#39;t connect to MYSQL</code><br>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenjw-note/p/5887908.html">https://www.cnblogs.com/chenjw-note/p/5887908.html</a><br>修改配置 把bind-address    = 127.0.0.1 设置成bind-address    = 0.0.0.0<br>然后连接仍有问题，<code>1130-host . is not allowed to connect to this MySql server,MySQL</code><br>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/liangzhihong/p/10452207.html">https://www.cnblogs.com/liangzhihong/p/10452207.html</a><br>修改mysql远程访问权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">你想root使用mypassword从任何主机连接到mysql服务器的话。 </span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;mypassword&#x27; WITH GRANT OPTION; </span><br><span class="line"></span><br><span class="line">如果你想允许用户myuser从ip为192.168.1.3的主机连接到mysql服务器，并使用mypassword作为密码 </span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;192.168.1.3&#x27; IDENTIFIED BY </span><br><span class="line">&#x27;mypassword&#x27; WITH GRANT OPTION; </span><br><span class="line"></span><br><span class="line">输入命令FLUSH PRIVILEGES; </span><br><span class="line"></span><br><span class="line">再次远程连接数据库成功。</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/09/26/%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E3%80%81%E9%97%AE%E9%A2%98/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;09&#x2F;26&#x2F;%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E3%80%81%E9%97%AE%E9%A2%98&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;09&#x2F;26&#x2F;%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E3%80%81%E9%97%AE%E9%A2%98&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899709"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

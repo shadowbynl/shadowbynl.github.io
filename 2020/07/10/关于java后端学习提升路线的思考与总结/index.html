@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>关于java后端学习提升路线的思考与总结 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="写这篇总结的原因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于java后端学习提升路线的思考与总结">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/07/10/%E5%85%B3%E4%BA%8Ejava%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8F%90%E5%8D%87%E8%B7%AF%E7%BA%BF%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="写这篇总结的原因">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-07-10T08:57:36.000Z">
+<meta property="article:modified_time" content="2020-07-10T16:06:58.482Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="总结">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899718">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899718">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="关于java后端学习提升路线的思考与总结" class="lazyload">
+              <h1>关于java后端学习提升路线的思考与总结</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年07月10日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 18 分钟</a>
+</div>
+
+      
+
+      <blockquote>
+<p>写这篇总结的原因</p>
+</blockquote>
+<span id="more"></span>
+<p>在一个多月前六月初的时候，正值学校课程基本结束，课设也基本完成。课设中使用ssm、springboot写了几个最简单的后台系统，当时感觉做一个基本的后台系统很容易，想找些项目参考进一步学习却找不到合适的，当时也受困于如何不仅仅只写一个后台网站的问题。那时时间充裕，就暂时放下这些，学了一下python相关的一些技术，后来又学go。到6月20日，也就是20天前，接手了一个学院科研信息系统的项目，当时看着需要的技术栈并不复杂，在后端开发方面只要再学一下Nosql的操作方式和与前端vue的对接方式就可以了。但事实证明，我对一个后台系统的理解确实过于浅薄了。先前我写的，仅仅是一些最简单的crud而已，页面也用的jsp，其实基本没有技术含量，业务逻辑也基本没有什么，系统功能完全不能满足一个正常后台的需求。接下来，我先记述一下，我是如何逐步意识到自己的能力确实不足以完成一个一般后台的开发的：</p>
+<ul>
+<li>数据操作的问题。项目要求数据源使用mongodb，实现数据库操作使用spring data那一套的，而我先前用的基本都是mysql + mybatis。之前总结过，mybatis和spring data基本是两套操作方式，所以我从jpa学起，再重新认识spring data mongodb，然后系统基本实现的话，还要考虑解决多表操作和分页查询等的实现问题。此外，在数据方面，如何加入redis缓存，或是配置双数据源（双sql或sql+nosql）等，这些都是我想要了解或需要了解的。</li>
+<li>视图的问题。开始定的vue，但先前和这几天没有整理之前，一直搞不清这些前端框架间的关系，有的只知其名不知其使用场景，而对那些模板引擎也只是一知半解，根本没用过，这样我controller也不知道怎么写，怎样写restful的controller也是问题。后来找了一套后台模板，看了一个demo，又学了一下beetl，但还是没怎么用过。到底这些东西的区别是什么，选择哪个，怎么用，这些问题困扰了我不仅仅是这二十天，应该是从四月第一次知道freemarker这东西以来就一直让我很迷惑。</li>
+<li>一些工具的问题。在最近二十天看别人的源码时，第一次了解mybatis-plus、lombok、swagger这些东西，感觉很神奇。总想着一开始学习开发就能按通用简洁的方式进行就好了，所以这几天又在查这些东西是怎么用的。</li>
+<li>权限管理实现的问题。之前也写过一个spring security实现的权限系统，在那个系统中权限表实际只起描述作用。在这次的项目开发中，开始我认为实现基本的需求是简单的，但由于使用场景和几个关键细节的区别，使过程并不顺利。其一，数据源是nosql；其二，若使用vue，就是前后端完全分离，我并不了解这种情形下怎样实现和jsp类似的权限控制方式；其三，是参考其他项目时，我了解到的鉴权使用的JWT的方式，还有OAuth第三方登录等方式，这些表明实际的权限控制应当更为复杂。先前正是见的少，理解浅，致使我所做的基于自己浅薄经验的系统设计绝对是完全的不完善的。在权限控制上存在的严重问题，使我意识到自己需要先多看一看别人的通用的实现是如何的，需要使用哪些技术，绝对不能故自坐井观天。</li>
+</ul>
+<p>总结一下，说到底，见的项目太少，印象里的实现过于简单，导致自己想的也太简单了。事实上，不管是一个后台系统，或是其他类型的网站，其功能性需求和非功能性需求都必须满足，系统设计必须是严谨的，采用过于简单的方式实现绝对存在严重的缺陷。因此，我进一步学习必须要做的，是参考别人通用的实现，拓展自己的认识，明白别人都在用什么，为什么用，如何用，然后逐点突破，自己测试使用，并能够融入到自己的开发中。就是这样，故自开发是很危险的，现在更应该参考别人扩充眼界。</p>
+<blockquote>
+<p>现在，说一说这几天看了一些项目和教程后的理解</p>
+</blockquote>
+<p>经过先前的过程，我需要理顺一下自己需要解决哪些方面的问题：<br><strong>一、视图</strong><br>对于后台系统开发，使用什么模板，使用什么前端框架（ui/js），是前后端分离使用异步请求交互还是使用模板引擎，前后端分离采用怎样的技术选型，模板引擎选用哪种；开发其他类型网站，没有模板的话，对于布局，选用何种开发方式，flex伸缩布局、流式布局还是响应式布局。而controller相应的接口又该如何设计，按照何种标准。这些问题困扰了我相当长时间。<br>从最开始的jsp+el+jstl+jquery，到后来的模板引擎freemarker、thymeleaf、beetl，再到前后端完全分离的vue+elementui，以及其他的layui、easyui、bootstrap等框架。在参考其他项目时，这些概念逐渐进入我的视野，也使我越来越迷惑，这些东西都有什么区别，到底选哪种比较合适。<br><strong>我先来说一说参考后的一些简单理解</strong></p>
+<ul>
+<li>几个模板引擎和jsp都是类似的，都是前后端不分离的，可以数据和视图一起返回</li>
+<li>vue是一个js框架，和jquery进行区分，vue操作虚拟dom，jquery操作实际dom。vue和js是一级的东西</li>
+<li>elementui layui easyui都是前端ui框架，其中第一个可以和vue结合，而后两个都是基于jquery的</li>
+<li>如此，如果做前后端完全分离的实现，可以有两套 vue+elementui+axios(vue推荐异步请求技术) 或是 layui/easyui+ajax。其中layui是近几年诞生的国产框架，easyui诞生较早。</li>
+<li>显然，layui和easyui也可以直接放在后端代码中，与模板引擎结合进行开发<br><a target="_blank" rel="noopener" href="https://gitee.com/sentsin/layui">https://gitee.com/sentsin/layui</a> layui源码</li>
+</ul>
+<p><strong>一些参考</strong><br><a target="_blank" rel="noopener" href="https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=layui%E5%92%8Cvue&amp;fenlei=256&amp;oq=easyui%25E5%2592%258Clayui&amp;rsv_pq=cdfffb8100077d3a&amp;rsv_t=91e6EYl1Z9IkusNuRzbahclBaj%2FRiliadJmtiTs%2BNKXjUCe0AIZdc727b3Y&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=13&amp;rsv_sug1=11&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_btype=t&amp;inputT=3820&amp;rsv_sug4=5300">https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=layui%E5%92%8Cvue&amp;fenlei=256&amp;oq=easyui%25E5%2592%258Clayui&amp;rsv_pq=cdfffb8100077d3a&amp;rsv_t=91e6EYl1Z9IkusNuRzbahclBaj%2FRiliadJmtiTs%2BNKXjUCe0AIZdc727b3Y&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_sug3=13&amp;rsv_sug1=11&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_btype=t&amp;inputT=3820&amp;rsv_sug4=5300</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45174759/article/details/93634846">https://blog.csdn.net/qq_45174759/article/details/93634846</a><br><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/392565977">https://bbs.csdn.net/topics/392565977</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/346660680">https://www.zhihu.com/question/346660680</a>  参考<br><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/1952982575172825628.html">https://zhidao.baidu.com/question/1952982575172825628.html</a><br><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/558004864349929612.html?qbl=relate_question_4&amp;word=layui%BA%CDvue">https://zhidao.baidu.com/question/558004864349929612.html?qbl=relate_question_4&amp;word=layui%BA%CDvue</a></p>
+<p><strong>二、数据</strong><br>前几篇中有相关框架总结，需要考虑的是多数据源的配置。</p>
+<p><strong>三、权限</strong><br><strong>关于权限的概念与教程，查了很多</strong><br>1.JWT  Json web token<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/576dbf44b2ae">https://www.jianshu.com/p/576dbf44b2ae</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/99a458c62aa4">https://www.jianshu.com/p/99a458c62aa4</a><br>2.OAuth2<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4f5fcddb4106">https://www.jianshu.com/p/4f5fcddb4106</a><br>3.RBAC 基于角色的访问控制<br><a target="_blank" rel="noopener" href="https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=RBAC&amp;fenlei=256&amp;oq=pbft%25E7%259A%2584%25E7%25BC%25BA%25E7%2582%25B9&amp;rsv_pq=d3d78e0700280686&amp;rsv_t=34b7Km8mLHZEhHr7T8Uv9n5phA0np5%2BNF21gH2kZuUK0ramPfz0EK3XPeXc&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_btype=t&amp;inputT=1720&amp;rsv_sug3=105&amp;rsv_sug1=65&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_sug4=3330">https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=RBAC&amp;fenlei=256&amp;oq=pbft%25E7%259A%2584%25E7%25BC%25BA%25E7%2582%25B9&amp;rsv_pq=d3d78e0700280686&amp;rsv_t=34b7Km8mLHZEhHr7T8Uv9n5phA0np5%2BNF21gH2kZuUK0ramPfz0EK3XPeXc&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_btype=t&amp;inputT=1720&amp;rsv_sug3=105&amp;rsv_sug1=65&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_sug4=3330</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/niuli1987/p/9871182.html">https://www.cnblogs.com/niuli1987/p/9871182.html</a><br>4.Spring Security Oauth<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f6b73cd23114">https://www.jianshu.com/p/f6b73cd23114</a><br><strong>以我看来</strong><br>一方面是基于安全框架和JWT的token认证基本实现，一方面是基于安全框架和OAuth2规范的第三方登录实现。具体实现参考下面提到的两个后台系统，如何学习也在后面分析。</p>
+<p><strong>四、中间件</strong><br>之前了解了一些中间件，如redis、nginx等等，渐渐的就产生疑惑，什么是中间件，目前常见的中间件有哪些，各有什么使用场景。<br>查了一些，并没有专门的博客介绍，只能根据一个教程<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XZ4y1x7FW?from=search&amp;seid=16936818641223030662">https://www.bilibili.com/video/BV1XZ4y1x7FW?from=search&amp;seid=16936818641223030662</a> 的内容分析。<br><strong>消息中间件</strong><br>rabbitmq<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/rabbitmq/9372144?fr=aladdin">https://baike.baidu.com/item/rabbitmq/9372144?fr=aladdin</a><br>kafka<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Kafka/17930165?fr=aladdin">https://baike.baidu.com/item/Kafka/17930165?fr=aladdin</a><br><strong>负载均衡 nginx</strong><br><strong>缓存redis</strong><br><strong>数据库中间件 mycat</strong><br><strong>分布式相关</strong><br>dubbo 开源分布式服务框架<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Dubbo/18907815?fr=aladdin">https://baike.baidu.com/item/Dubbo/18907815?fr=aladdin</a><br>fastdfs 轻量级分布式文件系统<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b7c330a87855">https://www.jianshu.com/p/b7c330a87855</a><br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/fastdfs/5609710?fr=aladdin">https://baike.baidu.com/item/fastdfs/5609710?fr=aladdin</a><br>zookeeper<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/zookeeper/4836397?fr=aladdin">https://baike.baidu.com/item/zookeeper/4836397?fr=aladdin</a><br><strong>搜索相关</strong></p>
+<blockquote>
+<p>分析一下两个后台系统 security 和 ruoyi<br>这两个系统作为后台系统，基本功能是差不多的，但在具体实现技术、项目结构等上都有区别，不过有一些功能的实现是类似的。</p>
+</blockquote>
+<p><strong>SpringBoot Spring Security JWT redis Swagger 整合</strong><br>这个系统让我初次意识到一个springboot开发的后台系统需要哪些功能，实际的权限控制应该如何实现，这个项目的代码虽然有些繁琐，但解决了我先前的不少问题，且是用spring security实现安全控制的，也比较符合我的需求，因此先把这个项目的实现要点看了一遍，以下进行总结。</p>
+<ol>
+<li>结合spring security和JWT实现的token机制，可选择性地将token存入redis或mysql中。其中JWT的构造和过期与刷新机制需要注意。</li>
+<li>关于ajax请求，全局配置与跨域请求配置。</li>
+<li>关于页面，使用layui框架。表单校验使用bootstrapValidator.min.js插件，分页使用datatables分页插件，菜单显示要注意分级关系的实现，给角色赋权的页面使用了ztree菜单树，日期laydate，弹出框layer。</li>
+<li>字典管理。即系统中一些常量的配置。使用场景：表单中的下拉选择内容，列表的一些属性显示。</li>
+<li>文件上传：注意springboot的jar打包决定了系统保存文件的路径必须是一个绝对路径，不能是项目的相对路径。而想要访问上传的文件，就需要给这个硬盘绝对路径配置一个url的映射。在上传文件前，先根据文件md5加密后的值与文件表中的id（文件md5后其对应记录id）进行比对，判断是否已存在决定是否再上传。</li>
+<li>富文本：实现的一个关键点是，需要同时上传文件。公告管理中，统计公告的已读人员，显示用户未读公告数目的逻辑需要注意。</li>
+<li>日志：一方面是日志记录，即保存系统的运行日志在文件中，一方面是系统的日志管理功能，该功能主要是查看某个用户在某个时间进行了某个模块的操作。这样的功能是通过自定义注解进行AOP拦截实现的，比较巧妙。</li>
+<li>定时任务：首先数据库表中以qrtz开头的都是需要的默认表。新增一个定时任务，需要指定其cron表达式来确定执行规则，在系统中的bean所有的方法中进行选择定时执行。</li>
+<li>邮件：注意配置以及富文本邮件的发送。</li>
+<li>excel导出：依赖poi，根据select查询系统数据，获取指定字段的数据记录进行导出，注意验证sql正确性和生成excel的逻辑。</li>
+<li>代码生成：一个看起来强大但也限制明显的功能。可以根据数据库表自动生成对应实体类、各层类甚至crud界面，可以直接copy进代码，再通过添加菜单将相关功能添到系统中。限制是暂时只能是单表操作，但也足够强大。实现的关键是使用模板进行替换。</li>
+<li>swagger接口：三个依赖，在类、方法、参数等级别上添加注解分别指定其含义，这样系统就可以自动生成对应的接口文档。<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/349e130e40d5">https://www.jianshu.com/p/349e130e40d5</a></li>
+</ol>
+<p><strong>若依</strong><br>若依的功能其实和上面这个后台功能差不多，但近两三年开发出来后，生态造的太好了，各种文档、拓展都有，美中不足是若依的权限管理使用的是shiro。</p>
+<p><strong>总结</strong><br>看了上面这两个后台系统的功能后，我认识到我先前认知的后台有些过于简单了，不能应付实际需求，因此还应参考这两个系统的设计思想。</p>
+<p><strong>相关资料</strong></p>
+<ul>
+<li>第一个系统，只有bilibili的视频和github源码，并没有详细的文档。<br>教程 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av795700580">https://www.bilibili.com/video/av795700580</a><br>源码 <a target="_blank" rel="noopener" href="https://github.com/freeMak/boot-security.git">https://github.com/freeMak/boot-security.git</a></li>
+<li>若依，是码云开源的项目，文档、拓展丰富，视频得花钱买。。bi7.6还有，现在7.10就没了，幸亏下载下来了<br>文档 <a target="_blank" rel="noopener" href="http://doc.ruoyi.vip/ruoyi/document/xmjs.html#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">http://doc.ruoyi.vip/ruoyi/document/xmjs.html#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84</a><br>源码 <a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi">https://gitee.com/y_project/RuoYi</a></li>
+</ul>
+<blockquote>
+<p>接下来就整理一下需要学哪些方面和如何进行吧</p>
+</blockquote>
+<p><strong>一、权限控制</strong><br>首先是需要搞清JWT和OAuth那些如何结合spring security实现，然后再根据需要学学shiro。<br>1.spring security相关的参考<br><strong>黑马的教程</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1WJ411W7wT/?spm_id_from=333.788.videocard.3">https://www.bilibili.com/video/BV1WJ411W7wT/?spm_id_from=333.788.videocard.3</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VE411h7aL/?spm_id_from=333.788.videocard.4">https://www.bilibili.com/video/BV1VE411h7aL/?spm_id_from=333.788.videocard.4</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">UP黑马程序员</span><br><span class="line">置顶完整的JAVA中级程序员全面学习路线教程</span><br><span class="line">爱学习的小伙伴们加油了！欢迎评论 点赞 转发！</span><br><span class="line">Java基础：av80585971</span><br><span class="line"></span><br><span class="line">数据库</span><br><span class="line">Mysql：av68811608</span><br><span class="line">Oracle：av81386804</span><br><span class="line">JDBC：av68736927</span><br><span class="line">C3P0：av73840600</span><br><span class="line"></span><br><span class="line">前端技术</span><br><span class="line">HTML、CSS、Javascript：av73840600</span><br><span class="line">jQuery-：av37976701</span><br><span class="line">Ajax：av15657082 av15866060</span><br><span class="line">Vue：av76249419</span><br><span class="line">微信小程序：av73342655 av40455083</span><br><span class="line"></span><br><span class="line">动态网页：av73840600</span><br><span class="line"></span><br><span class="line">编程强化</span><br><span class="line">JVM优化：av70549061</span><br><span class="line">数据结构算法：av83826038 av78639604</span><br><span class="line"></span><br><span class="line">软件项目管理</span><br><span class="line">Maven： av52364221</span><br><span class="line">SVN：av73840600 av7959491</span><br><span class="line">Git：av75718460</span><br><span class="line">Jenkins：av83089670</span><br><span class="line"></span><br><span class="line">热门技术框架</span><br><span class="line">SSM：av7770852</span><br><span class="line">Mybatis-Plus ：av69233006</span><br><span class="line">Spring Data：av71980390</span><br><span class="line">Spring：av70828462</span><br><span class="line"></span><br><span class="line">分布式架构</span><br><span class="line">Dubbo、Zookeeper：av74933720</span><br><span class="line">SpringCloud：av77085442 av89898642</span><br><span class="line">Eureka：av74127911</span><br><span class="line">Skywalking：av80349807</span><br><span class="line"></span><br><span class="line">服务器中间件</span><br><span class="line">RocketMQ：av66702383</span><br><span class="line">Kafka：av71991051</span><br><span class="line">Sharding-JDBC：av68736927</span><br><span class="line">Redis：av76235738</span><br><span class="line">MongoDB：av80450883</span><br><span class="line"></span><br><span class="line">服务器技术</span><br><span class="line">Tomcat：av67233983</span><br><span class="line">Linux系统：av73840600</span><br><span class="line">CentOS、Virtualbox：av23360560</span><br><span class="line">Ubuntu、Vmware：av14184325</span><br><span class="line"></span><br><span class="line">容器技术</span><br><span class="line">Docker：av69121091</span><br><span class="line"></span><br><span class="line">业务解决方案（实战项目）</span><br><span class="line">Elasticsearch：av66600360</span><br><span class="line">Lucene：av77895717</span><br><span class="line">Quartz：av36062910</span><br><span class="line">Elastic-Job：av74128695</span><br><span class="line">SpringSecurity：av74851468</span><br><span class="line">Activiti：av7670054</span><br></pre></td></tr></table></figure>
+<p><strong>字母哥的教程和书</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16J41127jq/?spm_id_from=333.788.videocard.1">https://www.bilibili.com/video/BV16J41127jq/?spm_id_from=333.788.videocard.1</a><br><a target="_blank" rel="noopener" href="https://github.com/hanxt/bootsecuritybasic">https://github.com/hanxt/bootsecuritybasic</a><br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/hanxt/springsecurity">https://www.kancloud.cn/hanxt/springsecurity</a> 需要买。。<br><strong>系列博客</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanlaijike/category_9283872.html">https://blog.csdn.net/yuanlaijike/category_9283872.html</a><br>2.如果需要学shiro 看up编程不良人的</p>
+<p><strong>二、java新特性</strong><br><strong>黑马</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/bv1kt4y1y7d1/">https://www.bilibili.com/video/bv1kt4y1y7d1/</a><br><strong>字母哥</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sE411P7C1">https://www.bilibili.com/video/BV1sE411P7C1</a></p>
+<p><strong>三、项目</strong><br><strong>十次方</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HE411M7G8/?spm_id_from=333.788.videocard.5">https://www.bilibili.com/video/BV1HE411M7G8/?spm_id_from=333.788.videocard.5</a>  未下载<br><strong>租房</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11J411C7HY?from=search&amp;seid=14421220897827985663">https://www.bilibili.com/video/BV11J411C7HY?from=search&amp;seid=14421220897827985663</a></p>
+<p><strong>四、前端（优先分离，再模板引擎）</strong><br>vue就参照百知了<br>教程 <a target="_blank" rel="noopener" href="https://space.bilibili.com/352224540">https://space.bilibili.com/352224540</a><br>   <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SE411H7CY">https://www.bilibili.com/video/BV1SE411H7CY</a><br>   <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1p54y1B7Aa">https://www.bilibili.com/video/BV1p54y1B7Aa</a><br>   <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NK4y187XH">https://www.bilibili.com/video/BV1NK4y187XH</a><br>   <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Nt4y127Jh">https://www.bilibili.com/video/BV1Nt4y127Jh</a><br>资料 <a target="_blank" rel="noopener" href="http://www.baizhiedu.xin/front/index#/main">http://www.baizhiedu.xin/front/index#/main</a><br>目的是先学会vue与后端结合开发的基本用法</p>
+<p><strong>五、工具与组件</strong><br>1.lombok<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gg4y1v7Mi">https://www.bilibili.com/video/BV1gg4y1v7Mi</a><br>2.swagger<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BA411v7BT">https://www.bilibili.com/video/BV1BA411v7BT</a><br>3.mybatis-plus<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pK411W7Hu">https://www.bilibili.com/video/BV1pK411W7Hu</a><br>4.redis<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jD4y1Q7tU">https://www.bilibili.com/video/BV1jD4y1Q7tU</a><br>5.nginx<br>6.RabbitMQ<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dE411K7MG">https://www.bilibili.com/video/BV1dE411K7MG</a><br>7.Lucene<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE41157NT">https://www.bilibili.com/video/BV1PE41157NT</a><br>8.elasticsearch<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1FK4y1x7Dr">https://www.bilibili.com/video/BV1FK4y1x7Dr</a></p>
+<p><strong>六、mysql练习与强化</strong><br>主要是sql语句、表关系、特性等。<br><strong>牛客练习sql</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV175411s7yr/?spm_id_from=333.788.videocard.2">https://www.bilibili.com/video/BV175411s7yr/?spm_id_from=333.788.videocard.2</a><br>在线练习：<br><a target="_blank" rel="noopener" href="https://www.nowcoder.com/ta/sql">https://www.nowcoder.com/ta/sql</a><br>github：<br><a target="_blank" rel="noopener" href="https://github.com/ljz756245026/sql-test-niukewang">https://github.com/ljz756245026/sql-test-niukewang</a><br><strong>其他教程</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1DE411n7fU/?spm_id_from=333.788.videocard.0">https://www.bilibili.com/video/BV1DE411n7fU/?spm_id_from=333.788.videocard.0</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1H5411475W">https://www.bilibili.com/video/BV1H5411475W</a><br><strong>文字音频材料</strong><br>必知必会<br>实战45讲</p>
+<p><strong>七、goweb与区块链</strong><br>1.iris框架<br>2.fabric相关教程<br>华为云<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pE411Y7DJ?p=2">https://www.bilibili.com/video/BV1pE411Y7DJ?p=2</a><br>孔壹学院<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13E411u7Pj">https://www.bilibili.com/video/BV13E411u7Pj</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a4411X7Z1">https://www.bilibili.com/video/BV1a4411X7Z1</a><br>如何运行github上面的学籍项目<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V7411t79W?from=search&amp;seid=275682470572440048">https://www.bilibili.com/video/BV1V7411t79W?from=search&amp;seid=275682470572440048</a><br>Hyperledger Fabric 1.4-关键概念<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a4411P7fC?from=search&amp;seid=275682470572440048">https://www.bilibili.com/video/BV1a4411P7fC?from=search&amp;seid=275682470572440048</a><br>学历征信系统<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pE411t7KH?p=12">https://www.bilibili.com/video/BV1pE411t7KH?p=12</a><br>3.仓库<br><a target="_blank" rel="noopener" href="https://gitee.com/thats_not_all_right/kongyixueyuan?_from=gitee_search">https://gitee.com/thats_not_all_right/kongyixueyuan?_from=gitee_search</a><br><a target="_blank" rel="noopener" href="https://gitee.com/dddkyi/Education?_from=gitee_search">https://gitee.com/dddkyi/Education?_from=gitee_search</a><br>4.主要参考百度云下载的资料。。</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/07/10/%E5%85%B3%E4%BA%8Ejava%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8F%90%E5%8D%87%E8%B7%AF%E7%BA%BF%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E6%80%BB%E7%BB%93/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;07&#x2F;10&#x2F;%E5%85%B3%E4%BA%8Ejava%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8F%90%E5%8D%87%E8%B7%AF%E7%BA%BF%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E6%80%BB%E7%BB%93&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;07&#x2F;10&#x2F;%E5%85%B3%E4%BA%8Ejava%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8F%90%E5%8D%87%E8%B7%AF%E7%BA%BF%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E6%80%BB%E7%BB%93&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899721"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

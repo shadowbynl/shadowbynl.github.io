@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>sql_study_1 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="对牛客网sql练习61道做一个简单总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql_study_1">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/08/03/sql_study_1/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="对牛客网sql练习61道做一个简单总结">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-08-03T08:09:57.000Z">
+<meta property="article:modified_time" content="2020-08-03T09:01:56.296Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="sql">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899709">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899709">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="sql_study_1" class="lazyload">
+              <h1>sql_study_1</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年08月03日</a>
+    <a><i class="nexmoefont icon-areachart"></i>9.2k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 49 分钟</a>
+</div>
+
+      
+
+      <p>对牛客网sql练习61道做一个简单总结 </p>
+<span id="more"></span>
+<p>牛客网 <a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/218ae58dfdcd4af195fff264e062138f?tpId=82&amp;rp=1&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking">https://www.nowcoder.com/practice/218ae58dfdcd4af195fff264e062138f?tpId=82&amp;rp=1&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking</a><br>相关视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV175411s7yr?p=61">https://www.bilibili.com/video/BV175411s7yr?p=61</a><br>61道题，大概分为两个部分，前35道基本全是查询，后26道是一些其他语句的用法，最难写的大概在22-35这十几道。</p>
+<p> PDF To Markdown Converter<br>Debug View<br>Result View</p>
+<h3><span id="查找最晚入职员工的所有信息为了减轻入门难度目前所有的数据里员工入职的日期都">查找最晚入职员工的所有信息，为了减轻入门难度，目前所有的数据里员工入职的日期都</span></h3><h3><span id="不是同一天">不是同一天</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `employees` (</span><br><span class="line">`emp_no` int(11) NOT NULL comment &#x27;员工编号&#x27;,</span><br><span class="line">`birth_date` date NOT NULL,</span><br><span class="line">`first_name` varchar(14) NOT NULL,</span><br><span class="line">`last_name` varchar(16) NOT NULL,</span><br><span class="line">`gender` char(1) NOT NULL,</span><br><span class="line">`hire_date` date NOT NULL,</span><br><span class="line">PRIMARY KEY (`emp_no`));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select *</span><br><span class="line">from employees</span><br><span class="line">where hire_date = (select max(hire_date) from employees);</span><br></pre></td></tr></table></figure>
+<h1><span id="01-查找最晚入职员工的所有信息">01. 查找最晚入职员工的所有信息</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><h3><span id="查找入职员工时间排名倒数第三的员工所有信息为了减轻入门难度目前所有的数据里">查找入职员工时间排名倒数第三的员工所有信息，为了减轻入门难度，目前所有的数据里</span></h3><h3><span id="员工入职的日期都不是同一天">员工入职的日期都不是同一天</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `employees` (</span><br><span class="line">`emp_no` int(11) NOT NULL,</span><br><span class="line">`birth_date` date NOT NULL,</span><br><span class="line">`first_name` varchar(14) NOT NULL,</span><br><span class="line">`last_name` varchar(16) NOT NULL,</span><br><span class="line">`gender` char(1) NOT NULL,</span><br><span class="line">`hire_date` date NOT NULL,</span><br><span class="line">PRIMARY KEY (`emp_no`));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select *</span><br><span class="line">from employees</span><br><span class="line">where hire_date = (</span><br><span class="line">select distinct hire_date</span><br><span class="line">from employees</span><br><span class="line">order by hire_date desc</span><br><span class="line">limit 2,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h1><span id="02查找入职员工时间排名倒数第三的员工所有信息">02.查找入职员工时间排名倒数第三的员工所有信息</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找各个部门当前(to_date=’9999- 01 - 01’)领导当前薪水详情以及其对应部门编号dept_no(请注</p>
+<p>意输出结果，dept_no列是最后一列)</p>
+<p>CREATE TABLE <code>dept_manager</code> (</p>
+<p><code>dept_no</code> char(4) NOT NULL comment ‘部门编号’,</p>
+<p><code>emp_no</code> int(11) NOT NULL comment ‘员工编号’,</p>
+<p><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>salaries</code> (</p>
+<p><code>emp_no</code> int(11) NOT NULL comment ‘员工编号’,</p>
+<p><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select s.*, d.dept_no<br>from salaries s<br>inner join dept_manager d<br>on s.emp_no = d.emp_no<br>where s.to_date=’9999- 01 - 01’<br>and d.to_date=’9999- 01 - 01’;</p>
+<h1><span id="03查找各个部门当前领导当前薪水详情以及其对应部">03.查找各个部门当前领导当前薪水详情以及其对应部</span></h1><h1><span id="门编号dept_no">门编号dept_no</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找所有已经分配部门的员工的last_name和first_name以及dept_no(请注意输出描述里各个列</p>
+<p>的前后顺序)</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>select last_name,first_name,dept_no<br>from employees e<br>inner join dept_emp d<br>on e.emp_no = d.emp_no;</p>
+<h1><span id="04查找所有已经分配部门的员工的last_name和">04.查找所有已经分配部门的员工的last_name和</span></h1><h1><span id="first_name">first_name</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找所有员工的last_name和first_name以及对应部门编号dept_no，也包括暂时没有分配具体</p>
+<p>部门的员工(请注意输出描述里各个列的前后顺序)</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>select last_name,first_name,dept_no<br>from employees e<br>left join dept_emp d<br>on e.emp_no = d.emp_no;</p>
+<h3><span id="注意">注意：</span></h3><h3><span id="inner-join-两边表同时有对应的数据即任何一边缺失数据就不显示">INNER JOIN 两边表同时有对应的数据，即任何一边缺失数据就不显示。</span></h3><h3><span id="主left-join-从-会读取左边数据表的全部数据即便右边表无对应数据">主LEFT JOIN 从 会读取左边数据表的全部数据，即便右边表无对应数据。</span></h3><h3><span id="从right-join-主-会读取右边数据表的全部数据即便左边表无对应数据">从RIGHT JOIN 主 会读取右边数据表的全部数据，即便左边表无对应数据。</span></h3><h1><span id="05查找所有员工的last_name和first_name以及对应部">05.查找所有员工的last_name和first_name以及对应部</span></h1><h1><span id="门编号dept_no">门编号dept_no</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找所有员工入职时候的薪水情况，给出emp_no以及salary， 并按照emp_no进行逆序(请注</p>
+<p>意，一个员工可能有多次涨薪的情况)</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,</p>
+<p><code>hire_date</code> date NOT NULL,#入职</p>
+<p>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,</p>
+<p><code>from_date</code> date NOT NULL,#入职日期=from_date</p>
+<p><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select e.emp_no, s.salary<br>from employees e<br>inner join salaries s<br>on e.emp_no = s.emp_no<br>where e.hire_date = s.from_date<br>order by e.emp_no desc;</p>
+<h1><span id="06查找所有员工入职时候的薪水情况">06.查找所有员工入职时候的薪水情况</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找薪水涨幅超过 15 次的员工号emp_no以及其对应的涨幅次数t</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select s.emp_no, count(<em>) t<br>from salaries s<br>group by s.emp_no<br>having count(</em>) &gt; 15;</p>
+<h1><span id="07查找薪水涨幅超过-15-次的员工号emp_no以及其对">07.查找薪水涨幅超过 15 次的员工号emp_no以及其对</span></h1><h1><span id="应的涨幅次数t">应的涨幅次数t</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>找出所有员工当前(to_date=’9999- 01 - 01’)具体的薪水salary情况，对于相同的薪水只显示一次,</p>
+<p>并按照逆序显示</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select distinct salary<br>from salaries s<br>where s.to_date=’9999- 01 - 01’<br>order by salary desc;</p>
+<p>select salary<br>from salaries s<br>where s.to_date=’9999- 01 - 01’<br>group by salary<br>order by salary desc;</p>
+<h1><span id="08找出所有员工当前具体的薪水salary情况">08.找出所有员工当前具体的薪水salary情况</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取所有部门当前manager的当前薪水情况，给出dept_no, emp_no以及salary，当前表示</p>
+<p>to_date=’9999- 01 - 01’<br>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select d.dept_no, d.emp_no, s.salary<br>from dept_manager d<br>inner join salaries s<br>on d.emp_no = s.emp_no<br>where d.to_date=’9999- 01 - 01’<br>and s.to_date=’9999- 01 - 01’;</p>
+<h1><span id="09获取所有部门当前manager的当前薪水情况">09.获取所有部门当前manager的当前薪水情况</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取所有非manager的员工emp_no</p>
+<p>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>select emp_no<br>from employees<br>where emp_no not in(<br>select e.emp_no<br>from employees e<br>inner join dept_manager d<br>on e.emp_no = d.emp_no<br>);</p>
+<h1><span id="10获取所有非manager的员工emp_no">10.获取所有非manager的员工emp_no</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示</p>
+<p>to_date=’9999- 01 - 01’。</p>
+<p>结果第一列给出当前员工的emp_no,第二列给出其manager对应的manager_no。</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));</p>
+<p>select e.emp_no, m.emp_no<br>from dept_emp e<br>inner join dept_manager m<br>on e.dept_no = m.dept_no<br>where e.emp_no &lt;&gt; m.emp_no<br>and e.to_date=’9999- 01 - 01’<br>and m.to_date=’9999- 01 - 01’;</p>
+<h1><span id="11获取所有员工当前的manager">11.获取所有员工当前的manager</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取所有部门中当前员工薪水最高的相关信息，给出dept_no, emp_no以及其对应的salary</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select d.dept_no, d.emp_no, max(salary)<br>from dept_emp d<br>inner join salaries s<br>on d.emp_no = s.emp_no<br>where d.to_date = ‘9999- 01 - 01’<br>and s.to_date = ‘9999- 01 - 01’<br>group by d.dept_no;</p>
+<h1><span id="12获取所有部门中当前员工薪水最高的相关信息">12.获取所有部门中当前员工薪水最高的相关信息</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>从titles表获取按照title进行分组，每组个数大于等于 2 ，给出title以及对应的数目t。</p>
+<p>CREATE TABLE IF NOT EXISTS “titles” (<br><code>emp_no</code> int(11) NOT NULL,<br><code>title</code> varchar(50) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date DEFAULT NULL);</p>
+<p>select title, count(<em>) t<br>from titles<br>group by title<br>having count(</em>) &gt;= 2;</p>
+<h1><span id="13从titles表获取按照title进行分组">13.从titles表获取按照title进行分组</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>从titles表获取按照title进行分组，每组个数大于等于 2 ，给出title以及对应的数目t。</p>
+<p>注意对于重复的emp_no进行忽略。</p>
+<p>CREATE TABLE IF NOT EXISTS <code>titles</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>title</code> varchar(50) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date DEFAULT NULL);</p>
+<p>select title, count(distinct emp_no) t<br>from titles<br>group by title<br>having t &gt;= 2;</p>
+<h1><span id="14从titles表获取按照title进行分组注意对于重复的">14.从titles表获取按照title进行分组，注意对于重复的</span></h1><h1><span id="emp_no进行忽略">emp_no进行忽略</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">查找employees表所有emp_no为奇数，且last_name不为Mary的员工信息，并按照hire_date</span><br><span class="line">逆序排列</span><br><span class="line">CREATE TABLE `employees` (</span><br><span class="line">`emp_no` int(11) NOT NULL,</span><br><span class="line">`birth_date` date NOT NULL,</span><br><span class="line">`first_name` varchar(14) NOT NULL,</span><br><span class="line">`last_name` varchar(16) NOT NULL,</span><br><span class="line">`gender` char(1) NOT NULL,</span><br><span class="line">`hire_date` date NOT NULL,</span><br><span class="line">PRIMARY KEY (`emp_no`));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select *</span><br><span class="line">from employees e</span><br><span class="line">where e.emp_no &amp; 1 = 1</span><br><span class="line">and e.last_name != &#x27;Mary&#x27;</span><br><span class="line">order by e.hire_date desc;</span><br></pre></td></tr></table></figure>
+<h1><span id="15查找employees表所有emp_no为奇数">15.查找employees表所有emp_no为奇数</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>统计出当前各个title类型对应的员工当前（to_date=’9999- 01 - 01’）薪水对应的平均工资。结果</p>
+<p>给出title以及平均工资avg。</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));<br>CREATE TABLE IF NOT EXISTS “titles” (<br><code>emp_no</code> int(11) NOT NULL,<br><code>title</code> varchar(50) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date DEFAULT NULL);</p>
+<p>select t.title, avg(s.salary) avg<br>from titles t<br>inner join salaries s<br>on t.emp_no = s.emp_no<br>where t.to_date=’9999- 01 - 01’<br>and s.to_date=’9999- 01 - 01’<br>group by t.title;</p>
+<h1><span id="16统计出当前各个title类型对应的员工当前薪水对应">16.统计出当前各个title类型对应的员工当前薪水对应</span></h1><h1><span id="的平均工资">的平均工资</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取当前（to_date=’9999- 01 - 01’）薪水第二多的员工的emp_no以及其对应的薪水salary</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select emp_no,salary<br>from salaries<br>where to_date=’9999- 01 - 01’<br>and salary = (<br>select distinct salary<br>from salaries<br>order by salary desc<br>limit 1,<br>);</p>
+<h1><span id="17获取当前薪水第二多的员工的emp_no以及其对应">17.获取当前薪水第二多的员工的emp_no以及其对应</span></h1><h1><span id="的薪水salary">的薪水salary</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找当前薪水(to_date=’9999- 01 - 01’)排名第二多的</p>
+<p>员工编号emp_no、薪水salary、last_name以及first_name，不准使用order by</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select e.emp_no, max(s.salary), e.last_name, e.first_name<br>from employees e<br>inner join salaries s<br>on e.emp_no = s.emp_no<br>where s.to_date = ‘9999- 01 - 01’<br>and s.salary not in(<br>select max(salary)<br>from salaries<br>where to_date = ‘9999- 01 - 01’<br>);</p>
+<h1><span id="18查找当前薪水排名第二多的员工编号emp_no">18.查找当前薪水排名第二多的员工编号emp_no</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找所有员工的last_name和first_name以及对应的dept_name，</p>
+<p>也包括暂时没有分配部门的员工left join</p>
+<p>CREATE TABLE <code>departments</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>dept_name</code> varchar(40) NOT NULL,<br>PRIMARY KEY (<code>dept_no</code>));</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>select last_name,first_name,dept_name<br>from employees e<br>left join dept_emp de on e.emp_no = de.emp_no<br>left join departments d on d.dept_no = de.dept_no;</p>
+<h1><span id="19查找所有员工的last_name和first_name以及对应的">19.查找所有员工的last_name和first_name以及对应的</span></h1><h1><span id="dept_name">dept_name</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找员工编号emp_no为 10001 其自入职以来的薪水salary涨幅值growth</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select<br>(</p>
+<p>#最近的-刚入职的</p>
+<p>(select salary from salaries where emp_no = 10001 order by salary desc)</p>
+<ul>
+<li>(select salary from salaries where emp_no = 10001 order by salary)<br>) growth;</li>
+</ul>
+<h1><span id="20查找员工编号emp_now为-10001-其自入职以来的薪">20.查找员工编号emp_now为 10001 其自入职以来的薪</span></h1><h1><span id="水salary涨幅值growth">水salary涨幅值growth</span></h1><p>2020 年 5 月 18 日 8:</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找所有员工自入职以来的薪水涨幅情况，给出员工编号emp_no以及其对应的薪水涨幅</p>
+<p>growth，并按照growth进行升序</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select e.emp_no, (s1.salary -s2.salary) as growth<br>from employees e<br>inner join salaries s1</p>
+<p>on e.emp_no = s1.emp_no and s1.to_date = ‘9999- 01 - 01’#当前薪资</p>
+<p>inner join salaries s2</p>
+<p>on e.emp_no = s2.emp_no and e.hire_date = s2.from_date#入职薪资</p>
+<p>order by growth asc;</p>
+<h1><span id="21查找所有员工自入职以来的薪水涨幅情况">21.查找所有员工自入职以来的薪水涨幅情况</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h3><span id="题目描述">题目描述</span></h3><p>统计各个部门的工资记录数，给出部门编码dept_no、部门名称dept_name以及次数sum</p>
+<p>CREATE TABLE <code>departments</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>dept_name</code> varchar(40) NOT NULL,<br>PRIMARY KEY (<code>dept_no</code>));<br>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select d.dept_no, d.dept_name,count(s.salary) ‘sum’<br>from departments d<br>inner join dept_emp de on d.dept_no = de.dept_no<br>inner join salaries s on de.emp_no = s.emp_no<br>group by d.dept_no;</p>
+<h1><span id="22统计各个部门对应员工涨幅的次数总和">22.统计各个部门对应员工涨幅的次数总和</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h3><span id="题目描述">题目描述</span></h3><p>对所有员工的当前(to_date=’9999- 01 - 01’)薪水按照salary进行按照 1 - N的排名，</p>
+<p>相同salary并列且按照emp_no升序排列</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p><strong>输出描述:</strong></p>
+<p>emp_no salary rank</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10005 94692 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10009 94409 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10010 94409 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10001 88958 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10007 88070 4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10004 74057 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10002 72527 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10003 43311 7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10006 43311 7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10011 25828 8</span><br></pre></td></tr></table></figure>
+<p>来自&lt;<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/b9068bfe5df74276bd015b9729eec4bf?tpId=82&amp;tqId=29775&amp;tPage=2">https://www.nowcoder.com/practice/b9068bfe5df74276bd015b9729eec4bf?tpId=82&amp;tqId=29775&amp;tPage=2</a><br>&amp;rp=&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking&gt;</p>
+<p>select s1.emp_no, s1.salary, count(distinct s2.salary) rank<br>from salaries s1, salaries s2<br>where s1.to_date=’9999- 01 - 01’<br>and s2.to_date=’9999- 01 - 01’<br>and s1.salary &lt;= s2.salary<br>group by s1.emp_no<br>order by s1.salary desc,s1.emp_no asc</p>
+<h1><span id="23对所有员工的当前薪水按照salary进行按照-1-n的排">23.对所有员工的当前薪水按照salary进行按照 1 - N的排</span></h1><h1><span id="名">名</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取所有非manager员工当前的薪水情况，给出dept_no、emp_no以及salary ，</p>
+<p>当前表示to_date=’9999- 01 - 01’</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));</p>
+<p>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<h3><span id="1查询所有员工的情况">1.查询所有员工的情况</span></h3><p>2.筛选掉manager员工</p>
+<p>select de.dept_no,e.emp_no,s.salary<br>from employees e<br>inner join salaries s<br>on e.emp_no = s.emp_no and s.to_date=’9999- 01 - 01’<br>inner join dept_emp de<br>on e.emp_no = de.emp_no<br>where de.emp_no not in(<br>select emp_no<br>from dept_manager dm<br>where dm.to_date=’9999- 01 - 01’<br>);</p>
+<h1><span id="24获取所有非manager员工当前的薪水情况">24.获取所有非manager员工当前的薪水情况</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取员工其当前的薪水比其manager当前薪水还高的相关信息，当前表示to_date=’9999- 01 - 01’,</p>
+<p>结果第一列给出员工的emp_no，</p>
+<p>第二列给出其manager的manager_no，</p>
+<p>第三列给出该员工当前的薪水emp_salary,</p>
+<p>第四列给该员工对应的manager当前的薪水manager_salary</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select de.emp_no emp_no,dm.emp_no manager_no,s1.salary emp_salary,s2.salary manager_salary<br>from dept_emp de, salaries s1, dept_manager dm, salaries s2<br>where de.emp_no = s1.emp_no<br>and s1.to_date=’9999- 01 - 01’<br>and de.to_date=’9999- 01 - 01’<br>and dm.emp_no = s2.emp_no<br>and s2.to_date=’9999- 01 - 01’<br>and dm.to_date=’9999- 01 - 01’<br>and de.dept_no = dm.dept_no<br>and s1.salary &gt; s2.salary;</p>
+<h1><span id="25获取员工其当前的薪水比其manager当前薪水还高">25.获取员工其当前的薪水比其manager当前薪水还高</span></h1><h1><span id="的相关信息">的相关信息</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h3><span id="题目描述">题目描述</span></h3><p>汇总各个部门当前员工的title类型的分配数目，结果给出部门编号dept_no、dept_name、其当</p>
+<p>前员工所有的title以及该类型title对应的数目count</p>
+<p>CREATE TABLE <code>departments</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>dept_name</code> varchar(40) NOT NULL,<br>PRIMARY KEY (<code>dept_no</code>));<br>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE IF NOT EXISTS <code>titles</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>title</code> varchar(50) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date DEFAULT NULL);</p>
+<h3><span id="输出描述">输出描述:</span></h3><p>dept_no dept_name title count</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d001 Marketing Senior Engineer 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d001 Marketing Staff 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d002 Finance Senior Engineer 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d003 Human Resources Senior Staff 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d004 Production Senior Engineer 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d005 Development Senior Staff 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d006 Quality Management Engineer 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d006 Quality Management Senior Engineer 1</span><br></pre></td></tr></table></figure>
+<p>来自&lt;<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/4bcb6a7d3e39423291d2f7bdbbff87f8?tpId=82&amp;tqId=29778&amp;tPage=2">https://www.nowcoder.com/practice/4bcb6a7d3e39423291d2f7bdbbff87f8?tpId=82&amp;tqId=29778&amp;tPage=2</a><br>&amp;rp=&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking&gt;</p>
+<p>select de.dept_no,d.dept_name,t.title,count(t.title) ‘count’<br>from dept_emp de<br>inner join titles t<br>on de.emp_no = t.emp_no<br>and de.to_date=’9999- 01 - 01’<br>and t.to_date=’9999- 01 - 01’<br>inner join departments d</p>
+<h1><span id="26汇总各个部门当前员工的title类型的分配数目">26.汇总各个部门当前员工的title类型的分配数目</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<p>inner join departments d<br>on de.dept_no = d.dept_no<br>group by de.dept_no, t.title;</p>
+<h3><span id="题目描述">题目描述</span></h3><p>给出每个员工每年薪水涨幅超过 5000 的员工编号emp_no、薪水变更开始日期from_date以及薪</p>
+<p>水涨幅值salary_growth，并按照salary_growth逆序排列。</p>
+<p>提示：在sqlite中获取datetime时间对应的年份函数为strftime(‘%Y’, to_date)</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>select s2.emp_no,s2.from_date,(s2.salary -s1.salary) salary_growth<br>from salaries s1, salaries s2<br>where s1.emp_no = s2.emp_no<br>and salary_growth &gt; 5000<br>and (strftime(‘%Y’, s2.to_date) -strftime(‘%Y’, s1.to_date) = 1<br>or strftime(‘%Y’, s2.from_date) -strftime(‘%Y’, s1.from_date) = 1)<br>order by salary_growth desc;</p>
+<h1><span id="27给出每个员工每年薪水涨幅超过-5000-的员工编号">27.给出每个员工每年薪水涨幅超过 5000 的员工编号</span></h1><h1><span id="emp_no">emp_no</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h2><span id="题目描述">题目描述</span></h2><p>film表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段 说明</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">film_id 电影id</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title 电影名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">description 电影描述信息</span><br></pre></td></tr></table></figure>
+<p>CREATE TABLE IF NOT EXISTS film (</p>
+<p>film_id smallint(5) NOT NULL DEFAULT ‘0’,</p>
+<p>title varchar(255) NOT NULL,</p>
+<p>description text,</p>
+<p>PRIMARY KEY (film_id));</p>
+<p>category表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段 说明</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">category_id 电影分类id</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name 电影分类名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last_update 电影分类最后更新时间</span><br></pre></td></tr></table></figure>
+<p>CREATE TABLE category (</p>
+<p>category_id tinyint(3) NOT NULL ,</p>
+<p>name varchar(25) NOT NULL, <code>last_update</code> timestamp,</p>
+<p>PRIMARY KEY ( category_id ));</p>
+<p>film_category表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段 说明</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">film_id 电影id</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">category_id 电影分类id</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last_update 电影id和分类id对应关系的最后更新时间</span><br></pre></td></tr></table></figure>
+<p>CREATE TABLE film_category (</p>
+<p>film_id smallint(5) NOT NULL,</p>
+<p>category_id tinyint(3) NOT NULL, <code>last_update</code> timestamp);</p>
+<p>查找描述信息中包括robot的电影对应的分类名称以及电影数目，而且还需要该分类对应电影数</p>
+<p>量&gt;=5部</p>
+<p>来自&lt;<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/3a303a39cc40489b99a7e1867e6507c5?tpId=82&amp;tqId=29780&amp;tPage=2">https://www.nowcoder.com/practice/3a303a39cc40489b99a7e1867e6507c5?tpId=82&amp;tqId=29780&amp;tPage=2</a><br>&amp;rp=&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking&gt;</p>
+<h1><span id="28查找描述信息中包括robot的电影对应的分类名称">28.查找描述信息中包括robot的电影对应的分类名称</span></h1><h1><span id="以及电影数目">以及电影数目</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<p>&amp;rp=&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking&gt;</p>
+<p>查找描述信息中包括robot的电影对应的分类名称以及电影数目，而且还需要该分类对应电影</p>
+<p>数量&gt;=5部</p>
+<p>CREATE TABLE IF NOT EXISTS film (<br>film_id smallint(5) NOT NULL DEFAULT ‘0’,<br>title varchar(255) NOT NULL,</p>
+<p>description text, #描述信息like ‘%robot%’</p>
+<p>PRIMARY KEY (film_id));</p>
+<p>CREATE TABLE category (<br>category_id tinyint(3) NOT NULL ,</p>
+<p>name varchar(25) NOT NULL, <code>last_update</code> timestamp, #分类名称</p>
+<p>PRIMARY KEY ( category_id ));</p>
+<p>CREATE TABLE film_category (<br>film_id smallint(5) NOT NULL,<br>category_id tinyint(3) NOT NULL, <code>last_update</code> timestamp);</p>
+<p>select c.name,count(fc.film_id) num<br>from category c<br>inner join film_category fc<br>on c.category_id = fc.category_id<br>inner join(<br>select *<br>from film f<br>where f.description like ‘%robot%’<br>) f_robot on f_robot.film_id = fc.film_id<br>inner join(<br>select *,count(fc1.film_id) num1<br>from film_category fc1<br>group by category_id<br>having num1 &gt;= 5<br>) f5 on f5.category_id = fc.category_id;</p>
+<p>使用join查询方式找出没有分类的电影id以及名称</p>
+<p>CREATE TABLE IF NOT EXISTS film (<br>film_id smallint(5) NOT NULL DEFAULT ‘0’,<br>title varchar(255) NOT NULL,</p>
+<p>description text, #描述信息like ‘%robot%’</p>
+<p>PRIMARY KEY (film_id));</p>
+<p>CREATE TABLE category (<br>category_id tinyint(3) NOT NULL ,</p>
+<p>name varchar(25) NOT NULL, <code>last_update</code> timestamp, #分类名称</p>
+<p>PRIMARY KEY ( category_id ));</p>
+<p>CREATE TABLE film_category (<br>film_id smallint(5) NOT NULL,<br>category_id tinyint(3) NOT NULL, <code>last_update</code> timestamp);</p>
+<p>select f.film_id, f.title<br>from film f<br>left join film_category fc<br>on f.film_id = fc.film_id<br>where fc.category_id is null;</p>
+<h1><span id="29使用join查询方式找出没有分类的电影id以及名称">29.使用join查询方式找出没有分类的电影id以及名称</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<p>使用子查询的方式找出属于Action分类的所有电影对应的title,description</p>
+<p>CREATE TABLE IF NOT EXISTS film (<br>film_id smallint(5) NOT NULL DEFAULT ‘0’,<br>title varchar(255) NOT NULL,<br>description text,<br>PRIMARY KEY (film_id));</p>
+<p>CREATE TABLE category (<br>category_id tinyint(3) NOT NULL ,</p>
+<p>name varchar(25) NOT NULL, <code>last_update</code> timestamp, #分类名称</p>
+<p>PRIMARY KEY ( category_id ));</p>
+<p>CREATE TABLE film_category (<br>film_id smallint(5) NOT NULL,<br>category_id tinyint(3) NOT NULL, <code>last_update</code> timestamp);</p>
+<p>select f.title, f.description<br>from film f<br>where f.film_id in(<br>select film_id<br>from film_category fc<br>where fc.category_id in(<br>select c.category_id<br>from category c<br>where c.name=’Action’<br>)<br>);</p>
+<h1><span id="30使用子查询的方式找出属于action分类的所有电影">30.使用子查询的方式找出属于Action分类的所有电影</span></h1><h1><span id="对应的titledescription">对应的title,description</span></h1><p>2020 年 5 月 18 日 8:47</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取select * from employees对应的执行计划</p>
+<p>explain select * from employees;</p>
+<h1><span id="31获取select">31.获取select</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>将employees表的所有员工的last_name和first_name拼接起来作为Name，中间以一个空格区分</p>
+<p>CREATE TABLE <code>employees</code> ( <code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>select last_name||’ ‘||first_name as name<br>from employees;</p>
+<h1><span id="32将employees表的所有员工的last_name和first_name">32.将employees表的所有员工的last_name和first_name</span></h1><h1><span id="拼接起来作为name中间以一个空格区分">拼接起来作为Name，中间以一个空格区分</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>创建一个actor表，包含如下列信息</p>
+<p>列表 类型 是否为NULL 含义</p>
+<p>actor_id smallint(5) not null主键id</p>
+<p>first_name varchar(45) not null名字</p>
+<p>last_name varchar(45) not null姓氏</p>
+<p>last_update timestamp not null最后更新时间，默认是系统的当前时间</p>
+<p>create table actor(<br>actor_id smallint(5) not null primary key,<br>first_name varchar(45) not null,<br>last_name varchar(45) not null,<br>last_update timestamp not null default (datetime(‘now’,’localtime’))<br>);</p>
+<h1><span id="33创建一个actor表包含如下列信息">33.创建一个actor表，包含如下列信息</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>对于表actor批量插入如下数据</p>
+<p>CREATE TABLE IF NOT EXISTS actor (<br>actor_id smallint(5) NOT NULL PRIMARY KEY,<br>first_name varchar(45) NOT NULL,<br>last_name varchar(45) NOT NULL,<br>last_update timestamp NOT NULL DEFAULT (datetime(‘now’,’localtime’)))</p>
+<p>actor_id first_name last_name last_update<br>1 PENELOPE GUINESS 2006 - 02 - 15 12:34:33<br>2 NICK WAHLBERG 2006 - 02 - 15 12:34:33</p>
+<p>insert into actor<br>values (1, ‘PENELOPE’, ‘GUINESS’, ‘2006- 02 - 15 12:34:33’),<br>(2, ‘NICK’, ‘WAHLBERG’, ‘2006- 02 - 15 12:34:33’)</p>
+<p>insert into actor<br>select 1,’PENELOPE’,’GUINESS’,’2006- 02 - 15 12:34:33’<br>union select 2,’NICK’,’WAHLBERG’,’2006- 02 - 15 12:34:33’;</p>
+<h1><span id="34批量插入数据">34.批量插入数据</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>对于表actor批量插入如下数据,如果数据已经存在，请忽略，不使用replace操作</p>
+<p>CREATE TABLE IF NOT EXISTS actor (<br>actor_id smallint(5) NOT NULL PRIMARY KEY,<br>first_name varchar(45) NOT NULL,<br>last_name varchar(45) NOT NULL,<br>last_update timestamp NOT NULL DEFAULT (datetime(‘now’,’localtime’)))</p>
+<p>actor_id first_name last_name last_update<br>‘3’ ‘ED’ ‘CHASE’’2006- 02 - 15 12:34:33’</p>
+<p>insert or ignore into actor<br>values (3,’ED’,’CHASE’,’2006- 02 - 15 12:34:33’);</p>
+<h1><span id="35批量插入数据如果数据已经存在请忽略不使">35.批量插入数据,如果数据已经存在，请忽略，不使</span></h1><h1><span id="用replace操作">用replace操作</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>对于如下表actor，其对应的数据为:</p>
+<p>actor_id first_name last_name last_update<br>1 PENELOPE GUINESS 2006 - 02 - 15 12:34:33<br>2 NICK WAHLBERG 2006 - 02 - 15 12:34:33</p>
+<p>创建一个actor_name表，将actor表中的所有first_name以及last_name导入改表。actor_name表</p>
+<p>结构如下：</p>
+<p>列表 类型 是否为NULL 含义</p>
+<p>first_name varchar(45) not null名字</p>
+<p>last_name varchar(45) not null姓氏</p>
+<p>create table actor_name as<br>select first_name,last_name from actor;</p>
+<h1><span id="36创建一个actor_name表将actor表中的所有">36.创建一个actor_name表，将actor表中的所有</span></h1><h1><span id="first_name以及last_name导入改表">first_name以及last_name导入改表</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>针对如下表actor结构创建索引：</p>
+<p>CREATE TABLE IF NOT EXISTS actor (<br>actor_id smallint(5) NOT NULL PRIMARY KEY,<br>first_name varchar(45) NOT NULL,<br>last_name varchar(45) NOT NULL,<br>last_update timestamp NOT NULL DEFAULT (datetime(‘now’,’localtime’)))</p>
+<p>对first_name创建唯一索引uniq_idx_firstname，对last_name创建普通索引idx_lastname</p>
+<p>create unique index uniq_idx_firstname on actor(first_name);<br>create index idx_lastname on actor(last_name);</p>
+<h1><span id="37对first_name创建唯一索引uniq_idx_firstname对">37.对first_name创建唯一索引uniq_idx_firstname，对</span></h1><h1><span id="last_name创建普通索引idx_lastname">last_name创建普通索引idx_lastname</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>针对actor表创建视图actor_name_view，</p>
+<p>只包含first_name以及last_name两列，</p>
+<p>并对这两列重新命名，first_name为first_name_v，last_name修改为last_name_v：</p>
+<p>CREATE TABLE IF NOT EXISTS actor (<br>actor_id smallint(5) NOT NULL PRIMARY KEY,<br>first_name varchar(45) NOT NULL,<br>last_name varchar(45) NOT NULL,<br>last_update timestamp NOT NULL DEFAULT (datetime(‘now’,’localtime’)))</p>
+<p>create view actor_name_view (first_name_v,last_name_v) as<br>select first_name, last_name from actor;</p>
+<h1><span id="38针对actor表创建视图actor_name_view">38.针对actor表创建视图actor_name_view</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>针对salaries表emp_no字段创建索引idx_emp_no，查询emp_no为10005, 使用强制索引。</p>
+<p>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));<br>create index idx_emp_no on salaries(emp_no);</p>
+<p>select *<br>from salaries<br>indexed by idx_emp_no<br>where emp_no = 10005;</p>
+<p>MYSQL中强制索引查询使用：FORCE INDEX(indexname);</p>
+<p>SQLite中强制索引查询使用：INDEXED BY indexname;</p>
+<p>来自<a target="_blank" rel="noopener" href="https://www.nowcoder.com/profile/340487413/codeBookDetail?submissionId=36255256">https://www.nowcoder.com/profile/340487413/codeBookDetail?submissionId=36255256</a></p>
+<p>SQLite中，使用 INDEXED BY 语句进行强制索引查询，可参考：</p>
+<p><a target="_blank" rel="noopener" href="http://www.runoob.com/sqlite/sqlite-indexed-by.html">http://www.runoob.com/sqlite/sqlite-indexed-by.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 SELECT * FROM salaries INDEXED BY idx_emp_no WHERE emp_no = 10005</span><br></pre></td></tr></table></figure>
+<p>MySQL中，使用 FORCE INDEX 语句进行强制索引查询，可参考：</p>
+<p><a target="_blank" rel="noopener" href="http://www.jb51.net/article/49807.htm">http://www.jb51.net/article/49807.htm</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 SELECT * FROM salaries FORCE INDEX idx_emp_no WHERE emp_no = 10005</span><br></pre></td></tr></table></figure>
+<p>来自<a target="_blank" rel="noopener" href="https://www.nowcoder.com/profile/340487413/codeBookDetail?submissionId=36255256">https://www.nowcoder.com/profile/340487413/codeBookDetail?submissionId=36255256</a></p>
+<h1><span id="39针对上面的salaries表emp_no字段创建索引">39.针对上面的salaries表emp_no字段创建索引</span></h1><h1><span id="idx_emp_no查询emp_no为10005">idx_emp_no，查询emp_no为10005,</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">存在actor表，包含如下列信息：</span><br><span class="line">CREATE TABLE IF NOT EXISTS actor (</span><br><span class="line">actor_id smallint(5) NOT NULL PRIMARY KEY,</span><br><span class="line">first_name varchar(45) NOT NULL,</span><br><span class="line">last_name varchar(45) NOT NULL,</span><br><span class="line">last_update timestamp NOT NULL DEFAULT (datetime(&#x27;now&#x27;,&#x27;localtime&#x27;)));</span><br><span class="line">现在在last_update后面新增加一列名字为create_date, 类型为datetime, NOT NULL，默认值</span><br><span class="line">为&#x27;0000 00:00:00&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table actor add column create_date datetime not null default &#x27;0000- 00 - 00 00:00:00&#x27;;</span><br></pre></td></tr></table></figure>
+<h1><span id="40在last_update后面新增加一列名字为create_date">40.在last_update后面新增加一列名字为create_date</span></h1><p>2020 年 5 月 18 日 18:14</p>
+<h3><span id="题目描述">题目描述</span></h3><p>构造一个触发器audit_log，在向employees_test表中插入一条数据的时候，触发插入相关的数</p>
+<p>据到audit中。</p>
+<p>CREATE TABLE employees_test(<br>ID INT PRIMARY KEY NOT NULL,<br>NAME TEXT NOT NULL,<br>AGE INT NOT NULL,<br>ADDRESS CHAR(50),<br>SALARY REAL<br>);<br>CREATE TABLE audit(<br>EMP_no INT NOT NULL,<br>NAME TEXT NOT NULL<br>);</p>
+<p>create trigger audit_log after insert on employees_test<br>begin<br>insert into audit values (new.ID, new.NAME);<br>end;</p>
+<h1><span id="41构造一个触发器audit_log在向employees表中插入">41.构造一个触发器audit_log，在向employees表中插入</span></h1><h1><span id="一条数据的时候触发插入相关的数据到audit中">一条数据的时候，触发插入相关的数据到audit中</span></h1><p>2020 年 5 月 18 日 18:18</p>
+<h3><span id="题目描述">题目描述</span></h3><p>删除emp_no重复的记录，只保留最小的id对应的记录。</p>
+<p>CREATE TABLE IF NOT EXISTS titles_test (<br>id int(11) not null primary key,<br>emp_no int(11) NOT NULL,<br>title varchar(50) NOT NULL,<br>from_date date NOT NULL,<br>to_date date DEFAULT NULL);</p>
+<p>insert into titles_test values<br>(‘1’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘2’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘3’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘4’, ‘10004’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘5’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘6’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘7’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’);</p>
+<p>1.group by和min 找到每个emp_no中 最小的id</p>
+<p>2.删除不是这个最小id 数据</p>
+<p>delete from titles_test<br>where id not in(<br>select min(id)<br>from titles_test<br>group by emp_no<br>);</p>
+<h1><span id="42删除emp_no重复的记录只保留最小的id对应的记">42.删除emp_no重复的记录，只保留最小的id对应的记</span></h1><h1><span id="录">录。</span></h1><p>2020 年 5 月 18 日 18:18</p>
+<h3><span id="题目描述">题目描述</span></h3><p>将所有to_date为 9999 - 01 - 01 的全部更新为NULL,且from_date更新为 2001 - 01 - 01 。</p>
+<p>CREATE TABLE IF NOT EXISTS titles_test (<br>id int(11) not null primary key,<br>emp_no int(11) NOT NULL,<br>title varchar(50) NOT NULL,<br>from_date date NOT NULL,<br>to_date date DEFAULT NULL);</p>
+<p>insert into titles_test values (‘1’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘2’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘3’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘4’, ‘10004’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘5’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘6’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘7’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’);</p>
+<p>update titles_test set to_date = null, from_date = ‘2001- 01 - 01’<br>where to_date = ‘9999- 01 - 01’;</p>
+<h1><span id="43将所有to_date为-9999-01-01-的全部更新为null且">43.将所有to_date为 9999 - 01 - 01 的全部更新为NULL,且</span></h1><p>2020 年 5 月 18 日 18:18</p>
+<h3><span id="题目描述">题目描述</span></h3><p>将id=5以及emp_no=10001的行数据替换成id=5以及emp_no=10005,其他数据保持不变，使用</p>
+<p>replace实现。</p>
+<p>CREATE TABLE IF NOT EXISTS titles_test (<br>id int(11) not null primary key,<br>emp_no int(11) NOT NULL,<br>title varchar(50) NOT NULL,<br>from_date date NOT NULL,<br>to_date date DEFAULT NULL);</p>
+<p>insert into titles_test values (‘1’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘2’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘3’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘4’, ‘10004’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘5’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘6’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘7’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’);</p>
+<p>replace into titles_test select 5,10005,title,from_date,to_date<br>from titles_test<br>where id = 5<br>and emp_no = 10001;</p>
+<h1><span id="44将id5以及emp_no10001的行数据替换成id5以及">44.将id=5以及emp_no=10001的行数据替换成id=5以及</span></h1><h1><span id="emp_no10005其他数据保持不变使用replace实">emp_no=10005,其他数据保持不变，使用replace实</span></h1><h1><span id="现">现。</span></h1><p>2020 年 5 月 18 日 18:18</p>
+<h3><span id="题目描述">题目描述</span></h3><p>将titles_test表名修改为titles_2017。</p>
+<p>CREATE TABLE IF NOT EXISTS titles_test (<br>id int(11) not null primary key,<br>emp_no int(11) NOT NULL,<br>title varchar(50) NOT NULL,<br>from_date date NOT NULL,<br>to_date date DEFAULT NULL);</p>
+<p>insert into titles_test values (‘1’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘2’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘3’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘4’, ‘10004’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’),<br>(‘5’, ‘10001’, ‘Senior Engineer’, ‘1986- 06 - 26’, ‘9999- 01 - 01’),<br>(‘6’, ‘10002’, ‘Staff’, ‘1996- 08 - 03’, ‘9999- 01 - 01’),<br>(‘7’, ‘10003’, ‘Senior Engineer’, ‘1995- 12 - 03’, ‘9999- 01 - 01’);</p>
+<p>alter table titles_test rename to titles_2017;</p>
+<h1><span id="45将titles_test表名修改为titles_2017">45.将titles_test表名修改为titles_2017</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>在audit表上创建外键约束，其emp_no对应employees_test表的主键id。</p>
+<p>CREATE TABLE employees_test(<br>ID INT PRIMARY KEY NOT NULL,<br>NAME TEXT NOT NULL,<br>AGE INT NOT NULL,<br>ADDRESS CHAR(50),<br>SALARY REAL<br>);</p>
+<p>CREATE TABLE audit(<br>EMP_no INT NOT NULL,<br>create_date datetime NOT NULL<br>);</p>
+<p>drop table audit;<br>create table audit(<br>EMP_no int not null,<br>create_date datetime NOT NULL,<br>foreign key(EMP_no) references employees_test(ID));</p>
+<h1><span id="46在audit表上创建外键约束其emp_no对应">46.在audit表上创建外键约束，其emp_no对应</span></h1><h1><span id="employees_test表的主键id">employees_test表的主键id</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><h3><span id="存在如下的视图">存在如下的视图：</span></h3><p>create view emp_v as select * from employees where emp_no &gt;10005;</p>
+<p>如何获取emp_v和employees有相同的数据？</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>select * from emp_v;</p>
+<p>select e.*<br>from employees e, emp_v ev<br>where e.emp_no = ev.emp_no;</p>
+<p>select e.*<br>from employees e<br>intersect select ev.* from emp_v ev;</p>
+<h1><span id="47如何获取emp_v和employees有相同的数据no">47.如何获取emp_v和employees有相同的数据no</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><h3><span id="将所有获取奖金的员工当前的薪水增加10">将所有获取奖金的员工当前的薪水增加10%。</span></h3><p>create table emp_bonus(<br>emp_no int not null,<br>recevied datetime not null,<br>btype smallint not null);<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL, PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>update salaries set salary = salary * 1.1<br>where emp_no in(<br>select s.emp_no<br>from salaries s<br>inner join emp_bonus eb<br>on s.emp_no = eb.emp_no<br>and s.to_date = ‘9999- 01 - 01’<br>);</p>
+<h1><span id="48将所有获取奖金的员工当前的薪水增加10">48.将所有获取奖金的员工当前的薪水增加10%</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>针对库中的所有表生成select count(*)对应的SQL语句</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));<br>create table emp_bonus(<br>emp_no int not null,<br>recevied datetime not null,<br>btype smallint not null);<br>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>输出格式:</p>
+<p>cnts<br>select count(<em>) from employees;<br>select count(</em>) from departments;<br>select count(<em>) from dept_emp;<br>select count(</em>) from dept_manager;<br>select count(<em>) from salaries;<br>select count(</em>) from titles;<br>select count(*) from emp_bonus;</p>
+<p>select ‘select count(*) from ‘||name||’;’ cnts<br>from sqlite_master where type = ‘table’;</p>
+<h1><span id="49针对库中的所有表生成select">49.针对库中的所有表生成select</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>将employees表中的所有员工的last_name和first_name通过(‘)连接起来。</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>输出格式:</p>
+<p>name<br>Facello’Georgi<br>Simmel’Bezalel<br>Bamford’Parto<br>Koblick’Chirstian<br>Maliniak’Kyoichi<br>Preusig’Anneke<br>Zielinski’Tzvetan<br>Kalloufi’Saniya<br>Peac’Sumant<br>Piveteau’Duangkaew<br>Sluis’Mary</p>
+<p>select last_name||”‘“||first_name name<br>from employees;</p>
+<h1><span id="50将employees表中的所有员工的last_name和">50.将employees表中的所有员工的last_name和</span></h1><h1><span id="first_name通过连接起来">first_name通过(‘)连接起来。</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找字符串’10,A,B’ 中逗号’,’出现的次数cnt。</p>
+<p>select (length(“10,A,B”) -length(replace(“10,A,B”,”,”,””)))/length(“,”) as cnt;</p>
+<h1><span id="51查找字符串10ab">51.查找字符串’10,A,B’</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取Employees中的first_name，查询按照first_name最后两个字母，按照升序进行排列</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>输出格式：</p>
+<p>first_name<br>Chirstian<br>Tzvetan<br>Bezalel<br>Duangkaew<br>Georgi<br>Kyoichi<br>Anneke<br>Sumant<br>Mary<br>Parto<br>Saniya</p>
+<p>select first_name<br>from employees<br>order by substr(first_name,-2,2) asc;</p>
+<h1><span id="52获取employees中的first_name查询按照first_name">52.获取Employees中的first_name，查询按照first_name</span></h1><h1><span id="最后两个字母按照升序进行排列">最后两个字母，按照升序进行排列</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>按照dept_no进行汇总，属于同一个部门的emp_no按照逗号进行连接，结果给出dept_no以及</p>
+<p>连接出的结果employees</p>
+<p>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));</p>
+<p>输出格式:</p>
+<p>dept_no employees<br>d001 10001,10002<br>d002 10006<br>d003 10005<br>d004 10003,10004<br>d005 10007,10008,10010<br>d006 10009,10010</p>
+<p>select dept_no, group_concat(emp_no,”,”) employees<br>from dept_emp<br>group by dept_no;</p>
+<h1><span id="53按照dept_no进行汇总属于同一个部门的emp_no">53.按照dept_no进行汇总，属于同一个部门的emp_no</span></h1><h1><span id="按照逗号进行连接结果给出dept_no以及连接出的">按照逗号进行连接，结果给出dept_no以及连接出的</span></h1><h1><span id="结果employees">结果employees</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>查找排除当前最大、最小salary之后的员工的平均工资avg_salary。</p>
+<p>CREATE TABLE <code>salaries</code> ( <code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>输出格式:</p>
+<p>avg_salary<br>69462.5555555556</p>
+<p>select avg(salary) avg_salary<br>from salaries<br>where to_date = ‘9999- 01 - 01’<br>and salary not in(<br>select max(salary)<br>from salaries<br>)<br>and salary not in(<br>select min(salary)<br>from salaries<br>);</p>
+<h1><span id="54查找排除当前最大-最小salary之后的员工的平均">54.查找排除当前最大、最小salary之后的员工的平均</span></h1><h1><span id="工资avg_salary">工资avg_salary</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">分页查询employees表，每 5 行一页，返回第 2 页的数据</span><br><span class="line">CREATE TABLE `employees` (</span><br><span class="line">`emp_no` int(11) NOT NULL,</span><br><span class="line">`birth_date` date NOT NULL,</span><br><span class="line">`first_name` varchar(14) NOT NULL,</span><br><span class="line">`last_name` varchar(16) NOT NULL,</span><br><span class="line">`gender` char(1) NOT NULL,</span><br><span class="line">`hire_date` date NOT NULL,</span><br><span class="line">PRIMARY KEY (`emp_no`));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公式：limit (页数-1)*每一页的数量，每一页的数量</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select *</span><br><span class="line">from employees</span><br><span class="line">limit (2-1)*5,5;</span><br></pre></td></tr></table></figure>
+<h1><span id="55分页查询employees表每-5-行一页返回第-2-页的">55.分页查询employees表，每 5 行一页，返回第 2 页的</span></h1><h1><span id="数据">数据</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>获取所有员工的emp_no、部门编号dept_no以及对应的bonus类型btype和received ，没有分配</p>
+<p>具体的员工不显示</p>
+<p>CREATE TABLE <code>dept_emp</code> ( <code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>dept_manager</code> (<br><code>dept_no</code> char(4) NOT NULL,<br><code>emp_no</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));<br>create table emp_bonus(<br>emp_no int not null,<br>received datetime not null,<br>btype smallint not null);</p>
+<p>输出格式:</p>
+<p>e.emp_no dept_no btype received<br>10001 d001 1 2010 - 01 - 01<br>10002 d001 2 2010 - 10 - 01<br>10003 d004 3 2011 - 12 - 03<br>10004 d004 1 2010 - 01 - 01<br>10005 d003<br>10006 d002<br>10007 d005<br>10008 d005<br>10009 d006<br>10010 d005<br>10010 d006</p>
+<p>select e.emp_no,de.dept_no,eb.btype,eb.recevied<br>from employees e<br>inner join dept_emp de<br>on e.emp_no = de.emp_no</p>
+<h1><span id="56获取所有员工的emp_no">56.获取所有员工的emp_no</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<p>on e.emp_no = de.emp_no<br>left join emp_bonus eb<br>on e.emp_no = eb.emp_no;</p>
+<h3><span id="题目描述">题目描述</span></h3><p>使用含有关键字exists查找未分配具体部门的员工的所有信息。</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));<br>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));</p>
+<p>输出格式:</p>
+<p>emp_no birth_date first_name last_name genderhire_date<br>10011 1953 - 11 - 07 Mary Sluis F 1990 - 01 - 22</p>
+<p>select *<br>from employees e<br>where not exists(<br>select *<br>from dept_emp de<br>where de.emp_no = e.emp_no<br>);</p>
+<h1><span id="57使用含有关键字exists查找未分配具体部门的员工">57.使用含有关键字exists查找未分配具体部门的员工</span></h1><h1><span id="的所有信息">的所有信息。</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><h3><span id="存在如下的视图">存在如下的视图：</span></h3><p>create view emp_v as select * from employees where emp_no &gt;10005;<br>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>获取employees中的行数据，且这些行也存在于emp_v中。注意不能使用intersect关键字。</p>
+<p>输出格式:</p>
+<p>emp_no birth_date first_name last_name genderhire_date<br>10006 1953 - 04 - 20 AnnekePreusigF 1989 - 06 - 02<br>10007 1957 - 05 - 23 TzvetanZielinskiF 1989 - 02 - 10<br>10008 1958 - 02 - 19 Saniya KalloufiM 1994 - 09 - 15<br>10009 1952 - 04 - 19 SumantPeac F 1985 - 02 - 18<br>10010 1963 - 06 - 01 Duangkaew Piveteau F 1989 - 08 - 24<br>10011 1953 - 11 - 07 Mary Sluis F 1990 - 01 - 22</p>
+<p>select * from emp_v;</p>
+<p>select e.*<br>from employees e, emp_v ev<br>where e.emp_no = ev.emp_no;</p>
+<h1><span id="58获取employees中的行数据且这些行也存在于">58.获取employees中的行数据，且这些行也存在于</span></h1><h1><span id="emp_v中">emp_v中</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><h3><span id="获取有奖金的员工相关信息">获取有奖金的员工相关信息。</span></h3><p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));<br>CREATE TABLE <code>dept_emp</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>dept_no</code> char(4) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>dept_no</code>));<br>create table emp_bonus(<br>emp_no int not null,<br>recevied datetime not null,<br>btype smallint not null);<br>CREATE TABLE <code>salaries</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL, PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>给出emp_no、first_name、last_name、奖金类型btype、对应的当前薪水情况salary以及奖金金</p>
+<p>额bonus。bonus类型btype为 1 其奖金为薪水salary的10%，btype为 2 其奖金为薪水的20%，其他</p>
+<p>类型均为薪水的30%。 当前薪水表示to_date=’9999- 01 - 01’</p>
+<p>输出格式:</p>
+<p>emp_no first_name last_name btype salary bonus<br>10001 Georgi Facello 1 88958 8895.8<br>10002 BezalelSimmel 2 72527 14505.4<br>10003 Parto Bamford 3 43311 12993.3<br>10004 Chirstian Koblick 1 74057 7405.7</p>
+<p>select e.emp_no, e.first_name, e.last_name, b.btype, s.salary,(<br>case b.btype<br>when 1 then s.salary<em>0.1<br>when 2 then s.salary</em>0.2<br>else s.salary*0.3<br>end<br>) bonus<br>from employees e<br>inner join emp_bonus b<br>on e.emp_no = b.emp_no<br>inner join salaries s<br>on s.emp_no = e.emp_no<br>and s.to_date=’9999- 01 - 01’;</p>
+<h1><span id="59获取有奖金的员工相关信息">59.获取有奖金的员工相关信息。</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>按照salary的累计和running_total，其中running_total为前两个员工的salary累计和，其他以此类</p>
+<p>推。 具体结果如下Demo展示。。</p>
+<p>CREATE TABLE <code>salaries</code> ( <code>emp_no</code> int(11) NOT NULL,<br><code>salary</code> int(11) NOT NULL,<br><code>from_date</code> date NOT NULL,<br><code>to_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>,<code>from_date</code>));</p>
+<p>输出格式:</p>
+<p>emp_no salary running_total<br>10001 88958 88958<br>10002 72527 161485<br>10003 43311 204796<br>10004 74057 278853<br>10005 94692 373545<br>10006 43311 416856<br>10007 88070 504926<br>10009 95409 600335<br>10010 94409 694744<br>10011 25828 720572</p>
+<p>select s.emp_no, s.salary,(<br>select sum(s2.salary)<br>from salaries s2<br>where s2.emp_no &lt;= s.emp_no<br>and s2.to_date = ‘9999- 01 - 01’<br>) running_total<br>from salaries s<br>where s.to_date = ‘9999- 01 - 01’<br>order by s.emp_no asc;</p>
+<h1><span id="60统计salary的累计和running_total">60.统计salary的累计和running_total</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<h3><span id="题目描述">题目描述</span></h3><p>对于employees表中，给出奇数行的first_name</p>
+<p>CREATE TABLE <code>employees</code> (<br><code>emp_no</code> int(11) NOT NULL,<br><code>birth_date</code> date NOT NULL,<br><code>first_name</code> varchar(14) NOT NULL,<br><code>last_name</code> varchar(16) NOT NULL,<br><code>gender</code> char(1) NOT NULL,<br><code>hire_date</code> date NOT NULL,<br>PRIMARY KEY (<code>emp_no</code>));</p>
+<p>输出格式:</p>
+<p>first_name<br>Georgi<br>Chirstian<br>Anneke<br>Tzvetan<br>Saniya<br>Mary</p>
+<h3><span id="题目描述错误">题目描述错误：</span></h3><p>更改为：对first_name 先排序 后给出奇数行</p>
+<p>select e1.first_name<br>from employees e1<br>where(<br>select count(*)<br>from employees e2<br>where e1.first_name &lt;= e2.first_name<br>) % 2 = 1;</p>
+<h1><span id="61对于employees表中给出奇数行的first_name">61.对于employees表中，给出奇数行的first_name</span></h1><p>2020 年 5 月 18 日 18:19</p>
+<p>This is a offline tool, your data stays locally and is not send to any server!<br>Feedback &amp; Bug Reports</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/08/03/sql_study_1/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;08&#x2F;03&#x2F;sql_study_1&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;08&#x2F;03&#x2F;sql_study_1&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/sql/" rel="tag">sql</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899713"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

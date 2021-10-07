@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>Go依赖管理与Iris项目运行示例 问题与解决 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="本篇先就运行fabric demo时逐步查找确定的go依赖管理的问题与解决方案进行说明，然后就运行iris web demo过程中出现的问题进行记述。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go依赖管理与Iris项目运行示例 问题与解决">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/07/14/Go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E4%B8%8EIris%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B-%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="本篇先就运行fabric demo时逐步查找确定的go依赖管理的问题与解决方案进行说明，然后就运行iris web demo过程中出现的问题进行记述。">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2020/07/14/2AgeG3XOvws6lak.png">
+<meta property="article:published_time" content="2020-07-14T01:23:57.000Z">
+<meta property="article:modified_time" content="2020-09-29T02:31:08.384Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/14/2AgeG3XOvws6lak.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899714">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899714">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Go依赖管理与Iris项目运行示例 问题与解决" class="lazyload">
+              <h1>Go依赖管理与Iris项目运行示例 问题与解决</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年07月14日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 16 分钟</a>
+</div>
+
+      
+
+      <p>本篇先就运行fabric demo时逐步查找确定的go依赖管理的问题与解决方案进行说明，然后就运行iris web demo过程中出现的问题进行记述。</p>
+<span id="more"></span>
+
+<p>首先，写一下当前最新版本使用go mod管理的配置。</p>
+<p>安装go后，命令行命令：</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.cn,direct</span><br></pre></td></tr></table></figure>
+
+<p>常用命令</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go mod init</span><br><span class="line">go get</span><br><span class="line">go build</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Dr-wei/p/11742253.html">Go语言之依赖管理</a></p>
+</blockquote>
+<p>Go语言的依赖管理随着版本的更迭正逐渐完善起来。</p>
+<h1><span id="依赖管理">依赖管理</span></h1><h2><span id="为什么需要依赖管理">为什么需要依赖管理</span></h2><p>最早的时候，Go所依赖的所有的第三方库都放在GOPATH这个目录下面。这就导致了同一个库只能保存一个版本的代码。如果不同的项目依赖同一个第三方的库的不同版本，应该怎么解决？</p>
+<h2><span id="godep">godep</span></h2><p>Go语言从v1.5开始开始引入<code>vendor</code>模式，如果项目目录下有vendor目录，那么go工具链会优先使用<code>vendor</code>内的包进行编译、测试等。</p>
+<p><code>godep</code>是一个通过vender模式实现的Go语言的第三方依赖管理工具，类似的还有由社区维护准官方包管理工具<code>dep</code>。</p>
+<h3><span id="安装">安装</span></h3><p>执行以下命令安装<code>godep</code>工具。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> get github.com/tools/godep</span><br></pre></td></tr></table></figure>
+
+<h3><span id="基本命令">基本命令</span></h3><p>安装好godep之后，在终端输入<code>godep</code>查看支持的所有命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">godep save     将依赖项输出并复制到Godeps.json文件中</span><br><span class="line">godep go       使用保存的依赖项运行go工具</span><br><span class="line">godep get      下载并安装具有指定依赖项的包</span><br><span class="line">godep path     打印依赖的GOPATH路径</span><br><span class="line">godep restore  在GOPATH中拉取依赖的版本</span><br><span class="line">godep update   更新选定的包或go版本</span><br><span class="line">godep diff     显示当前和以前保存的依赖项集之间的差异</span><br><span class="line">godep version  查看版本信息</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>godep help [command]</code>可以看看具体命令的帮助信息。</p>
+<h3><span id="使用godep">使用godep</span></h3><p>在项目目录下执行<code>godep save</code>命令，会在当前项目中创建<code>Godeps</code>和<code>vender</code>两个文件夹。</p>
+<p>其中<code>Godeps</code>文件夹下有一个<code>Godeps.json</code>的文件，里面记录了项目所依赖的包信息。 <code>vender</code>文件夹下是项目依赖的包的源代码文件。</p>
+<h3><span id="vender机制">vender机制</span></h3><p>Go1.5版本之后开始支持，能够控制Go语言程序编译时依赖包搜索路径的优先级。</p>
+<p>例如查找项目的某个依赖包，首先会在项目根目录下的<code>vender</code>文件夹中查找，如果没有找到就会去<code>$GOAPTH/src</code>目录下查找。</p>
+<h3><span id="godep开发流程">godep开发流程</span></h3><ol>
+<li>保证程序能够正常编译</li>
+<li>执行<code>godep save</code>保存当前项目的所有第三方依赖的版本信息和代码</li>
+<li>提交Godeps目录和vender目录到代码库。</li>
+<li>如果要更新依赖的版本，可以直接修改<code>Godeps.json</code>文件中的对应项</li>
+</ol>
+<h2><span id="go-module">go module</span></h2><p><code>go module</code>是Go1.11版本之后官方推出的版本管理工具，并且从Go1.13版本开始，<code>go module</code>将是Go语言默认的依赖管理工具。</p>
+<h3><span id="go111module">GO111MODULE</span></h3><p>要启用<code>go module</code>支持首先要设置环境变量<code>GO111MODULE</code>，通过它可以开启或关闭模块支持，它有三个可选值：<code>off</code>、<code>on</code>、<code>auto</code>，默认值是<code>auto</code>。</p>
+<ol>
+<li><code>GO111MODULE=off</code>禁用模块支持，编译时会从<code>GOPATH</code>和<code>vendor</code>文件夹中查找包。</li>
+<li><code>GO111MODULE=on</code>启用模块支持，编译时会忽略<code>GOPATH</code>和<code>vendor</code>文件夹，只根据 <code>go.mod</code>下载依赖。</li>
+<li><code>GO111MODULE=auto</code>，当项目在<code>$GOPATH/src</code>外且项目根目录有<code>go.mod</code>文件时，开启模块支持。</li>
+</ol>
+<p>简单来说，设置<code>GO111MODULE=on</code>之后就可以使用<code>go module</code>了，以后就没有必要在GOPATH中创建项目了，并且还能够很好的管理项目依赖的第三方包信息。</p>
+<p>使用 go module 管理依赖后会在项目根目录下生成两个文件<code>go.mod</code>和<code>go.sum</code>。</p>
+<h3><span id="goproxy">GOPROXY</span></h3><p>Go1.11之后设置GOPROXY命令为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GOPROXY=https://goproxy.cn</span><br></pre></td></tr></table></figure>
+
+<p>Go1.13之后<code>GOPROXY</code>默认值为<code>https://proxy.golang.org</code>，在国内是无法访问的，所以十分建议大家设置GOPROXY，这里我推荐使用<a target="_blank" rel="noopener" href="https://studygolang.com/topics/10014">goproxy.cn</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.cn,direct</span><br></pre></td></tr></table></figure>
+
+<h3><span id="go-mod命令">go mod命令</span></h3><p>常用的<code>go mod</code>命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">go mod download    下载依赖的module到本地cache（默认为$GOPATH/pkg/mod目录）</span><br><span class="line">go mod edit        编辑go.mod文件</span><br><span class="line">go mod graph       打印模块依赖图</span><br><span class="line">go mod init        初始化当前文件夹, 创建go.mod文件</span><br><span class="line">go mod tidy        增加缺少的module，删除无用的module</span><br><span class="line">go mod vendor      将依赖复制到vendor下</span><br><span class="line">go mod verify      校验依赖</span><br><span class="line">go mod why         解释为什么需要依赖</span><br></pre></td></tr></table></figure>
+
+<h3><span id="gomod">go.mod</span></h3><p>go.mod文件记录了项目所有的依赖信息，其结构大致如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">module github.com/Q1mi/studygo/blogger</span><br><span class="line"></span><br><span class="line">go 1.12</span><br><span class="line"></span><br><span class="line">require (</span><br><span class="line">	github.com/DeanThompson/ginpprof v0.0.0-20190408063150-3be636683586</span><br><span class="line">	github.com/gin-gonic/gin v1.4.0</span><br><span class="line">	github.com/go-sql-driver/mysql v1.4.1</span><br><span class="line">	github.com/jmoiron/sqlx v1.2.0</span><br><span class="line">	github.com/satori/go.uuid v1.2.0</span><br><span class="line">	google.golang.org/appengine v1.6.1 // indirect</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>其中，</p>
+<ul>
+<li><code>module</code>用来定义包名</li>
+<li><code>require</code>用来定义依赖包及版本</li>
+<li><code>indirect</code>表示间接引用</li>
+</ul>
+<h4><span id="依赖的版本">依赖的版本</span></h4><p>go mod支持语义化版本号，比如<code>go get foo@v1.2.3</code>，也可以跟git的分支或tag，比如<code>go get foo@master</code>，当然也可以跟git提交哈希，比如<code>go get foo@e3702bed2</code>。关于依赖的版本支持以下几种格式：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gopkg.in/tomb.v1 v1<span class="number">.0</span><span class="number">.0</span><span class="number">-20141024135613</span>-dd632973f1e7</span><br><span class="line">gopkg.in/vmihailenco/msgpack.v2 v2<span class="number">.9</span><span class="number">.1</span></span><br><span class="line">gopkg.in/yaml.v2 &lt;=v2<span class="number">.2</span><span class="number">.1</span></span><br><span class="line">github.com/tatsushid/<span class="keyword">go</span>-fastping v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20160109021039</span>-d7bb493dee3e</span><br><span class="line">latest</span><br></pre></td></tr></table></figure>
+
+<h4><span id="replace">replace</span></h4><p>在国内访问golang.org/x的各个包都需要翻墙，你可以在go.mod中使用replace替换成github上对应的库。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">replace (</span><br><span class="line">	golang.org/x/crypto v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20180820150726</span><span class="number">-614</span>d502a4dac =&gt; github.com/golang/crypto v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20180820150726</span><span class="number">-614</span>d502a4dac</span><br><span class="line">	golang.org/x/net v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20180821023952</span><span class="number">-922</span>f4815f713 =&gt; github.com/golang/net v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20180826012351</span><span class="number">-8</span>a410e7b638d</span><br><span class="line">	golang.org/x/text v0<span class="number">.3</span><span class="number">.0</span> =&gt; github.com/golang/text v0<span class="number">.3</span><span class="number">.0</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="go-get">go get</span></h3><p>在项目中执行<code>go get</code>命令可以下载依赖包，并且还可以指定下载的版本。</p>
+<ol>
+<li>运行<code>go get -u</code>将会升级到最新的次要版本或者修订版本(x.y.z, z是修订版本号， y是次要版本号)</li>
+<li>运行<code>go get -u=patch</code>将会升级到最新的修订版本</li>
+<li>运行<code>go get package@version</code>将会升级到指定的版本号version</li>
+</ol>
+<p>如果下载所有依赖可以使用<code>go mod download</code>命令。</p>
+<h3><span id="整理依赖">整理依赖</span></h3><p>我们在代码中删除依赖代码后，相关的依赖库并不会在<code>go.mod</code>文件中自动移除。这种情况下我们可以使用<code>go mod tidy</code>命令更新<code>go.mod</code>中的依赖关系。</p>
+<h3><span id="go-mod-edit">go mod edit</span></h3><h4><span id="格式化">格式化</span></h4><p>因为我们可以手动修改go.mod文件，所以有些时候需要格式化该文件。Go提供了一下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go mod edit -fmt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4><span id="添加依赖项">添加依赖项</span></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go mod edit -require=golang.org/x/text</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4><span id="移除依赖项">移除依赖项</span></h4><p>如果只是想修改<code>go.mod</code>文件中的内容，那么可以运行<code>go mod edit -droprequire=package path</code>，比如要在<code>go.mod</code>中移除<code>golang.org/x/text</code>包，可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go mod edit -droprequire=golang.org/x/text</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>关于<code>go mod edit</code>的更多用法可以通过<code>go help mod edit</code>查看。</p>
+<h2><span id="在项目中使用go-module">在项目中使用go module</span></h2><h3><span id="既有项目">既有项目</span></h3><p>如果需要对一个已经存在的项目启用<code>go module</code>，可以按照以下步骤操作：</p>
+<ol>
+<li>在项目目录下执行<code>go mod init</code>，生成一个<code>go.mod</code>文件。</li>
+<li>执行<code>go get</code>，查找并记录当前项目的依赖，同时生成一个<code>go.sum</code>记录每个依赖库的版本和哈希值。</li>
+</ol>
+<blockquote>
+<p>运行fabirc demo的过程</p>
+</blockquote>
+<p>开始，即7.11晚，认为不能解决go依赖的问题，其一go get的话，速度太慢还看不到进度；直接git clone的话，也是太慢，而且依赖总是不全完全看不到完全下完的希望；按demo的步骤，说是用dep命令，但那个实际和go get差不多，区别只是针对每个项目把依赖下到项目下而不是统一的地方，这个问题折磨了近一天，想想只能科学上网，但查找后发现也不可行，设置代理也不行。。如果不能解决依赖的下载问题，用go写项目根本不可能。后来发现go在1.13版本后的使用go mod进行依赖管理，无奈之下，只能把服务器上的1.10版本换成1.13以上，然后设置代理，用go mod init生成mod文件，再go get，很快就解决了。。这下，我真的意识到，七牛造福了go开发者，<a target="_blank" rel="noopener" href="https://goproxy.cn/">https://goproxy.cn/</a> 只要将下载源换成七牛的这个源，用go mod管理依赖，一般依赖的下载问题不会造成困扰。但其使用还需进一步测试。</p>
+<blockquote>
+<p>go mod管理项目测试与Iris项目运行问题解决</p>
+</blockquote>
+<p><strong>一、测试</strong><br>关于go mod的说明是，不用再把项目放在go path下了，把项目建在任意目录下，用go mod管理依赖就行了，依赖会下在gopath下的pkg下，这就和maven很像了，这就真的很nb了。<br>找了个只有main的iris的demo随便copy到了一个目录下，go mod init 自定义项目名（<strong>注意这个名称会在mod文件首行指定这个项目的根模块名，其他引包之类的可以根据这个模块名的路径引，这是后续在运行另一个项目时发现的，这点极其重要</strong>）然后 go get 再 go build，这样就可以有exe生成了，整个过程很简单。在码云上下了go版的若依，运行也很顺利。但在运行千锋iris教程的案例时，出现了不少问题。</p>
+<p><strong>二、运行iris案例问题与解决</strong><br>1.首先，按部就班，三步骤 init get build 但在build卡住了，看一下报错，main等找不到项目其他的自定义的包。细看确实，作者是按自己gopath src下的绝对路径引的包，和我的不一样，那我这样直接运行肯定报错，于是我就要把这些引入自定义包的语句都修改才行。但我想到，如果按绝对路径引，项目换个存放目录不是又要改吗，这样麻烦根本不现实，是不是可以使用相对路径导入呢。于是我用./表示同级包引入；../表示上级包引入这样的，在goland中是感觉可以引入的，go build了一下，有个no local的报错，以下还有问题，说找不到xorm logger等包，我当时认为是go mod init没有找全依赖的缘故，于是我决定先把这几个依赖添到mod中再get看行不行（事实证明这样引包确实不行）。<br>2.先找xorm。到github上找，看不知道为啥，这个作者把项目迁到gitea上去了，那为了搞个新版本，就用<a target="_blank" rel="noopener" href="https://gitea.com/xorm/xorm">https://gitea.com/xorm/xorm</a> 中指定的 xorm.iox/xorm 引入。都改过来后，又解决了个mysql驱动的问题：但这个mysql驱动之后还会出问题，之后再说。然后又想要解决goed/logger这个依赖没有的问题，发现github上居然没这个库。。只能找了个其他的日志库引入 <a target="_blank" rel="noopener" href="https://github.com/wonderivan/logger">https://github.com/wonderivan/logger</a> 解决问题。综上，发现 go mod init不能保证把所有需要的依赖都引入，以上的这三个如xorm是迁移了，logger那个是没这个库，也就是说如果都正常的话都可以导入，这些特殊情况就需要特殊处理了。<br>3.暂时感觉依赖问题都解决了。于是再次build，还是有no local加没有找到包的问题出现，意识到按.相对导入的方法应该不可行，那么究竟导入呢。无奈之下，只能全部改成自己src下的绝对路径。但build时，居然往github上找自定义包了。。这机制把我搞糊涂了。。这样也不行，那我先前运行的那个go版本的若依也不是在开发者的地方跑的，为什么运行的那么顺利。于是我查看了一下它的导包方式，它的mod文件中指定了一个根包名，比如root，这样如果在main.go中导入service包就是root/service这样。但其实我之前把根包名设为cms，导入也这样试过了，为什么不行。我想了一下，是不是编译器没有开始就设置为go mod管理的项目。于是新建了个go mod项目（注意开始<br>我设置的代理是direct，导致打开项目时一直加载 go list -m json all，依赖还一直都是红的，查了<a target="_blank" rel="noopener" href="https://studygolang.com/articles/26923?fr=sidebar">https://studygolang.com/articles/26923?fr=sidebar</a> 之后才发现，那个代理设置应该设置成国内的 <a target="_blank" rel="noopener" href="https://goproxy.cn">https://goproxy.cn</a> 这样很快就导完了<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2020/07/14/2AgeG3XOvws6lak.png" alt="20200714100858436.png" class="lazyload"><br>这样把go mod项目建在任意路径下都可以。<br>4.这样依赖感觉又都没问题了，包括自定义包的引入。于是go build，没问题，但运行时又报错了。关于xorm的空指针，开始我自然地想到是不是新版本与旧版本不兼容导致的，我应该把版本切换成github上的版本，于是指定旧版本，但再go get时就又出问题了，报错</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">go: <span class="title">cms</span> <span class="title">imports</span></span></span><br><span class="line"><span class="function">        <span class="title">cms</span>/<span class="title">datasource</span> <span class="title">imports</span></span></span><br><span class="line"><span class="function">        <span class="title">github.com</span>/<span class="title">go</span>-<span class="title">xorm</span>/<span class="title">xorm</span> <span class="title">imports</span></span></span><br><span class="line"><span class="function">        <span class="title">github.com</span>/<span class="title">go</span>-<span class="title">xorm</span>/<span class="title">core</span>: <span class="title">github.com</span>/<span class="title">go</span>-<span class="title">xorm</span>/<span class="title">core</span>@<span class="title">v0</span>.6.3: <span class="title">parsing</span> <span class="title">go.mod</span>:</span></span><br><span class="line"><span class="function">        <span class="title">module</span> <span class="title">declares</span> <span class="title">its</span> <span class="title">path</span> <span class="title">as</span>: <span class="title">xorm.io</span>/<span class="title">core</span></span></span><br><span class="line"><span class="function">                <span class="title">but</span> <span class="title">was</span> <span class="title">required</span> <span class="title">as</span>: <span class="title">github.com</span>/<span class="title">go</span>-<span class="title">xorm</span>/<span class="title">core</span></span></span><br></pre></td></tr></table></figure>
+<p>查了issue <a target="_blank" rel="noopener" href="https://github.com/henrylee2cn/faygo/issues/39">https://github.com/henrylee2cn/faygo/issues/39</a> 后发现，这是因为github上的xorm使用的迁移后的core导致的，开发者留言说已经解决这个问题。但是我下的0.5.6报错，在其仓库首页发现这是最新版本。。但打开release发现后，最新的已经到0.7.9了。。这告诉我首页的latest不可信。然后把版本换成0.7.9，发现go get是没问题了。<br>5.go build生成exe，闪退。然后用go run main.go看报错，又是关于xorm的空指针，这样让我想到是不是创建数据库连接时出现了问题，看了下源码，根本没有对创建连接时的err进行处理。添了个输出，发现是没有找不到数据库驱动。。我之前运行时，命令行和编译器都提示mysql驱动引入都没有使用所以报错，于是我就注释掉了，现在又放开，果然还不行，那到底该怎样引入呢。。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	_ <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span> <span class="comment">//不能忘记导入</span></span><br><span class="line">	<span class="string">&quot;github.com/go-xorm/xorm&quot;</span></span><br><span class="line">	<span class="string">&quot;cms/model&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这样的方式，记住了。。</p>
+<blockquote>
+<p>总结一下</p>
+</blockquote>
+<p>实际开发时，新创建项目，用goland使用Go mod方式在任意目录下创建项目即可，注意代理一定设置正确。引自定义包时按自定义的根包引。若是导入别人的项目，尤其是那种没有mod的，注意可能是因为比较老了，有的依赖是不能自动添加的，可能就是找不到了，而有mod的应该一般没有问题。</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/07/14/Go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E4%B8%8EIris%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B-%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;07&#x2F;14&#x2F;Go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E4%B8%8EIris%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B-%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;07&#x2F;14&#x2F;Go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E4%B8%8EIris%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B-%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Web%E6%A1%86%E6%9E%B6/">Web框架</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Go/" rel="tag">Go</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899717"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

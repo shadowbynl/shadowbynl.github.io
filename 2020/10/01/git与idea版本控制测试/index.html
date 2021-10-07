@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>git与idea版本控制测试 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="本篇就git的一些基本概念和在idea中进行版本控制的方法进行测试总结。  为更好模拟多人协作情况，创建新账号  在edge上注册时出现错误：Unable to verify your captcha response参考 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_44920883&#x2F;article&#x2F;details&#x2F;104561023发现可能是浏览器的原因，换chrome后可行。  在线学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git与idea版本控制测试">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/10/01/git%E4%B8%8Eidea%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="本篇就git的一些基本概念和在idea中进行版本控制的方法进行测试总结。  为更好模拟多人协作情况，创建新账号  在edge上注册时出现错误：Unable to verify your captcha response参考 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_44920883&#x2F;article&#x2F;details&#x2F;104561023发现可能是浏览器的原因，换chrome后可行。  在线学习">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2020/10/01/FXeA1PMStipfn7q.png">
+<meta property="og:image" content="https://shadowbynl.github.io/git%E4%B8%8Eidea%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B5%8B%E8%AF%95/20201001055345137.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/01/nf1dNG3RTa9Cjyo.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/01/c2oVpisCqynxBGu.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/01/iLa7DISMqpgUu9m.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/01/f1yPQEWAY6oCDeu.png">
+<meta property="article:published_time" content="2020-10-01T05:54:17.000Z">
+<meta property="article:modified_time" content="2020-10-02T06:58:42.640Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="版本控制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/01/FXeA1PMStipfn7q.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899686">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899686">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="git与idea版本控制测试" class="lazyload">
+              <h1>git与idea版本控制测试</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年10月01日</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 23 分钟</a>
+</div>
+
+      
+
+      <p>本篇就git的一些基本概念和在idea中进行版本控制的方法进行测试总结。</p>
+<blockquote>
+<p>为更好模拟多人协作情况，创建新账号</p>
+</blockquote>
+<p>在edge上注册时出现错误：Unable to verify your captcha response<br>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44920883/article/details/104561023">https://blog.csdn.net/qq_44920883/article/details/104561023</a><br>发现可能是浏览器的原因，换chrome后可行。</p>
+<blockquote>
+<p>在线学习网站</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44920883/article/details/104561023">https://blog.csdn.net/qq_44920883/article/details/104561023</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
+<blockquote>
+<p>git概念回顾</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN">https://learngitbranching.js.org/?locale=zh_CN</a><br>本地</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b bugFix</span><br><span class="line">创建分支并切换</span><br><span class="line"></span><br><span class="line">分支与合并：将两个分支合并到一起。就是说我们新建一个分支，在其上开发某个新功能，开发完成后再合并回主线。</span><br><span class="line">第一种方法 —— git merge。在 Git 中合并两个分支时会产生一个特殊的提交记录，它有两个父节点。翻译成自然语言相当于：“我要把这两个父节点本身及它们所有的祖先都包含进来。”</span><br><span class="line">git merge anotherbranchname</span><br><span class="line">由master合并其他分支</span><br><span class="line"></span><br><span class="line">第二种合并分支的方法是 git rebase。Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。</span><br><span class="line">Rebase 的优势就是可以创造更线性的提交历史，这听上去有些难以理解。如果只允许使用 Rebase 的话，代码库的提交历史将会变得异常清晰。</span><br><span class="line">git rebase master 把分支副本拷到master上</span><br><span class="line"></span><br><span class="line">HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。</span><br><span class="line">HEAD 总是指向当前分支上最近一次提交记录。大多数修改提交树的 Git 命令都是从改变 HEAD 的指向开始的。</span><br><span class="line">HEAD 通常情况下是指向分支名的（如 bugFix）。在你提交时，改变了 bugFix 的状态，这一变化通过 HEAD 变得可见。</span><br><span class="line">git checkout 提交记录哈希  使HEAD指向某个提交记录</span><br><span class="line"></span><br><span class="line">通过指定提交记录哈希值的方式在 Git 中移动不太方便。在实际应用时，并没有像本程序中这么漂亮的可视化提交树供你参考，所以你就不得不用 git log 来查查看提交记录的哈希值。</span><br><span class="line">并且哈希值在真实的 Git 世界中也会更长（译者注：基于 SHA-<span class="number">1</span>，共 <span class="number">40</span> 位）。例如前一关的介绍中的提交记录的哈希值可能是 fed2da64c0efc5293610bdd892f82a58e8cbc5d8。舌头都快打结了吧...</span><br><span class="line">比较令人欣慰的是，Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录的前几个字符即可。因此我可以仅输入fed2 而不是上面的一长串字符。</span><br><span class="line"></span><br><span class="line">正如我前面所说，通过哈希值指定提交记录很不方便，所以 Git 引入了相对引用。这个就很厉害了!</span><br><span class="line">使用相对引用的话，你就可以从一个易于记忆的地方（比如 bugFix 分支或 HEAD）开始计算。</span><br><span class="line">相对引用非常给力，这里我介绍两个简单的用法：</span><br><span class="line">使用 ^ 向上移动 <span class="number">1</span> 个提交记录</span><br><span class="line">使用 ~&lt;num&gt; 向上移动多个提交记录，如 ~<span class="number">3</span></span><br><span class="line"></span><br><span class="line">首先看看操作符 (^)。把这个符号加在引用名称的后面，表示让 Git 寻找指定提交记录的父提交。</span><br><span class="line">所以 master^ 相当于“master 的父节点”。</span><br><span class="line">master^^ 是 master 的第二个父节点</span><br><span class="line">可以将 HEAD 作为相对引用的参照。可以一直使用 HEAD^ 向上移动。</span><br><span class="line"></span><br><span class="line">“~”操作符</span><br><span class="line">如果你想在提交树中向上移动很多步的话，敲那么多 ^ 貌似也挺烦人的，Git 当然也考虑到了这一点，于是又引入了操作符 ~。</span><br><span class="line">该操作符后面可以跟一个数字（可选，不跟数字时与 ^ 相同，向上移动一次），指定向上移动多少次。</span><br><span class="line"></span><br><span class="line">使用相对引用最多的就是移动分支。可以直接使用 -f 选项让分支指向另一个提交。例如:</span><br><span class="line">git branch -f master HEAD~<span class="number">3</span></span><br><span class="line">上面的命令会将 master 分支强制指向 HEAD 的第 <span class="number">3</span> 级父提交。</span><br><span class="line"></span><br><span class="line">相对引用为我们提供了一种简洁的引用提交记录 C1 的方式， 而 -f 则容许我们将分支强制移动到那个位置。</span><br><span class="line"></span><br><span class="line"># 撤销变更</span><br><span class="line">在 Git 里撤销变更的方法很多。和提交一样，撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成。我们这个应用主要关注的是后者。</span><br><span class="line">主要有两种方法用来撤销变更 —— 一是 git reset，还有就是 git revert。</span><br><span class="line"></span><br><span class="line">git reset 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。git reset 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。</span><br><span class="line"></span><br><span class="line">虽然在你的本地分支中使用 git reset 很方便，但是这种“改写历史”的方法对大家一起使用的远程分支是无效的哦！</span><br><span class="line">为了撤销更改并分享给别人，我们需要使用 git revert。</span><br><span class="line">在我们要撤销的提交记录后面居然多了一个新提交！这是因为新提交记录 C2&#x27; 引入了更改 —— 这些更改刚好是用来撤销 C2 这个提交的。也就是说 C2&#x27; 的状态与 C1 是相同的。</span><br><span class="line">revert 之后就可以把你的更改推送到远程仓库与别人分享啦。</span><br><span class="line">即revert是新增一个撤销的提交。</span><br><span class="line"></span><br><span class="line"># cherry-pick</span><br><span class="line">“整理提交记录” —— 开发人员有时会说“我想要把这个提交放到这里, 那个提交放到刚才那个提交的后面”, 而接下来就讲的就是它的实现方式，非常清晰、灵活，还很生动。</span><br><span class="line">本系列的第一个命令是 git cherry-pick, 命令形式为:</span><br><span class="line">git cherry-pick &lt;提交号&gt;...</span><br><span class="line">如果你想将一些提交复制到当前所在的位置（HEAD）下面的话， Cherry-pick 是最直接的方式了。我个人非常喜欢 cherry-pick，因为它特别简单。</span><br><span class="line">git cherry-pick 提交哈希<span class="number">1</span> 提交哈希<span class="number">2</span></span><br><span class="line"></span><br><span class="line">当你知道你所需要的提交记录（并且还知道这些提交记录的哈希值）时, 用 cherry-pick 再好不过了 —— 没有比这更简单的方式了。</span><br><span class="line">但是如果你不清楚你想要的提交记录的哈希值呢? 幸好 Git 帮你想到了这一点, 我们可以利用交互式的 rebase —— 如果你想从一系列的提交记录中找到想要的记录, 这就是最好的方法了。</span><br><span class="line">交互式 rebase 指的是使用带参数 --interactive 的 rebase 命令, 简写为 -i</span><br><span class="line">如果你在命令后增加了这个选项, Git 会打开一个 UI 界面并列出将要被复制到目标分支的备选提交记录，它还会显示每个提交记录的哈希值和提交说明，提交说明有助于你理解这个提交进行了哪些更改。</span><br><span class="line">在实际使用时，所谓的 UI 窗口一般会在文本编辑器 —— 如 Vim —— 中打开一个文件。</span><br><span class="line"></span><br><span class="line">当 rebase UI界面打开时, 你能做<span class="number">3</span>件事:</span><br><span class="line">调整提交记录的顺序（通过鼠标拖放来完成）</span><br><span class="line">删除你不想要的提交（通过切换 pick 的状态来完成，关闭就意味着你不想要这个提交记录）</span><br><span class="line">合并提交。 遗憾的是由于某种逻辑的原因，我们的课程不支持此功能，因此我不会详细介绍这个操作。简而言之，它允许你把多个提交记录合并成一个。</span><br><span class="line">git rebase -i HEAD~<span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 本地栈式提交</span><br><span class="line">来看一个在开发中经常会遇到的情况：我正在解决某个特别棘手的 Bug，为了便于调试而在代码中添加了一些调试命令并向控制台打印了一些信息。</span><br><span class="line"></span><br><span class="line">这些调试和打印语句都在它们各自的提交记录里。最后我终于找到了造成这个 Bug 的根本原因，解决掉以后觉得沾沾自喜！</span><br><span class="line"></span><br><span class="line">最后就差把 bugFix 分支里的工作合并回 master 分支了。你可以选择通过 fast-forward 快速合并到 master 分支上，但这样的话 master 分支就会包含我这些调试语句了。你肯定不想这样，应该还有更好的方式……</span><br><span class="line"></span><br><span class="line">实际我们只要让 Git 复制解决问题的那一个提交记录就可以了。跟之前我们在“整理提交记录”中学到的一样，我们可以使用</span><br><span class="line">git rebase -i</span><br><span class="line">git cherry-pick</span><br><span class="line">来达到目的。</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">分支 提交 HEAD 其中分支和HEAD相当于两个指针</span><br><span class="line">HEAD可以指向分支或提交  分支可以指向提交</span><br><span class="line"></span><br><span class="line">HEAD引用的是检出的提交</span><br><span class="line"></span><br><span class="line">git reset必须有参数 git reset HEAD~</span><br><span class="line">git revert 同 git revert HEAD</span><br></pre></td></tr></table></figure>
+
+<p>远程</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"># 远程分支</span><br><span class="line">你可能注意到的第一个事就是在我们的本地仓库多了一个名为 o/master 的分支, 这种类型的分支就叫远程分支。由于远程分支的特性导致其拥有一些特殊属性。</span><br><span class="line"></span><br><span class="line">远程分支反映了远程仓库(在你上次和它通信时)的状态。这会有助于你理解本地的工作与公共工作的差别 —— 这是你与别人分享工作成果前至关重要的一步.</span><br><span class="line"></span><br><span class="line">远程分支有一个特别的属性，在你检出时自动进入分离 HEAD 状态。Git 这么做是出于不能直接在这些分支上进行操作的原因, 你必须在别的地方完成你的工作, （更新了远程分支之后）再用远程分享你的工作成果。</span><br><span class="line"></span><br><span class="line"># 为什么有 o/？</span><br><span class="line">你可能想问这些远程分支的前面的 o/ 是什么意思呢？好吧, 远程分支有一个命名规范 —— 它们的格式是:</span><br><span class="line"></span><br><span class="line">&lt;remote name&gt;/&lt;branch name&gt;</span><br><span class="line">因此，如果你看到一个名为 o/master 的分支，那么这个分支就叫 master，远程仓库的名称就是 o。</span><br><span class="line"></span><br><span class="line"># 自动进入分离HEAD状态的含义</span><br><span class="line">Git 变成了分离 HEAD 状态，当添加新的提交时 o/master 也不会更新。这是因为 o/master 只有在远程仓库中相应的分支更新了以后才会更新。</span><br><span class="line"></span><br><span class="line"># Git Fetch</span><br><span class="line">Git 远程仓库相当的操作实际可以归纳为两点：向远程仓库传输数据以及从远程仓库获取数据。既然我们能与远程仓库同步，那么就可以分享任何能被 Git 管理的更新（因此可以分享代码、文件、想法、情书等等）。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">大多数的开发人员会将它们主要的远程仓库命名为 origin，并不是 o。这是因为当你用 git clone 某个仓库时，Git 已经帮你把远程仓库的名称设置为 origin 了</span><br><span class="line"></span><br><span class="line">不过 origin 对于我们的 UI 来说太长了，因此不得不使用简写 o :) 但是要记住, 当你使用真正的 Git 时, 你的远程仓库默认为 origin!</span><br><span class="line"></span><br><span class="line"># git fetch 做了些什么</span><br><span class="line">git fetch 完成了仅有的但是很重要的两步:</span><br><span class="line"></span><br><span class="line">从远程仓库下载本地仓库中缺失的提交记录</span><br><span class="line">更新远程分支指针(如 o/master)</span><br><span class="line">git fetch 实际上将本地仓库中的远程分支更新成了远程仓库相应分支最新的状态。</span><br><span class="line"></span><br><span class="line">如果你还记得上一节课程中我们说过的，远程分支反映了远程仓库在你最后一次与它通信时的状态，git fetch 就是你与远程仓库通信的方式了！</span><br><span class="line"></span><br><span class="line">git fetch 通常通过互联网（使用 http:// 或 git:// 协议) 与远程仓库通信。</span><br><span class="line"></span><br><span class="line"># git fetch 不会做的事</span><br><span class="line">git fetch 并不会改变你本地仓库的状态。它不会更新你的 master 分支，也不会修改你磁盘上的文件。</span><br><span class="line"></span><br><span class="line">理解这一点很重要，因为许多开发人员误以为执行了 git fetch 以后，他们本地仓库就与远程仓库同步了。它可能已经将进行这一操作所需的所有数据都下载了下来，但是并没有修改你本地的文件。</span><br><span class="line">所以, 你可以将 git fetch 的理解为单纯的下载操作。</span><br><span class="line"></span><br><span class="line"># Git Pull</span><br><span class="line">既然我们已经知道了如何用 git fetch 获取远程的数据, 现在我们学习如何将这些变化更新到我们的工作当中。</span><br><span class="line"></span><br><span class="line">其实有很多方法的 —— 当远程分支中有新的提交时，你可以像合并本地分支那样来合并远程分支。也就是说就是你可以执行以下命令:</span><br><span class="line"></span><br><span class="line">git cherry-pick o/master</span><br><span class="line">git rebase o/master</span><br><span class="line">git merge o/master</span><br><span class="line">等等</span><br><span class="line">实际上，由于先抓取更新再合并到本地分支这个流程很常用，因此 Git 提供了一个专门的命令来完成这两个操作。它就是我们要讲的 git pull。</span><br><span class="line"></span><br><span class="line">git pull 就是 git fetch 和 git merge 的缩写</span><br><span class="line"></span><br><span class="line"># 模拟团队合作</span><br><span class="line">这里有一件棘手的事 —— 为了接下来的课程, 我们需要先教你如何制造远程仓库的变更。</span><br><span class="line"></span><br><span class="line">这意味着，我们需要“假装”你的同事、朋友、合作伙伴更新了远程仓库，有可能是某个特定的分支，或是几个提交记录。</span><br><span class="line"></span><br><span class="line">为了做到这点，我们引入一个自造命令 git fakeTeamwork！</span><br><span class="line"></span><br><span class="line">fakeTeamwork 默认操作就是在远程仓库的 master 分支上做一次提交。</span><br><span class="line"></span><br><span class="line"># git push</span><br><span class="line">OK，我们已经学过了如何从远程仓库获取更新并合并到本地的分支当中。这非常棒……但是我如何与大家分享我的成果呢？</span><br><span class="line"></span><br><span class="line">嗯，上传自己分享内容与下载他人的分享刚好相反，那与 git pull 相反的命令是什么呢？git push！</span><br><span class="line"></span><br><span class="line">git push 负责将你的变更上传到指定的远程仓库，并在远程仓库上合并你的新提交记录。一旦 git push 完成, 你的朋友们就可以从这个远程仓库下载你分享的成果了！</span><br><span class="line"></span><br><span class="line">你可以将 git push 想象成发布你成果的命令。它有许多应用技巧，稍后我们会了解到，但是咱们还是先从基础的开始吧……</span><br><span class="line"></span><br><span class="line">注意 —— git push 不带任何参数时的行为与 Git 的一个名为 push.default 的配置有关。它的默认值取决于你正使用的 Git 的版本，但是在教程中我们使用的是 upstream。 这没什么太大的影响，但是在你的项目中进行推送之前，最好检查一下这个配置。</span><br><span class="line"></span><br><span class="line"># 偏离的工作</span><br><span class="line">现在我们已经知道了如何从其它地方 pull 提交记录，以及如何 push 我们自己的变更。看起来似乎没什么难度，但是为何还会让人们如此困惑呢？</span><br><span class="line"></span><br><span class="line">困难来自于远程库提交历史的偏离。</span><br><span class="line"></span><br><span class="line">假设你周一克隆了一个仓库，然后开始研发某个新功能。到周五时，你新功能开发测试完毕，可以发布了。但是 —— 天啊！你的同事这周写了一堆代码，还改了许多你的功能中使用的 API，这些变动会导致你新开发的功能变得不可用。但是他们已经将那些提交推送到远程仓库了，因此你的工作就变成了基于项目旧版的代码，与远程仓库最新的代码不匹配了。</span><br><span class="line"></span><br><span class="line">这种情况下, git push 就不知道该如何操作了。如果你执行 git push，Git 应该让远程仓库回到星期一那天的状态吗？还是直接在新代码的基础上添加你的代码，亦或由于你的提交已经过时而直接忽略你的提交？</span><br><span class="line"></span><br><span class="line">因为这情况（历史偏离）有许多的不确定性，Git 是不会允许你 push 变更的。实际上它会强制你先合并远程最新的代码，然后才能分享你的工作。</span><br><span class="line"></span><br><span class="line">那该如何解决这个问题呢？很简单，你需要做的就是使你的工作基于最新的远程分支。</span><br><span class="line"></span><br><span class="line">有许多方法做到这一点呢，不过最直接的方法就是通过 rebase 调整你的工作。</span><br><span class="line"></span><br><span class="line">还有其它的方法可以在远程仓库变更了以后更新我的工作吗? 当然有，我们还可以使用 merge</span><br><span class="line"></span><br><span class="line">尽管 git merge 不会移动你的工作（它会创建新的合并提交），但是它会告诉 Git 你已经合并了远程仓库的所有变更。这是因为远程分支现在是你本地分支的祖先，也就是说你的提交已经包含了远程分支的所有变化。</span><br><span class="line"></span><br><span class="line">面已经介绍过 git pull 就是 fetch 和 merge 的简写，类似的 git pull --rebase 就是 fetch 和 rebase 的简写！</span><br><span class="line"></span><br><span class="line">git pull + git push即第二种实现方法</span><br><span class="line"></span><br><span class="line"># 远程服务器拒绝!(Remote Rejected)</span><br><span class="line">如果你是在一个大的合作团队中工作, 很可能是master被锁定了, 需要一些Pull Request流程来合并修改。如果你直接提交(commit)到本地master, 然后试图推送(push)修改, 你将会收到这样类似的信息:</span><br><span class="line"></span><br><span class="line"> ! [远程服务器拒绝] master -&gt; master (TF402455: 不允许推送(push)这个分支; 你必须使用pull request来更新这个分支.)</span><br><span class="line"> </span><br><span class="line">远程服务器拒绝直接推送(push)提交到master, 因为策略配置要求 pull requests 来提交更新.</span><br><span class="line"></span><br><span class="line">你应该按照流程,新建一个分支, 推送(push)这个分支并申请pull request,但是你忘记并直接提交给了master.现在你卡住并且无法推送你的更新.</span><br><span class="line"></span><br><span class="line"># 解决办法</span><br><span class="line">新建一个分支feature, 推送到远程服务器. 然后reset你的master分支和远程服务器保持一致, 否则下次你pull并且他人的提交和你冲突的时候就会有问题。</span><br><span class="line"></span><br><span class="line"># 合并特性分支</span><br><span class="line">既然你应该很熟悉 fetch、pull、push 了，现在我们要通过一个新的工作流来测试你的这些技能。</span><br><span class="line"></span><br><span class="line">在大型项目中开发人员通常会在（从 master 上分出来的）特性分支上工作，工作完成后只做一次集成。这跟前面课程的描述很相像（把 side 分支推送到远程仓库），不过本节我们会深入一些.</span><br><span class="line"></span><br><span class="line">但是有些开发人员只在 master 上做 push、pull —— 这样的话 master 总是最新的，始终与远程分支 (o/master) 保持一致。</span><br><span class="line"></span><br><span class="line">对于接下来这个工作流，我们集成了两个步骤：</span><br><span class="line">将特性分支集成到 master 上</span><br><span class="line">推送并更新远程分支</span><br><span class="line"></span><br><span class="line">如何快速的更新 master 分支并推送到远程。</span><br><span class="line">我们执行了两个命令:</span><br><span class="line">将我们的工作 rebase 到远程分支的最新提交记录</span><br><span class="line">向远程仓库推送我们的工作</span><br><span class="line"></span><br><span class="line"># 为什么不用 merge 呢?</span><br><span class="line">为了 push 新变更到远程仓库，你要做的就是包含远程仓库中最新变更。意思就是只要你的本地分支包含了远程分支（如 o/master）中的最新变更就可以了，至于具体是用 rebase 还是 merge，并没有限制。</span><br><span class="line"></span><br><span class="line">那么既然没有规定限制，为何前面几节都在着重于 rebase 呢？为什么在操作远程分支时不喜欢用 merge 呢？</span><br><span class="line"></span><br><span class="line">在开发社区里，有许多关于 merge 与 rebase 的讨论。以下是关于 rebase 的优缺点：</span><br><span class="line"></span><br><span class="line">优点:</span><br><span class="line"></span><br><span class="line">Rebase 使你的提交树变得很干净, 所有的提交都在一条线上</span><br><span class="line">缺点:</span><br><span class="line"></span><br><span class="line">Rebase 修改了提交树的历史</span><br><span class="line">比如, 提交 C1 可以被 rebase 到 C3 之后。这看起来 C1 中的工作是在 C3 之后进行的，但实际上是在 C3 之前。</span><br><span class="line"></span><br><span class="line">一些开发人员喜欢保留提交历史，因此更偏爱 merge。而其他人（比如我自己）可能更喜欢干净的提交树，于是偏爱 rebase。仁者见仁，智者见智。</span><br></pre></td></tr></table></figure>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2020/10/01/FXeA1PMStipfn7q.png" alt="20201001054822027.png" class="lazyload">)<img data-fancybox="gallery" data-sizes="auto" data-src="/git%E4%B8%8Eidea%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B5%8B%E8%AF%95/20201001055345137.png" alt><br>执行git fetch后远程仓库所有分支对应的远程分支都随之更新<br><img src="https://i.loli.net/2020/10/01/nf1dNG3RTa9Cjyo.png" alt="20201001055345137.png" class="lazyload"><br>git pull<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2020/10/01/c2oVpisCqynxBGu.png" alt="20201001055857246.png" class="lazyload">工作偏离<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2020/10/01/iLa7DISMqpgUu9m.png" alt="20201001062413487.png" class="lazyload"><br><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2020/10/01/f1yPQEWAY6oCDeu.png" alt="20201001061652107.png" class="lazyload"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">远程仓库的分支本身有个master 本地有个master 从远程过来就是o/master远程分支。远程分支不同于远程仓库的分支。</span><br><span class="line"></span><br><span class="line">git pull相当于 git fetch + 本地分支合并远程分支</span><br><span class="line"></span><br><span class="line">$ git fetch</span><br><span class="line">$ git rebase o/master side1</span><br><span class="line">$ git rebase side1 side2</span><br><span class="line">$ git rebase side2 side3</span><br><span class="line">$ git rebase side3 master</span><br><span class="line">快速前进...</span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line">$ git checkout master</span><br><span class="line">$ git pull</span><br><span class="line">快速前进...</span><br><span class="line">$ git merge side1</span><br><span class="line">$ git merge side2</span><br><span class="line">$ git merge side3</span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>idea进行vcs</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Alvin199765/article/details/107953261">https://blog.csdn.net/Alvin199765/article/details/107953261</a><br>经过一些测试，分支创建（合并未测试），拉取推送，解决冲突（复杂的未测试）等。基本了解idea使用git vcs的方法。<br>有以下几点需要注意：</p>
+<ul>
+<li>如果要在一个分支上一直延伸，那么需要切到这个分支而不是提交上</li>
+<li>如果不是创建项目的参与者 clone后必须在一个分支上有延伸 才会在local的分支中有对应的分支（应该是不是分支的创建者，必须在该分支上有拓展local才会有对应分支）</li>
+<li>总体来说，所有开发者的分支分为local和远程orign两个部分</li>
+<li>一般先pull 开发 push merge</li>
+<li>一般不需要tag 提交的说明写清 分支分号就行</li>
+<li>分支的合并暂不详细考虑</li>
+<li>每个分支都是各推各的 当前是master 推上去的只有master 那么更新呢 pull会更新所有分支</li>
+</ul>
+<blockquote>
+<p>一些问题</p>
+</blockquote>
+<p><strong>一、rebase和merge</strong><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4079284dd970">https://www.jianshu.com/p/4079284dd970</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/75499871">https://zhuanlan.zhihu.com/p/75499871</a></p>
+<p><strong>二、如何解决冲突</strong><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/27507789">https://www.zhihu.com/question/27507789</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2afbc7dcd76e">https://www.jianshu.com/p/2afbc7dcd76e</a></p>
+<p><strong>三、sourcetree</strong><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fisherbook/p/11397168.html">https://www.cnblogs.com/fisherbook/p/11397168.html</a></p>
+<blockquote>
+<p>目前如何使用分支和解决冲突</p>
+</blockquote>
+<p>当前创建的分支基本是不需要合并到master的 根据技术选型开分支<br>那么对于二人开发的项目，需要移到master上的 具体再看</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/10/01/git%E4%B8%8Eidea%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B5%8B%E8%AF%95/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;10&#x2F;01&#x2F;git%E4%B8%8Eidea%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B5%8B%E8%AF%95&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;10&#x2F;01&#x2F;git%E4%B8%8Eidea%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B5%8B%E8%AF%95&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" rel="tag">版本控制</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899690"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

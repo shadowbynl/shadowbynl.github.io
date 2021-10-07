@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>关联方案 - Memory</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" type="image/x-icon" />
+    <meta name="description" content="尽管已经在前文中确定mp的关联查询合适的方案，但仍有些问题尚未得到解决，该篇即针对这些问题进行解释。ps：其实再多看也没啥用，对于开发而言毕竟逻辑最重要，若是一直纠结于配置选型就如某篇文章说的那样真的很弱，  一、看了不少项目，不管是基础的还是用mp，为什么不用注解实现关联查了两个问题：（1）用注解有什么坏处吗 （2）为什么不用注解依次看了以下文章：https:&#x2F;&#x2F;segmentfault.co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关联方案">
+<meta property="og:url" content="https://shadowbynl.github.io/2020/10/11/%E5%85%B3%E8%81%94%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="Memory">
+<meta property="og:description" content="尽管已经在前文中确定mp的关联查询合适的方案，但仍有些问题尚未得到解决，该篇即针对这些问题进行解释。ps：其实再多看也没啥用，对于开发而言毕竟逻辑最重要，若是一直纠结于配置选型就如某篇文章说的那样真的很弱，  一、看了不少项目，不管是基础的还是用mp，为什么不用注解实现关联查了两个问题：（1）用注解有什么坏处吗 （2）为什么不用注解依次看了以下文章：https:&#x2F;&#x2F;segmentfault.co">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-10-11T10:41:30.000Z">
+<meta property="article:modified_time" content="2020-10-11T13:09:57.547Z">
+<meta property="article:author" content="nlby">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1633604899681">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1633604899681">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="nlby" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="nlby">
+            <img src="https://i.loli.net/2020/09/12/4y1TBOItE9w8WFq.png" alt="nlby" alt="nlby">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>74</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>29</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/33077945" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/shadowbynl/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Flask/">Flask</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ORM/">ORM</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Web框架/">Web框架</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/css/">css</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/写法/">写法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/功能点学习/">功能点学习</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/基础/">基础</a>
+          <span class="category-list-count">20</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大四/">大四</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/安全/">安全</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/容器/">容器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具/">工具</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工具使用/">工具使用</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据/">数据</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据可视化/">数据可视化</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/测试/">测试</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/爬虫/">爬虫</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/环境/">环境</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/知识点总结/">知识点总结</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/移动布局/">移动布局</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/规划/">规划</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/语法/">语法</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随机/">随机</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随记/">随记</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/面试/">面试</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/tags/JavaWeb/" style="font-size: 20px;">JavaWeb</a> <a href="/tags/PythonWeb/" style="font-size: 15px;">PythonWeb</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/javase/" style="font-size: 10px;">javase</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 11.67px;">专业课</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 11.67px;">区块链</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">51</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 nlby
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><embed src="https://jxiaoc.github.io/animeMusic/demo.html" width="100%"/>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="关联方案" class="lazyload">
+              <h1>关联方案</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年10月11日</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 26 分钟</a>
+</div>
+
+      
+
+      <blockquote>
+<p>尽管已经在前文中确定mp的关联查询合适的方案，但仍有些问题尚未得到解决，该篇即针对这些问题进行解释。<br>ps：其实再多看也没啥用，对于开发而言毕竟逻辑最重要，若是一直纠结于配置选型就如某篇文章说的那样真的很弱，</p>
+</blockquote>
+<p><strong>一、看了不少项目，不管是基础的还是用mp，为什么不用注解实现关联</strong><br>查了两个问题：（1）用注解有什么坏处吗 （2）为什么不用注解<br>依次看了以下文章：<br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019365118">https://segmentfault.com/a/1190000019365118</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">Mybatis单表CRUD与多表关联的无SQL通用方案_2: 无SQL实现关联查询的自动绑定</span><br><span class="line"></span><br><span class="line">涉及关联的开发场景</span><br><span class="line">1. 关联查询另外一张表的字段</span><br><span class="line">1.1. id-name转换：</span><br><span class="line">如department表中有org_id字段，关联organization表的id字段，前端显示Department部门信息时需要显示组织名称organization.name。</span><br><span class="line"></span><br><span class="line">class DepartmentVO&#123;</span><br><span class="line">    String orgName; //关联organization表的name字段</span><br><span class="line">&#125;</span><br><span class="line">1.2. 可配置的元数据/数据字典之类的value-label转换</span><br><span class="line">如department表中有状态字段status，存储值是&quot;A&quot;,&quot;I&quot;...，显示时需要转换为&quot;正常&quot;,&quot;无效&quot;...。</span><br><span class="line"></span><br><span class="line">class DepartmentVO&#123;</span><br><span class="line">    String statusLabel; //关联字典表转换为显示值</span><br><span class="line">&#125;</span><br><span class="line">2. 关联查询另外一张表的单个实体</span><br><span class="line">如部门实体Department(department表的Java映射对象)对应的VO对象中需要关联组织Organization实体（organization表的映射对象）。</span><br><span class="line"></span><br><span class="line">class DepartmentVO &#123;</span><br><span class="line">    Organization organization; //1对1关联另外的实体</span><br><span class="line">&#125;</span><br><span class="line">3. 关联查询另外一张表的多个实体</span><br><span class="line">如部门实体Department对应的VO对象中需要关联多个子部门Department实体。</span><br><span class="line"></span><br><span class="line">class DepartmentVO&#123;</span><br><span class="line">    List<span class="tag">&lt;<span class="name">Department</span>&gt;</span> children; //1对多关联另外的实体</span><br><span class="line">&#125;</span><br><span class="line">常规的实现方案</span><br><span class="line">Mybatis-plus并未实现关联查询的解决方案：</span><br><span class="line">对于字段关联，通常的解决方案是SQL关联查询，如：</span><br><span class="line"></span><br><span class="line">SELECT d.*, o.name as orgName, m.item_label as statusLabel</span><br><span class="line">FROM department d </span><br><span class="line">LEFT JOIN organization o ON d.org_id=o.id</span><br><span class="line">LEFT JOIN metadata m ON u.status=m.item_value AND m.type=&#x27;STATUS&#x27;</span><br><span class="line">或者通过另外一种不太优雅的方式：查询整个表得到id-name的Map，然后通过Java代码去绑定。</span><br><span class="line"></span><br><span class="line">对于关联一个或多个实体的情况，一般通过Mybatis的association实现：</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;XX&quot;</span> <span class="attr">id</span>=<span class="string">&quot;xx&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">association</span> <span class="attr">select</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">无SQL的实现方案</span><br><span class="line">不写SQL，不通过Mybatis的association，要更优雅的实现关联的自动绑定，一个主流的方案就是类似JPA的注解了。JPA的注解需要复杂的设置，我们可以只借鉴其思想，将注解尽可能的简化。</span><br><span class="line"></span><br><span class="line">首先，需要明确关联到哪个表（实体），另外不管是哪种关联都必须要有关联条件condition，然后是字段关联呢我们需要指定字段名field。</span><br><span class="line"></span><br><span class="line">那么我们可以将注解定义简化如下：</span><br><span class="line"></span><br><span class="line">public class DepartmentVO &#123;</span><br><span class="line">    ...</span><br><span class="line">    // 关联Entity中的某字段</span><br><span class="line">    @BindField(entity=Organization.class, field=&quot;name&quot;, condition=&quot;this.org_id=id&quot;)</span><br><span class="line">    private String orgName;</span><br><span class="line"></span><br><span class="line">    // 关联Entity</span><br><span class="line">    @BindEntity(entity=Organization.class, condition=&quot;this.org_id=id&quot;)</span><br><span class="line">    private Organization organization;</span><br><span class="line"></span><br><span class="line">    // 关联多个Entity</span><br><span class="line">    @BindEntityList(entity=Department.class, condition=&quot;this.id=parent_id&quot;)</span><br><span class="line">    private List<span class="tag">&lt;<span class="name">Department</span>&gt;</span> children;</span><br><span class="line">&#125;</span><br><span class="line">简化的使用意味着要有完善的实现逻辑，后续的章节我们将具体讲解这些关联绑定注解的实现方案。</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b68a142509e7">https://www.jianshu.com/p/b68a142509e7</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">mybatis-plus 注解实现多表关联查询的最佳实践</span><br><span class="line"></span><br><span class="line">1. 注解自动绑定数据字典(自定义枚举)的显示值Label</span><br><span class="line">开发过程中的枚举值，比如用户状态（ACTIVE:激活，LOCKED:锁定 ...）、身份证类型等，我们会将其名称name和值value定义在数据字典表，以支持扩展不改代码以及用户可编辑。其他数据表中关联该字典时，存储对应的value，显示时又需要查询字典表将value转换为对应的name。</span><br><span class="line"></span><br><span class="line">通过注解绑定，我希望简单使用如这样：</span><br><span class="line"></span><br><span class="line">@BindDict(type=&quot;USER_STATUS&quot;, field = &quot;status&quot;)</span><br><span class="line">private String statusLabel;</span><br><span class="line">2. 注解自动绑定其他表的字段</span><br><span class="line">如部门实体Department(department表的Java映射对象)对应的VO对象中需要关联组织Organization实体（organization表的映射对象）。</span><br><span class="line"></span><br><span class="line">我希望简单使用如这样：</span><br><span class="line"></span><br><span class="line">// 支持关联条件+附加条件绑定字段</span><br><span class="line">@BindField(entity=Department.class, field=&quot;name&quot;, condition=&quot;department_id=id AND parent_id&gt;=0&quot;)</span><br><span class="line">private String deptName;</span><br><span class="line"></span><br><span class="line">// 支持通过中间表的级联关联绑定字段</span><br><span class="line">@BindField(entity = Organization.class, field=&quot;name&quot;, condition=&quot;this.department_id=department.id AND department.org_id=id&quot;)</span><br><span class="line">private String orgName;</span><br><span class="line">3. 注解自动绑定其他表实体Entity</span><br><span class="line">如部门实体Department(department表的Java映射对象)对应的VO对象中需要关联组织Organization实体（organization表的映射对象）。</span><br><span class="line"></span><br><span class="line">我希望简单使用如这样：</span><br><span class="line"></span><br><span class="line">// 支持关联条件+附加条件绑定Entity</span><br><span class="line">@BindEntity(entity = Department.class, condition=&quot;department_id=id&quot;)</span><br><span class="line">private Department department;</span><br><span class="line"></span><br><span class="line">// 通过中间表的级联关联绑定Entity（支持附加条件）</span><br><span class="line">@BindEntity(entity = Organization.class, condition = &quot;this.department_id=department.id AND department.org_id=id AND department.deleted=0&quot;)</span><br><span class="line">private Organization organization;</span><br><span class="line">4. 注解自动绑定其他表实体集合List<span class="tag">&lt;<span class="name">Entity</span>&gt;</span></span><br><span class="line">如部门实体Department对应的VO对象中需要关联多个子部门Department实体。</span><br><span class="line"></span><br><span class="line">我希望简单使用如这样：</span><br><span class="line"></span><br><span class="line">// 支持关联条件+附加条件绑定多个Entity</span><br><span class="line">@BindEntityList(entity = Department.class, condition = &quot;id=parent_id&quot;)</span><br><span class="line">private List<span class="tag">&lt;<span class="name">Department</span>&gt;</span> children;</span><br><span class="line"></span><br><span class="line">// 通过中间表的 多对多关联 绑定Entity（支持附加条件）</span><br><span class="line">@BindEntityList(entity = Role.class, condition=&quot;this.id=user_role.user_id AND user_role.role_id=id&quot;)</span><br><span class="line">private List<span class="tag">&lt;<span class="name">Role</span>&gt;</span> roleList;</span><br><span class="line">实现以上方案，开发过程中的大部分关联场景SQL都可以大大简化，使代码具备极好的可维护性。另外以上方案实现需要拆解成单表查询SQL通过主键去查询，可以充分利用数据库缓存，提高性能。</span><br><span class="line"></span><br><span class="line">详细了解其实现代码，请至 Diboot - 简单高效的轻代码开发框架 (欢迎star)</span><br><span class="line"></span><br><span class="line">作者：一个鸡蛋壳儿</span><br><span class="line">链接：https://www.jianshu.com/p/b68a142509e7</span><br><span class="line">来源：简书</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p><strong>这两篇同一作者，基本思想是基于mp，借助其他框架的注解实现关联查询，类似jpa</strong></p>
+<ul>
+<li>使用的是diboot 一个自动化平台 后面可以学习一下</li>
+<li>源码 <a target="_blank" rel="noopener" href="https://github.com/dibo-software/diboot">https://github.com/dibo-software/diboot</a></li>
+<li>视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17V411r7Cc">https://www.bilibili.com/video/BV17V411r7Cc</a></li>
+<li>文档 <a target="_blank" rel="noopener" href="https://www.diboot.com/guide/diboot-element-admin/%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2.html#%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE">https://www.diboot.com/guide/diboot-element-admin/%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2.html#%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE</a></li>
+</ul>
+<p>参考的其他：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/it-taosir/p/9992246.html">https://www.cnblogs.com/it-taosir/p/9992246.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/CoderYin/article/details/90768007">https://blog.csdn.net/CoderYin/article/details/90768007</a></p>
+<p>经过了上面的查找，就更困惑为什么不用注解了，于是到知乎上搜索相关问题。</p>
+<p><strong>二、知乎</strong><br><strong>1. yBatis注解实现能取代XML配置么</strong><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/297687402">https://www.zhihu.com/question/297687402</a><br><a target="_blank" rel="noopener" href="https://ld246.com/article/1488810828678">https://ld246.com/article/1488810828678</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-zhao/p/5120792.html?utm_source=ld246.com">https://www.cnblogs.com/java-zhao/p/5120792.html?utm_source=ld246.com</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xml使用场景（3个）：</span><br><span class="line"></span><br><span class="line">条件不定的查询（eg.下边代码中的getAdminByConditions方法）</span><br><span class="line">增加对象返回自增主键（eg.下边代码的insertAdminWithBackId方法）</span><br><span class="line">在一个Mapper接口中，出现多个select查询（&gt;=3个），且每个查询都需要写相同的返回@Results内容（这一部分内容通常很多），这样的话，为了使Mapper接口比较整洁，重复代码比较少，我们会将这些select方法的具体实现写在xml文件中，因为在xml文件的顶部我们就会配置与注解@Results异曲同工的东西。（当然，这一点如果嫌配置xml麻烦，这一点可忽略）</span><br><span class="line">注意：前两条是硬性的，是注解所解决不了的，而第三条只是建议。</span><br><span class="line"></span><br><span class="line">除了以上这三条之外，其他的都使用去注解就好。</span><br></pre></td></tr></table></figure>
+<p><strong>结论</strong></p>
+<ul>
+<li>大多说xml好，原因：支持动态、关联查询，代码分离、为维护方便，自动生成</li>
+<li>少数注解，说阿里这样的很少用复杂的多表了，代码一块更丝滑。。</li>
+<li>各说各的，每个人的看法都有区别。有人认为遵从阿里的，不应有复杂的数据库表；有人认为阿里这样只是大数据量下的标准，小应用不应该完全按照这样的做法，复杂多表是有需求的；有人认为写简单sql，代码里组合进行关联更合理，符合开发理念，不应该给库太大负荷，有人认为不应有过于繁杂的代码，可以通过复杂sql实现的就直接实现。。可以说，都是按照自己的实践经验和业务需求的主观感受，实在不能片面地打定采取怎样的做法，要按照自己实际的需求开发。</li>
+<li>下面甚至更出现了很多贬低mybatis这种“半orm”框架的，更合理应该用jpa，这样既能用注解实现关联，还能写原生sql；但也有人认为应该正向面向对象到表，而不应该从表逆向生成类。。这些也就看看罢了。</li>
+<li>实际上，注解也有提供动态查询的。</li>
+<li>总之，mybatis更多人推崇的是mp/mg + 全xml</li>
+</ul>
+<p><strong>2. 结合mybatis-plus 实现无XML多表联合查询</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79521445">https://zhuanlan.zhihu.com/p/79521445</a></p>
+<p><strong>3. MyBatis的esultMap标签、多表关联查询、注解</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br></pre></td><td class="code"><pre><span class="line">1. 列名和属性名不一致问题_resultMap标签的使用</span><br><span class="line"></span><br><span class="line">(1) 什么是ResultMap? 有什么作用?</span><br><span class="line"></span><br><span class="line">用于自定义映射关系, 可以由程序员自主制定 列名和属性名的映射关系. 一旦使用 resultMap, 表示不再 采用自动映射机制. 可以解决列名和属性名不一致问题 。</span><br><span class="line"></span><br><span class="line">(2) resultType和resultMap有什么区别?</span><br><span class="line"></span><br><span class="line">①如果查询时使用 resultType 属性, 表示采用 MyBatis 的Auto-Mapping(自动映射)机制, 即相同的列名和属性名会自动匹配。</span><br><span class="line"></span><br><span class="line">②用于自定义映射关系, 可以由程序员自主制定 列名和属性名的映射关系. 一旦使用 resultMap, 表示不再 采用自动映射机制。</span><br><span class="line"></span><br><span class="line">(3) 解决列名和属性名不一致问题</span><br><span class="line"></span><br><span class="line">①使用列别名</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;user&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select id id1, username username1, password password2 from t_user</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">②使用<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;user&quot;</span> <span class="attr">id</span>=<span class="string">&quot;umap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- id用于映射主键 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id1&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 非主键使用result映射 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;username&quot;</span> <span class="attr">property</span>=<span class="string">&quot;username1&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;password&quot;</span> <span class="attr">property</span>=<span class="string">&quot;password1&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;umap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select * from t_user</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">2. 多表关联查询_设计表结构</span><br><span class="line"></span><br><span class="line">(1) MyBatis实现多表关联查询有哪些情况?</span><br><span class="line"></span><br><span class="line">单个对象多对一，n+1</span><br><span class="line"></span><br><span class="line">单个对象关联表查询，</span><br><span class="line"></span><br><span class="line">集合对象n+1</span><br><span class="line"></span><br><span class="line">集合对象 多表关联</span><br><span class="line"></span><br><span class="line">自动映射关联</span><br><span class="line"></span><br><span class="line">(2) 数据库表格间的关系有哪几种?</span><br><span class="line"></span><br><span class="line">一对一，一对多，多对多</span><br><span class="line"></span><br><span class="line">3. 多表关联查询_业务装配方式</span><br><span class="line"></span><br><span class="line">(1) 什么是业务装配? 简述如何实现?</span><br><span class="line"></span><br><span class="line">在一个表中可以查到其他表的信息</span><br><span class="line"></span><br><span class="line">①创建班级类(Clazz)和学生类(Student), 并在 Student 中添加一个 Clazz 类型的属性, 用于表示学生的班级信息。</span><br><span class="line"></span><br><span class="line">②mapper层：提供 StudentMapper 和 ClazzMapper, StudentMapper 查询所有学生信息, ClazzMapper 根据编号查询班级信息。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.bjsxt.mapper.StudentMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select * from t_student</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.bjsxt.mapper.ClazzMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;clazz&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select * from t_class where id=#&#123;0&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"></span><br><span class="line">③service 层：调用 mapper 层, 先查询所有学生, 再根据每个学生的班级编号查询班级信息, 手动进行组装, 称之为业务装配。</span><br><span class="line"></span><br><span class="line">public class StudentServiceImpl implements StudentService &#123;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line"></span><br><span class="line">public List<span class="tag">&lt;<span class="name">Student</span>&gt;</span> selAll() &#123;</span><br><span class="line"></span><br><span class="line">SqlSession session = MyBatisUtil.getSession();</span><br><span class="line"></span><br><span class="line">// 学生mapper</span><br><span class="line"></span><br><span class="line">StudentMapper stuMapper = session.getMapper(StudentMapper.class);</span><br><span class="line"></span><br><span class="line">// 班级mapper</span><br><span class="line"></span><br><span class="line">ClazzMapper clsMapper = session.getMapper(ClazzMapper.class);</span><br><span class="line"></span><br><span class="line">// 查询所有学生信息</span><br><span class="line"></span><br><span class="line">List<span class="tag">&lt;<span class="name">Student</span>&gt;</span> list = stuMapper.selAll();</span><br><span class="line"></span><br><span class="line">// 为每一个student组装班级信息</span><br><span class="line"></span><br><span class="line">for (Student student : list) &#123;</span><br><span class="line"></span><br><span class="line">student.setClazz(clsMapper.selById(student.getCid()));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">session.close();</span><br><span class="line"></span><br><span class="line">return list;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">④测试代码</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">StudentService ss = new StudentServiceImpl();</span><br><span class="line"></span><br><span class="line">List<span class="tag">&lt;<span class="name">Student</span>&gt;</span> list = ss.selAll();</span><br><span class="line"></span><br><span class="line">for (Student student : list) &#123;</span><br><span class="line"></span><br><span class="line">System.out.println(student);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(2) 请总结MyBatis有哪些优点?</span><br><span class="line"></span><br><span class="line">语法简单，将业务的使用全部放在了内部自动装配，逻辑清楚简单，数据库的查询少。</span><br><span class="line"></span><br><span class="line">4. 多表关联查询_resultMap_单个对象_N+1方式实现</span><br><span class="line"></span><br><span class="line">(1) 标签<span class="tag">&lt;<span class="name">association</span>&gt;</span>有什么作用?</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">association</span>&gt;</span>用于关联一个对象</span><br><span class="line"></span><br><span class="line">(2) <span class="tag">&lt;<span class="name">association</span>&gt;</span>标签中有哪些属性? 分别有什么含义?</span><br><span class="line"></span><br><span class="line">①property: 指定要关联的属性名</span><br><span class="line"></span><br><span class="line">②select: 设定要继续引用的查询, namespace+id</span><br><span class="line"></span><br><span class="line">③column: 查询时需要传递的列</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.bjsxt.mapper.StudentMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;student&quot;</span> <span class="attr">id</span>=<span class="string">&quot;smap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- N+1查询时, 同名映射可以省略, 但是只能使用一次 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 用于关联一个对象 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;clazz&quot;</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">select</span>=<span class="string">&quot;com.bjsxt.mapper.ClazzMapper.selById&quot;</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">column</span>=<span class="string">&quot;cid&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;smap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select * from t_student</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"></span><br><span class="line">5. 多表关联查询_resultMap_单个对象_关联方式实现</span><br><span class="line"></span><br><span class="line">在mapper中如何传递多个参数?</span><br><span class="line"></span><br><span class="line">mapper 层</span><br><span class="line"></span><br><span class="line">①在 StudentMapper.xml 中定义多表连接查询 SQL 语句, 一次性查到需要的所有数据, 包括对应班级的信息。</span><br><span class="line"></span><br><span class="line">②通过<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span>定义映射关系, 并通过<span class="tag">&lt;<span class="name">association</span>&gt;</span>定对象属性的映射关系. 可以把<span class="tag">&lt;<span class="name">association</span>&gt;</span>看成一个<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span>使用. javaType 属性表示当前对象, 可以写全限定路径或别名。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;student&quot;</span> <span class="attr">id</span>=<span class="string">&quot;smap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;sid&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span> <span class="attr">column</span>=<span class="string">&quot;sname&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;age&quot;</span> <span class="attr">column</span>=<span class="string">&quot;age&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">column</span>=<span class="string">&quot;gender&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;clazz&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;clazz&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span> <span class="attr">column</span>=<span class="string">&quot;cname&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;room&quot;</span> <span class="attr">column</span>=<span class="string">&quot;room&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;smap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select s.id sid, s.name sname, s.age, s.gender, c.id cid,</span><br><span class="line"></span><br><span class="line">c.name cname, c.room</span><br><span class="line"></span><br><span class="line">from t_student s</span><br><span class="line"></span><br><span class="line">left join t_class c</span><br><span class="line"></span><br><span class="line">on s.cid=c.id</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">6. 多表关联查询_resultMap_集合对象_N+1方式实现</span><br><span class="line"></span><br><span class="line">(1) 标签<span class="tag">&lt;<span class="name">collection</span>&gt;</span>有什么作用?</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">collection</span>&gt;</span>用于关联一个集合</span><br><span class="line"></span><br><span class="line">(2) <span class="tag">&lt;<span class="name">collection</span>&gt;</span>标签中有哪些属性? 分别有什么含义?</span><br><span class="line"></span><br><span class="line">①property: 指定要关联的属性名</span><br><span class="line"></span><br><span class="line">②select: 设定要继续引用的查询, namespace+id</span><br><span class="line"></span><br><span class="line">③column: 查询时需要传递的列</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.bjsxt.mapper.ClazzMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;clazz&quot;</span> <span class="attr">id</span>=<span class="string">&quot;cmap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">&quot;stus&quot;</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">select</span>=<span class="string">&quot;com.bjsxt.mapper.StudentMapper.selByCid&quot;</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">column</span>=<span class="string">&quot;id&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;cmap&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select * from t_class</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"></span><br><span class="line">7. 多表关联查询_resultMap_集合对象_关联方式实现</span><br><span class="line"></span><br><span class="line">(1) 通常一个Xml映射文件，都会写一个Mapper接口与之对应，请问，这个Mapper接口的工作原理是什么?</span><br><span class="line"></span><br><span class="line">①接口的全限名，就是映射文件中的namespace的值，接口的方法名，就是映射文件中MappedStatement的id值，接口方法内的参数，就是传递给sql的参数。Mapper接口是没有实现类的，当调用接口方法时，接口全限名+方法名拼接字符串作为key值，可唯一定位一个MappedStatement。</span><br><span class="line"></span><br><span class="line">②Mapper接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Mapper接口生成代理proxy对象，代理对象proxy会拦截接口方法，转而执行MappedStatement所代表的sql，然后将sql执行结果返回。</span><br><span class="line"></span><br><span class="line">(2) Mapper接口里的方法，参数不同时，方法能重载吗?</span><br><span class="line"></span><br><span class="line">Mapper接口里的方法，是不能重载的，因为是全限名+方法名的保存和寻找策略。</span><br><span class="line"></span><br><span class="line">8. 多表关联查询_Auto-Mapping配合别名实现</span><br><span class="line"></span><br><span class="line">(1) Mybatis是如何将sql执行结果封装为目标对象并返回的? 都有哪些映射形式?</span><br><span class="line"></span><br><span class="line">①使用<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span>标签，逐一定义列名和对象属性名之间的映射关系。</span><br><span class="line"></span><br><span class="line">②使用sql列的别名功能，将列别名书写为对象属性名，比如T_NAME AS NAME，对象属性名一般是name，小写，但是列名不区分大小写，Mybatis会忽略列名大小写，智能找到与之对应对象属性名，你甚至可以写成T_NAME AS NaMe，Mybatis一样可以正常工作。</span><br><span class="line"></span><br><span class="line">有了列名与属性名的映射关系后，Mybatis通过反射创建对象，同时使用反射给对象的属性逐一赋值并返回，那些找不到映射关系的属性，是无法完成赋值的。</span><br><span class="line"></span><br><span class="line">(2) 什么情况下用注解绑定,什么情况下用xml绑定?</span><br><span class="line"></span><br><span class="line">当Sql语句比较简单时候,用注解绑定,当SQL语句比较复杂时候,用xml绑定,一般用xml绑定的比较多。</span><br><span class="line"></span><br><span class="line">(3) 通过 Auto-Mapping 实现多表查询</span><br><span class="line"></span><br><span class="line">①通过 MyBatis 的 Auto-Mapping 机制及数据库查询时的别名结合, 可以方便的实现多表查询。</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.bjsxt.mapper.StudentMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">select s.id, s.name, s.age, s.gender, s.cid, c.id `clazz.id`,</span><br><span class="line"></span><br><span class="line">c.name `clazz.name`, c.room `clazz.room`</span><br><span class="line"></span><br><span class="line">from t_student s</span><br><span class="line"></span><br><span class="line">left join t_class c</span><br><span class="line"></span><br><span class="line">on s.cid=c.id</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"></span><br><span class="line">②SQL 语句中, 别名出现特殊符号时, 必须进行处理. MySQ可以使用(``)符号, Oracle 可以使用(&quot;&quot;)符号。</span><br><span class="line"></span><br><span class="line">9. 注解开发详解</span><br><span class="line"></span><br><span class="line">(1) 什么是注解? 有什么作用?</span><br><span class="line"></span><br><span class="line">①注解是用于描述代码的代码.</span><br><span class="line"></span><br><span class="line">②注解的使用风格: @xxx(属性), 使用前必须先导包</span><br><span class="line"></span><br><span class="line">③使用注解一般用于简化配置文件. 但是, 注解有时候也不是很友好(有时候反而更麻烦), 例如动态 SQL.</span><br><span class="line"></span><br><span class="line">④属性的设定方式是: 属性名=属性值</span><br><span class="line"></span><br><span class="line">⑤关于属性值的类型</span><br><span class="line"></span><br><span class="line">Ø 基本类型和 String, 可以直接使用双引号的形式</span><br><span class="line"></span><br><span class="line">Ø 数组类型, name=&#123;值 1, 值 2, ...&#125;; 如果数组元素只有 一个, 可以省略大括号</span><br><span class="line"></span><br><span class="line">Ø 对象类型, name=@对象名(属性)</span><br><span class="line"></span><br><span class="line">Ø 如果属性是该注解的默认属性, 而且该注解只配置这 一个属性, 可以将属性名省略</span><br><span class="line"></span><br><span class="line">⑥注解和配置文件可以配合使用</span><br><span class="line"></span><br><span class="line">(2) MyBatis中常用的注解有哪些?</span><br><span class="line"></span><br><span class="line">@Select: 类似于<span class="tag">&lt;<span class="name">select</span>&gt;</span>--查询</span><br><span class="line"></span><br><span class="line">@Insert: 类似于<span class="tag">&lt;<span class="name">insert</span>&gt;</span>--添加</span><br><span class="line"></span><br><span class="line">@Update: 类似于<span class="tag">&lt;<span class="name">update</span>&gt;</span>--修改</span><br><span class="line"></span><br><span class="line">@Delete: 类似于<span class="tag">&lt;<span class="name">delete</span>&gt;</span>--删除</span><br><span class="line"></span><br><span class="line">@Results: 类似于<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@Result: 类似于<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span>的子标签</span><br><span class="line"></span><br><span class="line">@One: 类似于<span class="tag">&lt;<span class="name">association</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@Many: 类似于<span class="tag">&lt;<span class="name">collection</span>&gt;</span></span><br><span class="line"></span><br><span class="line">10. MyBatis注解_CRUD</span><br><span class="line"></span><br><span class="line">哪些注解可以实现增删改查操作?</span><br><span class="line"></span><br><span class="line">@Select: 类似于<span class="tag">&lt;<span class="name">select</span>&gt;</span>--查询</span><br><span class="line"></span><br><span class="line">@Insert: 类似于<span class="tag">&lt;<span class="name">insert</span>&gt;</span>--添加</span><br><span class="line"></span><br><span class="line">@Update: 类似于<span class="tag">&lt;<span class="name">update</span>&gt;</span>--修改</span><br><span class="line"></span><br><span class="line">@Delete: 类似于<span class="tag">&lt;<span class="name">delete</span>&gt;</span>--删除</span><br><span class="line"></span><br><span class="line">@Select(&quot;select * from t_student&quot;)</span><br><span class="line"></span><br><span class="line">List<span class="tag">&lt;<span class="name">Student</span>&gt;</span> selAll();</span><br><span class="line"></span><br><span class="line">@Insert(&quot;insert into t_student values (default, #&#123;name&#125;, #&#123;age&#125;,#&#123;gender&#125;, #&#123;cid&#125;)&quot;)</span><br><span class="line"></span><br><span class="line">int insStu(Student student);</span><br><span class="line"></span><br><span class="line">@Update(&quot;update t_student set age=#&#123;1&#125; where id=#&#123;0&#125;&quot;)</span><br><span class="line"></span><br><span class="line">int updStu(int id, int age);</span><br><span class="line"></span><br><span class="line">@Delete(&quot;delete from t_student where id=#&#123;0&#125;&quot;)</span><br><span class="line"></span><br><span class="line">int delStu(int id);</span><br><span class="line"></span><br><span class="line">11. MyBatis注解_关联查询</span><br><span class="line"></span><br><span class="line">(1) @Results和@Result注解有什么作用?</span><br><span class="line"></span><br><span class="line">@Results: 类似于<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@Result: 类似于<span class="tag">&lt;<span class="name">resultMap</span>&gt;</span>的子标签</span><br><span class="line"></span><br><span class="line">@One: 类似于<span class="tag">&lt;<span class="name">association</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@Many: 类似于<span class="tag">&lt;<span class="name">collection</span>&gt;</span></span><br><span class="line"></span><br><span class="line">(2) 如何通过注解实现多表关联查询?</span><br><span class="line"></span><br><span class="line">public interface StudentMapper &#123;</span><br><span class="line"></span><br><span class="line">@Select(&quot;select * from t_student&quot;)</span><br><span class="line"></span><br><span class="line">@Results(value = &#123;</span><br><span class="line"></span><br><span class="line">@Result(column=&quot;id&quot;, property=&quot;id&quot;, id=true),</span><br><span class="line"></span><br><span class="line">@Result(column=&quot;name&quot;, property=&quot;name&quot;),</span><br><span class="line"></span><br><span class="line">@Result(column=&quot;age&quot;, property=&quot;age&quot;),</span><br><span class="line"></span><br><span class="line">@Result(column=&quot;gender&quot;, property=&quot;gender&quot;),</span><br><span class="line"></span><br><span class="line">@Result(column=&quot;cid&quot;, property=&quot;cid&quot;),</span><br><span class="line"></span><br><span class="line">@Result(property=&quot;clazz&quot;,</span><br><span class="line"></span><br><span class="line">one=@One(select=&quot;com.bjsxt.mapper.ClazzMapper.selById&quot;),</span><br><span class="line"></span><br><span class="line">column=&quot;cid&quot;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">List<span class="tag">&lt;<span class="name">Student</span>&gt;</span> sel();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public interface ClazzMapper &#123;</span><br><span class="line"></span><br><span class="line">@Select(&quot;select * from t_class where id=#&#123;0&#125;&quot;)</span><br><span class="line"></span><br><span class="line">Clazz selById(int id)&#125;</span><br><span class="line"></span><br><span class="line">12. 分析MyBatis的运行原理</span><br><span class="line"></span><br><span class="line">(1) SqlSession对象的创建经理的哪些过程?</span><br><span class="line"></span><br><span class="line">InputStream is =Resource.getResourceAsStream(“mybatis.xml”)\</span><br><span class="line"></span><br><span class="line">Sqlsession session=sqlsessionFactoryBuilder().build(is).openSession(true);</span><br><span class="line"></span><br><span class="line">(2) 当实体类中的属性名和表中的字段名不一样 ，怎么办?</span><br><span class="line"></span><br><span class="line">resultMap 中的result column 和property一一对应</span><br><span class="line"></span><br><span class="line">13. 详述MyBatis的运行原理</span><br><span class="line"></span><br><span class="line">(1) MyBatis运行过程中涉及到哪些类或接口? 请列举并简述作用.</span><br><span class="line"></span><br><span class="line">①Resources(C)用于加载 MyBatis 核心配置文件</span><br><span class="line"></span><br><span class="line">②XMLConfigBuilder(C)用于解析 xml 文件(核心配置文件)</span><br><span class="line"></span><br><span class="line">③Configuration(C)用于存放 xml 文件解析后的结果</span><br><span class="line"></span><br><span class="line">④DefaultSqlSessionFactory(C)是 SqlSessionFactory(I)的 实 现 类 , 创 建 时 需 要 使 用Configuration 对象</span><br><span class="line"></span><br><span class="line">⑤SqlSession(I)是 MyBatis 操作的核心</span><br><span class="line"></span><br><span class="line">⑥DefaultSqlSession(C)是 SqlSession 接口的实现类</span><br><span class="line"></span><br><span class="line">⑦TransactionFactory(I)用于生产 Transaction 对象</span><br><span class="line"></span><br><span class="line">⑧Transaction(I)用于表示操作数据库的事务对象</span><br><span class="line"></span><br><span class="line">⑨Executor(I)是 MyBatis 的核心执行器, 类似于 jdbc 中的 Statement, 常用的实现类是 SimpleExecutor</span><br><span class="line"></span><br><span class="line">(2) 请总结MyBatis的运行原理</span><br><span class="line"></span><br><span class="line">当 MyBatis 运行开始时, 先要通过 Resources 加载核心配置文件, 之后使用 XMLConfigBuilder 对配置文件进行解析, 将解析结果封装为 Configuration 对象, 接着, 使用Configuration对象构建一个DefaultSqlSessionFactory对象, 至此, SqlSession 工厂构建完成。</span><br><span class="line"></span><br><span class="line">接下来, 通过工厂对象调用 openSession 方法创建SqlSession 对 象 . 在 这 个 过 程 中 , 需 要 通 过TransactionFactory 生成 Transaction 对象, 并且, 还需要创建核心执行器 Executor 对象, 之后, 通过这些对象来创建DefaultSqlSession对象, 至此, SqlSession对象创建成功。</span><br><span class="line"></span><br><span class="line">之后, 通过 SqlSession 对象执行相应的操作, 如果执行成功, 调用 commit 方法提交事务; 如果失败, 调用rollback 方法事务回滚. 最后, 调用 close 方法关闭session 资源. 以上, 就是 MyBatis 的运行原理。</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. mybatis用注解还是xml</strong><br><strong>spring boot集成mybatis时是用xml配置，还是用注解</strong><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/294748079">https://www.zhihu.com/question/294748079</a></p>
+<p><strong>mybatis开发，你用 xml 还是注解？我 pick…</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141748037">https://zhuanlan.zhihu.com/p/141748037</a></p>
+<p><strong>一步步放弃mybatis的xml</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/88209833">https://zhuanlan.zhihu.com/p/88209833</a></p>
+<p><strong>SpringBoot快速整合Mybatis（去XML化+注解进阶）</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56144977">https://zhuanlan.zhihu.com/p/56144977</a><br>动态查询的注解</p>
+<p><strong>MyBatis-Plus: 谨慎入坑</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/220084517">https://zhuanlan.zhihu.com/p/220084517</a></p>
+<p><strong>用注解的人说用xml的蠢，用xml的认为用注解的蠢。。</strong></p>
+<p><strong>5. Mybatis还是Spring Data JPA</strong><br><strong>SpringBoot开发使用Mybatis还是Spring Data JPA??</strong><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/316458408/answer/664023798">https://www.zhihu.com/question/316458408/answer/664023798</a></p>
+<p><strong>程序员，Mybatis 你踩过坑吗</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62894816">https://zhuanlan.zhihu.com/p/62894816</a></p>
+<p><strong>6. 其他</strong><br><strong>详解Mybatis Generator和全注解风格的MyBatis3DynamicSql</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137914700">https://zhuanlan.zhihu.com/p/137914700</a></p>
+<p><strong>谈谈自己用mybatis-plus中的一些经验</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52313516">https://zhuanlan.zhihu.com/p/52313516</a></p>
+<p><strong>三、总结</strong></p>
+<ul>
+<li>框架很多，很多公司还有在此基础上开发的自动化工具，都是针对各自业务需求的</li>
+<li>目前自学的阶段，一定要尽快跳过一直配置的阶段，进入功能和逻辑实现的阶段，因此其实这些选型都可以选。建议就是mp/mg + 全xml 或 jpa</li>
+<li>不要一直纠结这种问题了</li>
+</ul>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>nlby<br>
+        <strong>Link：</strong><a href="https://shadowbynl.github.io/2020/10/11/%E5%85%B3%E8%81%94%E6%96%B9%E6%A1%88/" title="https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;10&#x2F;11&#x2F;%E5%85%B3%E8%81%94%E6%96%B9%E6%A1%88&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;shadowbynl.github.io&#x2F;2020&#x2F;10&#x2F;11&#x2F;%E5%85%B3%E8%81%94%E6%96%B9%E6%A1%88&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8A%9F%E8%83%BD%E7%82%B9%E5%AD%A6%E4%B9%A0/">功能点学习</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'f8845ecb71eab90181fe',
+        clientSecret: '6852a4d3526507b2d6b2d34ad72dc98438196ae8',
+        id: window.location.pathname,
+        repo: 'lts-blog-comments',
+        owner: 'shadowbynl',
+        admin: 'shadowbynl'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1633604899685"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/violet.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":true},"log":false});</script></body>
+
+</html>
